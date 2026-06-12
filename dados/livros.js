@@ -1,148 +1,174 @@
-/* vida do livro db — biblioteca de referências
-   Cada livro tem:
-   - macrotema: categoria para agrupamento em livros.html
-     valores: historia · experiencias · escrita · design · marketing · diversos
-     null = livro de suporte para leituras em tema.html, não aparece em livros.html
-   - temas: slugs dos 22 temas para filtrar leituras em tema.html
-*/
+/* vida do livro db — gerado por scripts/sync.js */
+/* não editar manualmente — rode: npm run sync */
 
 window.LIVROS = [
-
-  /* ── HISTÓRIA ── */
-  { titulo: "Um Mundo Sem Livros e Sem Livrarias?", autor: "Roger Chartier", editora: "Editora Unesp", ano: 2012, macrotema: "historia", temas: ["mercado-editorial", "futuro-tecnologia"], href: "#" },
-  { titulo: "Leituras Elásticas", autor: "Carolina Sanches", editora: "Edição do Autor", ano: 2023, macrotema: "historia", temas: ["mercado-editorial"], href: "#" },
-  { titulo: "História do Livro e da Edição", autor: "Yann Sordet", editora: "Editora Unesp", ano: 2021, macrotema: "historia", temas: ["edicao"], href: "#" },
-  { titulo: "Uma História Social da Mídia", autor: "Asa Briggs & Peter Burke", editora: "Zahar", ano: 2006, macrotema: "historia", temas: ["mercado-editorial"], href: "#" },
-  { titulo: "História da Escrita", autor: "Steven Roger Fischer", editora: "Editora Unesp", ano: 2009, macrotema: "historia", temas: [], href: "#" },
-  { titulo: "Os Meios de Comunicação como Extensões do Homem", autor: "Marshall McLuhan", editora: "Cultrix", ano: 1969, macrotema: "historia", temas: ["futuro-tecnologia"], href: "#" },
-  { titulo: "A Sociedade em Rede", autor: "Manuel Castells", editora: "Paz e Terra", ano: 1999, macrotema: "historia", temas: ["futuro-tecnologia"], href: "#" },
-  { titulo: "O Negócio do Livro", autor: "Jason Epstein", editora: "Record", ano: 2002, macrotema: "historia", temas: ["edicao", "mercado-editorial", "ter-uma-editora"], href: "#" },
-  { titulo: "O Negócio dos Livros", autor: "André Schiffrin", editora: "Casa da Palavra", ano: 2007, macrotema: "historia", temas: ["edicao", "mercado-editorial", "ter-uma-editora"], href: "#" },
-  { titulo: "Uma História da Leitura", autor: "Alberto Manguel", editora: "Companhia das Letras", ano: 1997, macrotema: "historia", temas: ["edicao", "mercado-editorial"], href: "#" },
-  { titulo: "O Livro no Brasil: Sua História", autor: "Laurence Hallewell", editora: "Edusp", ano: 2005, macrotema: "historia", temas: ["mercado-editorial"], href: "#" },
-  { titulo: "História do Livro", autor: "Frédéric Barbier", editora: "Editora Unesp", ano: 2018, macrotema: "historia", temas: ["edicao", "mercado-editorial"], href: "#" },
-  { titulo: "Mercadores de Cultura", autor: "John B. Thompson", editora: "Cosac Naify", ano: 2013, macrotema: "historia", temas: ["mercado-editorial", "distribuicao"], href: "#" },
-  { titulo: "O Dinheiro e as Letras", autor: "Jean-Yves Mollier", editora: "Editora Unesp", ano: 2010, macrotema: "historia", temas: ["mercado-editorial"], href: "#" },
-  { titulo: "O Mundo da Escrita", autor: "Martin Puchner", editora: "Intrínseca", ano: 2018, macrotema: "historia", temas: [], href: "#" },
-  { titulo: "A Aventura do Livro: do Leitor ao Navegador", autor: "Roger Chartier", editora: "Editora Unesp", ano: 1994, macrotema: "historia", temas: ["edicao"], href: "#" },
-  { titulo: "O Aparecimento do Livro", autor: "Lucien Febvre & Henri-Jean Martin", editora: "Editora Unesp", ano: 1992, macrotema: "historia", temas: ["edicao"], href: "#" },
-  { titulo: "Livro: Uma História Viva", autor: "Martyn Lyons", editora: "Senac", ano: 2011, macrotema: "historia", temas: ["edicao"], href: "#" },
-  { titulo: "The Gutenberg Galaxy", autor: "Marshall McLuhan", editora: "University of Toronto Press", ano: 1962, macrotema: "historia", temas: ["futuro-tecnologia"], href: "#" },
-  { titulo: "Não Contem Com o Fim do Livro", autor: "Umberto Eco", editora: "Record", ano: 2010, macrotema: "historia", temas: ["futuro-tecnologia", "ebooks"], href: "#" },
-  { titulo: "A Questão dos Livros", autor: "Robert Darnton", editora: "Companhia das Letras", ano: 2010, macrotema: "historia", temas: ["futuro-tecnologia", "ebooks"], href: "#" },
-  { titulo: "The Book Was There", autor: "Andrew Piper", editora: "University of Chicago Press", ano: 2012, macrotema: "historia", temas: ["ebooks", "futuro-tecnologia"], href: "#" },
-  { titulo: "A Marca do Editor", autor: "Roberto Calasso", editora: "Companhia das Letras", ano: 2014, macrotema: "historia", temas: ["edicao", "ter-uma-editora"], href: "#" },
-  { titulo: "As Guerras do Livro", autor: "John B. Thompson", editora: "SESI-SP", ano: 2023, macrotema: "historia", temas: ["mercado-editorial", "futuro-tecnologia"], href: "#" },
-
-  /* ── EXPERIÊNCIAS ── */
-  { titulo: "Max Perkins, Um Editor de Gênios", autor: "A. Scott Berg", editora: "Companhia das Letras", ano: 1997, macrotema: "experiencias", temas: ["edicao", "ter-uma-editora"], href: "#" },
-  { titulo: "A Marca do Z", autor: "Paulo Roberto Pires", editora: "Cobogó", ano: 2016, macrotema: "experiencias", temas: ["edicao", "ter-uma-editora"], href: "#" },
-  { titulo: "José Olympio: O Editor e Sua Casa", autor: "José Mário Pereira", editora: "Pacto Editorial", ano: 2008, macrotema: "experiencias", temas: ["edicao", "ter-uma-editora"], href: "#" },
-  { titulo: "Massao Ohno, Editor", autor: "José Armando Pereira da Silva", editora: "Edusp", ano: 2012, macrotema: "experiencias", temas: ["edicao", "ter-uma-editora"], href: "#" },
-  { titulo: "Mão do Autor e a Mente do Editor", autor: "Roger Chartier", editora: "Editora Unesp", ano: 2014, macrotema: "experiencias", temas: ["edicao", "autor-editora"], href: "#" },
-  { titulo: "Editando o Editor", autor: "Plínio Coelho", editora: "Escrituras", ano: 2007, macrotema: "experiencias", temas: ["edicao"], href: "#" },
-  { titulo: "Memórias de um Editor", autor: "Kurt Wolff", editora: "Ateliê Editorial", ano: 2008, macrotema: "experiencias", temas: ["edicao", "ter-uma-editora"], href: "#" },
-  { titulo: "Figuras de Autor, Figuras de Editor", autor: "Cilza Carla Bignotto", editora: "Mercado de Letras", ano: 2018, macrotema: "experiencias", temas: ["edicao", "autor-editora"], href: "#" },
-  { titulo: "100 Nomes da Edição no Brasil", autor: "Leonardo Neto", editora: "Edição do Autor", ano: 2022, macrotema: "experiencias", temas: ["edicao"], href: "#" },
-  { titulo: "Subnarradas: Mulheres que Editam", autor: "Ana Elisa Ribeiro", editora: "Cedet", ano: 2021, macrotema: "experiencias", temas: ["edicao"], href: "#" },
-  { titulo: "Invent and Wander", autor: "Jeff Bezos & Walter Isaacson", editora: "Harvard Business Review Press", ano: 2021, macrotema: "experiencias", temas: ["ter-uma-editora"], href: "#" },
-  { titulo: "Writing Insights", autor: "Hugh Howey", editora: "Broad Reach Publishing", ano: 2016, macrotema: "experiencias", temas: ["criacao-literaria", "autopublicacao"], href: "#" },
-  { titulo: "A Editora como Projeto Cultural", autor: "Sergio Miceli", editora: "Edusp", ano: 1984, macrotema: "experiencias", temas: ["ter-uma-editora", "edicao"], href: "#" },
-
-  /* ── ESCRITA ── */
-  { titulo: "Como Criar Histórias", autor: "Ursula K. Le Guin", editora: "Seoman", ano: 2017, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Story", autor: "Robert McKee", editora: "Civilização Brasileira", ano: 2013, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Anatomia da História", autor: "John Truby", editora: "Aleph", ano: 2017, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "A Jornada do Escritor", autor: "Christopher Vogler", editora: "Nova Fronteira", ano: 2006, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Dialogue", autor: "Robert McKee", editora: "Twelve", ano: 2016, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Save the Cat!", autor: "Blake Snyder", editora: "Michael Wiese Productions", ano: 2005, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Into the Woods", autor: "John Yorke", editora: "Overlook Press", ano: 2013, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "O Gênio Não Original", autor: "Marjorie Perloff", editora: "Edusp", ano: 2013, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Três Usos da Faca", autor: "David Mamet", editora: "Civilização Brasileira", ano: 2001, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "The Simple Art of Murder", autor: "Raymond Chandler", editora: "Vintage", ano: 1988, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Wired for Story", autor: "Lisa Cron", editora: "Ten Speed Press", ano: 2012, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Criatividade e os Processos de Criação", autor: "Fayga Ostrower", editora: "Vozes", ano: 1977, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Como Funciona a Ficção", autor: "James Wood", editora: "Cosac Naify", ano: 2012, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Sobre a Escrita", autor: "Stephen King", editora: "Suma de Letras", ano: 2000, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "A Literatura em Perigo", autor: "Tzvetan Todorov", editora: "Difel", ano: 2009, macrotema: "escrita", temas: ["criacao-literaria"], href: "#" },
-
-  /* ── DESIGN & TÉCNICO ── */
-  { titulo: "A Construção do Livro", autor: "Emanuel Araújo", editora: "Nova Fronteira", ano: 1986, macrotema: "design", temas: ["design-grafico", "producao-grafica", "preparacao-revisao"], href: "#" },
-  { titulo: "Como Fazer um Livro", autor: "Emanuel Araújo", editora: "Editora Unesp", ano: 2008, macrotema: "design", temas: ["preparacao-revisao", "edicao", "design-grafico"], href: "#" },
-  { titulo: "Livros, Editoras & Projetos", autor: "Jerusa Pires Ferreira et al.", editora: "Ateliê Editorial", ano: 2003, macrotema: "design", temas: ["design-grafico", "edicao"], href: "#" },
-  { titulo: "Design Editorial", autor: "Yolanda Zappaterra & Cath Caldwell", editora: "Gustavo Gili", ano: 2014, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Manual de Editoração e Estilo", autor: "Plínio Martins Filho", editora: "Editora Unesp", ano: 2011, macrotema: "design", temas: ["preparacao-revisao", "design-grafico"], href: "#" },
-  { titulo: "Extra Bold", autor: "Ellen Lupton & Jennifer Tobias", editora: "Princeton Architectural Press", ano: 2021, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Novos Fundamentos do Design", autor: "Ellen Lupton", editora: "Cosac Naify", ano: 2008, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Pensar com Tipos", autor: "Ellen Lupton", editora: "Cosac Naify", ano: 2006, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "O Design como Storytelling", autor: "Ellen Lupton", editora: "Gustavo Gili", ano: 2018, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "A Forma do Livro", autor: "Jan Tschichold", editora: "Ateliê Editorial", ano: 2007, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "O Livro e o Designer II", autor: "Andrew Haslam", editora: "Cosac Naify", ano: 2007, macrotema: "design", temas: ["design-grafico", "producao-grafica"], href: "#" },
-  { titulo: "Entre Ser Um e Ser Mil", autor: "Edith Derdyk", editora: "Editora Senac", ano: 2013, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Os Elementos do Estilo Tipográfico", autor: "Robert Bringhurst", editora: "Cosac Naify", ano: 2005, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Para Ler o Livro Ilustrado", autor: "Sophie Van der Linden", editora: "Cosac Naify", ano: 2011, macrotema: "design", temas: ["literatura-infantil", "design-grafico"], href: "#" },
-  { titulo: "Era Uma Vez Uma Capa", autor: "Alan Powers", editora: "Cosac Naify", ano: 2008, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Linha do Tempo do Design Gráfico no Brasil", autor: "Chico Homem de Mello", editora: "Cosac Naify", ano: 2011, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "A Capa do Livro Brasileiro", autor: "Ubiratan Machado", editora: "Ateliê Editorial", ano: 2003, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Design para um Mundo Complexo", autor: "Rafael Cardoso", editora: "Cosac Naify", ano: 2013, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Grid: Um Módulo de Design", autor: "Josef Müller-Brockmann", editora: "Gustavo Gili", ano: 2012, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Direção de Arte em Publicações", autor: "Tim Harrower", editora: "Artmed", ano: 2010, macrotema: "design", temas: ["design-grafico"], href: "#" },
-  { titulo: "Produção Gráfica para Designers", autor: "Cláudio Guimarães", editora: "2AB", ano: 2003, macrotema: "design", temas: ["producao-grafica"], href: "#" },
-  { titulo: "Editing Fact and Fiction", autor: "Leslie T. Sharpe & Irene Gunther", editora: "Cambridge University Press", ano: 1994, macrotema: "design", temas: ["edicao", "preparacao-revisao"], href: "#" },
-  { titulo: "Manual de Redação e Estilo", autor: "Eduardo Martins", editora: "O Estado de S. Paulo", ano: 2011, macrotema: "design", temas: ["preparacao-revisao"], href: "#" },
-
-  /* ── MARKETING ── */
-  { titulo: "Marketing para o Século XXI", autor: "Philip Kotler", editora: "Futura", ano: 1999, macrotema: "marketing", temas: ["marketing-editorial"], href: "#" },
-  { titulo: "Marketing 4.0", autor: "Philip Kotler", editora: "Sextante", ano: 2017, macrotema: "marketing", temas: ["marketing-editorial"], href: "#" },
-  { titulo: "Cultura da Convergência", autor: "Henry Jenkins", editora: "Aleph", ano: 2009, macrotema: "marketing", temas: ["marketing-editorial", "comunicacao-midia"], href: "#" },
-  { titulo: "Permission Marketing", autor: "Seth Godin", editora: "Simon & Schuster", ano: 1999, macrotema: "marketing", temas: ["marketing-editorial"], href: "#" },
-  { titulo: "Storybrand", autor: "Donald Miller", editora: "Thomas Nelson", ano: 2017, macrotema: "marketing", temas: ["marketing-editorial"], href: "#" },
-  { titulo: "The Practice: Shipping Creative Work", autor: "Seth Godin", editora: "Portfolio Penguin", ano: 2020, macrotema: "marketing", temas: ["marketing-editorial"], href: "#" },
-  { titulo: "The Brand Gap", autor: "Marty Neumeier", editora: "AIGA", ano: 2003, macrotema: "marketing", temas: ["marketing-editorial"], href: "#" },
-  { titulo: "A Fórmula do Lançamento", autor: "Jeff Walker", editora: "Literare Books", ano: 2016, macrotema: "marketing", temas: ["marketing-editorial"], href: "#" },
-  { titulo: "The Influencer Code", autor: "Amanda Russell", editora: "Amplify Publishing", ano: 2020, macrotema: "marketing", temas: ["marketing-editorial", "comunicacao-midia"], href: "#" },
-  { titulo: "What Editors Do", autor: "Peter Ginna", editora: "University of Chicago Press", ano: 2017, macrotema: "marketing", temas: ["edicao"], href: "#" },
-  { titulo: "The Business of Books", autor: "André Schiffrin", editora: "Verso", ano: 2000, macrotema: "marketing", temas: ["edicao", "mercado-editorial"], href: "#" },
-  { titulo: "The Cluetrain Manifesto", autor: "Rick Levine et al.", editora: "Basic Books", ano: 1999, macrotema: "marketing", temas: ["marketing-editorial", "comunicacao-midia"], href: "#" },
-
-  /* ── DIVERSOS ── */
-  { titulo: "Isso é Arte?", autor: "Will Gompertz", editora: "Globo Livros", ano: 2013, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "O que é o Virtual?", autor: "Pierre Lévy", editora: "Ed. 34", ano: 1996, macrotema: "diversos", temas: ["futuro-tecnologia"], href: "#" },
-  { titulo: "A Obra de Arte na Era da Reprodutibilidade Técnica", autor: "Walter Benjamin", editora: "Brasiliense", ano: 1987, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "Poética", autor: "Aristóteles", editora: "Ed. 34", ano: 2015, macrotema: "diversos", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Sociedade do Espetáculo", autor: "Guy Debord", editora: "Contraponto", ano: 1997, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "Iniciação à Estética", autor: "Ariano Suassuna", editora: "José Olympio", ano: 2004, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "Regras do Jogo", autor: "Katie Salen & Eric Zimmerman", editora: "Blucher", ano: 2012, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "Homo Ludens", autor: "Johan Huizinga", editora: "Perspectiva", ano: 1971, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "De Onde Vêm as Boas Ideias", autor: "Steven Johnson", editora: "Zahar", ano: 2011, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "Contágio", autor: "Jonah Berger", editora: "Leya", ano: 2013, macrotema: "diversos", temas: ["marketing-editorial"], href: "#" },
-  { titulo: "Hit Makers", autor: "Derek Thompson", editora: "Penguin Press", ano: 2017, macrotema: "diversos", temas: ["marketing-editorial"], href: "#" },
-  { titulo: "Como Star Wars Conquistou o Universo", autor: "Chris Taylor", editora: "Aleph", ano: 2015, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "Wonderbook", autor: "Jeff VanderMeer", editora: "Abrams", ano: 2018, macrotema: "diversos", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Os Quatro", autor: "Scott Galloway", editora: "HSM", ano: 2018, macrotema: "diversos", temas: ["mercado-editorial", "futuro-tecnologia"], href: "#" },
-  { titulo: "Todo Mundo Mente", autor: "Seth Stephens-Davidowitz", editora: "Alaúde", ano: 2017, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "A Regra é Não Ter Regras", autor: "Reed Hastings & Erin Meyer", editora: "Intrínseca", ano: 2020, macrotema: "diversos", temas: ["ter-uma-editora"], href: "#" },
-  { titulo: "Uberização, Trabalho Digital e Indústria 4.0", autor: "Ricardo Antunes", editora: "Boitempo", ano: 2020, macrotema: "diversos", temas: ["futuro-tecnologia"], href: "#" },
-  { titulo: "Move Fast and Break Things", autor: "Jonathan Taplin", editora: "Little, Brown and Company", ano: 2017, macrotema: "diversos", temas: ["futuro-tecnologia"], href: "#" },
-  { titulo: "Guerra de Consoles", autor: "Blake J. Harris", editora: "Alta Books", ano: 2016, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "O Ato Criativo", autor: "Rick Rubin", editora: "Sextante", ano: 2023, macrotema: "diversos", temas: ["criacao-literaria"], href: "#" },
-  { titulo: "Sonho Manifesto", autor: "Sidarta Ribeiro", editora: "Companhia das Letras", ano: 2022, macrotema: "diversos", temas: [], href: "#" },
-  { titulo: "Cultura Livre", autor: "Lawrence Lessig", editora: "Trama", ano: 2004, macrotema: "diversos", temas: ["direito-autoral"], href: "#" },
-  { titulo: "Manual Prático de Direito Autoral", autor: "José Carlos Costa Netto", editora: "Atlas", ano: 2008, macrotema: "diversos", temas: ["direito-autoral"], href: "#" },
-  { titulo: "Book: A Futurist's Manifesto", autor: "Hugh McGuire & Brian O'Leary", editora: "O'Reilly", ano: 2012, macrotema: "diversos", temas: ["ebooks", "audiolivros", "mercado-editorial"], href: "#" },
-  { titulo: "Compreender os Quadrinhos", autor: "Scott McCloud", editora: "Martins Fontes", ano: 2005, macrotema: "diversos", temas: ["quadrinhos"], href: "#" },
-  { titulo: "Desenhando Quadrinhos", autor: "Scott McCloud", editora: "Martins Fontes", ano: 2008, macrotema: "diversos", temas: ["quadrinhos"], href: "#" },
-  { titulo: "Os Quadrinhos e sua Arte", autor: "Will Eisner", editora: "Martins Fontes", ano: 2010, macrotema: "diversos", temas: ["quadrinhos", "design-grafico"], href: "#" },
-  { titulo: "Anatomia dos Quadrinhos", autor: "Robert C. Harvey", editora: "Martins Fontes", ano: 1996, macrotema: "diversos", temas: ["quadrinhos"], href: "#" },
-  { titulo: "A Criança e o Livro", autor: "Victor Watson", editora: "Martins Fontes", ano: 2003, macrotema: "diversos", temas: ["literatura-infantil"], href: "#" },
-  { titulo: "Filosofia da Literatura Infantil", autor: "Peter Hunt", editora: "Editora Unesp", ano: 2010, macrotema: "diversos", temas: ["literatura-infantil"], href: "#" },
-
-  /* ── LEITURAS DE APOIO (macrotema null — só para leituras em tema.html) ── */
-  { titulo: "O Escândalo da Tradução", autor: "Lawrence Venuti", editora: "EDUSC", ano: 2002, macrotema: null, temas: ["traducao"], href: "#" },
-  { titulo: "A Tradução e a Letra", autor: "Antoine Berman", editora: "7Letras", ano: 2007, macrotema: null, temas: ["traducao"], href: "#" },
-  { titulo: "Se Isso For Traição", autor: "Gregory Rabassa", editora: "Companhia das Letras", ano: 2016, macrotema: null, temas: ["traducao"], href: "#" },
-  { titulo: "Tradução: A Ponte Necessária", autor: "José Paulo Paes", editora: "Ática", ano: 1990, macrotema: null, temas: ["traducao"], href: "#" },
-  { titulo: "Em Outras Palavras", autor: "Mona Baker", editora: "EDUSC", ano: 2001, macrotema: null, temas: ["traducao"], href: "#" },
-  { titulo: "Sobre a Tradução", autor: "Paul Ricoeur", editora: "Loyola", ano: 2011, macrotema: null, temas: ["traducao"], href: "#" },
-
+  {
+    "isbn": "9788535938340",
+    "titulo": "Boemia literária e revolução (Nova edição)",
+    "autor": "Robert Darnton",
+    "editora": "Companhia das Letras",
+    "ano": 2025,
+    "macrotema": "historia",
+    "temas": [
+      "mercado-editorial",
+      "edicao"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786559213924",
+    "titulo": "Como organizar uma biblioteca",
+    "autor": "Roberto Calasso",
+    "editora": "Companhia das Letras",
+    "ano": 2023,
+    "macrotema": "historia",
+    "temas": [
+      "mercado-editorial"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786598244309",
+    "titulo": "Arte e medo",
+    "autor": "David Bayles & Ted Orland",
+    "editora": "Seiva",
+    "ano": 2024,
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786598244378",
+    "titulo": "Como ser artista",
+    "autor": "Jerry Saltz",
+    "editora": "Seiva",
+    "ano": 2024,
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786583239112",
+    "titulo": "O mundo precisa da sua arte",
+    "autor": "Amie McNee",
+    "editora": "Seiva",
+    "ano": 2026,
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786598244316",
+    "titulo": "Anatomia da história",
+    "autor": "John Truby",
+    "editora": "Seiva",
+    "ano": 2024,
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786598244361",
+    "titulo": "Como criar histórias",
+    "autor": "Ursula K. Le Guin",
+    "editora": "Seiva",
+    "ano": 2024,
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786583239013",
+    "titulo": "A Jornada do Escritor",
+    "autor": "Christopher Vogler",
+    "editora": "Seiva",
+    "ano": 2024,
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786555645415",
+    "titulo": "Palavra por palavra",
+    "autor": "Anne Lamott",
+    "editora": "Editora Sextante",
+    "ano": 2023,
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9788592886608",
+    "titulo": "Elementos do estilo tipográfico",
+    "autor": "Robert Bringhurst",
+    "editora": "Ubu Editora",
+    "ano": 2022,
+    "macrotema": "design",
+    "temas": [
+      "design-grafico"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786560920026",
+    "titulo": "Pensar com tipos, 3ª edição revista e ampliada",
+    "autor": "Ellen Lupton",
+    "editora": "Olhares",
+    "ano": 2024,
+    "macrotema": "design",
+    "temas": [
+      "design-grafico"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786588280706",
+    "titulo": "Extra Bold",
+    "autor": "Ellen Lupton",
+    "editora": "Olhares",
+    "ano": 2023,
+    "macrotema": "design",
+    "temas": [
+      "design-grafico"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9788578276935",
+    "titulo": "O detalhe na tipografia",
+    "autor": "Jost Hochuli",
+    "editora": "WMF Martins Fontes (POD)",
+    "ano": 2020,
+    "macrotema": "design",
+    "temas": [
+      "design-grafico"
+    ],
+    "href": "#"
+  },
+  {
+    "isbn": "9786557110249",
+    "titulo": "A invisibilidade do tradutor",
+    "autor": "Lawrence Venuti",
+    "editora": "Editora Unesp",
+    "ano": 2021,
+    "macrotema": null,
+    "temas": [
+      "traducao"
+    ],
+    "href": "#"
+  }
 ];

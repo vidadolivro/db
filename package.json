@@ -1,0 +1,11 @@
+{
+  "name": "vida-do-livro-db",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sync": "node scripts/sync.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

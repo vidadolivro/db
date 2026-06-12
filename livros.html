@@ -281,14 +281,13 @@
       return;
     }
 
-    /* Agrupar por macrotema */
     const groups = {};
     filtered.forEach(l => {
       if (!groups[l.macrotema]) groups[l.macrotema] = [];
       groups[l.macrotema].push(l);
     });
 
-    lista.innerHTML = MACRO_ORDER.filter(m => groups[m]).map((m, i) =>
+    lista.innerHTML = MACRO_ORDER.filter(m => groups[m]).map(m =>
       '<div class="macro-group">' +
         '<div class="macro-head">' + MACRO_LABELS[m] + '</div>' +
         groups[m].map(livroRow).join('') +
