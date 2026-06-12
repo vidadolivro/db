@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">tema — vida do livro db</title>
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --ink: #111;
+      --mid: #777;
+      --light: #bbb;
+      --border: #ddd;
+      --tan: #f0efe8;
+      --mono: "Courier New", Courier, monospace;
+      --max: 1040px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--mono);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 13px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .h-back  { font-size: 12px; color: var(--mid); }
+    .h-back:hover { color: var(--ink); text-decoration: underline; }
+    .h-title { font-size: 12px; font-weight: bold; letter-spacing: 0.14em; text-transform: uppercase; }
+    .h-num   { font-size: 12px; color: var(--mid); }
+
+    /* ── MAIN ── */
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      padding-top: calc(43px + 36px);
+    }
+
+    /* ── INTRO ── */
+    .intro-block {
+      padding: 28px 0 22px;
+      border-bottom: 1px solid var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+    }
+    .intro-text {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 540px;
+    }
+    .intro-dirs {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .dirs-label {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+    .dir-pill {
+      display: inline-block;
+      font-size: 10px;
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+    .dir-pill:hover { border-color: var(--ink); color: var(--ink); text-decoration: none; }
+
+    /* ── COLUMNS ── */
+    .columns {
+      display: grid;
+      grid-template-columns: 1.1fr 1.3fr 1fr 1fr;
+      gap: 0 32px;
+      align-items: start;
+      padding-top: 0;
+    }
+
+    .col { padding-top: 24px; }
+
+    .col-head {
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--light);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 9px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .col-count {
+      letter-spacing: 0;
+      font-size: 9px;
+      color: var(--border);
+    }
+
+    /* ── VÍDEOS ── */
+    .v-item {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .v-item:last-child { border-bottom: none; }
+    .v-thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      margin-bottom: 10px;
+    }
+    .v-thumb:hover { background: #1e1e1e; text-decoration: none; }
+    .v-title {
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .v-meta { font-size: 10px; color: var(--mid); }
+
+    /* ── TEXTOS ── */
+    .t-item {
+      margin-bottom: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .t-item:last-child { border-bottom: none; }
+    .t-tag {
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 5px;
+    }
+    .t-title {
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.4;
+      margin-bottom: 7px;
+    }
+    .t-trecho {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--mid);
+      line-height: 1.65;
+      margin-bottom: 6px;
+    }
+    .t-fonte { font-size: 10px; color: var(--light); }
+
+    /* ── LINKS ── */
+    .l-item {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .l-item:last-child { border-bottom: none; }
+    .l-title {
+      font-size: 11px;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .l-title:hover { text-decoration: underline; }
+    .l-domain { font-size: 9px; color: var(--light); }
+    .l-type {
+      font-size: 8px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--border);
+    }
+
+    /* ── PODCASTS ── */
+    .p-item {
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .p-item:last-child { border-bottom: none; }
+    .p-show {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 4px;
+    }
+    .p-title {
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .p-meta { font-size: 10px; color: var(--mid); }
+
+    /* ── LEITURAS ── */
+    .leituras {
+      margin-top: 40px;
+      padding-top: 0;
+      border-top: 1px solid var(--ink);
+    }
+    .leituras-head {
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--light);
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .leituras-head a {
+      font-size: 9px;
+      color: var(--light);
+      letter-spacing: 0.1em;
+    }
+    .leituras-head a:hover { color: var(--ink); text-decoration: underline; }
+    .livro-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: baseline;
+      gap: 0 20px;
+      padding: 8px 6px;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .livro-row:hover { background: var(--ink); color: var(--bg); }
+    .livro-row:hover .livro-autor { color: #aaa; }
+    .livro-row:hover .livro-arrow { opacity: 1; color: var(--bg); }
+    .livro-titulo {
+      font-size: 12px;
+      font-weight: bold;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      min-width: 0;
+    }
+    .livro-autor {
+      font-weight: normal;
+      font-size: 11px;
+      color: var(--mid);
+      white-space: nowrap;
+    }
+    .livro-meta {
+      font-size: 10px;
+      color: var(--light);
+      white-space: nowrap;
+    }
+    .livro-arrow {
+      font-size: 10px;
+      opacity: 0;
+      color: var(--mid);
+    }
+
+    /* ── NOT FOUND ── */
+    .not-found {
+      padding: 80px 0 40px;
+      font-size: 13px;
+      color: var(--mid);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 40px;
+      border-top: 1px solid var(--border);
+      font-size: 10px;
+      color: var(--light);
+      letter-spacing: 0.08em;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 800px) {
+      .columns { grid-template-columns: 1fr 1fr; }
+      .intro-block { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 500px) {
+      main { padding-left: 16px; padding-right: 16px; }
+      .columns { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="h-back" href="index.html">← início</a>
+    <div class="h-title" id="h-title"></div>
+    <div class="h-num" id="h-num"></div>
+  </div>
+</header>
+
+<main id="main-content">
+</main>
+
+<footer>
+  <span>vida do livro db</span>
+  <span>2025</span>
+</footer>
+
+<script src="dados/livros.js"></script>
+<script src="dados/temas.js"></script>
+<script>
+(function () {
+  var slug = new URLSearchParams(window.location.search).get('slug') || '';
+  var TEMAS = window.TEMAS || {};
+  var t = TEMAS[slug];
+  var total = Object.keys(TEMAS).length;
+
+  if (!t) {
+    document.getElementById('h-title').textContent = 'tema não encontrado';
+    document.getElementById('main-content').innerHTML =
+      '<p class="not-found">← <a href="index.html">voltar ao início</a></p>';
+    return;
+  }
+
+  /* Page title + header */
+  document.getElementById('page-title').textContent = t.titulo + ' — vida do livro db';
+  document.getElementById('h-title').textContent = t.titulo;
+  document.getElementById('h-num').textContent = t.num + ' / ' + (total < 10 ? '0' + total : total);
+
+  /* Helpers */
+  function esc(s) {
+    return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* Intro */
+  var dirsHtml = '';
+  if (t.diretorios && t.diretorios.length) {
+    var pills = t.diretorios.map(function(d) {
+      return '<a href="' + esc(d.href) + '" class="dir-pill">' + esc(d.nome) + ' →</a>';
+    }).join('');
+    dirsHtml = '<div class="intro-dirs"><span class="dirs-label">diretórios</span>' + pills + '</div>';
+  }
+  var introHtml = '<div class="intro-block">' +
+    '<p class="intro-text">' + esc(t.intro) + '</p>' +
+    dirsHtml +
+    '</div>';
+
+  /* Vídeos column */
+  var videos = t.videos || [];
+  var videosHtml = videos.map(function(v) {
+    return '<div class="v-item">' +
+      '<a href="' + esc(v.href) + '" class="v-thumb">▶ assistir</a>' +
+      '<div class="v-title"><a href="' + esc(v.href) + '">' + esc(v.titulo) + '</a></div>' +
+      '<div class="v-meta">' + esc(v.canal) + ' · ' + esc(v.meta) + '</div>' +
+      '</div>';
+  }).join('');
+  var colVideos = '<div class="col">' +
+    '<div class="col-head"><span>vídeos</span><span class="col-count">' + videos.length + '</span></div>' +
+    videosHtml + '</div>';
+
+  /* Textos column */
+  var textos = t.textos || [];
+  var textosHtml = textos.map(function(tx) {
+    return '<div class="t-item">' +
+      '<div class="t-tag">' + esc(tx.tag) + '</div>' +
+      '<div class="t-title"><a href="' + esc(tx.href) + '">' + esc(tx.titulo) + '</a></div>' +
+      '<p class="t-trecho">' + esc(tx.trecho) + '</p>' +
+      '<div class="t-fonte">' + esc(tx.fonte) + '</div>' +
+      '</div>';
+  }).join('');
+  var colTextos = '<div class="col">' +
+    '<div class="col-head"><span>textos</span><span class="col-count">' + textos.length + '</span></div>' +
+    textosHtml + '</div>';
+
+  /* Links column */
+  var links = t.links || [];
+  var linksHtml = links.map(function(lk) {
+    var typeHtml = lk.tipo ? '<div class="l-type">' + esc(lk.tipo) + '</div>' : '';
+    return '<div class="l-item">' +
+      typeHtml +
+      '<a href="' + esc(lk.href) + '" class="l-title">' + esc(lk.titulo) + '</a>' +
+      '<span class="l-domain">' + esc(lk.domain) + '</span>' +
+      '</div>';
+  }).join('');
+  var colLinks = '<div class="col">' +
+    '<div class="col-head"><span>links</span><span class="col-count">' + links.length + '</span></div>' +
+    linksHtml + '</div>';
+
+  /* Podcasts column */
+  var pods = t.podcasts || [];
+  var podsHtml = pods.map(function(p) {
+    return '<div class="p-item">' +
+      '<div class="p-show">' + esc(p.show) + '</div>' +
+      '<div class="p-title"><a href="' + esc(p.href) + '">' + esc(p.titulo) + '</a></div>' +
+      '<div class="p-meta">' + esc(p.meta) + '</div>' +
+      '</div>';
+  }).join('');
+  var colPods = '<div class="col">' +
+    '<div class="col-head"><span>podcasts</span><span class="col-count">' + pods.length + '</span></div>' +
+    podsHtml + '</div>';
+
+  /* Leituras */
+  var livros = (window.LIVROS || []).filter(function(l) {
+    return l.temas && l.temas.indexOf(slug) !== -1;
+  }).sort(function(a, b) {
+    return a.autor.localeCompare(b.autor, 'pt');
+  });
+  var livrosHtml = livros.length
+    ? livros.map(function(l) {
+        return '<a href="' + esc(l.href) + '" class="livro-row">' +
+          '<div class="livro-titulo">' + esc(l.titulo) +
+            '<span class="livro-autor">' + esc(l.autor) + '</span>' +
+          '</div>' +
+          '<div class="livro-meta">' + esc(l.editora) + ' · ' + l.ano + '</div>' +
+          '<div class="livro-arrow">→</div>' +
+        '</a>';
+      }).join('')
+    : '<p style="padding:16px 0;font-size:11px;color:#bbb;">nenhum livro cadastrado para este tema.</p>';
+
+  var leiturasHtml = '<div class="leituras">' +
+    '<div class="leituras-head"><span>leituras</span><a href="livros.html">ver biblioteca completa →</a></div>' +
+    '<div id="livros-lista">' + livrosHtml + '</div>' +
+    '</div>';
+
+  /* Render */
+  document.getElementById('main-content').innerHTML =
+    introHtml +
+    '<div class="columns">' + colVideos + colTextos + colLinks + colPods + '</div>' +
+    leiturasHtml;
+})();
+</script>
+
+</body>
+</html>

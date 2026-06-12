@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>biblioteca — vida do livro db</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fafaf8;
+      --ink: #111;
+      --mid: #777;
+      --light: #bbb;
+      --border: #ddd;
+      --mono: "Courier New", Courier, monospace;
+    }
+    body {
+      font-family: var(--mono);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 40px 80px;
+    }
+
+    /* NAV */
+    .topnav {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 28px;
+    }
+    .back { font-size: 12px; color: var(--ink); text-decoration: none; letter-spacing: 0.04em; }
+    .back:hover { text-decoration: underline; }
+    .breadcrumb { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light); }
+
+    /* HEADER */
+    .page-header {
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: 20px;
+    }
+    .page-title { font-size: 28px; font-weight: bold; text-transform: lowercase; line-height: 1; margin-bottom: 5px; }
+    .page-desc { font-size: 11px; color: var(--mid); }
+
+    /* FILTERS */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 16px;
+    }
+    .filter-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--light); margin-right: 6px; }
+    .tema-btn {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      background: var(--bg);
+      color: var(--mid);
+      cursor: pointer;
+      transition: all 0.07s;
+      line-height: 1.4;
+    }
+    .tema-btn:hover { border-color: var(--ink); color: var(--ink); }
+    .tema-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+    /* COUNT */
+    .count-bar {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 7px 0;
+    }
+
+    /* MACRO GROUP HEADER */
+    .macro-head {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--light);
+      padding: 24px 0 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+    }
+    .macro-head::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+    .macro-group:first-child .macro-head { padding-top: 8px; }
+
+    /* LIVRO ROW */
+    .livro-row {
+      display: grid;
+      grid-template-columns: 1fr 160px 18px;
+      align-items: center;
+      gap: 0 14px;
+      padding: 8px 6px;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .livro-row:hover { background: var(--ink); color: var(--bg); }
+    .livro-row:hover .livro-autor { color: #aaa; }
+    .livro-row:hover .livro-meta  { color: #888; }
+    .livro-row:hover .livro-tags span { border-color: #555; color: #888; }
+    .livro-row:hover .livro-arrow { opacity: 1; color: var(--bg); }
+
+    .livro-titulo-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .livro-titulo {
+      font-size: 12px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .livro-autor {
+      font-size: 11px;
+      color: var(--mid);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 0;
+      max-width: 180px;
+    }
+    .livro-meta {
+      font-size: 10px;
+      color: var(--light);
+      white-space: nowrap;
+      text-align: right;
+    }
+    .livro-tags {
+      display: flex;
+      gap: 3px;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+    .livro-tags span {
+      font-size: 8px;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--border);
+      padding: 1px 5px;
+      color: var(--mid);
+      white-space: nowrap;
+    }
+    .livro-arrow { font-size: 10px; opacity: 0; text-align: right; }
+
+    /* EMPTY */
+    .empty { padding: 32px 0; font-size: 11px; color: var(--light); }
+
+    /* FOOTER */
+    footer {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 14px 40px;
+      border-top: 1px solid var(--border);
+      font-size: 10px;
+      color: var(--light);
+      letter-spacing: 0.08em;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 620px) {
+      main { padding: 20px 16px 60px; }
+      footer { padding: 14px 16px; }
+      .livro-row { grid-template-columns: 1fr 18px; }
+      .livro-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <div class="topnav">
+    <a class="back" href="index.html">← início</a>
+    <span class="breadcrumb">biblioteca</span>
+  </div>
+
+  <div class="page-header">
+    <h1 class="page-title">biblioteca</h1>
+    <p class="page-desc">referências bibliográficas por tema do mercado editorial</p>
+  </div>
+
+  <div class="filters">
+    <span class="filter-label">categoria</span>
+    <button class="tema-btn active" data-macro="todos">todos</button>
+    <button class="tema-btn" data-macro="historia">história</button>
+    <button class="tema-btn" data-macro="experiencias">experiências</button>
+    <button class="tema-btn" data-macro="escrita">escrita</button>
+    <button class="tema-btn" data-macro="design">design & técnico</button>
+    <button class="tema-btn" data-macro="marketing">marketing</button>
+    <button class="tema-btn" data-macro="diversos">diversos</button>
+  </div>
+
+  <div class="count-bar" id="count">— 0 livros —</div>
+  <div id="lista"></div>
+
+</main>
+<footer>
+  <span>vida do livro db</span>
+  <span>2025</span>
+</footer>
+
+<script src="dados/livros.js"></script>
+<script>
+  const MACRO_LABELS = {
+    'historia':     'história',
+    'experiencias': 'experiências',
+    'escrita':      'escrita',
+    'design':       'design & técnico',
+    'marketing':    'marketing',
+    'diversos':     'diversos',
+  };
+  const MACRO_ORDER = ['historia', 'experiencias', 'escrita', 'design', 'marketing', 'diversos'];
+
+  function sortKey(autor) {
+    const first = autor.split(' & ')[0];
+    return first.split(' ').pop().toLowerCase();
+  }
+
+  let activeMacro = 'todos';
+  const sorted = [...(window.LIVROS || [])]
+    .filter(l => l.macrotema)
+    .sort((a, b) => {
+      const s = sortKey(a.autor).localeCompare(sortKey(b.autor), 'pt');
+      return s !== 0 ? s : a.titulo.localeCompare(b.titulo, 'pt');
+    });
+
+  document.querySelectorAll('.tema-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tema-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeMacro = btn.dataset.macro;
+      render();
+    });
+  });
+
+  function livroRow(l) {
+    return '<a href="' + l.href + '" class="livro-row">' +
+      '<div class="livro-titulo-wrap">' +
+        '<span class="livro-titulo">' + l.titulo + '</span>' +
+        '<span class="livro-autor">' + l.autor + '</span>' +
+      '</div>' +
+      '<div class="livro-meta">' + l.editora + ' · ' + l.ano + '</div>' +
+      '<div class="livro-arrow">→</div>' +
+    '</a>';
+  }
+
+  function render() {
+    const filtered = activeMacro === 'todos'
+      ? sorted
+      : sorted.filter(l => l.macrotema === activeMacro);
+
+    document.getElementById('count').textContent =
+      '— ' + filtered.length + ' ' + (filtered.length === 1 ? 'livro' : 'livros') + ' —';
+
+    const lista = document.getElementById('lista');
+    if (!filtered.length) {
+      lista.innerHTML = '<p class="empty">nenhum livro nesta categoria.</p>';
+      return;
+    }
+
+    if (activeMacro !== 'todos') {
+      lista.innerHTML = filtered.map(livroRow).join('');
+      return;
+    }
+
+    /* Agrupar por macrotema */
+    const groups = {};
+    filtered.forEach(l => {
+      if (!groups[l.macrotema]) groups[l.macrotema] = [];
+      groups[l.macrotema].push(l);
+    });
+
+    lista.innerHTML = MACRO_ORDER.filter(m => groups[m]).map((m, i) =>
+      '<div class="macro-group">' +
+        '<div class="macro-head">' + MACRO_LABELS[m] + '</div>' +
+        groups[m].map(livroRow).join('') +
+      '</div>'
+    ).join('');
+  }
+
+  render();
+</script>
+</body>
+</html>

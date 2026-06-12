@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vida do livro db</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fafaf8;
+      --ink: #111;
+      --mid: #777;
+      --light: #bbb;
+      --border: #ddd;
+      --mono: "Courier New", Courier, monospace;
+    }
+    body {
+      font-family: var(--mono);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 52px 40px 80px;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 48px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--ink);
+      flex-wrap: wrap;
+    }
+    .site-title {
+      font-size: 24px;
+      font-weight: normal;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      text-transform: lowercase;
+    }
+    .site-title strong { font-weight: bold; }
+    .site-sub {
+      font-size: 10px;
+      color: var(--mid);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+    .search-form { display: flex; flex-shrink: 0; }
+    .search-form input {
+      font-family: var(--mono);
+      font-size: 11px;
+      border: 1px solid var(--border);
+      border-right: none;
+      padding: 6px 12px;
+      background: var(--bg);
+      color: var(--ink);
+      outline: none;
+      width: 190px;
+    }
+    .search-form input::placeholder { color: var(--light); }
+    .search-form input:focus { border-color: var(--ink); }
+    .search-form button {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      background: var(--bg);
+      color: var(--mid);
+      cursor: pointer;
+    }
+    .search-form button:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+    /* LABEL */
+    .section-label {
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--light);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* TOPICS */
+    .index-section { margin-bottom: 52px; }
+    .index-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 64px;
+    }
+    .index-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .index-item:first-child { border-top: 1px solid var(--border); }
+    .idx-num {
+      font-size: 9px;
+      color: var(--light);
+      letter-spacing: 0.1em;
+      min-width: 16px;
+      flex-shrink: 0;
+      transition: color 0.1s;
+    }
+    .idx-icon {
+      width: 14px; height: 14px;
+      flex-shrink: 0;
+      color: var(--ink);
+      opacity: 0.55;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.1s;
+    }
+    .idx-icon svg { width: 14px; height: 14px; display: block; }
+    .idx-name { font-size: 12px; letter-spacing: 0.02em; flex: 1; }
+    .idx-arrow { font-size: 10px; color: var(--border); opacity: 0; transition: opacity 0.1s; flex-shrink: 0; }
+    .index-item:hover .idx-num   { color: var(--ink); }
+    .index-item:hover .idx-icon  { opacity: 1; }
+    .index-item:hover .idx-arrow { opacity: 1; color: var(--mid); }
+    .index-item:hover .idx-name  { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border); }
+
+    /* SEPARATOR */
+    .sep { border: none; border-top: 1px solid var(--border); margin: 0 0 40px; }
+
+    /* DIRECTORY */
+    .dir-section { margin-bottom: 52px; }
+    .dir-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+    .dir-desc { font-size: 11px; color: var(--mid); letter-spacing: 0.03em; }
+    .dir-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+    .dir-card {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .dir-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--ink); opacity: 0.4; display: flex; align-items: center; justify-content: center; transition: opacity 0.1s; }
+    .dir-icon svg { width: 18px; height: 18px; display: block; }
+    .dir-card-name { font-size: 11px; color: var(--mid); letter-spacing: 0.03em; flex: 1; transition: color 0.1s; line-height: 1.3; }
+    .dir-card-arrow { font-size: 10px; color: var(--border); opacity: 0; transition: opacity 0.1s; }
+    .dir-card:hover .dir-icon       { opacity: 1; }
+    .dir-card:hover .dir-card-name  { color: var(--ink); }
+    .dir-card:hover .dir-card-arrow { opacity: 1; }
+    /* biblioteca — card full-width */
+    .dir-card.dir-card--wide {
+      grid-column: 1 / -1;
+      border-top: none;
+    }
+    .dir-card--wide .dir-card-desc {
+      font-size: 10px;
+      color: var(--light);
+      letter-spacing: 0.04em;
+    }
+    .dir-card:hover .dir-card-desc { color: var(--mid); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 16px 40px;
+      max-width: 900px; width: 100%;
+      margin: 0 auto;
+      font-size: 10px; color: var(--light); letter-spacing: 0.08em;
+      display: flex; justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <div class="header">
+    <div>
+      <h1 class="site-title"><strong>vida do livro</strong> db</h1>
+      <p class="site-sub">referências para o mercado editorial</p>
+    </div>
+    <form class="search-form" onsubmit="return false">
+      <input type="text" placeholder="buscar...">
+      <button type="submit">buscar</button>
+    </form>
+  </div>
+
+  <section class="index-section">
+    <span class="section-label">temas</span>
+    <div class="index-grid">
+      <div id="col1"></div>
+      <div id="col2"></div>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <section class="dir-section">
+    <div class="dir-header">
+      <span class="section-label" style="margin-bottom:0">diretório</span>
+      <span class="dir-desc">pessoas, editoras e organizações do mercado editorial</span>
+    </div>
+    <div class="dir-cards" id="dirCards"></div>
+  </section>
+
+</main>
+<footer>
+  <span>vida do livro db</span>
+  <span>2025</span>
+</footer>
+
+<script>
+  /* SVG pixel-art icons — 16×16 */
+  const ic  = d => `<svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${d}</svg>`;
+  const r   = (x,y,w,h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}"/>`;
+  const bg  = (x,y,w,h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="var(--bg,#fafaf8)"/>`;
+  const pol = pts => `<polygon points="${pts}"/>`;
+
+  const ICONS = [
+    // 01 criação literária — lápis diagonal
+    ic(pol("10,0 16,6 6,16 0,10") + bg(12,0,4,3) + bg(0,13,3,3)),
+
+    // 02 agentes literários — pasta/briefcase
+    ic(r(3,0,10,4) + bg(5,0,6,4) + r(0,3,16,13) + bg(1,4,14,11) + r(0,8,16,2) + r(6,7,4,3) + bg(7,7,2,3)),
+
+    // 03 direitos editoriais — chave
+    ic(r(0,2,8,8) + bg(2,4,4,4) + r(3,5,2,2) + r(8,6,8,2) + r(12,8,2,3) + r(10,8,2,2)),
+
+    // 04 autor e editora — livro aberto
+    ic(r(0,1,7,14) + r(9,1,7,14) + r(7,0,2,16) + bg(1,2,5,12) + bg(10,2,5,12)),
+
+    // 05 coordenação editorial — documento com check
+    ic(r(2,0,12,16) + bg(3,1,10,14) + r(4,4,6,1) + r(4,7,6,1) + r(4,10,4,1) + pol("9,9 11,7 14,11 11,14 9,12") + bg(10,8,3,5)),
+
+    // 06 tradução — setas opostas
+    ic(r(0,3,11,2) + pol("9,0 16,4 9,8") + r(5,11,11,2) + pol("7,8 0,12 7,16")),
+
+    // 07 preparação e revisão — lupa
+    ic(r(2,2,9,9) + bg(3,3,7,7) + r(5,5,2,2) + r(9,9,2,2) + r(11,11,2,2) + r(13,13,2,2)),
+
+    // 08 design gráfico — régua
+    ic(r(0,5,16,6) + bg(1,6,14,4) + r(2,5,1,4) + r(4,5,1,3) + r(6,5,1,4) + r(8,5,1,3) + r(10,5,1,4) + r(12,5,1,3) + r(14,5,1,4)),
+
+    // 09 produção gráfica — prensa tipográfica
+    ic(r(1,0,14,3) + bg(2,1,12,1) + r(0,3,16,4) + bg(1,4,14,2) + r(2,7,12,9) + bg(3,8,10,7) + r(4,9,8,1) + r(4,11,6,1)),
+
+    // 10 e-books — e-reader com linhas de texto
+    ic(r(2,0,12,16) + bg(3,1,10,13) + r(4,3,8,1) + r(4,5,8,1) + r(4,7,8,1) + r(4,9,6,1) + r(6,14,4,1)),
+
+    // 11 audiolivros — fones de ouvido
+    ic(r(3,1,10,2) + r(1,2,3,10) + bg(2,3,2,8) + r(12,2,3,10) + bg(13,3,2,8)),
+
+    // 12 marketing editorial — megafone
+    ic(pol("0,4 0,12 5,12 5,4") + pol("5,1 15,0 15,16 5,15") + r(8,12,3,4)),
+
+    // 13 comunicação e mídia — dois balões de fala
+    ic(r(0,0,10,8) + bg(1,1,8,6) + r(1,8,3,2) + r(6,6,10,8) + bg(7,7,8,6) + r(13,14,3,2)),
+
+    // 14 distribuição — bifurcação
+    ic(r(7,0,2,6) + r(1,8,2,8) + r(13,8,2,8) + r(1,14,4,2) + r(11,14,4,2) + r(2,6,12,3)),
+
+    // 15 pontos de venda — etiqueta de preço
+    ic(pol("3,0 16,0 16,13 3,13 0,6") + bg(4,1,11,11) + r(12,2,2,2) + bg(13,3,1,1)),
+
+    // 16 clubes do livro — livros empilhados
+    ic(r(0,0,16,4) + r(0,5,16,4) + r(0,10,16,4) + r(0,14,16,2) + bg(2,1,12,2) + bg(2,6,12,2) + bg(2,11,12,2)),
+
+    // 17 ter uma editora — prédio
+    ic(r(3,2,10,2) + r(0,4,16,12) + bg(1,5,14,10) + r(2,7,4,4) + r(10,7,4,4) + r(6,11,4,5) + r(0,14,16,2)),
+
+    // 18 dados do mercado — gráfico de barras
+    ic(r(0,14,16,2) + r(0,9,4,5) + r(6,5,4,9) + r(12,1,4,13)),
+
+    // 19 autopublicação — pessoa + seta para cima
+    ic(r(6,0,4,4) + r(4,4,8,4) + r(6,8,4,8) + r(10,0,6,2) + r(14,2,2,6) + r(10,6,4,2) + pol("11,0 16,6 13,6 13,14 14,14") + bg(11,2,5,4)),
+
+    // 20 livros infantis — giz de cera
+    ic(r(5,0,6,3) + r(4,3,8,2) + r(3,5,10,9) + pol("3,14 6,16 10,16 13,14") + bg(6,6,4,3)),
+
+    // 21 quadrinhos — quatro painéis
+    ic(r(0,0,7,7) + bg(1,1,5,5) + r(9,0,7,7) + bg(10,1,5,5) + r(0,9,7,7) + bg(1,10,5,5) + r(9,9,7,7) + bg(10,10,5,5)),
+
+    // 22 futuro e tecnologia — lâmpada
+    ic(r(4,0,8,1) + r(2,1,12,5) + r(1,3,14,4) + r(2,6,12,3) + r(4,9,8,2) + r(4,11,8,2) + r(5,13,6,1) + bg(4,1,8,7)),
+  ];
+
+  /* Diretório icons — 18×18 */
+  const di  = d => `<svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${d}</svg>`;
+
+  const DIR_ICONS = [
+    // editoras — prédio com bandeira
+    di(r(1,4,14,12) + bg(2,5,12,10) + r(3,7,4,4) + r(9,7,4,4) + r(6,11,4,5) + r(4,0,2,5) + r(6,1,6,3)),
+
+    // agentes literários — briefcase
+    di(r(4,0,8,4) + bg(6,0,4,4) + r(0,3,16,13) + bg(1,4,14,10) + r(0,7,16,2) + r(6,6,4,3) + bg(7,6,2,3)),
+
+    // tradutores — balão com seta
+    di(r(0,0,12,9) + bg(1,1,10,7) + r(1,9,4,2) + r(1,11,2,2) + pol("10,7 14,4 14,14 10,11")),
+
+    // designers — pincel
+    di(r(12,0,4,4) + r(10,4,4,4) + r(8,6,4,4) + r(6,8,4,4) + r(4,10,4,4) + r(2,12,4,4) + bg(3,13,2,2) + r(0,13,4,3)),
+
+    // produção gráfica — impressora
+    di(r(2,0,12,4) + r(0,4,16,6) + bg(1,5,14,4) + r(2,10,12,6) + bg(3,11,10,4) + r(4,12,8,1) + r(4,14,6,1)),
+
+    // veículos — jornal dobrado
+    di(r(0,0,16,16) + bg(1,1,14,14) + r(2,2,12,4) + r(2,8,12,1) + r(2,10,12,1) + r(2,12,8,1) + r(12,0,4,7) + bg(13,1,2,5)),
+
+    // jornalistas — caneta com linhas
+    di(pol("10,0 14,4 4,14 0,10") + bg(12,0,3,2) + bg(0,12,2,3) + r(0,13,2,3) + r(1,12,3,1)),
+
+    // influencers e creators — câmera/play
+    di(r(0,2,16,12) + bg(1,3,14,10) + r(4,5,2,6) + r(6,6,2,4) + r(8,7,2,2) + r(10,0,6,3)),
+
+    // escolas e cursos — capelo
+    di(r(0,6,16,4) + pol("3,6 8,0 13,6") + r(12,8,2,7) + r(10,14,4,1) + r(3,10,10,6)),
+
+    // biblioteca — três livros na estante
+    di(r(0,2,4,12) + bg(1,3,2,10) + r(6,0,4,14) + bg(7,1,2,12) + r(12,2,4,12) + bg(13,3,2,10) + r(0,14,16,2)),
+  ];
+
+  const TOPICS = [
+    {n:"criação literária",     href:"tema?slug=criacao-literaria"},
+    {n:"agentes literários",    href:"tema?slug=agentes-literarios"},
+    {n:"direitos editoriais",   href:"tema?slug=direitos-editoriais"},
+    {n:"autor e editora",       href:"tema?slug=autor-editora"},
+    {n:"coordenação editorial", href:"tema?slug=coordenacao-editorial"},
+    {n:"tradução",              href:"tema?slug=traducao"},
+    {n:"preparação e revisão",  href:"tema?slug=preparacao-revisao"},
+    {n:"design gráfico",        href:"tema?slug=design-grafico"},
+    {n:"produção gráfica",      href:"tema?slug=producao-grafica"},
+    {n:"e-books",               href:"tema?slug=ebooks"},
+    {n:"audiolivros",           href:"tema?slug=audiolivros"},
+    {n:"marketing editorial",   href:"tema?slug=marketing-editorial"},
+    {n:"comunicação e mídia",   href:"tema?slug=comunicacao-midia"},
+    {n:"distribuição",          href:"tema?slug=distribuicao"},
+    {n:"pontos de venda",       href:"tema?slug=pontos-de-venda"},
+    {n:"clubes do livro",       href:"tema?slug=clubes-do-livro"},
+    {n:"ter uma editora",       href:"tema?slug=ter-uma-editora"},
+    {n:"dados do mercado",      href:"tema?slug=dados-do-mercado"},
+    {n:"autopublicação",        href:"tema?slug=autopublicacao"},
+    {n:"livros infantis",       href:"tema?slug=literatura-infantil"},
+    {n:"quadrinhos",            href:"tema?slug=quadrinhos"},
+    {n:"futuro e tecnologia",   href:"tema?slug=futuro-tecnologia"},
+  ];
+
+  const DIR = [
+    {n:"editoras",               href:"diretorio?tipo=editoras"},
+    {n:"agentes literários",     href:"diretorio?tipo=agentes"},
+    {n:"tradutores",             href:"diretorio?tipo=tradutores"},
+    {n:"designers",              href:"diretorio?tipo=designers"},
+    {n:"produção gráfica",       href:"diretorio?tipo=producao"},
+    {n:"veículos",               href:"diretorio?tipo=veiculos"},
+    {n:"jornalistas",            href:"diretorio?tipo=jornalistas"},
+    {n:"influencers e creators", href:"diretorio?tipo=influencers"},
+    {n:"escolas e cursos",       href:"diretorio?tipo=escolas"},
+    {n:"biblioteca",             href:"livros.html", desc:"referências bibliográficas por tema"},
+  ];
+
+  const half = Math.ceil(TOPICS.length / 2);
+  TOPICS.forEach((t, i) => {
+    const a = document.createElement("a");
+    a.href = t.href;
+    a.className = "index-item";
+    a.innerHTML = `
+      <span class="idx-num">${String(i+1).padStart(2,"0")}</span>
+      <span class="idx-icon">${ICONS[i]||""}</span>
+      <span class="idx-name">${t.n}</span>
+      <span class="idx-arrow">→</span>`;
+    document.getElementById(i < half ? "col1" : "col2").appendChild(a);
+  });
+
+  DIR.forEach((d, i) => {
+    const a = document.createElement("a");
+    a.href = d.href;
+    a.className = "dir-card" + (d.desc ? " dir-card--wide" : "");
+    a.innerHTML = `
+      <span class="dir-icon">${DIR_ICONS[i]||""}</span>
+      <span class="dir-card-name">${d.n}</span>
+      ${d.desc ? `<span class="dir-card-desc">${d.desc}</span>` : ""}
+      <span class="dir-card-arrow">→</span>`;
+    document.getElementById("dirCards").appendChild(a);
+  });
+</script>
+</body>
+</html>
