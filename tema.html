@@ -163,17 +163,26 @@
     }
     .v-item:last-child { border-bottom: none; }
     .v-thumb {
+      display: block;
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+    .v-play {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      aspect-ratio: 16 / 9;
-      background: var(--ink);
-      color: var(--bg);
-      font-size: 11px;
-      letter-spacing: 0.07em;
-      margin-bottom: 10px;
+      font-size: 22px;
+      color: rgba(255,255,255,0.55);
+      background: rgba(0,0,0,0.15);
     }
-    .v-thumb:hover { background: #1e1e1e; text-decoration: none; }
+    .v-thumb:hover .v-play { background: rgba(0,0,0,0.35); color: rgba(255,255,255,0.9); }
     .v-title {
       font-size: 12px;
       font-weight: bold;
@@ -240,8 +249,20 @@
       margin-bottom: 18px;
       padding-bottom: 18px;
       border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
     }
     .p-item:last-child { border-bottom: none; }
+    .p-art {
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+      background: var(--ink);
+      background-size: cover;
+      background-position: center;
+    }
+    .p-content { flex: 1; min-width: 0; }
     .p-show {
       font-size: 9px;
       letter-spacing: 0.12em;
@@ -419,6 +440,7 @@
 
 <script src="dados/livros.js"></script>
 <script src="dados/temas.js"></script>
+<script src="dados/temas-media.js"></script>
 <script>
 (function () {
   var slug = new URLSearchParams(window.location.search).get('slug') || '';
@@ -457,10 +479,19 @@
     '</div>';
 
   /* Vídeos column */
+  function ytThumb(href) {
+    if (!href || href === '#') return '';
+    var m = href.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    return m ? 'https://img.youtube.com/vi/' + m[1] + '/hqdefault.jpg' : '';
+  }
+
+  var media = window.TEMAS_MEDIA || {};
   var videos = t.videos || [];
   var videosHtml = videos.map(function(v) {
+    var thumb = ytThumb(v.href);
+    var bgStyle = thumb ? ' style="background-image:url(\'' + thumb + '\')"' : '';
     return '<div class="v-item">' +
-      '<a href="' + esc(v.href) + '" class="v-thumb">▶ assistir</a>' +
+      '<a href="' + esc(v.href) + '" class="v-thumb"' + bgStyle + '><span class="v-play">▶</span></a>' +
       '<div class="v-title"><a href="' + esc(v.href) + '">' + esc(v.titulo) + '</a></div>' +
       '<div class="v-meta">' + esc(v.canal) + ' · ' + esc(v.meta) + '</div>' +
       '</div>';
@@ -500,10 +531,15 @@
   /* Podcasts column */
   var pods = t.podcasts || [];
   var podsHtml = pods.map(function(p) {
+    var artUrl = p.href && media.podcasts && media.podcasts[p.href];
+    var artStyle = artUrl ? ' style="background-image:url(\'' + artUrl.replace(/'/g,'%27') + '\')"' : '';
     return '<div class="p-item">' +
+      '<div class="p-art"' + artStyle + '></div>' +
+      '<div class="p-content">' +
       '<div class="p-show">' + esc(p.show) + '</div>' +
       '<div class="p-title"><a href="' + esc(p.href) + '">' + esc(p.titulo) + '</a></div>' +
       '<div class="p-meta">' + esc(p.meta) + '</div>' +
+      '</div>' +
       '</div>';
   }).join('');
   var colPods = '<div class="col">' +
