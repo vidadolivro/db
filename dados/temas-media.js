@@ -6,6 +6,6 @@ window.TEMAS_MEDIA = {
     "https://open.spotify.com/episode/73RN3KfCBJnEdH2KVEAP1V": "https://image-cdn-ak.spotifycdn.com/image/ab67656300005f1ffd128a8657ec89269b2a9da1"
   },
   "links": {
-    "https://www.publishersweekly.com": "https://www.publishersweekly.com/images/data/IMG/img/000/000/1-3.PNG"
+    "https://publishnews.com.br": "https://www.publishnews.com.br/estaticos/arquivos/logo_290x290_publishnews_colorido.png"
   }
 };

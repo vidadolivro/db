@@ -137,8 +137,20 @@ async function syncTemasMedia() {
       const html = await r.text();
       const m = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)
              || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
-      if (m?.[1]) { linkImgs[href] = m[1]; console.log(`  ✓ ${href}`); }
-      else { console.log(`  — sem og:image: ${href}`); }
+      if (m?.[1]) {
+        const imgUrl = m[1].startsWith('http') ? m[1] : new URL(m[1], href).href;
+        /* valida que a imagem existe e tem tamanho razoável */
+        try {
+          const ir = await fetch(imgUrl, { method: 'HEAD', signal: AbortSignal.timeout(5000) });
+          const ct = ir.headers.get('content-type') || '';
+          const cl = parseInt(ir.headers.get('content-length') || '0', 10);
+          if (ir.ok && ct.startsWith('image/') && (cl === 0 || cl > 500)) {
+            linkImgs[href] = imgUrl; console.log(`  ✓ ${href} → ${imgUrl.slice(0, 60)}`);
+          } else {
+            console.log(`  — og:image inválida (${ir.status} ${ct} ${cl}b): ${href}`);
+          }
+        } catch { console.log(`  — og:image inacessível: ${imgUrl.slice(0, 60)}`); }
+      } else { console.log(`  — sem og:image: ${href}`); }
     } catch (e) { console.warn(`  ✗ link ${href} — ${e.message}`); }
   }));
 
