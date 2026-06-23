@@ -77,20 +77,20 @@
       flex-wrap: wrap;
     }
     .site-title {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: 26px;
-      font-weight: 400;
-      letter-spacing: 0.01em;
+      font-weight: 500;
+      letter-spacing: -0.01em;
       line-height: 1;
       text-transform: lowercase;
     }
-    .site-title strong { font-weight: 400; }
+    .site-title strong { font-weight: 500; }
     .site-sub {
-      font-size: 10px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 13px;
       color: var(--mid);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-top: 8px;
+      margin-top: 6px;
     }
     .search-form { display: flex; flex-shrink: 0; }
     .search-form input {
@@ -162,6 +162,14 @@
       padding: 10px;
       line-height: 1.4;
     }
+    .recente-tipo {
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light);
+      display: block;
+      margin-bottom: 2px;
+    }
     .recente-titulo {
       font-size: 11px;
       font-weight: 500;
@@ -176,6 +184,12 @@
       text-transform: uppercase;
     }
     .recente-card:hover .recente-titulo { text-decoration: underline; text-underline-offset: 2px; }
+    .recente-capa--video { background-color: var(--ink); justify-content: center; align-items: center; }
+    .recente-play { font-size: 20px; color: rgba(255,255,255,0.3); }
+    .recente-capa--texto { background-color: #f0efe8; justify-content: flex-end; align-items: flex-start; padding: 10px; }
+    .recente-capa-tag { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
+    .recente-capa--link { background-color: var(--bg); border: 1px solid var(--border); justify-content: flex-end; align-items: flex-start; padding: 10px; }
+    .recente-domain { font-family: var(--mono); font-size: 9px; color: var(--light); }
 
     /* TOPICS */
     .index-section { margin-bottom: 52px; }
@@ -331,6 +345,7 @@
 </footer>
 
 <script src="dados/livros.js"></script>
+<script src="dados/temas.js"></script>
 <script>
   /* SVG pixel-art icons — 16×16 */
   const ic  = d => `<svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${d}</svg>`;
@@ -415,30 +430,71 @@
     {n:"biblioteca",             href:"livros.html", desc:"referências bibliográficas por tema"},
   ];
 
-  /* Recentes */
+  /* Recentes — 1 de cada tipo */
   (function() {
-    const livros = window.LIVROS || [];
-    const recentes = livros.filter(l => l.macrotema).slice(-4).reverse();
+    const slugToNome = {};
+    TOPICS.forEach(t => { slugToNome[t.href.replace('tema?slug=', '')] = t.n; });
+
+    const livros   = (window.LIVROS || []).filter(l => l.macrotema);
+    const temasMap = window.TEMAS || {};
+
+    let ultimoVideo = null, ultimoTexto = null, ultimoLink = null;
+    Object.keys(temasMap).forEach(slug => {
+      const t = temasMap[slug];
+      if (t.videos  && t.videos.length)  ultimoVideo = { tipo: 'video', slug, item: t.videos[t.videos.length - 1] };
+      if (t.textos  && t.textos.length)  ultimoTexto = { tipo: 'texto', slug, item: t.textos[t.textos.length - 1] };
+      if (t.links   && t.links.length)   ultimoLink  = { tipo: 'link',  slug, item: t.links[t.links.length - 1] };
+    });
+    const ultimoLivro = livros.length ? { tipo: 'livro', item: livros[livros.length - 1] } : null;
+
+    const entries = [ultimoLivro, ultimoVideo, ultimoTexto, ultimoLink].filter(Boolean);
+
     const grid = document.getElementById('recentes-grid');
     const sec  = document.getElementById('recentes-sec');
-    if (!recentes.length) { if (sec) sec.style.display = 'none'; return; }
+    if (!entries.length) { if (sec) sec.style.display = 'none'; return; }
 
-    const TEMA_MAP = {};
-    TOPICS.forEach(t => {
-      const slug = t.href.replace('tema?slug=', '');
-      TEMA_MAP[slug] = t.n;
-    });
+    grid.innerHTML = entries.map(entry => {
+      const tipo = entry.tipo;
+      const temaSlug = entry.slug || (entry.item && entry.item.temas && entry.item.temas[0]) || '';
+      const temaNome = slugToNome[temaSlug] || temaSlug;
 
-    grid.innerHTML = recentes.map(l => {
-      const temaSlug = (l.temas || [])[0] || '';
-      const temaHref = 'tema?slug=' + temaSlug;
-      const temaNome = TEMA_MAP[temaSlug] || temaSlug;
+      if (tipo === 'video') {
+        const v = entry.item;
+        return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
+          '<div class="recente-capa recente-capa--video"><span class="recente-play">▶</span></div>' +
+          '<span class="recente-tipo">vídeo</span>' +
+          '<span class="recente-titulo">' + v.titulo + '</span>' +
+          '<span class="recente-tema">' + temaNome + '</span>' +
+          '</a>';
+      }
+      if (tipo === 'texto') {
+        const tx = entry.item;
+        return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
+          '<div class="recente-capa recente-capa--texto"><span class="recente-capa-tag">' + (tx.tag || 'texto') + '</span></div>' +
+          '<span class="recente-tipo">texto</span>' +
+          '<span class="recente-titulo">' + tx.titulo + '</span>' +
+          '<span class="recente-tema">' + temaNome + '</span>' +
+          '</a>';
+      }
+      if (tipo === 'link') {
+        const lk = entry.item;
+        return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
+          '<div class="recente-capa recente-capa--link"><span class="recente-domain">' + (lk.domain || '') + '</span></div>' +
+          '<span class="recente-tipo">link</span>' +
+          '<span class="recente-titulo">' + lk.titulo + '</span>' +
+          '<span class="recente-tema">' + temaNome + '</span>' +
+          '</a>';
+      }
+      /* livro */
+      const l = entry.item;
+      const ls = (l.temas || [])[0] || '';
       const capaStyle = l.capa ? 'background-image:url(\'' + l.capa.replace(/'/g, '%27') + '\')' : '';
       const fallback  = !l.capa ? '<span class="recente-capa-fallback">' + l.titulo + '</span>' : '';
-      return '<a href="' + temaHref + '" class="recente-card">' +
+      return '<a href="tema?slug=' + ls + '" class="recente-card">' +
         '<div class="recente-capa" style="' + capaStyle + '">' + fallback + '</div>' +
+        '<span class="recente-tipo">livro</span>' +
         '<span class="recente-titulo">' + l.titulo + '</span>' +
-        '<span class="recente-tema">' + temaNome + '</span>' +
+        '<span class="recente-tema">' + (slugToNome[ls] || ls) + '</span>' +
         '</a>';
     }).join('');
   })();
