@@ -8,8 +8,8 @@ const fs   = require('fs');
 const path = require('path');
 
 const DIRECTUS_BASE = 'https://directus-production-afdd.up.railway.app';
-const DIRECTUS = DIRECTUS_BASE + '/items/biblioteca';
-const ROOT     = path.join(__dirname, '..');
+const DIRECTUS      = DIRECTUS_BASE + '/items/biblioteca';
+const ROOT          = path.join(__dirname, '..');
 
 /* ── carregar categorias ── */
 const src = fs.readFileSync(path.join(ROOT, 'dados/categorias.js'), 'utf8');
@@ -172,6 +172,29 @@ async function syncTemasMedia() {
 
 /* ── fase 3: conteúdo dos temas via Directus ── */
 async function syncTemasConteudo() {
+  /* login para acesso às coleções db_* */
+  let authHeader = {};
+  const email = process.env.DIRECTUS_EMAIL;
+  const pass  = process.env.DIRECTUS_PASS;
+  if (email && pass) {
+    try {
+      const lr = await fetch(DIRECTUS_BASE + '/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: pass }),
+      });
+      const ld = await lr.json();
+      if (ld.data?.access_token) {
+        authHeader = { Authorization: 'Bearer ' + ld.data.access_token };
+        console.log('\n✓ autenticado no Directus');
+      } else {
+        console.warn('\n⚠ login falhou, tentando sem autenticação');
+      }
+    } catch (e) { console.warn('\n⚠ erro no login:', e.message); }
+  } else {
+    console.log('\n⚠ DIRECTUS_EMAIL/DIRECTUS_PASS não definidos — buscando sem auth');
+  }
+
   const COLS = {
     db_videos:   'videos',
     db_podcasts: 'podcasts',
@@ -187,7 +210,7 @@ async function syncTemasConteudo() {
     const url = `${DIRECTUS_BASE}/items/${col}?limit=1000&sort=id`;
     console.log(`\nbuscando ${col}…`);
     try {
-      const r = await fetch(url);
+      const r = await fetch(url, { headers: authHeader });
       const d = await r.json();
       if (!r.ok) { console.warn(`  ✗ ${col}: ${JSON.stringify(d.errors?.[0])}`); continue; }
       const items = d.data || [];
