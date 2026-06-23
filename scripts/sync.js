@@ -49,7 +49,7 @@ async function run() {
 
   if (remotos.length) {
     const isbns = remotos.map(c => c.isbn).join(',');
-    const url   = `${DIRECTUS}?filter[isbn][_in]=${encodeURIComponent(isbns)}&fields=isbn,titulo,autor,editora,data_publicacao&limit=${remotos.length + 10}`;
+    const url   = `${DIRECTUS}?filter[isbn][_in]=${encodeURIComponent(isbns)}&fields=isbn,titulo,autor,editora,data_publicacao,capa_url&limit=${remotos.length + 10}`;
 
     console.log(`\nbuscando ${remotos.length} ISBN(s) no Directus…`);
     const res  = await fetch(url);
@@ -76,6 +76,7 @@ async function run() {
       autor:     cat.autor   || normAutor(db.autor)          || '',
       editora:   cat.editora || db.editora                   || '',
       ano:       cat.ano     || normAno(db.data_publicacao)  || '',
+      capa:      cat.capa    || db.capa_url                  || '',
       macrotema: cat.macrotema || null,
       temas:     cat.temas   || [],
       href:      cat.href    || '#',

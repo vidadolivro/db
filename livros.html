@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>biblioteca — vida do livro db</title>
   <style>
+    @font-face {
+      font-family: 'Editorial New';
+      src: url('fonts/PPEditorialNew-Regular.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 55 Roman.ttf') format('truetype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 65 Medium.ttf') format('truetype');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 75 Bold.ttf') format('truetype');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #fafaf8;
@@ -13,9 +33,11 @@
       --light: #bbb;
       --border: #ddd;
       --mono: "Courier New", Courier, monospace;
+      --sans: "Neue Haas Grotesk", -apple-system, system-ui, sans-serif;
+      --serif: "Editorial New", Georgia, serif;
     }
     body {
-      font-family: var(--mono);
+      font-family: var(--sans);
       background: var(--bg);
       color: var(--ink);
       font-size: 13px;
@@ -44,7 +66,7 @@
       border-bottom: 1px solid var(--ink);
       margin-bottom: 20px;
     }
-    .page-title { font-size: 28px; font-weight: bold; text-transform: lowercase; line-height: 1; margin-bottom: 5px; }
+    .page-title { font-family: var(--serif); font-size: 30px; font-weight: 400; text-transform: lowercase; line-height: 1; margin-bottom: 5px; }
     .page-desc { font-size: 11px; color: var(--mid); }
 
     /* FILTERS */
@@ -57,7 +79,7 @@
     }
     .filter-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--light); margin-right: 6px; }
     .tema-btn {
-      font-family: var(--mono);
+      font-family: var(--sans);
       font-size: 10px;
       letter-spacing: 0.08em;
       border: 1px solid var(--border);

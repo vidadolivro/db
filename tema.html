@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="page-title">tema — vida do livro db</title>
   <style>
+    @font-face {
+      font-family: 'Editorial New';
+      src: url('fonts/PPEditorialNew-Regular.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Editorial New';
+      src: url('fonts/PPEditorialNew-Italic.otf') format('opentype');
+      font-weight: 400; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 55 Roman.ttf') format('truetype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 56 Italic.ttf') format('truetype');
+      font-weight: 400; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 65 Medium.ttf') format('truetype');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 75 Bold.ttf') format('truetype');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+
     :root {
       --bg: #fafaf8;
       --ink: #111;
@@ -13,11 +44,13 @@
       --border: #ddd;
       --tan: #f0efe8;
       --mono: "Courier New", Courier, monospace;
+      --sans: "Neue Haas Grotesk", -apple-system, system-ui, sans-serif;
+      --serif: "Editorial New", Georgia, serif;
       --max: 1040px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: var(--mono);
+      font-family: var(--sans);
       background: var(--bg);
       color: var(--ink);
       font-size: 13px;
@@ -306,6 +339,48 @@
       justify-content: space-between;
     }
 
+    /* ── LIVROS GRID (capas) ── */
+    .livros-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 20px 14px;
+      padding: 16px 0 40px;
+    }
+    .livro-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .livro-capa {
+      aspect-ratio: 2 / 3;
+      background-color: var(--ink);
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 9px;
+      display: flex;
+      align-items: flex-end;
+      padding: 8px;
+    }
+    .livro-capa-fallback {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 10px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.35;
+    }
+    .livro-card-titulo {
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+    .livro-card-autor {
+      font-size: 10px;
+      color: var(--mid);
+    }
+    .livro-card:hover .livro-card-titulo { text-decoration: underline; text-underline-offset: 2px; }
+
     @media (max-width: 800px) {
       .columns { grid-template-columns: 1fr 1fr; }
       .intro-block { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -442,15 +517,15 @@
     return a.autor.localeCompare(b.autor, 'pt');
   });
   var livrosHtml = livros.length
-    ? livros.map(function(l) {
-        return '<a href="' + esc(l.href) + '" class="livro-row">' +
-          '<div class="livro-titulo">' + esc(l.titulo) +
-            '<span class="livro-autor">' + esc(l.autor) + '</span>' +
-          '</div>' +
-          '<div class="livro-meta">' + esc(l.editora) + ' · ' + l.ano + '</div>' +
-          '<div class="livro-arrow">→</div>' +
+    ? '<div class="livros-grid">' + livros.map(function(l) {
+        var capaStyle = l.capa ? 'background-image:url(\'' + esc(l.capa) + '\')' : '';
+        var fallback  = !l.capa ? '<span class="livro-capa-fallback">' + esc(l.titulo) + '</span>' : '';
+        return '<a href="' + esc(l.href) + '" class="livro-card">' +
+          '<div class="livro-capa" style="' + capaStyle + '">' + fallback + '</div>' +
+          '<span class="livro-card-titulo">' + esc(l.titulo) + '</span>' +
+          '<span class="livro-card-autor">' + esc(l.autor) + '</span>' +
         '</a>';
-      }).join('')
+      }).join('') + '</div>'
     : '<p style="padding:16px 0;font-size:11px;color:#bbb;">nenhum livro cadastrado para este tema.</p>';
 
   var leiturasHtml = '<div class="leituras">' +

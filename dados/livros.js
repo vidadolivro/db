@@ -8,6 +8,7 @@ window.LIVROS = [
     "autor": "Robert Darnton",
     "editora": "Companhia das Letras",
     "ano": 2025,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535938340/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "historia",
     "temas": [
       "mercado-editorial",
@@ -21,6 +22,7 @@ window.LIVROS = [
     "autor": "Roberto Calasso",
     "editora": "Companhia das Letras",
     "ano": 2023,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786559213924/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "historia",
     "temas": [
       "mercado-editorial"
@@ -33,6 +35,7 @@ window.LIVROS = [
     "autor": "David Bayles & Ted Orland",
     "editora": "Seiva",
     "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244309/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria"
@@ -45,6 +48,7 @@ window.LIVROS = [
     "autor": "Jerry Saltz",
     "editora": "Seiva",
     "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244378/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria"
@@ -57,6 +61,7 @@ window.LIVROS = [
     "autor": "Amie McNee",
     "editora": "Seiva",
     "ano": 2026,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786583239112/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria"
@@ -69,6 +74,7 @@ window.LIVROS = [
     "autor": "John Truby",
     "editora": "Seiva",
     "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244316/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -81,6 +87,7 @@ window.LIVROS = [
     "autor": "Ursula K. Le Guin",
     "editora": "Seiva",
     "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244361/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -93,6 +100,7 @@ window.LIVROS = [
     "autor": "Christopher Vogler",
     "editora": "Seiva",
     "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786583239013/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -105,6 +113,7 @@ window.LIVROS = [
     "autor": "Anne Lamott",
     "editora": "Editora Sextante",
     "ano": 2023,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786555645415/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -117,6 +126,7 @@ window.LIVROS = [
     "autor": "Robert Bringhurst",
     "editora": "Ubu Editora",
     "ano": 2022,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788592886608/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "design",
     "temas": [
       "design-grafico"
@@ -129,6 +139,7 @@ window.LIVROS = [
     "autor": "Ellen Lupton",
     "editora": "Olhares",
     "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786560920026/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "design",
     "temas": [
       "design-grafico"
@@ -141,6 +152,7 @@ window.LIVROS = [
     "autor": "Ellen Lupton",
     "editora": "Olhares",
     "ano": 2023,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786588280706/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "design",
     "temas": [
       "design-grafico"
@@ -153,6 +165,7 @@ window.LIVROS = [
     "autor": "Jost Hochuli",
     "editora": "WMF Martins Fontes (POD)",
     "ano": 2020,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788578276935/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "design",
     "temas": [
       "design-grafico"
@@ -165,6 +178,7 @@ window.LIVROS = [
     "autor": "Lawrence Venuti",
     "editora": "Editora Unesp",
     "ano": 2021,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786557110249/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": null,
     "temas": [
       "traducao"

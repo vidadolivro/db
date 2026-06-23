@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>vida do livro db</title>
   <style>
+    @font-face {
+      font-family: 'Editorial New';
+      src: url('fonts/PPEditorialNew-Regular.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Editorial New';
+      src: url('fonts/PPEditorialNew-Italic.otf') format('opentype');
+      font-weight: 400; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 55 Roman.ttf') format('truetype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 56 Italic.ttf') format('truetype');
+      font-weight: 400; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 65 Medium.ttf') format('truetype');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 75 Bold.ttf') format('truetype');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #fafaf8;
@@ -13,9 +44,11 @@
       --light: #bbb;
       --border: #ddd;
       --mono: "Courier New", Courier, monospace;
+      --sans: "Neue Haas Grotesk", -apple-system, system-ui, sans-serif;
+      --serif: "Editorial New", Georgia, serif;
     }
     body {
-      font-family: var(--mono);
+      font-family: var(--sans);
       background: var(--bg);
       color: var(--ink);
       font-size: 13px;
@@ -44,13 +77,14 @@
       flex-wrap: wrap;
     }
     .site-title {
-      font-size: 24px;
-      font-weight: normal;
-      letter-spacing: 0.04em;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
       line-height: 1;
       text-transform: lowercase;
     }
-    .site-title strong { font-weight: bold; }
+    .site-title strong { font-weight: 400; }
     .site-sub {
       font-size: 10px;
       color: var(--mid);
@@ -60,7 +94,7 @@
     }
     .search-form { display: flex; flex-shrink: 0; }
     .search-form input {
-      font-family: var(--mono);
+      font-family: var(--sans);
       font-size: 11px;
       border: 1px solid var(--border);
       border-right: none;
@@ -73,9 +107,9 @@
     .search-form input::placeholder { color: var(--light); }
     .search-form input:focus { border-color: var(--ink); }
     .search-form button {
-      font-family: var(--mono);
+      font-family: var(--sans);
       font-size: 10px;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       border: 1px solid var(--border);
       padding: 6px 14px;
@@ -92,8 +126,56 @@
       text-transform: uppercase;
       color: var(--light);
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
+
+    /* RECENTES */
+    .recentes-section { margin-bottom: 52px; }
+    .recentes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .recente-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .recente-capa {
+      aspect-ratio: 1 / 1;
+      background-color: var(--ink);
+      background-size: cover;
+      background-position: center top;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .recente-capa-fallback {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 10px;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 10px;
+      line-height: 1.4;
+    }
+    .recente-titulo {
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.35;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .recente-tema {
+      font-size: 9px;
+      color: var(--light);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .recente-card:hover .recente-titulo { text-decoration: underline; text-underline-offset: 2px; }
 
     /* TOPICS */
     .index-section { margin-bottom: 52px; }
@@ -113,6 +195,7 @@
     }
     .index-item:first-child { border-top: 1px solid var(--border); }
     .idx-num {
+      font-family: var(--mono);
       font-size: 9px;
       color: var(--light);
       letter-spacing: 0.1em;
@@ -129,7 +212,7 @@
       transition: opacity 0.1s;
     }
     .idx-icon svg { width: 14px; height: 14px; display: block; }
-    .idx-name { font-size: 12px; letter-spacing: 0.02em; flex: 1; }
+    .idx-name { font-size: 12px; font-weight: 500; letter-spacing: 0.01em; flex: 1; }
     .idx-arrow { font-size: 10px; color: var(--border); opacity: 0; transition: opacity 0.1s; flex-shrink: 0; }
     .index-item:hover .idx-num   { color: var(--ink); }
     .index-item:hover .idx-icon  { opacity: 1; }
@@ -161,12 +244,11 @@
     }
     .dir-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--ink); opacity: 0.4; display: flex; align-items: center; justify-content: center; transition: opacity 0.1s; }
     .dir-icon svg { width: 18px; height: 18px; display: block; }
-    .dir-card-name { font-size: 11px; color: var(--mid); letter-spacing: 0.03em; flex: 1; transition: color 0.1s; line-height: 1.3; }
+    .dir-card-name { font-size: 11px; color: var(--mid); letter-spacing: 0.01em; flex: 1; transition: color 0.1s; line-height: 1.3; }
     .dir-card-arrow { font-size: 10px; color: var(--border); opacity: 0; transition: opacity 0.1s; }
     .dir-card:hover .dir-icon       { opacity: 1; }
     .dir-card:hover .dir-card-name  { color: var(--ink); }
     .dir-card:hover .dir-card-arrow { opacity: 1; }
-    /* biblioteca — card full-width */
     .dir-card.dir-card--wide {
       grid-column: 1 / -1;
       border-top: none;
@@ -184,6 +266,7 @@
       padding: 16px 40px;
       max-width: 900px; width: 100%;
       margin: 0 auto;
+      font-family: var(--mono);
       font-size: 10px; color: var(--light); letter-spacing: 0.08em;
       display: flex; justify-content: space-between;
     }
@@ -194,6 +277,7 @@
       .header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
       .search-form { width: 100%; }
       .search-form input { flex: 1; width: auto; }
+      .recentes-grid { grid-template-columns: repeat(2, 1fr); }
       .index-grid { grid-template-columns: 1fr; }
       #col2 .index-item:first-child { border-top: none; }
       .dir-cards { grid-template-columns: repeat(2, 1fr); }
@@ -216,6 +300,11 @@
       <button type="submit">buscar</button>
     </form>
   </div>
+
+  <section class="recentes-section" id="recentes-sec">
+    <span class="section-label">adicionados recentemente</span>
+    <div class="recentes-grid" id="recentes-grid"></div>
+  </section>
 
   <section class="index-section">
     <span class="section-label">temas</span>
@@ -241,6 +330,7 @@
   <span>2025</span>
 </footer>
 
+<script src="dados/livros.js"></script>
 <script>
   /* SVG pixel-art icons — 16×16 */
   const ic  = d => `<svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${d}</svg>`;
@@ -249,105 +339,41 @@
   const pol = pts => `<polygon points="${pts}"/>`;
 
   const ICONS = [
-    // 01 criação literária — lápis diagonal
     ic(pol("10,0 16,6 6,16 0,10") + bg(12,0,4,3) + bg(0,13,3,3)),
-
-    // 02 agentes literários — pasta/briefcase
     ic(r(3,0,10,4) + bg(5,0,6,4) + r(0,3,16,13) + bg(1,4,14,11) + r(0,8,16,2) + r(6,7,4,3) + bg(7,7,2,3)),
-
-    // 03 direitos editoriais — chave
     ic(r(0,2,8,8) + bg(2,4,4,4) + r(3,5,2,2) + r(8,6,8,2) + r(12,8,2,3) + r(10,8,2,2)),
-
-    // 04 autor e editora — livro aberto
     ic(r(0,1,7,14) + r(9,1,7,14) + r(7,0,2,16) + bg(1,2,5,12) + bg(10,2,5,12)),
-
-    // 05 coordenação editorial — documento com check
     ic(r(2,0,12,16) + bg(3,1,10,14) + r(4,4,6,1) + r(4,7,6,1) + r(4,10,4,1) + pol("9,9 11,7 14,11 11,14 9,12") + bg(10,8,3,5)),
-
-    // 06 tradução — setas opostas
     ic(r(0,3,11,2) + pol("9,0 16,4 9,8") + r(5,11,11,2) + pol("7,8 0,12 7,16")),
-
-    // 07 preparação e revisão — lupa
     ic(r(2,2,9,9) + bg(3,3,7,7) + r(5,5,2,2) + r(9,9,2,2) + r(11,11,2,2) + r(13,13,2,2)),
-
-    // 08 design gráfico — régua
     ic(r(0,5,16,6) + bg(1,6,14,4) + r(2,5,1,4) + r(4,5,1,3) + r(6,5,1,4) + r(8,5,1,3) + r(10,5,1,4) + r(12,5,1,3) + r(14,5,1,4)),
-
-    // 09 produção gráfica — prensa tipográfica
     ic(r(1,0,14,3) + bg(2,1,12,1) + r(0,3,16,4) + bg(1,4,14,2) + r(2,7,12,9) + bg(3,8,10,7) + r(4,9,8,1) + r(4,11,6,1)),
-
-    // 10 e-books — e-reader com linhas de texto
     ic(r(2,0,12,16) + bg(3,1,10,13) + r(4,3,8,1) + r(4,5,8,1) + r(4,7,8,1) + r(4,9,6,1) + r(6,14,4,1)),
-
-    // 11 audiolivros — fones de ouvido
     ic(r(3,1,10,2) + r(1,2,3,10) + bg(2,3,2,8) + r(12,2,3,10) + bg(13,3,2,8)),
-
-    // 12 marketing editorial — megafone
     ic(pol("0,4 0,12 5,12 5,4") + pol("5,1 15,0 15,16 5,15") + r(8,12,3,4)),
-
-    // 13 comunicação e mídia — dois balões de fala
     ic(r(0,0,10,8) + bg(1,1,8,6) + r(1,8,3,2) + r(6,6,10,8) + bg(7,7,8,6) + r(13,14,3,2)),
-
-    // 14 distribuição — bifurcação
     ic(r(7,0,2,6) + r(1,8,2,8) + r(13,8,2,8) + r(1,14,4,2) + r(11,14,4,2) + r(2,6,12,3)),
-
-    // 15 pontos de venda — etiqueta de preço
     ic(pol("3,0 16,0 16,13 3,13 0,6") + bg(4,1,11,11) + r(12,2,2,2) + bg(13,3,1,1)),
-
-    // 16 clubes do livro — livros empilhados
     ic(r(0,0,16,4) + r(0,5,16,4) + r(0,10,16,4) + r(0,14,16,2) + bg(2,1,12,2) + bg(2,6,12,2) + bg(2,11,12,2)),
-
-    // 17 ter uma editora — prédio
     ic(r(3,2,10,2) + r(0,4,16,12) + bg(1,5,14,10) + r(2,7,4,4) + r(10,7,4,4) + r(6,11,4,5) + r(0,14,16,2)),
-
-    // 18 dados do mercado — gráfico de barras
     ic(r(0,14,16,2) + r(0,9,4,5) + r(6,5,4,9) + r(12,1,4,13)),
-
-    // 19 autopublicação — pessoa + seta para cima
     ic(r(6,0,4,4) + r(4,4,8,4) + r(6,8,4,8) + r(10,0,6,2) + r(14,2,2,6) + r(10,6,4,2) + pol("11,0 16,6 13,6 13,14 14,14") + bg(11,2,5,4)),
-
-    // 20 livros infantis — giz de cera
     ic(r(5,0,6,3) + r(4,3,8,2) + r(3,5,10,9) + pol("3,14 6,16 10,16 13,14") + bg(6,6,4,3)),
-
-    // 21 quadrinhos — quatro painéis
     ic(r(0,0,7,7) + bg(1,1,5,5) + r(9,0,7,7) + bg(10,1,5,5) + r(0,9,7,7) + bg(1,10,5,5) + r(9,9,7,7) + bg(10,10,5,5)),
-
-    // 22 futuro e tecnologia — lâmpada
     ic(r(4,0,8,1) + r(2,1,12,5) + r(1,3,14,4) + r(2,6,12,3) + r(4,9,8,2) + r(4,11,8,2) + r(5,13,6,1) + bg(4,1,8,7)),
   ];
 
-  /* Diretório icons — 18×18 */
   const di  = d => `<svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${d}</svg>`;
-
   const DIR_ICONS = [
-    // editoras — prédio com bandeira
     di(r(1,4,14,12) + bg(2,5,12,10) + r(3,7,4,4) + r(9,7,4,4) + r(6,11,4,5) + r(4,0,2,5) + r(6,1,6,3)),
-
-    // agentes literários — briefcase
     di(r(4,0,8,4) + bg(6,0,4,4) + r(0,3,16,13) + bg(1,4,14,10) + r(0,7,16,2) + r(6,6,4,3) + bg(7,6,2,3)),
-
-    // tradutores — balão com seta
     di(r(0,0,12,9) + bg(1,1,10,7) + r(1,9,4,2) + r(1,11,2,2) + pol("10,7 14,4 14,14 10,11")),
-
-    // designers — pincel
     di(r(12,0,4,4) + r(10,4,4,4) + r(8,6,4,4) + r(6,8,4,4) + r(4,10,4,4) + r(2,12,4,4) + bg(3,13,2,2) + r(0,13,4,3)),
-
-    // produção gráfica — impressora
     di(r(2,0,12,4) + r(0,4,16,6) + bg(1,5,14,4) + r(2,10,12,6) + bg(3,11,10,4) + r(4,12,8,1) + r(4,14,6,1)),
-
-    // veículos — jornal dobrado
     di(r(0,0,16,16) + bg(1,1,14,14) + r(2,2,12,4) + r(2,8,12,1) + r(2,10,12,1) + r(2,12,8,1) + r(12,0,4,7) + bg(13,1,2,5)),
-
-    // jornalistas — caneta com linhas
     di(pol("10,0 14,4 4,14 0,10") + bg(12,0,3,2) + bg(0,12,2,3) + r(0,13,2,3) + r(1,12,3,1)),
-
-    // influencers e creators — câmera/play
     di(r(0,2,16,12) + bg(1,3,14,10) + r(4,5,2,6) + r(6,6,2,4) + r(8,7,2,2) + r(10,0,6,3)),
-
-    // escolas e cursos — capelo
     di(r(0,6,16,4) + pol("3,6 8,0 13,6") + r(12,8,2,7) + r(10,14,4,1) + r(3,10,10,6)),
-
-    // biblioteca — três livros na estante
     di(r(0,2,4,12) + bg(1,3,2,10) + r(6,0,4,14) + bg(7,1,2,12) + r(12,2,4,12) + bg(13,3,2,10) + r(0,14,16,2)),
   ];
 
@@ -389,6 +415,35 @@
     {n:"biblioteca",             href:"livros.html", desc:"referências bibliográficas por tema"},
   ];
 
+  /* Recentes */
+  (function() {
+    const livros = window.LIVROS || [];
+    const recentes = livros.filter(l => l.macrotema).slice(-4).reverse();
+    const grid = document.getElementById('recentes-grid');
+    const sec  = document.getElementById('recentes-sec');
+    if (!recentes.length) { if (sec) sec.style.display = 'none'; return; }
+
+    const TEMA_MAP = {};
+    TOPICS.forEach(t => {
+      const slug = t.href.replace('tema?slug=', '');
+      TEMA_MAP[slug] = t.n;
+    });
+
+    grid.innerHTML = recentes.map(l => {
+      const temaSlug = (l.temas || [])[0] || '';
+      const temaHref = 'tema?slug=' + temaSlug;
+      const temaNome = TEMA_MAP[temaSlug] || temaSlug;
+      const capaStyle = l.capa ? 'background-image:url(\'' + l.capa.replace(/'/g, '%27') + '\')' : '';
+      const fallback  = !l.capa ? '<span class="recente-capa-fallback">' + l.titulo + '</span>' : '';
+      return '<a href="' + temaHref + '" class="recente-card">' +
+        '<div class="recente-capa" style="' + capaStyle + '">' + fallback + '</div>' +
+        '<span class="recente-titulo">' + l.titulo + '</span>' +
+        '<span class="recente-tema">' + temaNome + '</span>' +
+        '</a>';
+    }).join('');
+  })();
+
+  /* Topics */
   const half = Math.ceil(TOPICS.length / 2);
   TOPICS.forEach((t, i) => {
     const a = document.createElement("a");
@@ -402,6 +457,7 @@
     document.getElementById(i < half ? "col1" : "col2").appendChild(a);
   });
 
+  /* Directory */
   DIR.forEach((d, i) => {
     const a = document.createElement("a");
     a.href = d.href;
