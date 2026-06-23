@@ -184,12 +184,14 @@
       text-transform: uppercase;
     }
     .recente-card:hover .recente-titulo { text-decoration: underline; text-underline-offset: 2px; }
-    .recente-capa--video { background-color: var(--ink); justify-content: center; align-items: center; }
-    .recente-play { font-size: 20px; color: rgba(255,255,255,0.3); }
-    .recente-capa--texto { background-color: #f0efe8; justify-content: flex-end; align-items: flex-start; padding: 10px; }
-    .recente-capa-tag { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
-    .recente-capa--link { background-color: var(--bg); border: 1px solid var(--border); justify-content: flex-end; align-items: flex-start; padding: 10px; }
-    .recente-domain { font-family: var(--mono); font-size: 9px; color: var(--light); }
+    .recente-capa--video { background-color: var(--ink); position: relative; }
+    .recente-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgba(255,255,255,0.28); }
+    .recente-canal { position: absolute; bottom: 10px; left: 10px; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); }
+    .recente-capa--texto { background-color: #f0efe8; position: relative; }
+    .recente-capa-tag { position: absolute; top: 10px; left: 10px; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
+    .recente-trecho { position: absolute; bottom: 10px; left: 10px; right: 10px; font-style: italic; font-size: 10px; line-height: 1.5; color: var(--mid); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+    .recente-capa--link { background-color: var(--bg); border: 1px solid var(--border); position: relative; }
+    .recente-domain { position: absolute; bottom: 10px; left: 10px; font-family: var(--mono); font-size: 10px; color: var(--mid); }
 
     /* TOPICS */
     .index-section { margin-bottom: 52px; }
@@ -461,7 +463,10 @@
       if (tipo === 'video') {
         const v = entry.item;
         return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
-          '<div class="recente-capa recente-capa--video"><span class="recente-play">▶</span></div>' +
+          '<div class="recente-capa recente-capa--video">' +
+            '<span class="recente-play">▶</span>' +
+            '<span class="recente-canal">' + (v.canal || '') + '</span>' +
+          '</div>' +
           '<span class="recente-tipo">vídeo</span>' +
           '<span class="recente-titulo">' + v.titulo + '</span>' +
           '<span class="recente-tema">' + temaNome + '</span>' +
@@ -470,7 +475,10 @@
       if (tipo === 'texto') {
         const tx = entry.item;
         return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
-          '<div class="recente-capa recente-capa--texto"><span class="recente-capa-tag">' + (tx.tag || 'texto') + '</span></div>' +
+          '<div class="recente-capa recente-capa--texto">' +
+            '<span class="recente-capa-tag">' + (tx.tag || 'texto') + '</span>' +
+            '<span class="recente-trecho">' + (tx.trecho || '') + '</span>' +
+          '</div>' +
           '<span class="recente-tipo">texto</span>' +
           '<span class="recente-titulo">' + tx.titulo + '</span>' +
           '<span class="recente-tema">' + temaNome + '</span>' +
@@ -479,7 +487,9 @@
       if (tipo === 'link') {
         const lk = entry.item;
         return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
-          '<div class="recente-capa recente-capa--link"><span class="recente-domain">' + (lk.domain || '') + '</span></div>' +
+          '<div class="recente-capa recente-capa--link">' +
+            '<span class="recente-domain">→ ' + (lk.domain || '') + '</span>' +
+          '</div>' +
           '<span class="recente-tipo">link</span>' +
           '<span class="recente-titulo">' + lk.titulo + '</span>' +
           '<span class="recente-tema">' + temaNome + '</span>' +
