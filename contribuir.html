@@ -332,32 +332,23 @@
 
     function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 
-    var payload = {
-      status:     'pendente',
-      tema_slug:  tema,
-      tipo:       activeTipo,
-      titulo:     val('f-titulo'),
-      href:       val('f-href'),
-      canal:      val('f-canal'),
-      show:       val('f-show'),
-      subtipo:    val('f-subtipo'),
-      meta:       val('f-meta'),
-      tag:        val('f-tag') || val('f-link_tipo'),
-      trecho:     val('f-trecho'),
-      fonte:      val('f-fonte'),
-      autores:    val('f-autores'),
-      publicacao: val('f-publicacao'),
-      ano:        val('f-ano'),
-      observacao: val('f-obs'),
+    var payloads = {
+      video:   { tema_slug: tema, titulo: val('f-titulo'), canal: val('f-canal'), href: val('f-href'), meta: val('f-meta') },
+      podcast: { tema_slug: tema, subtipo: val('f-subtipo'), show: val('f-show'), titulo: val('f-titulo'), href: val('f-href'), meta: val('f-meta') },
+      link:    { tema_slug: tema, titulo: val('f-titulo'), href: val('f-href'), domain: (function(){ try { return new URL(val('f-href')).hostname.replace(/^www\./,''); } catch(e){ return ''; } })(), tipo: val('f-link_tipo') },
+      texto:   { tema_slug: tema, titulo: val('f-titulo'), tag: val('f-tag'), href: val('f-href'), trecho: val('f-trecho'), fonte: val('f-fonte') },
+      artigo:  { tema_slug: tema, titulo: val('f-titulo'), autores: val('f-autores'), publicacao: val('f-publicacao'), ano: val('f-ano'), href: val('f-href') },
     };
+    var payload = payloads[activeTipo];
 
     if (!payload.titulo && !payload.show) {
       showMsg('form-msg', 'preencha pelo menos o título.', 'error'); return;
     }
 
+    var colMap = { video: 'db_videos', podcast: 'db_podcasts', link: 'db_links', texto: 'db_textos', artigo: 'db_artigos' };
     var btn = this; btn.disabled = true; btn.textContent = 'enviando…';
 
-    fetch(DIRECTUS + '/items/contribuicoes', {
+    fetch(DIRECTUS + '/items/' + colMap[activeTipo], {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
       body: JSON.stringify(payload),

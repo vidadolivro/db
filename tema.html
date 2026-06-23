@@ -266,6 +266,21 @@
     }
     .p-meta { font-size: 10px; color: var(--mid); }
 
+    /* ── ARTIGOS ── */
+    .a-item {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .a-item:last-child { border-bottom: none; }
+    .a-title { font-size: 12px; font-weight: bold; line-height: 1.4; margin-bottom: 3px; }
+    .a-autores { font-size: 10px; color: var(--mid); margin-bottom: 2px; }
+    .a-meta { font-size: 10px; color: var(--light); display: flex; align-items: center; gap: 6px; }
+    .a-pdf {
+      font-size: 7px; letter-spacing: 0.12em; text-transform: uppercase;
+      border: 1px solid var(--border); padding: 1px 4px; color: var(--mid);
+    }
+
     /* ── LEITURAS ── */
     .leituras {
       margin-top: 40px;
@@ -429,11 +444,13 @@
 <script src="dados/livros.js"></script>
 <script src="dados/temas.js"></script>
 <script src="dados/temas-media.js"></script>
+<script src="dados/temas-conteudo.js"></script>
 <script>
 (function () {
   var slug = new URLSearchParams(window.location.search).get('slug') || '';
   var TEMAS = window.TEMAS || {};
   var t = TEMAS[slug];
+  var tc = (window.TEMAS_CONTEUDO || {})[slug] || {};
   var total = Object.keys(TEMAS).length;
 
   if (!t) {
@@ -474,7 +491,7 @@
   }
 
   var media = window.TEMAS_MEDIA || {};
-  var videos = t.videos || [];
+  var videos = tc.videos || [];
   var videosHtml = videos.map(function(v) {
     var thumb = ytThumb(v.href);
     var bgStyle = thumb ? ' style="background-image:url(\'' + thumb + '\')"' : '';
@@ -489,7 +506,7 @@
     videosHtml + '</div>';
 
   /* Textos column */
-  var textos = t.textos || [];
+  var textos = tc.textos || [];
   var textosHtml = textos.map(function(tx) {
     return '<div class="t-item">' +
       '<div class="t-tag">' + esc(tx.tag) + '</div>' +
@@ -503,7 +520,7 @@
     textosHtml + '</div>';
 
   /* Links column */
-  var links = t.links || [];
+  var links = tc.links || [];
   var linksHtml = links.map(function(lk) {
     var typeHtml = lk.tipo ? '<div class="l-type">' + esc(lk.tipo) + '</div>' : '';
     return '<div class="l-item">' +
@@ -517,7 +534,7 @@
     linksHtml + '</div>';
 
   /* Podcasts column */
-  var pods = t.podcasts || [];
+  var pods = tc.podcasts || [];
   var podsHtml = pods.map(function(p) {
     return '<div class="p-item">' +
       '<div class="p-show">' + esc(p.show) + '</div>' +
@@ -528,6 +545,21 @@
   var colPods = '<div class="col">' +
     '<div class="col-head"><span>podcasts</span><span class="col-count">' + pods.length + '</span></div>' +
     podsHtml + '</div>';
+
+  /* Artigos column */
+  var artigos = tc.artigos || [];
+  var artigosHtml = artigos.map(function(a) {
+    var isPdf = a.href && (a.href.endsWith('.pdf') || a.href.includes('doi.org') || a.href.startsWith('10.'));
+    var pdfBadge = isPdf ? '<span class="a-pdf">PDF</span>' : '';
+    return '<div class="a-item">' +
+      '<div class="a-title"><a href="' + esc(a.href) + '" target="_blank" rel="noopener">' + esc(a.titulo) + '</a></div>' +
+      '<div class="a-autores">' + esc(a.autores) + '</div>' +
+      '<div class="a-meta"><span>' + esc(a.publicacao) + (a.ano ? ' · ' + esc(a.ano) : '') + '</span>' + pdfBadge + '</div>' +
+      '</div>';
+  }).join('');
+  var colArtigos = artigos.length ? '<div class="col">' +
+    '<div class="col-head"><span>artigos</span><span class="col-count">' + artigos.length + '</span></div>' +
+    artigosHtml + '</div>' : '';
 
   /* Leituras */
   var livros = (window.LIVROS || []).filter(function(l) {
@@ -555,7 +587,7 @@
   /* Render */
   document.getElementById('main-content').innerHTML =
     introHtml +
-    '<div class="columns">' + colVideos + colTextos + colLinks + colPods + '</div>' +
+    '<div class="columns">' + colVideos + colTextos + colLinks + colPods + colArtigos + '</div>' +
     leiturasHtml;
 })();
 </script>

@@ -7,7 +7,8 @@
 const fs   = require('fs');
 const path = require('path');
 
-const DIRECTUS = 'https://directus-production-afdd.up.railway.app/items/biblioteca';
+const DIRECTUS_BASE = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS = DIRECTUS_BASE + '/items/biblioteca';
 const ROOT     = path.join(__dirname, '..');
 
 /* ── carregar categorias ── */
@@ -96,6 +97,7 @@ async function run() {
   console.log(`\n✓ dados/livros.js gerado — ${livros.length} livro(s)`);
 
   await syncTemasMedia();
+  await syncTemasConteudo();
 }
 
 /* ── fase 2: temas-media ── */
@@ -166,6 +168,51 @@ async function syncTemasMedia() {
   fs.writeFileSync(path.join(ROOT, 'dados/temas-media.js'), out2, 'utf8');
   const np = Object.keys(podcastImgs).length, nl = Object.keys(linkImgs).length;
   console.log(`\n✓ dados/temas-media.js gerado — ${np} podcast(s), ${nl} link(s)`);
+}
+
+/* ── fase 3: conteúdo dos temas via Directus ── */
+async function syncTemasConteudo() {
+  const COLS = {
+    db_videos:   'videos',
+    db_podcasts: 'podcasts',
+    db_links:    'links',
+    db_textos:   'textos',
+    db_artigos:  'artigos',
+  };
+
+  const conteudo = {};
+  let total = 0;
+
+  for (const [col, chave] of Object.entries(COLS)) {
+    const url = `${DIRECTUS_BASE}/items/${col}?limit=1000&sort=id`;
+    console.log(`\nbuscando ${col}…`);
+    try {
+      const r = await fetch(url);
+      const d = await r.json();
+      if (!r.ok) { console.warn(`  ✗ ${col}: ${JSON.stringify(d.errors?.[0])}`); continue; }
+      const items = d.data || [];
+      items.forEach(item => {
+        if (!item.tema_slug) return;
+        if (!conteudo[item.tema_slug]) conteudo[item.tema_slug] = {};
+        if (!conteudo[item.tema_slug][chave]) conteudo[item.tema_slug][chave] = [];
+        const { id, tema_slug, date_created, user_created, ...rest } = item;
+        conteudo[item.tema_slug][chave].push(rest);
+      });
+      total += items.length;
+      console.log(`  ✓ ${items.length} item(s)`);
+    } catch (e) { console.warn(`  ✗ ${col}: ${e.message}`); }
+  }
+
+  const out = [
+    '/* vida do livro db — gerado por scripts/sync.js */',
+    '/* não editar manualmente — rode: npm run sync */',
+    '',
+    'window.TEMAS_CONTEUDO = ' + JSON.stringify(conteudo, null, 2) + ';',
+    '',
+  ].join('\n');
+
+  fs.writeFileSync(path.join(ROOT, 'dados/temas-conteudo.js'), out, 'utf8');
+  console.log(`\n✓ dados/temas-conteudo.js gerado — ${total} item(s) em ${Object.keys(conteudo).length} tema(s)`);
 }
 
 run().catch(err => { console.error('\nerro:', err.message); process.exit(1); });
