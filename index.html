@@ -187,7 +187,7 @@
     .recente-capa--video { background-color: var(--ink); position: relative; }
     .recente-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgba(255,255,255,0.28); }
     .recente-canal { position: absolute; bottom: 10px; left: 10px; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); }
-    .recente-capa--texto { background-color: #f0efe8; position: relative; }
+    .recente-capa--texto { background-color: #f2e8d0; position: relative; }
     .recente-capa-tag { position: absolute; top: 10px; left: 10px; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
     .recente-trecho { position: absolute; bottom: 10px; left: 10px; right: 10px; font-style: italic; font-size: 10px; line-height: 1.5; color: var(--mid); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
     .recente-capa--livro { background-color: #fff; background-size: contain; background-repeat: no-repeat; background-position: center; }
@@ -460,6 +460,12 @@
     const sec  = document.getElementById('recentes-sec');
     if (!entries.length) { if (sec) sec.style.display = 'none'; return; }
 
+    function ytThumb(href) {
+      if (!href || href === '#') return '';
+      const m = href.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+      return m ? 'https://img.youtube.com/vi/' + m[1] + '/hqdefault.jpg' : '';
+    }
+
     grid.innerHTML = entries.map(entry => {
       const tipo = entry.tipo;
       const temaSlug = entry.slug || (entry.item && entry.item.temas && entry.item.temas[0]) || '';
@@ -467,8 +473,10 @@
 
       if (tipo === 'video') {
         const v = entry.item;
+        const thumb = ytThumb(v.href);
+        const bg = thumb ? ' style="background-image:url(\'' + thumb + '\');background-size:cover;"' : '';
         return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
-          '<div class="recente-capa recente-capa--video">' +
+          '<div class="recente-capa recente-capa--video"' + bg + '>' +
             '<span class="recente-play">▶</span>' +
             '<span class="recente-canal">' + (v.canal || '') + '</span>' +
           '</div>' +
@@ -491,8 +499,9 @@
       }
       if (tipo === 'link') {
         const lk = entry.item;
+        const hasUrl = lk.href && lk.href !== '#';
         return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
-          '<div class="recente-capa recente-capa--link">' +
+          '<div class="recente-capa recente-capa--link"' + (hasUrl ? ' data-oghref="' + lk.href + '"' : '') + '>' +
             '<span class="recente-domain">→ ' + (lk.domain || '') + '</span>' +
           '</div>' +
           '<span class="recente-tipo">link</span>' +
@@ -502,8 +511,9 @@
       }
       if (tipo === 'podcast') {
         const pd = entry.item;
+        const hasSpotify = pd.href && pd.href.includes('spotify.com');
         return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
-          '<div class="recente-capa recente-capa--podcast">' +
+          '<div class="recente-capa recente-capa--podcast"' + (hasSpotify ? ' data-spotify="' + pd.href + '"' : '') + '>' +
             '<span class="recente-show">' + (pd.show || '') + '</span>' +
             '<span class="recente-ep">' + pd.titulo + '</span>' +
           '</div>' +
@@ -524,6 +534,37 @@
         '<span class="recente-tema">' + (slugToNome[ls] || ls) + '</span>' +
         '</a>';
     }).join('');
+
+    /* og:image para links via microlink */
+    document.querySelectorAll('[data-oghref]').forEach(el => {
+      fetch('https://api.microlink.io/?url=' + encodeURIComponent(el.dataset.oghref) + '&meta=false')
+        .then(r => r.json())
+        .then(d => {
+          const img = d.data && d.data.image && d.data.image.url;
+          if (img) {
+            el.style.backgroundImage = 'url(\'' + img.replace(/'/g, '%27') + '\')';
+            el.style.backgroundSize = 'cover';
+            el.style.backgroundPosition = 'center';
+            el.style.backgroundColor = '';
+            el.querySelector('.recente-domain') && (el.querySelector('.recente-domain').style.display = 'none');
+          }
+        }).catch(() => {});
+    });
+
+    /* artwork do podcast via Spotify oEmbed */
+    document.querySelectorAll('[data-spotify]').forEach(el => {
+      fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent(el.dataset.spotify))
+        .then(r => r.json())
+        .then(d => {
+          if (d.thumbnail_url) {
+            el.style.backgroundImage = 'url(\'' + d.thumbnail_url.replace(/'/g, '%27') + '\')';
+            el.style.backgroundSize = 'cover';
+            el.style.backgroundPosition = 'center';
+            el.querySelector('.recente-show') && (el.querySelector('.recente-show').style.display = 'none');
+            el.querySelector('.recente-ep')   && (el.querySelector('.recente-ep').style.display = 'none');
+          }
+        }).catch(() => {});
+    });
   })();
 
   /* Topics */

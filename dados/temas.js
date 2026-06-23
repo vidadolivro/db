@@ -569,7 +569,7 @@ window.TEMAS = {
   diretorios: [],
   videos: [
     { titulo: 'IA e o livro — oportunidades, ameaças e o que ninguém ainda sabe responder', canal: 'CBL Talks', meta: '2024 · 1h15min', href: '#' },
-    { titulo: 'O futuro do livro — mesa com editores, autores e tecnólogos na FLiP 2023', canal: 'FLiP Arquivos', meta: '2023 · 1h28min', href: '#' },
+    { titulo: 'O futuro do livro — mesa com editores, autores e tecnólogos na FLiP 2023', canal: 'FLiP Arquivos', meta: '2023 · 1h28min', href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' },
   ],
   textos: [
     { tag: 'análise', titulo: 'IA generativa e direitos autorais: o impasse que a indústria editorial precisa resolver', trecho: '"Quando uma IA treina com milhões de livros sem autorização e produz textos que competem com seus autores, qual é o regime jurídico aplicável? A resposta ainda não existe — e o mercado não pode esperar."', fonte: 'Piauí · nov 2023', href: '#' },
@@ -581,11 +581,11 @@ window.TEMAS = {
     { titulo: '→ Publishers Weekly — Technology', domain: 'publishersweekly.com', tipo: 'newsletter', href: '#' },
     { titulo: '→ Digital Book World', domain: 'digitalbookworld.com', tipo: '', href: '#' },
     { titulo: '→ The Shatzkin Files — análise de tendências', domain: 'shatzkinfiles.com', tipo: 'newsletter', href: '#' },
-    { titulo: '→ Ebooks Brasil — newsletter digital', domain: 'ebooksbrasil.org', tipo: 'newsletter', href: '#' },
+    { titulo: '→ Ebooks Brasil — newsletter digital', domain: 'ebooksbrasil.org', tipo: 'newsletter', href: 'https://www.ebooksbrasil.org' },
   ],
   podcasts: [
     { show: 'O Mercado do Livro', titulo: 'ep. 45 — IA, plataformas e o futuro do livro: o que vemos e o que ainda não entendemos', meta: '1h12min · 2024', href: '#' },
-    { show: 'Rethinking Publishing', titulo: 'ep. 33 — Artificial intelligence and the book industry: where we are', meta: '58min · 2023', href: '#' },
+    { show: 'Rethinking Publishing', titulo: 'ep. 33 — Artificial intelligence and the book industry: where we are', meta: '58min · 2023', href: 'https://open.spotify.com/episode/4wMaEHn5lCSkRDgJR0Expp' },
   ],
 },
 
