@@ -94,6 +94,66 @@ async function run() {
 
   fs.writeFileSync(path.join(ROOT, 'dados/livros.js'), out, 'utf8');
   console.log(`\n✓ dados/livros.js gerado — ${livros.length} livro(s)`);
+
+  await syncTemasMedia();
+}
+
+/* ── fase 2: temas-media ── */
+async function syncTemasMedia() {
+  const temasSrc = fs.readFileSync(path.join(ROOT, 'dados/temas.js'), 'utf8');
+  const fakeWin2 = {};
+  new Function('window', temasSrc)(fakeWin2); // eslint-disable-line no-new-func
+  const TEMAS = fakeWin2.TEMAS || {};
+
+  /* coletar hrefs únicos */
+  const spotifyHrefs = new Set();
+  const linkHrefs    = new Set();
+  Object.values(TEMAS).forEach(t => {
+    (t.podcasts || []).forEach(ep => { if (ep.href && ep.href.includes('spotify.com')) spotifyHrefs.add(ep.href); });
+    (t.links    || []).forEach(lk => { if (lk.href && lk.href !== '#') linkHrefs.add(lk.href); });
+  });
+
+  const podcastImgs = {};
+  const linkImgs    = {};
+
+  /* Spotify oEmbed */
+  console.log(`\nbuscando artwork de ${spotifyHrefs.size} podcast(s)…`);
+  await Promise.all([...spotifyHrefs].map(async href => {
+    try {
+      const r = await fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent(href));
+      const d = await r.json();
+      if (d.thumbnail_url) { podcastImgs[href] = d.thumbnail_url; console.log(`  ✓ ${href.slice(-30)}`); }
+    } catch (e) { console.warn(`  ✗ spotify ${href} — ${e.message}`); }
+  }));
+
+  /* og:image via fetch direto */
+  console.log(`\nbuscando og:image de ${linkHrefs.size} link(s)…`);
+  await Promise.all([...linkHrefs].map(async href => {
+    try {
+      const r = await fetch(href, {
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; vida-do-livro-db/1.0)' },
+        signal: AbortSignal.timeout(8000),
+      });
+      const html = await r.text();
+      const m = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)
+             || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
+      if (m?.[1]) { linkImgs[href] = m[1]; console.log(`  ✓ ${href}`); }
+      else { console.log(`  — sem og:image: ${href}`); }
+    } catch (e) { console.warn(`  ✗ link ${href} — ${e.message}`); }
+  }));
+
+  /* gerar temas-media.js */
+  const out2 = [
+    '/* vida do livro db — gerado por scripts/sync.js */',
+    '/* não editar manualmente — rode: npm run sync */',
+    '',
+    'window.TEMAS_MEDIA = ' + JSON.stringify({ podcasts: podcastImgs, links: linkImgs }, null, 2) + ';',
+    '',
+  ].join('\n');
+
+  fs.writeFileSync(path.join(ROOT, 'dados/temas-media.js'), out2, 'utf8');
+  const np = Object.keys(podcastImgs).length, nl = Object.keys(linkImgs).length;
+  console.log(`\n✓ dados/temas-media.js gerado — ${np} podcast(s), ${nl} link(s)`);
 }
 
 run().catch(err => { console.error('\nerro:', err.message); process.exit(1); });

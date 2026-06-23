@@ -352,6 +352,7 @@
 
 <script src="dados/livros.js"></script>
 <script src="dados/temas.js"></script>
+<script src="dados/temas-media.js"></script>
 <script>
   /* SVG pixel-art icons — 16×16 */
   const ic  = d => `<svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${d}</svg>`;
@@ -499,10 +500,12 @@
       }
       if (tipo === 'link') {
         const lk = entry.item;
-        const hasUrl = lk.href && lk.href !== '#';
+        const media = window.TEMAS_MEDIA || {};
+        const ogImg = lk.href && media.links && media.links[lk.href];
+        const ogBg  = ogImg ? ' style="background-image:url(\'' + ogImg.replace(/'/g, '%27') + '\');background-size:cover;background-position:center;"' : '';
         return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
-          '<div class="recente-capa recente-capa--link"' + (hasUrl ? ' data-oghref="' + lk.href + '"' : '') + '>' +
-            '<span class="recente-domain">→ ' + (lk.domain || '') + '</span>' +
+          '<div class="recente-capa recente-capa--link"' + ogBg + '>' +
+            (ogImg ? '' : '<span class="recente-domain">→ ' + (lk.domain || '') + '</span>') +
           '</div>' +
           '<span class="recente-tipo">link</span>' +
           '<span class="recente-titulo">' + lk.titulo + '</span>' +
@@ -511,11 +514,13 @@
       }
       if (tipo === 'podcast') {
         const pd = entry.item;
-        const hasSpotify = pd.href && pd.href.includes('spotify.com');
+        const media2 = window.TEMAS_MEDIA || {};
+        const spImg  = pd.href && media2.podcasts && media2.podcasts[pd.href];
+        const spBg   = spImg ? ' style="background-image:url(\'' + spImg.replace(/'/g, '%27') + '\');background-size:cover;background-position:center;"' : '';
         return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
-          '<div class="recente-capa recente-capa--podcast"' + (hasSpotify ? ' data-spotify="' + pd.href + '"' : '') + '>' +
-            '<span class="recente-show">' + (pd.show || '') + '</span>' +
-            '<span class="recente-ep">' + pd.titulo + '</span>' +
+          '<div class="recente-capa recente-capa--podcast"' + spBg + '>' +
+            (spImg ? '' : '<span class="recente-show">' + (pd.show || '') + '</span>' +
+              '<span class="recente-ep">' + pd.titulo + '</span>') +
           '</div>' +
           '<span class="recente-tipo">podcast</span>' +
           '<span class="recente-titulo">' + pd.titulo + '</span>' +
@@ -535,36 +540,6 @@
         '</a>';
     }).join('');
 
-    /* og:image para links via microlink */
-    document.querySelectorAll('[data-oghref]').forEach(el => {
-      fetch('https://api.microlink.io/?url=' + encodeURIComponent(el.dataset.oghref) + '&meta=false')
-        .then(r => r.json())
-        .then(d => {
-          const img = d.data && d.data.image && d.data.image.url;
-          if (img) {
-            el.style.backgroundImage = 'url(\'' + img.replace(/'/g, '%27') + '\')';
-            el.style.backgroundSize = 'cover';
-            el.style.backgroundPosition = 'center';
-            el.style.backgroundColor = '';
-            el.querySelector('.recente-domain') && (el.querySelector('.recente-domain').style.display = 'none');
-          }
-        }).catch(() => {});
-    });
-
-    /* artwork do podcast via Spotify oEmbed */
-    document.querySelectorAll('[data-spotify]').forEach(el => {
-      fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent(el.dataset.spotify))
-        .then(r => r.json())
-        .then(d => {
-          if (d.thumbnail_url) {
-            el.style.backgroundImage = 'url(\'' + d.thumbnail_url.replace(/'/g, '%27') + '\')';
-            el.style.backgroundSize = 'cover';
-            el.style.backgroundPosition = 'center';
-            el.querySelector('.recente-show') && (el.querySelector('.recente-show').style.display = 'none');
-            el.querySelector('.recente-ep')   && (el.querySelector('.recente-ep').style.display = 'none');
-          }
-        }).catch(() => {});
-    });
   })();
 
   /* Topics */

@@ -578,10 +578,10 @@ window.TEMAS = {
   ],
   links: [
     { titulo: '→ O\'Reilly TOC — Technology, Media and Publishing', domain: 'oreilly.com/conferences', tipo: '', href: '#' },
-    { titulo: '→ Publishers Weekly — Technology', domain: 'publishersweekly.com', tipo: 'newsletter', href: '#' },
     { titulo: '→ Digital Book World', domain: 'digitalbookworld.com', tipo: '', href: '#' },
     { titulo: '→ The Shatzkin Files — análise de tendências', domain: 'shatzkinfiles.com', tipo: 'newsletter', href: '#' },
-    { titulo: '→ Ebooks Brasil — newsletter digital', domain: 'ebooksbrasil.org', tipo: 'newsletter', href: 'https://www.ebooksbrasil.org' },
+    { titulo: '→ Ebooks Brasil — newsletter digital', domain: 'ebooksbrasil.org', tipo: 'newsletter', href: '#' },
+    { titulo: '→ Publishers Weekly — Technology', domain: 'publishersweekly.com', tipo: 'newsletter', href: 'https://www.publishersweekly.com' },
   ],
   podcasts: [
     { show: 'O Mercado do Livro', titulo: 'ep. 45 — IA, plataformas e o futuro do livro: o que vemos e o que ainda não entendemos', meta: '1h12min · 2024', href: '#' },
