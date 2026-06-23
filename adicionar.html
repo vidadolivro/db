@@ -449,8 +449,9 @@
     var isIsbn = /^\d[\d-]{8,}$/.test(q.replace(/\s/g,''));
     var filter = isIsbn
       ? 'filter[isbn][_eq]=' + encodeURIComponent(q)
-      : 'filter[titulo][_contains]=' + encodeURIComponent(q);
-    fetch(DIRECTUS + '/items/biblioteca?' + filter + '&fields=isbn,titulo,autor,editora&limit=5')
+      : 'filter[_or][0][titulo][_icontains]=' + encodeURIComponent(q) +
+        '&filter[_or][1][autor][_icontains]=' + encodeURIComponent(q);
+    fetch(DIRECTUS + '/items/biblioteca?' + filter + '&fields=isbn,titulo,autor,editora&limit=10')
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var livros = d.data || [];
