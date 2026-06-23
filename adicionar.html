@@ -312,6 +312,7 @@
     return null;
   }
 
+  var oembedTimer = null;
   document.getElementById('f-url').addEventListener('input', function () {
     var url = this.value.trim();
     if (!url) { document.getElementById('tipo-field').style.display = 'none'; return; }
@@ -319,7 +320,31 @@
     var detected = detectTipo(url);
     if (detected) setTipo(detected, true);
     else if (!activeTipo) setTipo('link', true);
+    clearTimeout(oembedTimer);
+    oembedTimer = setTimeout(function () { fetchOembed(url); }, 600);
   });
+
+  function fetchOembed(url) {
+    var tipo = detectTipo(url);
+    if (tipo !== 'video' && tipo !== 'podcast') return;
+    var oeUrl = tipo === 'video'
+      ? 'https://www.youtube.com/oembed?url=' + encodeURIComponent(url) + '&format=json'
+      : 'https://open.spotify.com/oembed?url=' + encodeURIComponent(url);
+    fetch(oeUrl)
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d) return;
+        function fill(id, val) { var el = document.getElementById(id); if (el && !el.value) el.value = val; }
+        if (tipo === 'video') {
+          fill('f-titulo', d.title || '');
+          fill('f-canal',  d.author_name || '');
+        } else {
+          fill('f-show',   d.author_name || '');
+          fill('f-titulo', d.title || '');
+        }
+      })
+      .catch(function () {});
+  }
 
   /* ── TIPO PILLS ── */
   document.getElementById('tipo-grid').addEventListener('click', function (e) {
