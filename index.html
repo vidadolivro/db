@@ -133,7 +133,7 @@
     .recentes-section { margin-bottom: 52px; }
     .recentes-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 16px;
     }
     .recente-card {
@@ -190,8 +190,12 @@
     .recente-capa--texto { background-color: #f0efe8; position: relative; }
     .recente-capa-tag { position: absolute; top: 10px; left: 10px; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
     .recente-trecho { position: absolute; bottom: 10px; left: 10px; right: 10px; font-style: italic; font-size: 10px; line-height: 1.5; color: var(--mid); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+    .recente-capa--livro { background-color: #fff; background-size: contain; background-repeat: no-repeat; background-position: center; }
     .recente-capa--link { background-color: var(--bg); border: 1px solid var(--border); position: relative; }
     .recente-domain { position: absolute; bottom: 10px; left: 10px; font-family: var(--mono); font-size: 10px; color: var(--mid); }
+    .recente-capa--podcast { background-color: #e8e4db; position: relative; }
+    .recente-show { position: absolute; top: 10px; left: 10px; right: 10px; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .recente-ep { position: absolute; bottom: 10px; left: 10px; right: 10px; font-size: 10px; font-style: italic; color: var(--ink); line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
 
     /* TOPICS */
     .index-section { margin-bottom: 52px; }
@@ -293,7 +297,7 @@
       .header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
       .search-form { width: 100%; }
       .search-form input { flex: 1; width: auto; }
-      .recentes-grid { grid-template-columns: repeat(2, 1fr); }
+      .recentes-grid { grid-template-columns: repeat(3, 1fr); }
       .index-grid { grid-template-columns: 1fr; }
       #col2 .index-item:first-child { border-top: none; }
       .dir-cards { grid-template-columns: repeat(2, 1fr); }
@@ -440,16 +444,17 @@
     const livros   = (window.LIVROS || []).filter(l => l.macrotema);
     const temasMap = window.TEMAS || {};
 
-    let ultimoVideo = null, ultimoTexto = null, ultimoLink = null;
+    let ultimoVideo = null, ultimoTexto = null, ultimoLink = null, ultimoPodcast = null;
     Object.keys(temasMap).forEach(slug => {
       const t = temasMap[slug];
       if (t.videos  && t.videos.length)  ultimoVideo = { tipo: 'video', slug, item: t.videos[t.videos.length - 1] };
       if (t.textos  && t.textos.length)  ultimoTexto = { tipo: 'texto', slug, item: t.textos[t.textos.length - 1] };
-      if (t.links   && t.links.length)   ultimoLink  = { tipo: 'link',  slug, item: t.links[t.links.length - 1] };
+      if (t.links    && t.links.length)    ultimoLink    = { tipo: 'link',    slug, item: t.links[t.links.length - 1] };
+      if (t.podcasts && t.podcasts.length) ultimoPodcast = { tipo: 'podcast', slug, item: t.podcasts[t.podcasts.length - 1] };
     });
     const ultimoLivro = livros.length ? { tipo: 'livro', item: livros[livros.length - 1] } : null;
 
-    const entries = [ultimoLivro, ultimoVideo, ultimoTexto, ultimoLink].filter(Boolean);
+    const entries = [ultimoLivro, ultimoVideo, ultimoTexto, ultimoLink, ultimoPodcast].filter(Boolean);
 
     const grid = document.getElementById('recentes-grid');
     const sec  = document.getElementById('recentes-sec');
@@ -495,13 +500,25 @@
           '<span class="recente-tema">' + temaNome + '</span>' +
           '</a>';
       }
+      if (tipo === 'podcast') {
+        const pd = entry.item;
+        return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
+          '<div class="recente-capa recente-capa--podcast">' +
+            '<span class="recente-show">' + (pd.show || '') + '</span>' +
+            '<span class="recente-ep">' + pd.titulo + '</span>' +
+          '</div>' +
+          '<span class="recente-tipo">podcast</span>' +
+          '<span class="recente-titulo">' + pd.titulo + '</span>' +
+          '<span class="recente-tema">' + temaNome + '</span>' +
+          '</a>';
+      }
       /* livro */
       const l = entry.item;
       const ls = (l.temas || [])[0] || '';
       const capaStyle = l.capa ? 'background-image:url(\'' + l.capa.replace(/'/g, '%27') + '\')' : '';
       const fallback  = !l.capa ? '<span class="recente-capa-fallback">' + l.titulo + '</span>' : '';
       return '<a href="tema?slug=' + ls + '" class="recente-card">' +
-        '<div class="recente-capa" style="' + capaStyle + '">' + fallback + '</div>' +
+        '<div class="recente-capa recente-capa--livro" style="' + capaStyle + '">' + fallback + '</div>' +
         '<span class="recente-tipo">livro</span>' +
         '<span class="recente-titulo">' + l.titulo + '</span>' +
         '<span class="recente-tema">' + (slugToNome[ls] || ls) + '</span>' +
