@@ -249,20 +249,8 @@
       margin-bottom: 18px;
       padding-bottom: 18px;
       border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
     }
     .p-item:last-child { border-bottom: none; }
-    .p-art {
-      width: 64px;
-      height: 64px;
-      flex-shrink: 0;
-      background: var(--ink);
-      background-size: cover;
-      background-position: center;
-    }
-    .p-content { flex: 1; min-width: 0; }
     .p-show {
       font-size: 9px;
       letter-spacing: 0.12em;
@@ -531,15 +519,10 @@
   /* Podcasts column */
   var pods = t.podcasts || [];
   var podsHtml = pods.map(function(p) {
-    var artUrl = p.href && media.podcasts && media.podcasts[p.href];
-    var artStyle = artUrl ? ' style="background-image:url(\'' + artUrl.replace(/'/g,'%27') + '\')"' : '';
     return '<div class="p-item">' +
-      '<div class="p-art"' + artStyle + '></div>' +
-      '<div class="p-content">' +
       '<div class="p-show">' + esc(p.show) + '</div>' +
       '<div class="p-title"><a href="' + esc(p.href) + '">' + esc(p.titulo) + '</a></div>' +
       '<div class="p-meta">' + esc(p.meta) + '</div>' +
-      '</div>' +
       '</div>';
   }).join('');
   var colPods = '<div class="col">' +
