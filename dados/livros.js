@@ -204,7 +204,7 @@ window.LIVROS = [
     "autor": "Sérgio Rodrigues",
     "editora": "Companhia das Letras",
     "ano": "",
-    "capa": "",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788535941678-M.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria",
@@ -218,7 +218,7 @@ window.LIVROS = [
     "autor": "Robert Mckee",
     "editora": "Arte & Letra",
     "ano": "",
-    "capa": "",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788560499007-M.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
