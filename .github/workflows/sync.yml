@@ -7,7 +7,12 @@ on:
     branches: [main]
     paths-ignore:
       - 'dados/**'         # evita loop quando o próprio sync commita
-  workflow_dispatch:       # botão manual no GitHub Actions
+  workflow_dispatch:       # botão manual / disparado pelo Directus a cada adição
+
+# se chegarem várias adições em sequência, roda só a mais recente (o sync é idempotente)
+concurrency:
+  group: sync
+  cancel-in-progress: true
 
 jobs:
   sync:

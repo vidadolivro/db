@@ -481,7 +481,7 @@
       if (!r.ok) return r.json().then(function (d) { throw new Error((d.errors && d.errors[0] && d.errors[0].message) || 'erro ao salvar'); });
       return r.json();
     })
-    .then(function () { triggerSync(); show('view-ok'); })
+    .then(function () { show('view-ok'); })
     .catch(function (e) {
       showMsg('link-msg', e.message, 'error');
       btn.disabled = false; btn.textContent = 'adicionar';
@@ -573,7 +573,7 @@
           if (!r.ok) return r.json().then(function(d){ throw new Error((d.errors&&d.errors[0]&&d.errors[0].message)||'erro'); });
         });
       }))
-      .then(function () { triggerSync(); show('view-ok'); })
+      .then(function () { show('view-ok'); })
       .catch(function (e) {
         showMsg('livro-form-msg', e.message, 'error');
         btn.disabled = false; btn.textContent = 'adicionar';
@@ -583,13 +583,8 @@
 
   function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-  function triggerSync() {
-    fetch('https://api.github.com/repos/vidadolivro/db/actions/workflows/sync.yml/dispatches', {
-      method: 'POST',
-      headers: { Authorization: 'Bearer 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', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ref: 'main' }),
-    }).catch(function(){}); /* fire and forget */
-  }
+  /* o sync é disparado pelo Directus (Flow on item.create), não pelo navegador —
+     assim nenhum token do GitHub fica exposto no cliente. */
 
   document.getElementById('btn-buscar-livro').addEventListener('click', function () {
     var q = document.getElementById('f-isbn').value.trim();
