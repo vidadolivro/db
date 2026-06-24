@@ -111,15 +111,15 @@ async function run() {
       if (!isbnIndex[key]) {
         isbnIndex[key] = livros.length;
         livros.push({
-          isbn:      item.isbn      || '',
+          isbn:      item.isbn           || '',
           titulo:    item.titulo,
-          autor:     normAutor(item.autor) || '',
-          editora:   item.editora   || '',
-          ano:       '',
-          capa:      item._capa || '',
+          autor:     item._autor         || normAutor(item.autor) || '',
+          editora:   item._editora       || item.editora          || '',
+          ano:       item._ano           || '',
+          capa:      item._capa          || '',
           macrotema: macro,
           temas:     temaSlug ? [temaSlug] : [],
-          href:      item.href      || '#',
+          href:      item.href           || '#',
         });
       } else if (temaSlug) {
         const l = livros[isbnIndex[key]];
@@ -163,31 +163,29 @@ async function fetchDbLivros() {
     const d = await r.json();
     const items = d.data || [];
 
-    /* buscar capas via Open Library para itens com ISBN */
-    const seen = new Set();
-    await Promise.all(items.map(async item => {
-      if (!item.isbn || seen.has(item.isbn)) return;
-      seen.add(item.isbn);
-      item._capa = await fetchOpenLibraryCover(item.isbn);
-    }));
-    /* propagar capa para duplicatas do mesmo ISBN */
-    items.forEach(item => { if (item.isbn) item._capa = items.find(i => i.isbn === item.isbn)?._capa || ''; });
+    /* enriquecer com capa_url e dados da coleção biblioteca */
+    const isbns = [...new Set(items.map(i => i.isbn).filter(Boolean))];
+    if (isbns.length) {
+      const br = await fetch(
+        DIRECTUS_BASE + '/items/biblioteca?filter[isbn][_in]=' + encodeURIComponent(isbns.join(',')) +
+        '&fields=isbn,capa_url,autor,editora,data_publicacao&limit=' + (isbns.length + 5)
+      );
+      const bd = await br.json();
+      const bibMap = {};
+      (bd.data || []).forEach(b => { bibMap[b.isbn] = b; });
+      items.forEach(item => {
+        const bib = bibMap[item.isbn];
+        if (bib) {
+          item._capa    = bib.capa_url || '';
+          item._autor   = item.autor   || normAutor(bib.autor)         || '';
+          item._editora = item.editora || bib.editora                  || '';
+          item._ano     = normAno(bib.data_publicacao) || '';
+        }
+      });
+    }
 
     return items;
   } catch { return []; }
-}
-
-async function fetchOpenLibraryCover(isbn) {
-  try {
-    const url = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
-    const r = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(6000) });
-    const cl = parseInt(r.headers.get('content-length') || '0', 10);
-    if (r.ok && (cl === 0 || cl > 1000)) {
-      console.log(`  ✓ capa ISBN ${isbn}`);
-      return url;
-    }
-    return '';
-  } catch { return ''; }
 }
 
 /* ── fase 2: temas-media ── */
