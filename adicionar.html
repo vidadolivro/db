@@ -586,6 +586,29 @@
   /* o sync é disparado pelo Directus (Flow on item.create), não pelo navegador —
      assim nenhum token do GitHub fica exposto no cliente. */
 
+  /* busca metadados de um livro (inclusive gringo) no Open Library por ISBN */
+  function buscarOpenLibrary(isbn) {
+    var clean = String(isbn).replace(/[^0-9Xx]/g, '');
+    if (!clean) return Promise.resolve(null);
+    return fetch('https://openlibrary.org/api/books?bibkeys=ISBN:' + encodeURIComponent(clean) + '&format=json&jscmd=data')
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        var d = j['ISBN:' + clean];
+        if (!d || !d.title) return null;
+        var ano = '';
+        if (d.publish_date) { var m = String(d.publish_date).match(/\d{4}/); if (m) ano = m[0]; }
+        return {
+          isbn: clean,
+          titulo: d.title,
+          autor: (d.authors || []).map(function (a) { return a.name; }).filter(function (n, i, arr) { return n && arr.indexOf(n) === i; }).join(' & '),
+          editora: (d.publishers && d.publishers[0] && d.publishers[0].name) || '',
+          ano: ano,
+          _fonte: 'Open Library',
+        };
+      })
+      .catch(function () { return null; });
+  }
+
   document.getElementById('btn-buscar-livro').addEventListener('click', function () {
     var q = document.getElementById('f-isbn').value.trim();
     if (!q) return;
@@ -599,6 +622,13 @@
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var livros = d.data || [];
+        /* fallback: livro gringo não está na base brasileira → busca no Open Library por ISBN */
+        if (!livros.length && isIsbn) {
+          return buscarOpenLibrary(q).then(function (ol) { return ol ? [ol] : []; });
+        }
+        return livros;
+      })
+      .then(function (livros) {
         var html = '';
         if (!livros.length) {
           html = '<p style="font-size:12px;color:var(--mid);margin-bottom:12px">nenhum resultado encontrado.</p>';
@@ -606,12 +636,10 @@
           html = livros.map(function (l, i) {
             return '<div class="livro-card" data-idx="' + i + '" style="border:1px solid var(--border);padding:12px;margin-bottom:8px;font-size:12px;cursor:pointer;transition:border-color .1s" ' +
               'onmouseover="this.style.borderColor=\'var(--ink)\'" onmouseout="this.style.borderColor=\'var(--border)\'">' +
-              '<strong>' + esc(l.titulo||'') + '</strong><br>' +
+              '<strong>' + esc(l.titulo||'') + '</strong>' + (l._fonte ? ' <span style="font-size:10px;color:var(--mid)">· ' + esc(l._fonte) + '</span>' : '') + '<br>' +
               '<span style="color:var(--mid)">' + esc(l.autor||'') + (l.editora ? ' · ' + esc(l.editora) : '') + '</span>' +
               '</div>';
           }).join('');
-          /* guarda dados para uso no click */
-          document.getElementById('livro-resultado')._livros = livros;
         }
         html += '<button class="btn btn-ghost" id="btn-add-manual" style="margin-top:4px">+ adicionar manualmente</button>';
         document.getElementById('livro-resultado').innerHTML = html;
