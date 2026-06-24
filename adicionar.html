@@ -36,6 +36,7 @@
       outline: none; transition: border-color 0.1s; -webkit-appearance: none; appearance: none; border-radius: 0;
     }
     input:focus, select:focus, textarea:focus { border-color: var(--ink); }
+    input[type="checkbox"] { -webkit-appearance: checkbox; appearance: checkbox; width: auto; padding: 0; border: none; margin: 0; }
     textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
     select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23bbb'/%3E%3C/svg%3E");
@@ -287,8 +288,8 @@
     if (sel.options.length > 1) return;
     var TEMAS = window.TEMAS || {};
     Object.keys(TEMAS)
-      .map(function (k) { return { k: k, t: TEMAS[k].titulo }; })
-      .sort(function (a, b) { return a.t.localeCompare(b.t, 'pt'); })
+      .map(function (k) { return { k: k, t: TEMAS[k].titulo, n: parseInt(TEMAS[k].num) || 0 }; })
+      .sort(function (a, b) { return a.n - b.n; })
       .forEach(function (item) {
         var opt = document.createElement('option');
         opt.value = item.k; opt.textContent = item.t;
@@ -516,8 +517,8 @@
     /* popula temas como checkboxes */
     var checksEl = document.getElementById('livro-temas-checks');
     var TEMAS = window.TEMAS || {};
-    Object.keys(TEMAS).map(function(k){ return { k:k, t:TEMAS[k].titulo }; })
-      .sort(function(a,b){ return a.t.localeCompare(b.t,'pt'); })
+    Object.keys(TEMAS).map(function(k){ return { k:k, t:TEMAS[k].titulo, n:parseInt(TEMAS[k].num)||0 }; })
+      .sort(function(a,b){ return a.n - b.n; })
       .forEach(function(item){
         var label = document.createElement('label');
         label.style.cssText = 'display:flex;align-items:center;gap:7px;font-size:11px;color:var(--ink);cursor:pointer;letter-spacing:0;text-transform:none';
