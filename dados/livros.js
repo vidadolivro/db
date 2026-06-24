@@ -201,10 +201,10 @@ window.LIVROS = [
   {
     "isbn": "9788535941678",
     "titulo": "Escrever é humano",
-    "autor": "Sérgio Rodrigues",
+    "autor": "Rodrigues, Sérgio",
     "editora": "Companhia das Letras",
-    "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788535941678-M.jpg",
+    "ano": 2025,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535941678/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria",
@@ -215,10 +215,10 @@ window.LIVROS = [
   {
     "isbn": "9788560499007",
     "titulo": "Story",
-    "autor": "Robert Mckee",
+    "autor": "Mckee, Robert",
     "editora": "Arte & Letra",
-    "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788560499007-M.jpg",
+    "ano": 2017,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788560499007/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
