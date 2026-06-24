@@ -488,6 +488,80 @@
   });
 
   /* ── BUSCA LIVRO ── */
+  var livroSelecionado = null;
+
+  function renderLivroForm(livro) {
+    livroSelecionado = livro;
+    var isManual = !livro.isbn;
+    var html = '<div style="border:1px solid var(--ink);padding:16px;margin-bottom:16px">' +
+      (livro.titulo ? '<div style="font-size:13px;font-weight:600;margin-bottom:2px">' + esc(livro.titulo) + '</div>' : '') +
+      (livro.autor  ? '<div style="font-size:11px;color:var(--mid);margin-bottom:12px">' + esc(livro.autor) + (livro.editora ? ' · ' + esc(livro.editora) : '') + '</div>' : '') +
+      '</div>';
+    if (isManual) {
+      html = '<div class="field"><label>título</label><input type="text" id="lm-titulo" value="' + esc(livro.titulo||'') + '"></div>' +
+             '<div class="field"><label>autor</label><input type="text" id="lm-autor"></div>' +
+             '<div class="field"><label>editora</label><input type="text" id="lm-editora"></div>' +
+             '<div class="field"><label>isbn <span class="opt">(opcional)</span></label><input type="text" id="lm-isbn"></div>' +
+             '<div class="field"><label>link <span class="opt">(opcional)</span></label><input type="text" id="lm-href" placeholder="https://…"></div>';
+    }
+    html += '<div class="field"><label>tema <span class="opt">(opcional)</span></label>' +
+      '<select id="livro-tema"><option value="">selecione…</option></select></div>' +
+      '<div id="livro-form-msg"></div>' +
+      '<div style="display:flex;gap:8px">' +
+      '<button class="btn" id="btn-confirmar-livro">adicionar</button>' +
+      '<button class="btn btn-ghost" id="btn-cancelar-livro">cancelar</button>' +
+      '</div>';
+    document.getElementById('livro-resultado').innerHTML = html;
+
+    /* popula tema */
+    var sel = document.getElementById('livro-tema');
+    var TEMAS = window.TEMAS || {};
+    Object.keys(TEMAS).map(function(k){ return { k:k, t:TEMAS[k].titulo }; })
+      .sort(function(a,b){ return a.t.localeCompare(b.t,'pt'); })
+      .forEach(function(item){
+        var opt = document.createElement('option');
+        opt.value = item.k; opt.textContent = item.t; sel.appendChild(opt);
+      });
+
+    document.getElementById('btn-cancelar-livro').addEventListener('click', function () {
+      livroSelecionado = null;
+      document.getElementById('livro-resultado').innerHTML = '';
+    });
+
+    document.getElementById('btn-confirmar-livro').addEventListener('click', function () {
+      var token = getToken();
+      if (!token) return;
+      function vl(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+      var payload = {
+        isbn:      livro.isbn  || vl('lm-isbn'),
+        titulo:    livro.titulo|| vl('lm-titulo'),
+        autor:     livro.autor || vl('lm-autor'),
+        editora:   livro.editora || vl('lm-editora'),
+        href:      livro.href  || vl('lm-href'),
+        tema_slug: vl('livro-tema'),
+      };
+      if (!payload.titulo) { showMsg('livro-form-msg', 'título é obrigatório.', 'error'); return; }
+      var btn = this; btn.disabled = true; btn.textContent = 'salvando…';
+      fetch(DIRECTUS + '/items/db_livros', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+        body: JSON.stringify(payload),
+      })
+      .then(function (r) {
+        if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
+        if (!r.ok) return r.json().then(function(d){ throw new Error((d.errors&&d.errors[0]&&d.errors[0].message)||'erro'); });
+        return r.json();
+      })
+      .then(function () { show('view-ok'); })
+      .catch(function (e) {
+        showMsg('livro-form-msg', e.message, 'error');
+        btn.disabled = false; btn.textContent = 'adicionar';
+      });
+    });
+  }
+
+  function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
   document.getElementById('btn-buscar-livro').addEventListener('click', function () {
     var q = document.getElementById('f-isbn').value.trim();
     if (!q) return;
@@ -501,23 +575,45 @@
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var livros = d.data || [];
+        var html = '';
         if (!livros.length) {
-          document.getElementById('livro-resultado').innerHTML = '<p style="font-size:12px;color:var(--mid)">nenhum resultado. <a href="#" id="add-manual" style="color:var(--ink)">adicionar manualmente →</a></p>';
-          document.getElementById('add-manual') && document.getElementById('add-manual').addEventListener('click', function(e){ e.preventDefault(); });
-          return;
+          html = '<p style="font-size:12px;color:var(--mid);margin-bottom:12px">nenhum resultado encontrado.</p>';
+        } else {
+          html = livros.map(function (l, i) {
+            return '<div class="livro-card" data-idx="' + i + '" style="border:1px solid var(--border);padding:12px;margin-bottom:8px;font-size:12px;cursor:pointer;transition:border-color .1s" ' +
+              'onmouseover="this.style.borderColor=\'var(--ink)\'" onmouseout="this.style.borderColor=\'var(--border)\'">' +
+              '<strong>' + esc(l.titulo||'') + '</strong><br>' +
+              '<span style="color:var(--mid)">' + esc(l.autor||'') + (l.editora ? ' · ' + esc(l.editora) : '') + '</span>' +
+              '</div>';
+          }).join('');
+          /* guarda dados para uso no click */
+          document.getElementById('livro-resultado')._livros = livros;
         }
-        var html = livros.map(function (l) {
-          return '<div style="border:1px solid var(--border);padding:12px;margin-bottom:8px;font-size:12px">' +
-            '<strong>' + (l.titulo||'') + '</strong><br>' +
-            '<span style="color:var(--mid)">' + (l.autor||'') + (l.editora ? ' · ' + l.editora : '') + '</span>' +
-            '</div>';
-        }).join('');
+        html += '<button class="btn btn-ghost" id="btn-add-manual" style="margin-top:4px">+ adicionar manualmente</button>';
         document.getElementById('livro-resultado').innerHTML = html;
+        document.getElementById('livro-resultado')._livros = livros;
+
+        /* click em card */
+        document.querySelectorAll('.livro-card').forEach(function (card) {
+          card.addEventListener('click', function () {
+            var idx = parseInt(this.dataset.idx);
+            renderLivroForm(livros[idx]);
+          });
+        });
+
+        /* adicionar manualmente */
+        document.getElementById('btn-add-manual').addEventListener('click', function () {
+          renderLivroForm({ titulo: document.getElementById('f-isbn').value.trim() });
+        });
       })
       .catch(function () {
         document.getElementById('livro-resultado').innerHTML = '<p style="font-size:12px;color:#b00">erro na busca</p>';
       })
       .finally(function () { btn.disabled = false; btn.textContent = 'buscar'; });
+  });
+
+  document.getElementById('f-isbn').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') document.getElementById('btn-buscar-livro').click();
   });
 
   /* ── NOVA ── */
