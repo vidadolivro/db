@@ -504,8 +504,8 @@
              '<div class="field"><label>isbn <span class="opt">(opcional)</span></label><input type="text" id="lm-isbn"></div>' +
              '<div class="field"><label>link <span class="opt">(opcional)</span></label><input type="text" id="lm-href" placeholder="https://…"></div>';
     }
-    html += '<div class="field"><label>tema <span class="opt">(opcional)</span></label>' +
-      '<select id="livro-tema"><option value="">selecione…</option></select></div>' +
+    html += '<div class="field"><label>temas <span class="opt">(opcional — pode marcar mais de um)</span></label>' +
+      '<div id="livro-temas-checks" style="display:flex;flex-direction:column;gap:5px;max-height:200px;overflow-y:auto;border:1px solid var(--border);padding:10px"></div></div>' +
       '<div id="livro-form-msg"></div>' +
       '<div style="display:flex;gap:8px">' +
       '<button class="btn" id="btn-confirmar-livro">adicionar</button>' +
@@ -513,14 +513,19 @@
       '</div>';
     document.getElementById('livro-resultado').innerHTML = html;
 
-    /* popula tema */
-    var sel = document.getElementById('livro-tema');
+    /* popula temas como checkboxes */
+    var checksEl = document.getElementById('livro-temas-checks');
     var TEMAS = window.TEMAS || {};
     Object.keys(TEMAS).map(function(k){ return { k:k, t:TEMAS[k].titulo }; })
       .sort(function(a,b){ return a.t.localeCompare(b.t,'pt'); })
       .forEach(function(item){
-        var opt = document.createElement('option');
-        opt.value = item.k; opt.textContent = item.t; sel.appendChild(opt);
+        var label = document.createElement('label');
+        label.style.cssText = 'display:flex;align-items:center;gap:7px;font-size:11px;color:var(--ink);cursor:pointer;letter-spacing:0;text-transform:none';
+        var cb = document.createElement('input');
+        cb.type = 'checkbox'; cb.value = item.k; cb.style.cssText = 'width:auto;margin:0';
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode(item.t));
+        checksEl.appendChild(label);
       });
 
     document.getElementById('btn-cancelar-livro').addEventListener('click', function () {
@@ -532,26 +537,30 @@
       var token = getToken();
       if (!token) return;
       function vl(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
-      var payload = {
-        isbn:      livro.isbn  || vl('lm-isbn'),
-        titulo:    livro.titulo|| vl('lm-titulo'),
-        autor:     livro.autor || vl('lm-autor'),
-        editora:   livro.editora || vl('lm-editora'),
-        href:      livro.href  || vl('lm-href'),
-        tema_slug: vl('livro-tema'),
+      var temasSelecionados = Array.from(document.querySelectorAll('#livro-temas-checks input:checked')).map(function(cb){ return cb.value; });
+      var base = {
+        isbn:    livro.isbn    || vl('lm-isbn'),
+        titulo:  livro.titulo  || vl('lm-titulo'),
+        autor:   livro.autor   || vl('lm-autor'),
+        editora: livro.editora || vl('lm-editora'),
+        href:    livro.href    || vl('lm-href'),
       };
-      if (!payload.titulo) { showMsg('livro-form-msg', 'título é obrigatório.', 'error'); return; }
+      if (!base.titulo) { showMsg('livro-form-msg', 'título é obrigatório.', 'error'); return; }
       var btn = this; btn.disabled = true; btn.textContent = 'salvando…';
-      fetch(DIRECTUS + '/items/db_livros', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
-        body: JSON.stringify(payload),
-      })
-      .then(function (r) {
-        if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
-        if (!r.ok) return r.json().then(function(d){ throw new Error((d.errors&&d.errors[0]&&d.errors[0].message)||'erro'); });
-        return r.json();
-      })
+      /* um POST por tema (ou um sem tema se nenhum marcado) */
+      var payloads = temasSelecionados.length
+        ? temasSelecionados.map(function(t){ return Object.assign({}, base, { tema_slug: t }); })
+        : [Object.assign({}, base, { tema_slug: '' })];
+      Promise.all(payloads.map(function(payload){
+        return fetch(DIRECTUS + '/items/db_livros', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+          body: JSON.stringify(payload),
+        }).then(function(r){
+          if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
+          if (!r.ok) return r.json().then(function(d){ throw new Error((d.errors&&d.errors[0]&&d.errors[0].message)||'erro'); });
+        });
+      }))
       .then(function () { show('view-ok'); })
       .catch(function (e) {
         showMsg('livro-form-msg', e.message, 'error');
