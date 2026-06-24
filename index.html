@@ -496,7 +496,7 @@
         const v = entry.item;
         const thumb = ytThumb(v.href);
         const bg = thumb ? ' style="background-image:url(\'' + thumb + '\');background-size:cover;"' : '';
-        return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
+        return '<a href="' + (entry.item.href || '#') + '" target="_blank" rel="noopener" class="recente-card">' +
           '<div class="recente-capa recente-capa--video"' + bg + '>' +
             '<span class="recente-play">▶</span>' +
             '<span class="recente-canal">' + (v.canal || '') + '</span>' +
@@ -508,7 +508,7 @@
       }
       if (tipo === 'texto') {
         const tx = entry.item;
-        return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
+        return '<a href="' + (entry.item.href || '#') + '" target="_blank" rel="noopener" class="recente-card">' +
           '<div class="recente-capa recente-capa--texto">' +
             '<span class="recente-capa-tag">' + (tx.tag || 'texto') + '</span>' +
             '<span class="recente-trecho">' + (tx.trecho || '') + '</span>' +
@@ -523,7 +523,7 @@
         const media = window.TEMAS_MEDIA || {};
         const ogImg = lk.href && media.links && media.links[lk.href];
         const ogBg  = ogImg ? ' style="background-image:url(\'' + ogImg.replace(/'/g, '%27') + '\');background-size:cover;background-position:center;"' : '';
-        return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
+        return '<a href="' + (entry.item.href || '#') + '" target="_blank" rel="noopener" class="recente-card">' +
           '<div class="recente-capa recente-capa--link"' + ogBg + '>' +
             (ogImg ? '' : '<span class="recente-domain">→ ' + (lk.domain || '') + '</span>') +
           '</div>' +
@@ -537,7 +537,7 @@
         const media2 = window.TEMAS_MEDIA || {};
         const spImg  = pd.href && media2.podcasts && media2.podcasts[pd.href];
         const spBg   = spImg ? ' style="background-image:url(\'' + spImg.replace(/'/g, '%27') + '\');background-size:cover;background-position:center;"' : '';
-        return '<a href="tema?slug=' + entry.slug + '" class="recente-card">' +
+        return '<a href="' + (entry.item.href || '#') + '" target="_blank" rel="noopener" class="recente-card">' +
           '<div class="recente-capa recente-capa--podcast"' + spBg + '>' +
             (spImg ? '' : '<span class="recente-show">' + (pd.show || '') + '</span>' +
               '<span class="recente-ep">' + pd.titulo + '</span>') +

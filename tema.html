@@ -496,8 +496,8 @@
     var thumb = ytThumb(v.href);
     var bgStyle = thumb ? ' style="background-image:url(\'' + thumb + '\')"' : '';
     return '<div class="v-item">' +
-      '<a href="' + esc(v.href) + '" class="v-thumb"' + bgStyle + '><span class="v-play">▶</span></a>' +
-      '<div class="v-title"><a href="' + esc(v.href) + '">' + esc(v.titulo) + '</a></div>' +
+      '<a href="' + esc(v.href) + '" class="v-thumb" target="_blank" rel="noopener"' + bgStyle + '><span class="v-play">▶</span></a>' +
+      '<div class="v-title"><a href="' + esc(v.href) + '" target="_blank" rel="noopener">' + esc(v.titulo) + '</a></div>' +
       '<div class="v-meta">' + esc(v.canal) + ' · ' + esc(v.meta) + '</div>' +
       '</div>';
   }).join('');
@@ -510,7 +510,7 @@
   var textosHtml = textos.map(function(tx) {
     return '<div class="t-item">' +
       '<div class="t-tag">' + esc(tx.tag) + '</div>' +
-      '<div class="t-title"><a href="' + esc(tx.href) + '">' + esc(tx.titulo) + '</a></div>' +
+      '<div class="t-title"><a href="' + esc(tx.href) + '" target="_blank" rel="noopener">' + esc(tx.titulo) + '</a></div>' +
       '<p class="t-trecho">' + esc(tx.trecho) + '</p>' +
       '<div class="t-fonte">' + esc(tx.fonte) + '</div>' +
       '</div>';
@@ -525,7 +525,7 @@
     var typeHtml = lk.tipo ? '<div class="l-type">' + esc(lk.tipo) + '</div>' : '';
     return '<div class="l-item">' +
       typeHtml +
-      '<a href="' + esc(lk.href) + '" class="l-title">' + esc(lk.titulo) + '</a>' +
+      '<a href="' + esc(lk.href) + '" class="l-title" target="_blank" rel="noopener">' + esc(lk.titulo) + '</a>' +
       '<span class="l-domain">' + esc(lk.domain) + '</span>' +
       '</div>';
   }).join('');
@@ -538,7 +538,7 @@
   var podsHtml = pods.map(function(p) {
     return '<div class="p-item">' +
       '<div class="p-show">' + esc(p.show) + '</div>' +
-      '<div class="p-title"><a href="' + esc(p.href) + '">' + esc(p.titulo) + '</a></div>' +
+      '<div class="p-title"><a href="' + esc(p.href) + '" target="_blank" rel="noopener">' + esc(p.titulo) + '</a></div>' +
       '<div class="p-meta">' + esc(p.meta) + '</div>' +
       '</div>';
   }).join('');
