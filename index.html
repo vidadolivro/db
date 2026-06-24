@@ -353,6 +353,7 @@
 <script src="dados/livros.js"></script>
 <script src="dados/temas.js"></script>
 <script src="dados/temas-media.js"></script>
+<script src="dados/temas-conteudo.js"></script>
 <script>
   /* SVG pixel-art icons — 16×16 */
   const ic  = d => `<svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${d}</svg>`;
@@ -442,20 +443,39 @@
     const slugToNome = {};
     TOPICS.forEach(t => { slugToNome[t.href.replace('tema?slug=', '')] = t.n; });
 
-    const livros   = (window.LIVROS || []).filter(l => l.macrotema);
-    const temasMap = window.TEMAS || {};
+    /* lê o conteúdo do Directus (temas-conteudo.js) e pega o item MAIS NOVO de cada tipo, por data */
+    const conteudo = window.TEMAS_CONTEUDO || {};
+    function maisRecente(chave, tipo) {
+      let best = null;
+      Object.keys(conteudo).forEach(slug => {
+        (conteudo[slug][chave] || []).forEach(item => {
+          const d = item.date_created || '';
+          if (!best || d > best.date) best = { tipo, slug, item, date: d };
+        });
+      });
+      return best;
+    }
+    const ultimoVideo   = maisRecente('videos',   'video');
+    const ultimoTexto   = maisRecente('textos',   'texto');
+    const ultimoLink    = maisRecente('links',    'link');
+    const ultimoPodcast = maisRecente('podcasts', 'podcast');
 
-    let ultimoVideo = null, ultimoTexto = null, ultimoLink = null, ultimoPodcast = null;
-    Object.keys(temasMap).forEach(slug => {
-      const t = temasMap[slug];
-      if (t.videos  && t.videos.length)  ultimoVideo = { tipo: 'video', slug, item: t.videos[t.videos.length - 1] };
-      if (t.textos  && t.textos.length)  ultimoTexto = { tipo: 'texto', slug, item: t.textos[t.textos.length - 1] };
-      if (t.links    && t.links.length)    ultimoLink    = { tipo: 'link',    slug, item: t.links[t.links.length - 1] };
-      if (t.podcasts && t.podcasts.length) ultimoPodcast = { tipo: 'podcast', slug, item: t.podcasts[t.podcasts.length - 1] };
-    });
-    const ultimoLivro = livros.length ? { tipo: 'livro', item: livros[livros.length - 1] } : null;
+    /* livro mais novo: prioriza os com data (contribuições db_livros); senão, último do array */
+    const livros = (window.LIVROS || []).filter(l => l.macrotema);
+    let ultimoLivro = null;
+    const livrosComData = livros.filter(l => l._date);
+    if (livrosComData.length) {
+      const ml = livrosComData.reduce((a, b) => (b._date > a._date ? b : a));
+      ultimoLivro = { tipo: 'livro', item: ml, date: ml._date, slug: (ml.temas || [])[0] || '' };
+    } else if (livros.length) {
+      const ml = livros[livros.length - 1];
+      ultimoLivro = { tipo: 'livro', item: ml, date: '', slug: (ml.temas || [])[0] || '' };
+    }
 
-    const entries = [ultimoLivro, ultimoVideo, ultimoTexto, ultimoLink, ultimoPodcast].filter(Boolean);
+    /* 1 de cada tipo, ordenados cronologicamente (mais novo primeiro) */
+    const entries = [ultimoLivro, ultimoVideo, ultimoTexto, ultimoLink, ultimoPodcast]
+      .filter(Boolean)
+      .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
     const grid = document.getElementById('recentes-grid');
     const sec  = document.getElementById('recentes-sec');

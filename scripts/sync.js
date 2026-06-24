@@ -120,6 +120,7 @@ async function run() {
           macrotema: macro,
           temas:     temaSlug ? [temaSlug] : [],
           href:      item.href           || '#',
+          _date:     item.date_created   || '',
         });
       } else if (temaSlug) {
         const l = livros[isbnIndex[key]];
@@ -356,7 +357,7 @@ async function syncTemasConteudo() {
         if (!item.tema_slug) return;
         if (!conteudo[item.tema_slug]) conteudo[item.tema_slug] = {};
         if (!conteudo[item.tema_slug][chave]) conteudo[item.tema_slug][chave] = [];
-        const { id, tema_slug, date_created, user_created, ...rest } = item;
+        const { id, tema_slug, user_created, ...rest } = item; // mantém date_created p/ ordenar "recentes"
         conteudo[item.tema_slug][chave].push(rest);
       });
       total += items.length;
