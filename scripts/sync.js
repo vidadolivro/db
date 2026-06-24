@@ -116,7 +116,7 @@ async function run() {
           autor:     normAutor(item.autor) || '',
           editora:   item.editora   || '',
           ano:       '',
-          capa:      '',
+          capa:      item._capa || '',
           macrotema: macro,
           temas:     temaSlug ? [temaSlug] : [],
           href:      item.href      || '#',
@@ -161,8 +161,33 @@ async function fetchDbLivros() {
       headers: { Authorization: 'Bearer ' + t },
     });
     const d = await r.json();
-    return d.data || [];
+    const items = d.data || [];
+
+    /* buscar capas via Open Library para itens com ISBN */
+    const seen = new Set();
+    await Promise.all(items.map(async item => {
+      if (!item.isbn || seen.has(item.isbn)) return;
+      seen.add(item.isbn);
+      item._capa = await fetchOpenLibraryCover(item.isbn);
+    }));
+    /* propagar capa para duplicatas do mesmo ISBN */
+    items.forEach(item => { if (item.isbn) item._capa = items.find(i => i.isbn === item.isbn)?._capa || ''; });
+
+    return items;
   } catch { return []; }
+}
+
+async function fetchOpenLibraryCover(isbn) {
+  try {
+    const url = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+    const r = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(6000) });
+    const cl = parseInt(r.headers.get('content-length') || '0', 10);
+    if (r.ok && (cl === 0 || cl > 1000)) {
+      console.log(`  ✓ capa ISBN ${isbn}`);
+      return url;
+    }
+    return '';
+  } catch { return ''; }
 }
 
 /* ── fase 2: temas-media ── */
