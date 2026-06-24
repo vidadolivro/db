@@ -99,7 +99,7 @@ async function run() {
   dbLivros.forEach(item => {
     if (!item.titulo) return;
     const temaSlug = item.tema_slug || '';
-    const macro    = SLUG_TO_MACRO[temaSlug] || null;
+    const macro    = item.macrotema || SLUG_TO_MACRO[temaSlug] || null;
     if (item.isbn && isbnIndex[item.isbn] !== undefined) {
       /* livro já existe: adiciona tema e macrotema se ainda não tem */
       const l = livros[isbnIndex[item.isbn]];

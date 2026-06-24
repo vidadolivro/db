@@ -505,7 +505,17 @@
              '<div class="field"><label>isbn <span class="opt">(opcional)</span></label><input type="text" id="lm-isbn"></div>' +
              '<div class="field"><label>link <span class="opt">(opcional)</span></label><input type="text" id="lm-href" placeholder="https://…"></div>';
     }
-    html += '<div class="field"><label>temas <span class="opt">(opcional — pode marcar mais de um)</span></label>' +
+    html += '<div class="field"><label>categoria</label>' +
+      '<select id="lm-macro">' +
+      '<option value="">selecione…</option>' +
+      '<option value="historia">história</option>' +
+      '<option value="experiencias">experiências</option>' +
+      '<option value="escrita">escrita</option>' +
+      '<option value="design">design & técnico</option>' +
+      '<option value="marketing">marketing</option>' +
+      '<option value="diversos">diversos</option>' +
+      '</select></div>' +
+      '<div class="field"><label>temas <span class="opt">(opcional — pode marcar mais de um)</span></label>' +
       '<div id="livro-temas-checks" style="display:flex;flex-direction:column;gap:5px;max-height:200px;overflow-y:auto;border:1px solid var(--border);padding:10px"></div></div>' +
       '<div id="livro-form-msg"></div>' +
       '<div style="display:flex;gap:8px">' +
@@ -540,11 +550,12 @@
       function vl(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
       var temasSelecionados = Array.from(document.querySelectorAll('#livro-temas-checks input:checked')).map(function(cb){ return cb.value; });
       var base = {
-        isbn:    livro.isbn    || vl('lm-isbn'),
-        titulo:  livro.titulo  || vl('lm-titulo'),
-        autor:   livro.autor   || vl('lm-autor'),
-        editora: livro.editora || vl('lm-editora'),
-        href:    livro.href    || vl('lm-href'),
+        isbn:      livro.isbn    || vl('lm-isbn'),
+        titulo:    livro.titulo  || vl('lm-titulo'),
+        autor:     livro.autor   || vl('lm-autor'),
+        editora:   livro.editora || vl('lm-editora'),
+        href:      livro.href    || vl('lm-href'),
+        macrotema: vl('lm-macro'),
       };
       if (!base.titulo) { showMsg('livro-form-msg', 'título é obrigatório.', 'error'); return; }
       var btn = this; btn.disabled = true; btn.textContent = 'salvando…';
