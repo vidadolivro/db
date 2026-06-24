@@ -196,9 +196,10 @@
 <script src="dados/temas.js"></script>
 <script>
 (function () {
-  var DIRECTUS  = 'https://directus-production-afdd.up.railway.app';
-  var TOKEN_KEY = 'vdl_token';
-  var NAME_KEY  = 'vdl_nome';
+  var DIRECTUS   = 'https://directus-production-afdd.up.railway.app';
+  var YT_KEY     = 'AIzaSyC4lNAWKPTEH1FNHySbNYx-0MI2Q51hLIA';
+  var TOKEN_KEY  = 'vdl_token';
+  var NAME_KEY   = 'vdl_nome';
   var activeTipo = null;
 
   var VIEWS = ['view-login','view-choice','view-link','view-livro','view-ok'];
@@ -324,26 +325,46 @@
     oembedTimer = setTimeout(function () { fetchOembed(url); }, 600);
   });
 
+  function parseDuration(iso) {
+    var m = iso && iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!m) return '';
+    var h = parseInt(m[1] || 0), min = parseInt(m[2] || 0);
+    return (h ? h + 'h' : '') + (min ? min + 'min' : '') || '';
+  }
+
   function fetchOembed(url) {
     var tipo = detectTipo(url);
     if (tipo !== 'video' && tipo !== 'podcast') return;
-    var oeUrl = tipo === 'video'
-      ? 'https://www.youtube.com/oembed?url=' + encodeURIComponent(url) + '&format=json'
-      : 'https://open.spotify.com/oembed?url=' + encodeURIComponent(url);
-    fetch(oeUrl)
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (d) {
-        if (!d) return;
-        function fill(id, val) { var el = document.getElementById(id); if (el && !el.value) el.value = val; }
-        if (tipo === 'video') {
+
+    function fill(id, val) { var el = document.getElementById(id); if (el && !el.value) el.value = val; }
+
+    if (tipo === 'video') {
+      var ytId = (url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/) || [])[1];
+      if (!ytId) return;
+      /* oEmbed: título + canal */
+      fetch('https://www.youtube.com/oembed?url=' + encodeURIComponent(url) + '&format=json')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d) return;
           fill('f-titulo', d.title || '');
           fill('f-canal',  d.author_name || '');
-        } else {
+        }).catch(function () {});
+      /* YouTube Data API: duração */
+      fetch('https://www.googleapis.com/youtube/v3/videos?id=' + ytId + '&part=contentDetails&key=' + YT_KEY)
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          var dur = d && d.items && d.items[0] && d.items[0].contentDetails && d.items[0].contentDetails.duration;
+          if (dur) fill('f-meta', parseDuration(dur));
+        }).catch(function () {});
+    } else {
+      fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent(url))
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d) return;
           fill('f-show',   d.author_name || '');
           fill('f-titulo', d.title || '');
-        }
-      })
-      .catch(function () {});
+        }).catch(function () {});
+    }
   }
 
   /* ── TIPO PILLS ── */
