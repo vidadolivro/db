@@ -40,8 +40,8 @@
     :root {
       --bg: #fafaf8;
       --ink: #111;
-      --mid: #777;
-      --light: #bbb;
+      --mid: #1a1a1a;
+      --light: #1a1a1a;
       --border: #ddd;
       --mono: "Courier New", Courier, monospace;
       --sans: "Neue Haas Grotesk", -apple-system, system-ui, sans-serif;
@@ -51,7 +51,7 @@
       font-family: var(--sans);
       background: var(--bg);
       color: var(--ink);
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
@@ -88,14 +88,14 @@
     .site-sub {
       font-family: var(--serif);
       font-style: italic;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--mid);
       margin-top: 6px;
     }
     .search-form { display: flex; flex-shrink: 0; }
     .search-form input {
       font-family: var(--sans);
-      font-size: 11px;
+      font-size: 13px;
       border: 1px solid var(--border);
       border-right: none;
       padding: 6px 12px;
@@ -108,7 +108,7 @@
     .search-form input:focus { border-color: var(--ink); }
     .search-form button {
       font-family: var(--sans);
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       border: 1px solid var(--border);
@@ -121,7 +121,7 @@
 
     /* LABEL */
     .section-label {
-      font-size: 9px;
+      font-size: 11px;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--light);
@@ -156,14 +156,14 @@
     .recente-capa-fallback {
       font-family: var(--serif);
       font-style: italic;
-      font-size: 10px;
+      font-size: 12px;
       color: rgba(255,255,255,0.45);
       text-align: center;
       padding: 10px;
       line-height: 1.4;
     }
     .recente-tipo {
-      font-size: 8px;
+      font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--light);
@@ -171,14 +171,14 @@
       margin-bottom: 2px;
     }
     .recente-titulo {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 500;
       line-height: 1.35;
       display: block;
       margin-bottom: 3px;
     }
     .recente-tema {
-      font-size: 9px;
+      font-size: 11px;
       color: var(--light);
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -186,16 +186,16 @@
     .recente-card:hover .recente-titulo { text-decoration: underline; text-underline-offset: 2px; }
     .recente-capa--video { background-color: var(--ink); position: relative; }
     .recente-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgba(255,255,255,0.28); }
-    .recente-canal { position: absolute; bottom: 10px; left: 10px; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); }
+    .recente-canal { position: absolute; bottom: 10px; left: 10px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); }
     .recente-capa--texto { background-color: #f2e8d0; position: relative; }
-    .recente-capa-tag { position: absolute; top: 10px; left: 10px; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
-    .recente-trecho { position: absolute; bottom: 10px; left: 10px; right: 10px; font-style: italic; font-size: 10px; line-height: 1.5; color: var(--mid); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+    .recente-capa-tag { position: absolute; top: 10px; left: 10px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
+    .recente-trecho { position: absolute; bottom: 10px; left: 10px; right: 10px; font-style: italic; font-size: 12px; line-height: 1.5; color: var(--mid); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
     .recente-capa--livro { background-color: #fff; background-size: contain; background-repeat: no-repeat; background-position: center; }
     .recente-capa--link { background-color: var(--bg); border: 1px solid var(--border); position: relative; }
-    .recente-domain { position: absolute; bottom: 10px; left: 10px; font-family: var(--mono); font-size: 10px; color: var(--mid); }
+    .recente-domain { position: absolute; bottom: 10px; left: 10px; font-family: var(--mono); font-size: 12px; color: var(--mid); }
     .recente-capa--podcast { background-color: #e8e4db; position: relative; }
-    .recente-show { position: absolute; top: 10px; left: 10px; right: 10px; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .recente-ep { position: absolute; bottom: 10px; left: 10px; right: 10px; font-size: 10px; font-style: italic; color: var(--ink); line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+    .recente-show { position: absolute; top: 10px; left: 10px; right: 10px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .recente-ep { position: absolute; bottom: 10px; left: 10px; right: 10px; font-size: 12px; font-style: italic; color: var(--ink); line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
 
     /* TOPICS */
     .index-section { margin-bottom: 52px; }
@@ -216,7 +216,7 @@
     .index-item:first-child { border-top: 1px solid var(--border); }
     .idx-num {
       font-family: var(--mono);
-      font-size: 9px;
+      font-size: 11px;
       color: var(--light);
       letter-spacing: 0.1em;
       min-width: 16px;
@@ -232,8 +232,8 @@
       transition: opacity 0.1s;
     }
     .idx-icon svg { width: 14px; height: 14px; display: block; }
-    .idx-name { font-size: 12px; font-weight: 500; letter-spacing: 0.01em; flex: 1; }
-    .idx-arrow { font-size: 10px; color: var(--border); opacity: 0; transition: opacity 0.1s; flex-shrink: 0; }
+    .idx-name { font-size: 13px; font-weight: 500; letter-spacing: 0.01em; flex: 1; }
+    .idx-arrow { font-size: 12px; color: var(--border); opacity: 0; transition: opacity 0.1s; flex-shrink: 0; }
     .index-item:hover .idx-num   { color: var(--ink); }
     .index-item:hover .idx-icon  { opacity: 1; }
     .index-item:hover .idx-arrow { opacity: 1; color: var(--mid); }
@@ -245,7 +245,7 @@
     /* DIRECTORY */
     .dir-section { margin-bottom: 52px; }
     .dir-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
-    .dir-desc { font-size: 11px; color: var(--mid); letter-spacing: 0.03em; }
+    .dir-desc { font-size: 13px; color: var(--mid); letter-spacing: 0.03em; }
     .dir-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -264,8 +264,8 @@
     }
     .dir-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--ink); opacity: 0.4; display: flex; align-items: center; justify-content: center; transition: opacity 0.1s; }
     .dir-icon svg { width: 18px; height: 18px; display: block; }
-    .dir-card-name { font-size: 11px; color: var(--mid); letter-spacing: 0.01em; flex: 1; transition: color 0.1s; line-height: 1.3; }
-    .dir-card-arrow { font-size: 10px; color: var(--border); opacity: 0; transition: opacity 0.1s; }
+    .dir-card-name { font-size: 13px; color: var(--mid); letter-spacing: 0.01em; flex: 1; transition: color 0.1s; line-height: 1.3; }
+    .dir-card-arrow { font-size: 12px; color: var(--border); opacity: 0; transition: opacity 0.1s; }
     .dir-card:hover .dir-icon       { opacity: 1; }
     .dir-card:hover .dir-card-name  { color: var(--ink); }
     .dir-card:hover .dir-card-arrow { opacity: 1; }
@@ -274,7 +274,7 @@
       border-top: none;
     }
     .dir-card--wide .dir-card-desc {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--light);
       letter-spacing: 0.04em;
     }
@@ -287,7 +287,7 @@
       max-width: 900px; width: 100%;
       margin: 0 auto;
       font-family: var(--mono);
-      font-size: 10px; color: var(--light); letter-spacing: 0.08em;
+      font-size: 12px; color: var(--light); letter-spacing: 0.08em;
       display: flex; justify-content: space-between;
     }
 
