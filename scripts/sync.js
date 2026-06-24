@@ -201,6 +201,7 @@ async function syncTemasConteudo() {
     db_links:    'links',
     db_textos:   'textos',
     db_artigos:  'artigos',
+    db_livros:   'livros',
   };
 
   const conteudo = {};

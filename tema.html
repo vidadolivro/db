@@ -561,11 +561,13 @@
     '<div class="col-head"><span>artigos</span><span class="col-count">' + artigos.length + '</span></div>' +
     artigosHtml + '</div>' : '';
 
-  /* Leituras */
+  /* Leituras — curados + adicionados via db_livros */
   var livros = (window.LIVROS || []).filter(function(l) {
     return l.temas && l.temas.indexOf(slug) !== -1;
-  }).sort(function(a, b) {
-    return a.autor.localeCompare(b.autor, 'pt');
+  }).concat((tc.livros || []).map(function(l) {
+    return { isbn: l.isbn, titulo: l.titulo, autor: l.autor||'', editora: l.editora||'', capa: '', href: l.href||'#' };
+  })).sort(function(a, b) {
+    return (a.autor||'').localeCompare(b.autor||'', 'pt');
   });
   var livrosHtml = livros.length
     ? '<div class="livros-grid">' + livros.map(function(l) {
