@@ -129,6 +129,9 @@ async function run() {
     }
   });
 
+  /* resolver capas faltantes/instáveis antes de gerar */
+  await resolveCapas(livros);
+
   /* gerar livros.js */
   const out = [
     '/* vida do livro db — gerado por scripts/sync.js */',
@@ -186,6 +189,53 @@ async function fetchDbLivros() {
 
     return items;
   } catch { return []; }
+}
+
+/* valida ISBN-13 (prefixo 978/979 + checksum) ou ISBN-10 (checksum) — evita lixo como 0000000000000 */
+function isbnValido(raw) {
+  const s = String(raw || '').replace(/[^0-9Xx]/g, '').toUpperCase();
+  if (s.length === 13) {
+    if (!/^97[89]\d{10}$/.test(s)) return false;
+    let sum = 0;
+    for (let i = 0; i < 13; i++) sum += (+s[i]) * (i % 2 ? 3 : 1);
+    return sum % 10 === 0;
+  }
+  if (s.length === 10) {
+    if (/^(.)\1{9}$/.test(s)) return false; // todos iguais
+    let sum = 0;
+    for (let i = 0; i < 10; i++) {
+      const c = s[i] === 'X' ? 10 : +s[i];
+      if (isNaN(c)) return false;
+      sum += c * (10 - i);
+    }
+    return sum % 11 === 0;
+  }
+  return false;
+}
+
+/* ── resolve capas: troca capas vazias ou instáveis (metabooks) pela do Open Library ── */
+async function resolveCapas(livros) {
+  const candidatos = livros.filter(l => isbnValido(l.isbn) && (!l.capa || l.capa.includes('metabooks.com')));
+  if (!candidatos.length) return;
+  console.log(`\nresolvendo capa de ${candidatos.length} livro(s) via Open Library…`);
+  await Promise.all(candidatos.map(async l => {
+    const isbn = String(l.isbn).replace(/[^0-9Xx]/g, '');
+    const url = `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
+    try {
+      /* default=false → 404 se não houver capa (em vez de devolver imagem em branco) */
+      const r = await fetch(url + '?default=false', { redirect: 'follow', signal: AbortSignal.timeout(8000) });
+      const ct = r.headers.get('content-type') || '';
+      const cl = parseInt(r.headers.get('content-length') || '0', 10);
+      if (r.ok && ct.startsWith('image/') && (cl === 0 || cl > 1000)) {
+        l.capa = url;
+        console.log(`  ✓ ${l.titulo} → Open Library`);
+      } else {
+        console.log(`  — sem capa no Open Library: ${l.titulo} (mantém atual)`);
+      }
+    } catch (e) {
+      console.warn(`  ✗ ${l.titulo} — ${e.message} (mantém atual)`);
+    }
+  }));
 }
 
 /* ── fase 2: temas-media ── */
