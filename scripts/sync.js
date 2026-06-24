@@ -66,7 +66,7 @@ async function run() {
     }
   }
 
-  /* merge */
+  /* merge curados */
   const livros = CATS.map(cat => {
     const db    = dbMap[cat.isbn] || {};
     const titulo = cat.titulo || db.titulo || null;
@@ -84,6 +84,40 @@ async function run() {
     };
   }).filter(Boolean);
 
+  /* merge db_livros (contribuições) */
+  const dbLivros = await fetchDbLivros();
+  const isbnIndex = {};
+  livros.forEach((l, i) => { if (l.isbn) isbnIndex[l.isbn] = i; });
+  dbLivros.forEach(item => {
+    if (!item.titulo) return;
+    const temaSlug = item.tema_slug || '';
+    if (item.isbn && isbnIndex[item.isbn] !== undefined) {
+      /* livro já existe: só adiciona o tema */
+      const l = livros[isbnIndex[item.isbn]];
+      if (temaSlug && !l.temas.includes(temaSlug)) l.temas.push(temaSlug);
+    } else {
+      /* livro novo */
+      const key = item.isbn || item.titulo;
+      if (!isbnIndex[key]) {
+        isbnIndex[key] = livros.length;
+        livros.push({
+          isbn:      item.isbn      || '',
+          titulo:    item.titulo,
+          autor:     normAutor(item.autor) || '',
+          editora:   item.editora   || '',
+          ano:       '',
+          capa:      '',
+          macrotema: null,
+          temas:     temaSlug ? [temaSlug] : [],
+          href:      item.href      || '#',
+        });
+      } else if (temaSlug) {
+        const l = livros[isbnIndex[key]];
+        if (!l.temas.includes(temaSlug)) l.temas.push(temaSlug);
+      }
+    }
+  });
+
   /* gerar livros.js */
   const out = [
     '/* vida do livro db — gerado por scripts/sync.js */',
@@ -98,6 +132,26 @@ async function run() {
 
   await syncTemasMedia();
   await syncTemasConteudo();
+}
+
+async function fetchDbLivros() {
+  const email = process.env.DIRECTUS_EMAIL;
+  const pass  = process.env.DIRECTUS_PASS;
+  if (!email || !pass) return [];
+  try {
+    const lr = await fetch(DIRECTUS_BASE + '/auth/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pass }),
+    });
+    const ld = await lr.json();
+    const t  = ld.data?.access_token;
+    if (!t) return [];
+    const r = await fetch(DIRECTUS_BASE + '/items/db_livros?limit=1000&sort=id', {
+      headers: { Authorization: 'Bearer ' + t },
+    });
+    const d = await r.json();
+    return d.data || [];
+  } catch { return []; }
 }
 
 /* ── fase 2: temas-media ── */
@@ -201,7 +255,6 @@ async function syncTemasConteudo() {
     db_links:    'links',
     db_textos:   'textos',
     db_artigos:  'artigos',
-    db_livros:   'livros',
   };
 
   const conteudo = {};
