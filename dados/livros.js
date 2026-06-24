@@ -205,7 +205,7 @@ window.LIVROS = [
     "editora": "Companhia das Letras",
     "ano": "",
     "capa": "",
-    "macrotema": null,
+    "macrotema": "escrita",
     "temas": [
       "criacao-literaria",
       "futuro-tecnologia"
@@ -219,7 +219,7 @@ window.LIVROS = [
     "editora": "Arte & Letra",
     "ano": "",
     "capa": "",
-    "macrotema": null,
+    "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
     ],
