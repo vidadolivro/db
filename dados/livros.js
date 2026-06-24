@@ -196,7 +196,8 @@ window.LIVROS = [
     "temas": [
       "teste"
     ],
-    "href": "#"
+    "href": "#",
+    "_date": "2026-06-24T00:30:07.045Z"
   },
   {
     "isbn": "9788535941678",
@@ -210,7 +211,8 @@ window.LIVROS = [
       "criacao-literaria",
       "futuro-tecnologia"
     ],
-    "href": "#"
+    "href": "#",
+    "_date": "2026-06-24T00:32:00.616Z"
   },
   {
     "isbn": "9788560499007",
@@ -223,6 +225,7 @@ window.LIVROS = [
     "temas": [
       "criacao-literaria"
     ],
-    "href": "#"
+    "href": "#",
+    "_date": "2026-06-24T00:48:01.505Z"
   }
 ];
