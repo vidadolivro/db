@@ -2,7 +2,7 @@ name: sync
 
 on:
   schedule:
-    - cron: '0 * * * *'   # todo hora
+    - cron: '*/10 * * * *'   # a cada 10 min — pega adições novas sem precisar de token
   push:
     branches: [main]
     paths-ignore:

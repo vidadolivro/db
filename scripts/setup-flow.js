@@ -35,7 +35,7 @@ async function api(token, method, path, body) {
 async function run() {
   const email   = process.env.DIRECTUS_EMAIL;
   const pass    = process.env.DIRECTUS_PASS;
-  const ghToken = process.env.GITHUB_SYNC_TOKEN;
+  const ghToken = (process.env.GITHUB_SYNC_TOKEN || '').trim();
 
   if (!email || !pass || !ghToken) {
     console.error('Uso: DIRECTUS_EMAIL=xxx DIRECTUS_PASS=xxx GITHUB_SYNC_TOKEN=github_pat_xxx node scripts/setup-flow.js');
