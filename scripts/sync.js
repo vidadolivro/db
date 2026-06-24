@@ -18,6 +18,14 @@ const fn = new Function('window', src); // eslint-disable-line no-new-func
 fn(fakeWindow);
 const CATS = fakeWindow.CATEGORIAS || [];
 
+/* ── carregar temas (para mapear slug → macrotema) ── */
+const temasSrc = fs.readFileSync(path.join(ROOT, 'dados/temas.js'), 'utf8');
+const fakeTemas = {};
+new Function('window', temasSrc)(fakeTemas); // eslint-disable-line no-new-func
+const TEMAS = fakeTemas.TEMAS || {};
+const SLUG_TO_MACRO = {};
+Object.entries(TEMAS).forEach(([slug, t]) => { if (t.macrotema) SLUG_TO_MACRO[slug] = t.macrotema; });
+
 if (!CATS.length) { console.log('categorias.js vazio — nada a fazer.'); process.exit(0); }
 
 const locais  = CATS.filter(c => c.titulo);
@@ -91,10 +99,12 @@ async function run() {
   dbLivros.forEach(item => {
     if (!item.titulo) return;
     const temaSlug = item.tema_slug || '';
+    const macro    = SLUG_TO_MACRO[temaSlug] || null;
     if (item.isbn && isbnIndex[item.isbn] !== undefined) {
-      /* livro já existe: só adiciona o tema */
+      /* livro já existe: adiciona tema e macrotema se ainda não tem */
       const l = livros[isbnIndex[item.isbn]];
       if (temaSlug && !l.temas.includes(temaSlug)) l.temas.push(temaSlug);
+      if (macro && !l.macrotema) l.macrotema = macro;
     } else {
       /* livro novo */
       const key = item.isbn || item.titulo;
@@ -107,13 +117,14 @@ async function run() {
           editora:   item.editora   || '',
           ano:       '',
           capa:      '',
-          macrotema: null,
+          macrotema: macro,
           temas:     temaSlug ? [temaSlug] : [],
           href:      item.href      || '#',
         });
       } else if (temaSlug) {
         const l = livros[isbnIndex[key]];
         if (!l.temas.includes(temaSlug)) l.temas.push(temaSlug);
+        if (macro && !l.macrotema) l.macrotema = macro;
       }
     }
   });
