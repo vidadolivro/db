@@ -130,6 +130,7 @@
         <small>busca por ISBN ou título</small>
       </button>
     </div>
+    <button class="btn btn-ghost" id="btn-choice-ger" style="margin-top:20px">gerenciar o que já foi adicionado →</button>
   </div>
 
   <!-- FORMULÁRIO LINK -->
@@ -181,6 +182,26 @@
     <div id="livro-resultado" style="margin-top:24px"></div>
   </div>
 
+  <!-- GERENCIAR -->
+  <div id="view-gerenciar" style="display:none">
+    <div class="user-bar">
+      <span>olá, <strong id="user-nome-ger"></strong></span>
+      <button class="btn btn-ghost" id="btn-logout-ger">sair</button>
+    </div>
+    <h1 class="page-title">gerenciar</h1>
+    <p class="page-desc">edite ou remova o que já foi adicionado</p>
+    <div class="tipo-grid" id="ger-tipos">
+      <button class="tipo-btn ger-tipo-btn" data-col="db_videos">vídeos</button>
+      <button class="tipo-btn ger-tipo-btn" data-col="db_podcasts">podcasts</button>
+      <button class="tipo-btn ger-tipo-btn" data-col="db_textos">textos</button>
+      <button class="tipo-btn ger-tipo-btn" data-col="db_links">links</button>
+      <button class="tipo-btn ger-tipo-btn" data-col="db_artigos">artigos</button>
+      <button class="tipo-btn ger-tipo-btn" data-col="db_livros">livros</button>
+    </div>
+    <div id="ger-lista" style="margin-top:16px"></div>
+    <div id="ger-edit"></div>
+  </div>
+
   <!-- CONFIRMAÇÃO -->
   <div id="view-ok" style="display:none">
     <h1 class="page-title">adicionado</h1>
@@ -203,10 +224,10 @@
   var NAME_KEY   = 'vdl_nome';
   var activeTipo = null;
 
-  var VIEWS = ['view-login','view-choice','view-link','view-livro','view-ok'];
+  var VIEWS = ['view-login','view-choice','view-link','view-livro','view-ok','view-gerenciar'];
   function show(id) {
     VIEWS.forEach(function (v) { document.getElementById(v).style.display = v === id ? '' : 'none'; });
-    if (id === 'view-link' || id === 'view-livro' || id === 'view-choice') {
+    if (id === 'view-link' || id === 'view-livro' || id === 'view-choice' || id === 'view-gerenciar') {
       document.getElementById('btn-back').textContent = '← voltar';
     } else {
       document.getElementById('btn-back').textContent = '← início';
@@ -226,7 +247,7 @@
   /* ── BACK ── */
   document.getElementById('btn-back').addEventListener('click', function () {
     var cur = VIEWS.find(function (v) { return document.getElementById(v).style.display !== 'none'; });
-    if (cur === 'view-link' || cur === 'view-livro') { resetLink(); show('view-choice'); }
+    if (cur === 'view-link' || cur === 'view-livro' || cur === 'view-gerenciar') { resetLink(); show('view-choice'); }
     else if (cur === 'view-choice') { show(getToken() ? 'view-choice' : 'view-login'); window.location.href = 'index.html'; }
     else { window.location.href = 'index.html'; }
   });
@@ -267,7 +288,7 @@
   });
 
   /* ── LOGOUT (todos os views) ── */
-  ['btn-logout','btn-logout-link','btn-logout-livro'].forEach(function (id) {
+  ['btn-logout','btn-logout-link','btn-logout-livro','btn-logout-ger'].forEach(function (id) {
     document.getElementById(id).addEventListener('click', function () {
       clearSession(); show('view-login');
       document.getElementById('l-email').value = '';
@@ -278,7 +299,7 @@
   /* ── NOMES / TEMAS ── */
   function initNomes() {
     var nome = getNome() || '';
-    ['user-nome','user-nome-link','user-nome-livro'].forEach(function (id) {
+    ['user-nome','user-nome-link','user-nome-livro','user-nome-ger'].forEach(function (id) {
       document.getElementById(id).textContent = nome;
     });
   }
@@ -673,6 +694,131 @@
     resetLink();
     show('view-choice');
   });
+
+  /* ── GERENCIAR (listar / editar / excluir) ── */
+  var gerColAtual = null;
+
+  document.getElementById('btn-choice-ger').addEventListener('click', function () {
+    show('view-gerenciar');
+    document.getElementById('ger-edit').innerHTML = '';
+    selecionarGerTipo('db_links');
+  });
+
+  document.getElementById('ger-tipos').addEventListener('click', function (e) {
+    var btn = e.target.closest('.ger-tipo-btn');
+    if (btn) selecionarGerTipo(btn.dataset.col);
+  });
+
+  function selecionarGerTipo(col) {
+    gerColAtual = col;
+    document.querySelectorAll('.ger-tipo-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.col === col);
+    });
+    document.getElementById('ger-edit').innerHTML = '';
+    carregarGerLista();
+  }
+
+  function carregarGerLista() {
+    var token = getToken();
+    if (!token || !gerColAtual) return;
+    var lista = document.getElementById('ger-lista');
+    lista.innerHTML = '<p style="font-size:12px;color:var(--mid)">carregando…</p>';
+    fetch(DIRECTUS + '/items/' + gerColAtual + '?limit=200&sort=-id', { headers: { Authorization: 'Bearer ' + token } })
+      .then(function (r) {
+        if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
+        return r.json();
+      })
+      .then(function (d) {
+        var items = d.data || [];
+        if (!items.length) { lista.innerHTML = '<p style="font-size:12px;color:var(--mid)">nenhum item ainda.</p>'; return; }
+        lista.innerHTML = items.map(function (it) {
+          return '<div style="border:1px solid var(--border);padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start">' +
+            '<div style="min-width:0">' +
+              '<div style="font-weight:600;font-size:13px">' + esc(it.titulo || it.show || '(sem título)') + '</div>' +
+              '<div style="font-size:11px;color:var(--mid)">' + esc(it.tema_slug || '— sem tema') + '</div>' +
+            '</div>' +
+            '<div style="display:flex;gap:6px;flex-shrink:0">' +
+              '<button class="btn btn-ghost ger-editar" data-id="' + it.id + '" style="width:auto;padding:4px 10px">editar</button>' +
+              '<button class="btn btn-ghost ger-excluir" data-id="' + it.id + '" style="width:auto;padding:4px 10px">excluir</button>' +
+            '</div></div>';
+        }).join('');
+        lista.querySelectorAll('.ger-excluir').forEach(function (b) {
+          b.addEventListener('click', function () { excluirGer(b.dataset.id); });
+        });
+        lista.querySelectorAll('.ger-editar').forEach(function (b) {
+          b.addEventListener('click', function () {
+            var it = items.find(function (x) { return String(x.id) === b.dataset.id; });
+            if (it) editarGer(it);
+          });
+        });
+      })
+      .catch(function (e) { lista.innerHTML = '<p style="font-size:12px;color:#b00">' + esc(e.message) + '</p>'; });
+  }
+
+  function excluirGer(id) {
+    if (!window.confirm('Excluir este item? Não dá pra desfazer.')) return;
+    var token = getToken();
+    if (!token) return;
+    fetch(DIRECTUS + '/items/' + gerColAtual + '/' + id, { method: 'DELETE', headers: { Authorization: 'Bearer ' + token } })
+      .then(function (r) {
+        if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
+        if (!r.ok && r.status !== 204) throw new Error('erro ao excluir');
+        carregarGerLista();
+      })
+      .catch(function (e) { window.alert(e.message); });
+  }
+
+  function editarGer(it) {
+    var box = document.getElementById('ger-edit');
+    var pular = { id: 1, tema_slug: 1, date_created: 1, date_updated: 1, user_created: 1, user_updated: 1, sort: 1 };
+    var campos = Object.keys(it).filter(function (k) { return !pular[k]; });
+    var html = '<div style="border:1px solid var(--ink);padding:16px;margin-top:8px">' +
+      '<div style="font-size:12px;font-weight:600;margin-bottom:12px">editar item</div>' +
+      '<div class="field"><label>tema</label><select id="ger-f-tema_slug"></select></div>';
+    campos.forEach(function (c) {
+      var v = it[c] != null ? String(it[c]) : '';
+      if (c === 'trecho') html += '<div class="field"><label>' + esc(c) + '</label><textarea id="ger-f-' + esc(c) + '">' + esc(v) + '</textarea></div>';
+      else html += '<div class="field"><label>' + esc(c) + '</label><input type="text" id="ger-f-' + esc(c) + '" value="' + esc(v) + '"></div>';
+    });
+    html += '<div id="ger-edit-msg"></div><div style="display:flex;gap:8px">' +
+      '<button class="btn" id="ger-salvar">salvar</button>' +
+      '<button class="btn btn-ghost" id="ger-cancelar">cancelar</button></div></div>';
+    box.innerHTML = html;
+
+    var sel = document.getElementById('ger-f-tema_slug');
+    sel.innerHTML = '<option value="">(sem tema)</option>';
+    var TEMAS = window.TEMAS || {};
+    Object.keys(TEMAS).map(function (k) { return { k: k, t: TEMAS[k].titulo, n: parseInt(TEMAS[k].num) || 0 }; })
+      .sort(function (a, b) { return a.n - b.n; })
+      .forEach(function (item) {
+        var o = document.createElement('option');
+        o.value = item.k; o.textContent = item.t;
+        if (item.k === it.tema_slug) o.selected = true;
+        sel.appendChild(o);
+      });
+    box.scrollIntoView({ block: 'nearest' });
+
+    document.getElementById('ger-cancelar').addEventListener('click', function () { box.innerHTML = ''; });
+    document.getElementById('ger-salvar').addEventListener('click', function () {
+      var token = getToken();
+      if (!token) return;
+      var patch = { tema_slug: document.getElementById('ger-f-tema_slug').value };
+      campos.forEach(function (c) { var el = document.getElementById('ger-f-' + c); if (el) patch[c] = el.value.trim(); });
+      var btn = this; btn.disabled = true; btn.textContent = 'salvando…';
+      fetch(DIRECTUS + '/items/' + gerColAtual + '/' + it.id, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+        body: JSON.stringify(patch),
+      })
+        .then(function (r) {
+          if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
+          if (!r.ok) return r.json().then(function (d) { throw new Error((d.errors && d.errors[0] && d.errors[0].message) || 'erro ao salvar'); });
+          box.innerHTML = '';
+          carregarGerLista();
+        })
+        .catch(function (e) { showMsg('ger-edit-msg', e.message, 'error'); btn.disabled = false; btn.textContent = 'salvar'; });
+    });
+  }
 
   /* ── ARRANQUE ── */
   if (getToken()) { initNomes(); initTemas(); show('view-choice'); }
