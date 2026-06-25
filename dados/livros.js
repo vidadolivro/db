@@ -186,20 +186,6 @@ window.LIVROS = [
     "href": "#"
   },
   {
-    "isbn": "",
-    "titulo": "teste livro",
-    "autor": "",
-    "editora": "",
-    "ano": "",
-    "capa": "",
-    "macrotema": null,
-    "temas": [
-      "teste"
-    ],
-    "href": "#",
-    "_date": "2026-06-24T00:30:07.045Z"
-  },
-  {
     "isbn": "9788535941678",
     "titulo": "Escrever é humano",
     "autor": "Rodrigues, Sérgio",
