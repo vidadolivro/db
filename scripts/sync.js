@@ -173,7 +173,7 @@ async function fetchDbLivros() {
     if (isbns.length) {
       const br = await fetch(
         DIRECTUS_BASE + '/items/biblioteca?filter[isbn][_in]=' + encodeURIComponent(isbns.join(',')) +
-        '&fields=isbn,capa_url,autor,editora,data_publicacao&limit=' + (isbns.length + 5)
+        '&fields=isbn,titulo,capa_url,autor,editora,data_publicacao&limit=' + (isbns.length + 5)
       );
       const bd = await br.json();
       const bibMap = {};
@@ -181,6 +181,7 @@ async function fetchDbLivros() {
       items.forEach(item => {
         const bib = bibMap[item.isbn];
         if (bib) {
+          item.titulo   = item.titulo  || bib.titulo                   || '';
           item._capa    = bib.capa_url || '';
           item._autor   = item.autor   || normAutor(bib.autor)         || '';
           item._editora = item.editora || bib.editora                  || '';
