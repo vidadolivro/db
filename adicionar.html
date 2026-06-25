@@ -197,6 +197,8 @@
       <button class="tipo-btn ger-tipo-btn" data-col="db_links">links</button>
       <button class="tipo-btn ger-tipo-btn" data-col="db_artigos">artigos</button>
       <button class="tipo-btn ger-tipo-btn" data-col="db_livros">livros</button>
+      <button class="tipo-btn ger-tipo-btn" data-col="db_editores">editores</button>
+      <button class="tipo-btn ger-tipo-btn" data-col="db_listas_mais_vendidos">listas mais vendidos</button>
     </div>
     <div id="ger-lista" style="margin-top:16px"></div>
     <div id="ger-edit"></div>
@@ -768,7 +770,7 @@
       .catch(function (e) { window.alert(e.message); });
   }
 
-  var COL_LABELS = { db_videos: 'vídeo', db_podcasts: 'podcast', db_artigos: 'artigo acadêmico', db_textos: 'texto', db_links: 'link / site', db_livros: 'livro' };
+  var COL_LABELS = { db_videos: 'vídeo', db_podcasts: 'podcast', db_artigos: 'artigo acadêmico', db_textos: 'texto', db_links: 'link / site', db_livros: 'livro', db_editores: 'editor', db_listas_mais_vendidos: 'lista de mais vendidos' };
 
   function editarGer(it) {
     var box = document.getElementById('ger-edit');

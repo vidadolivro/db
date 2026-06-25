@@ -145,6 +145,7 @@ async function run() {
   fs.writeFileSync(path.join(ROOT, 'dados/livros.js'), out, 'utf8');
   console.log(`\n✓ dados/livros.js gerado — ${livros.length} livro(s)`);
 
+  await syncDbDiretorios();
   await syncTemasMedia();
   await syncTemasConteudo();
 }
@@ -402,6 +403,82 @@ async function syncTemasConteudo() {
 
   fs.writeFileSync(path.join(ROOT, 'dados/temas-conteudo.js'), out, 'utf8');
   console.log(`\n✓ dados/temas-conteudo.js gerado — ${total} item(s) em ${Object.keys(conteudo).length} tema(s)`);
+}
+
+async function syncDbDiretorios() {
+  let authHeader = {};
+  const email = process.env.DIRECTUS_EMAIL;
+  const pass  = process.env.DIRECTUS_PASS;
+  if (email && pass) {
+    try {
+      const lr = await fetch(DIRECTUS_BASE + '/auth/login', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: pass }),
+      });
+      const ld = await lr.json();
+      if (ld.data?.access_token) authHeader = { Authorization: 'Bearer ' + ld.data.access_token };
+    } catch { /* silencioso */ }
+  }
+
+  const DB_DIRS = {};
+
+  /* ── db_editores ── */
+  try {
+    const r = await fetch(DIRECTUS_BASE + '/items/db_editores?limit=1000&sort=nome', { headers: authHeader });
+    const d = await r.json();
+    if (r.ok && d.data?.length) {
+      DB_DIRS['editores'] = {
+        titulo: 'editores',
+        desc: 'editores literários — onde atuam e como encontrá-los',
+        filtroLabel: 'filtro',
+        filtros: ['todos'],
+        data: d.data.map(e => ({
+          c1: e.nome || '',
+          c2: e.onde_atua || '',
+          c3: '',
+          c4: '',
+          href: e.rede || '#',
+          tags: [],
+        })),
+      };
+      console.log(`  ✓ db_editores: ${d.data.length} entrada(s)`);
+    }
+  } catch (e) { console.warn('  ✗ db_editores:', e.message); }
+
+  /* ── db_listas_mais_vendidos ── */
+  try {
+    const r = await fetch(DIRECTUS_BASE + '/items/db_listas_mais_vendidos?limit=1000&sort=nome', { headers: authHeader });
+    const d = await r.json();
+    if (r.ok && d.data?.length) {
+      const paises = [...new Set(d.data.map(e => e.pais).filter(Boolean))].sort();
+      DB_DIRS['listas-mais-vendidos'] = {
+        titulo: 'listas de mais vendidos',
+        desc: 'rankings de livros mais vendidos ao redor do mundo',
+        filtroLabel: 'país',
+        filtros: ['todos', ...paises],
+        data: d.data.map(e => ({
+          c1: e.nome || '',
+          c2: e.pais || '',
+          c3: e.periodicidade || '',
+          c4: '',
+          href: e.href || '#',
+          tags: e.pais ? [e.pais] : [],
+        })),
+      };
+      console.log(`  ✓ db_listas_mais_vendidos: ${d.data.length} entrada(s)`);
+    }
+  } catch (e) { console.warn('  ✗ db_listas_mais_vendidos:', e.message); }
+
+  const out = [
+    '/* vida do livro db — gerado por scripts/sync.js */',
+    '/* não editar manualmente — rode: npm run sync */',
+    '',
+    'window.DB_DIRS = ' + JSON.stringify(DB_DIRS, null, 2) + ';',
+    '',
+  ].join('\n');
+
+  fs.writeFileSync(path.join(ROOT, 'dados/db-dirs.js'), out, 'utf8');
+  console.log(`\n✓ dados/db-dirs.js gerado — ${Object.keys(DB_DIRS).length} diretório(s)`);
 }
 
 run().catch(err => { console.error('\nerro:', err.message); process.exit(1); });

@@ -294,11 +294,12 @@
   <span>2025</span>
 </footer>
 
+<script src="dados/db-dirs.js"></script>
 <script src="dados/diretorios.js"></script>
 <script>
 (function () {
   var tipo = new URLSearchParams(window.location.search).get('tipo') || '';
-  var DIRS = window.DIRETORIOS || {};
+  var DIRS = Object.assign({}, window.DIRETORIOS || {}, window.DB_DIRS || {});
   var d = DIRS[tipo];
 
   if (!d) {
