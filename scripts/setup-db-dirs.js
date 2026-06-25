@@ -93,13 +93,13 @@ async function run() {
     }).catch(() => console.log(`  (permissão pública já existe)`));
     console.log(`  ✓ público: read`);
 
-    /* permissões: colaborador pode inserir, editar e excluir */
-    for (const action of ['create', 'update', 'delete']) {
+    /* permissões: colaborador pode ler, inserir, editar e excluir */
+    for (const action of ['read', 'create', 'update', 'delete']) {
       await api(token, 'POST', '/permissions', {
         policy: COLAB_POLICY, collection: col.name, action, fields: ['*'],
       }).catch(() => {});
     }
-    console.log(`  ✓ colaborador: create / update / delete\n`);
+    console.log(`  ✓ colaborador: read / create / update / delete\n`);
   }
 
   console.log('✓ setup concluído.');
