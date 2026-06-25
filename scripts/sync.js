@@ -192,6 +192,24 @@ async function fetchDbLivros() {
   } catch { return []; }
 }
 
+/* extrai og:description ou meta description de uma URL (para textos sem trecho) */
+async function fetchDescricao(url) {
+  if (!url || url === '#') return '';
+  try {
+    const r = await fetch(url, {
+      signal: AbortSignal.timeout(6000),
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; vida-do-livro-sync/1.0)' },
+    });
+    if (!r.ok) return '';
+    const html = await r.text();
+    const og = html.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']{10,})/i)
+            || html.match(/<meta[^>]+content=["']([^"']{10,})["'][^>]+property=["']og:description["']/i)
+            || html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']{10,})/i)
+            || html.match(/<meta[^>]+content=["']([^"']{10,})["'][^>]+name=["']description["']/i);
+    return og ? og[1].replace(/&#?\w+;/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300) : '';
+  } catch { return ''; }
+}
+
 /* valida ISBN-13 (prefixo 978/979 + checksum) ou ISBN-10 (checksum) — evita lixo como 0000000000000 */
 function isbnValido(raw) {
   const s = String(raw || '').replace(/[^0-9Xx]/g, '').toUpperCase();
@@ -353,6 +371,15 @@ async function syncTemasConteudo() {
       const d = await r.json();
       if (!r.ok) { console.warn(`  ✗ ${col}: ${JSON.stringify(d.errors?.[0])}`); continue; }
       const items = d.data || [];
+      /* para db_textos sem trecho, busca og:description do URL */
+      if (col === 'db_textos') {
+        for (const item of items) {
+          if (!item.trecho && item.href) {
+            item.trecho = await fetchDescricao(item.href);
+            if (item.trecho) console.log(`  trecho auto: ${item.href.slice(0, 60)}…`);
+          }
+        }
+      }
       items.forEach(item => {
         if (!item.tema_slug) return;
         if (!conteudo[item.tema_slug]) conteudo[item.tema_slug] = {};
