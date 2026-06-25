@@ -2,6 +2,112 @@
 /* não editar manualmente — rode: npm run sync */
 
 window.DB_DIRS = {
+  "editores": {
+    "titulo": "editores",
+    "desc": "editores literários — onde atuam e como encontrá-los",
+    "filtroLabel": "filtro",
+    "filtros": [
+      "todos"
+    ],
+    "data": [
+      {
+        "c1": "Ana Lima",
+        "c2": "Rocco",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Ana Lima Cecilio",
+        "c2": "Record",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Cassiano Elek Machado",
+        "c2": "Record",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Daniel Lameira",
+        "c2": "Seiva, RJ",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Diana Passy",
+        "c2": "SP",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Flávio Moura",
+        "c2": "Todavia, SP",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Florencia Ferrari",
+        "c2": "Ubu, SP",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Gustavo Faraon",
+        "c2": "Dublinense, SP",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Marcelo Ferroni",
+        "c2": "Companhia das Letras, RJ",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Martha Ribas",
+        "c2": "Mapa Lab",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Ricardo Teperman",
+        "c2": "Companhia das Letras, SP",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      },
+      {
+        "c1": "Rita Mattar",
+        "c2": "Fósforo, SP",
+        "c3": "",
+        "c4": "",
+        "href": "#",
+        "tags": []
+      }
+    ]
+  },
   "listas-mais-vendidos": {
     "titulo": "listas de mais vendidos",
     "desc": "rankings de livros mais vendidos ao redor do mundo",
