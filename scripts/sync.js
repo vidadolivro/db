@@ -194,6 +194,29 @@ async function fetchDbLivros() {
   } catch { return []; }
 }
 
+/* decodifica entidades HTML (nomeadas comuns + numéricas decimais/hex) */
+const HTML_ENTITIES = {
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
+  aacute: 'á', agrave: 'à', acirc: 'â', atilde: 'ã', auml: 'ä',
+  eacute: 'é', egrave: 'è', ecirc: 'ê', euml: 'ë',
+  iacute: 'í', icirc: 'î', oacute: 'ó', ograve: 'ò', ocirc: 'ô', otilde: 'õ', ouml: 'ö',
+  uacute: 'ú', ucirc: 'û', uuml: 'ü', ccedil: 'ç', ntilde: 'ñ',
+  Aacute: 'Á', Agrave: 'À', Acirc: 'Â', Atilde: 'Ã',
+  Eacute: 'É', Ecirc: 'Ê', Iacute: 'Í', Oacute: 'Ó', Ocirc: 'Ô', Otilde: 'Õ',
+  Uacute: 'Ú', Ccedil: 'Ç',
+  ndash: '–', mdash: '—', hellip: '…', laquo: '«', raquo: '»',
+  lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”', sbquo: '‚', bdquo: '„', deg: '°',
+};
+function decodeEntities(s) {
+  return s.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (m, code) => {
+    if (code[0] === '#') {
+      const n = code[1] === 'x' || code[1] === 'X' ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10);
+      return isNaN(n) ? m : String.fromCodePoint(n);
+    }
+    return HTML_ENTITIES[code] != null ? HTML_ENTITIES[code] : m;
+  });
+}
+
 /* extrai og:description ou meta description de uma URL (para textos sem trecho) */
 async function fetchDescricao(url) {
   if (!url || url === '#') return '';
@@ -203,12 +226,23 @@ async function fetchDescricao(url) {
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; vida-do-livro-sync/1.0)' },
     });
     if (!r.ok) return '';
-    const html = await r.text();
+    /* detectar charset: header Content-Type → <meta charset> → utf-8 */
+    const buf = Buffer.from(await r.arrayBuffer());
+    let charset = (r.headers.get('content-type') || '').match(/charset=([\w-]+)/i)?.[1];
+    if (!charset) {
+      const head = buf.toString('latin1', 0, 2048);
+      charset = head.match(/<meta[^>]+charset=["']?([\w-]+)/i)?.[1]
+             || head.match(/charset=([\w-]+)/i)?.[1];
+    }
+    charset = (charset || 'utf-8').toLowerCase();
+    if (charset === 'iso-8859-1' || charset === 'latin1' || charset === 'windows-1252') charset = 'latin1';
+    const html = buf.toString(charset === 'latin1' ? 'latin1' : 'utf-8');
+
     const og = html.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']{10,})/i)
             || html.match(/<meta[^>]+content=["']([^"']{10,})["'][^>]+property=["']og:description["']/i)
             || html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']{10,})/i)
             || html.match(/<meta[^>]+content=["']([^"']{10,})["'][^>]+name=["']description["']/i);
-    return og ? og[1].replace(/&#?\w+;/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300) : '';
+    return og ? decodeEntities(og[1]).replace(/\s+/g, ' ').trim().slice(0, 300) : '';
   } catch { return ''; }
 }
 
