@@ -18,7 +18,8 @@
 const DIRECTUS = 'https://directus-production-afdd.up.railway.app';
 const REPO     = 'vidadolivro/db';
 const WORKFLOW = 'sync.yml';
-const FLOW_NAME = 'sync github a cada adição';
+const FLOW_NAME  = 'sync github a cada adição';
+const FLOW_SCOPE = ['items.create', 'items.update', 'items.delete'];
 const COLLECTIONS = ['db_videos', 'db_podcasts', 'db_links', 'db_textos', 'db_artigos', 'db_livros'];
 
 async function api(token, method, path, body) {
@@ -37,10 +38,11 @@ async function run() {
   const pass    = process.env.DIRECTUS_PASS;
   const ghToken = (process.env.GITHUB_SYNC_TOKEN || '').trim();
 
-  if (!email || !pass || !ghToken) {
-    console.error('Uso: DIRECTUS_EMAIL=xxx DIRECTUS_PASS=xxx GITHUB_SYNC_TOKEN=github_pat_xxx node scripts/setup-flow.js');
+  if (!email || !pass) {
+    console.error('Uso: DIRECTUS_EMAIL=xxx DIRECTUS_PASS=xxx [GITHUB_SYNC_TOKEN=github_pat_xxx] node scripts/setup-flow.js');
     process.exit(1);
   }
+  if (!ghToken) console.warn('⚠ GITHUB_SYNC_TOKEN não fornecido — token existente será mantido (só atualiza scope e cron)');
 
   /* ── login ── */
   console.log('Fazendo login no Directus…');
@@ -73,17 +75,27 @@ async function run() {
 
   if (existing.length) {
     const flowId = existing[0].id;
-    console.log('Flow já existe:', flowId, '— atualizando o token/opções…');
-    /* atualiza a operação existente (rotaciona o token sem recriar o flow) */
-    const ops = await api(token, 'GET', `/operations?filter[flow][_eq]=${flowId}&fields=id,key`);
-    const op = ops.find(o => o.key === 'github_dispatch') || ops[0];
-    if (op) {
-      await api(token, 'PATCH', `/operations/${op.id}`, { options: requestOptions });
-      console.log('✓ operação atualizada — token novo aplicado');
-    } else {
-      console.warn('⚠ flow existe mas sem operação; recrie removendo o flow antigo no painel.');
+    console.log('Flow já existe:', flowId, '— atualizando scope e opções…');
+
+    /* atualiza o trigger do flow para incluir update/delete */
+    await api(token, 'PATCH', `/flows/${flowId}`, {
+      options: { type: 'action', scope: FLOW_SCOPE, collections: COLLECTIONS },
+    });
+    console.log('✓ scope atualizado:', FLOW_SCOPE.join(', '));
+
+    /* atualiza a operação só se um novo token foi fornecido */
+    if (ghToken) {
+      const ops = await api(token, 'GET', `/operations?filter[flow][_eq]=${flowId}&fields=id,key`);
+      const op = ops.find(o => o.key === 'github_dispatch') || ops[0];
+      if (op) {
+        await api(token, 'PATCH', `/operations/${op.id}`, { options: requestOptions });
+        console.log('✓ operação atualizada — token novo aplicado');
+      } else {
+        console.warn('⚠ flow existe mas sem operação; recrie removendo o flow antigo no painel.');
+      }
     }
-    console.log('\n✓ pronto. As adições continuam disparando o sync.');
+
+    console.log('\n✓ pronto. Criações, edições e exclusões disparam o sync.');
     return;
   }
 
@@ -99,7 +111,7 @@ async function run() {
     accountability: 'all',
     options: {
       type: 'action',            // roda DEPOIS do evento, sem bloquear o salvamento
-      scope: ['items.create'],
+      scope: FLOW_SCOPE,
       collections: COLLECTIONS,
     },
   });

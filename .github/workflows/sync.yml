@@ -2,7 +2,7 @@ name: sync
 
 on:
   schedule:
-    - cron: '*/10 * * * *'   # a cada 10 min — pega adições novas sem precisar de token
+    - cron: '0 * * * *'      # 1× por hora — fallback caso o Flow do Directus falhe
   push:
     branches: [main]
     paths-ignore:
