@@ -736,8 +736,8 @@
         lista.innerHTML = items.map(function (it) {
           return '<div style="border:1px solid var(--border);padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start">' +
             '<div style="min-width:0">' +
-              '<div style="font-weight:600;font-size:13px">' + esc(it.titulo || it.show || '(sem título)') + '</div>' +
-              '<div style="font-size:11px;color:var(--mid)">' + esc(it.tema_slug || '— sem tema') + '</div>' +
+              '<div style="font-weight:600;font-size:13px">' + esc(it.titulo || it.nome || it.show || '(sem título)') + '</div>' +
+              '<div style="font-size:11px;color:var(--mid)">' + esc(it.tema_slug || it.pais || it.onde_atua || '') + '</div>' +
             '</div>' +
             '<div style="display:flex;gap:6px;flex-shrink:0">' +
               '<button class="btn btn-ghost ger-editar" data-id="' + it.id + '" style="width:auto;padding:4px 10px">editar</button>' +
@@ -772,17 +772,23 @@
 
   var COL_LABELS = { db_videos: 'vídeo', db_podcasts: 'podcast', db_artigos: 'artigo acadêmico', db_textos: 'texto', db_links: 'link / site', db_livros: 'livro', db_editores: 'editor', db_listas_mais_vendidos: 'lista de mais vendidos' };
 
+  /* coleções de diretório não usam tema nem troca de tipo */
+  var COLS_DIRETORIO = { db_editores: 1, db_listas_mais_vendidos: 1 };
+
   function editarGer(it) {
     var box = document.getElementById('ger-edit');
+    var ehDiretorio = !!COLS_DIRETORIO[gerColAtual];
     var pular = { id: 1, tema_slug: 1, date_created: 1, date_updated: 1, user_created: 1, user_updated: 1, sort: 1 };
     var campos = Object.keys(it).filter(function (k) { return !pular[k]; });
-    var tipoOpts = Object.keys(COL_LABELS).map(function (col) {
-      return '<option value="' + col + '"' + (col === gerColAtual ? ' selected' : '') + '>' + COL_LABELS[col] + '</option>';
-    }).join('');
     var html = '<div style="border:1px solid var(--ink);padding:16px;margin-top:8px">' +
-      '<div style="font-size:12px;font-weight:600;margin-bottom:12px">editar item</div>' +
-      '<div class="field"><label>tipo</label><select id="ger-f-tipo">' + tipoOpts + '</select></div>' +
-      '<div class="field"><label>tema</label><select id="ger-f-tema_slug"></select></div>';
+      '<div style="font-size:12px;font-weight:600;margin-bottom:12px">editar item</div>';
+    if (!ehDiretorio) {
+      var tipoOpts = Object.keys(COL_LABELS).filter(function (col) { return !COLS_DIRETORIO[col]; }).map(function (col) {
+        return '<option value="' + col + '"' + (col === gerColAtual ? ' selected' : '') + '>' + COL_LABELS[col] + '</option>';
+      }).join('');
+      html += '<div class="field"><label>tipo</label><select id="ger-f-tipo">' + tipoOpts + '</select></div>' +
+        '<div class="field"><label>tema</label><select id="ger-f-tema_slug"></select></div>';
+    }
     campos.forEach(function (c) {
       var v = it[c] != null ? String(it[c]) : '';
       if (c === 'trecho') html += '<div class="field"><label>' + esc(c) + '</label><textarea id="ger-f-' + esc(c) + '">' + esc(v) + '</textarea></div>';
@@ -793,25 +799,30 @@
       '<button class="btn btn-ghost" id="ger-cancelar">cancelar</button></div></div>';
     box.innerHTML = html;
 
-    var sel = document.getElementById('ger-f-tema_slug');
-    sel.innerHTML = '<option value="">(sem tema)</option>';
-    var TEMAS = window.TEMAS || {};
-    Object.keys(TEMAS).map(function (k) { return { k: k, t: TEMAS[k].titulo, n: parseInt(TEMAS[k].num) || 0 }; })
-      .sort(function (a, b) { return a.n - b.n; })
-      .forEach(function (item) {
-        var o = document.createElement('option');
-        o.value = item.k; o.textContent = item.t;
-        if (item.k === it.tema_slug) o.selected = true;
-        sel.appendChild(o);
-      });
+    if (!ehDiretorio) {
+      var sel = document.getElementById('ger-f-tema_slug');
+      sel.innerHTML = '<option value="">(sem tema)</option>';
+      var TEMAS = window.TEMAS || {};
+      Object.keys(TEMAS).map(function (k) { return { k: k, t: TEMAS[k].titulo, n: parseInt(TEMAS[k].num) || 0 }; })
+        .sort(function (a, b) { return a.n - b.n; })
+        .forEach(function (item) {
+          var o = document.createElement('option');
+          o.value = item.k; o.textContent = item.t;
+          if (item.k === it.tema_slug) o.selected = true;
+          sel.appendChild(o);
+        });
+    }
     box.scrollIntoView({ block: 'nearest' });
 
     document.getElementById('ger-cancelar').addEventListener('click', function () { box.innerHTML = ''; });
     document.getElementById('ger-salvar').addEventListener('click', function () {
       var token = getToken();
       if (!token) return;
-      var novoTipo = document.getElementById('ger-f-tipo').value;
-      var patch = { tema_slug: document.getElementById('ger-f-tema_slug').value };
+      var tipoEl = document.getElementById('ger-f-tipo');
+      var temaEl = document.getElementById('ger-f-tema_slug');
+      var novoTipo = tipoEl ? tipoEl.value : gerColAtual;
+      var patch = {};
+      if (temaEl) patch.tema_slug = temaEl.value;
       campos.forEach(function (c) { var el = document.getElementById('ger-f-' + c); if (el) patch[c] = el.value.trim(); });
       var btn = this; btn.disabled = true; btn.textContent = 'salvando…';
 
