@@ -768,12 +768,18 @@
       .catch(function (e) { window.alert(e.message); });
   }
 
+  var COL_LABELS = { db_videos: 'vídeo', db_podcasts: 'podcast', db_artigos: 'artigo acadêmico', db_textos: 'texto', db_links: 'link / site', db_livros: 'livro' };
+
   function editarGer(it) {
     var box = document.getElementById('ger-edit');
     var pular = { id: 1, tema_slug: 1, date_created: 1, date_updated: 1, user_created: 1, user_updated: 1, sort: 1 };
     var campos = Object.keys(it).filter(function (k) { return !pular[k]; });
+    var tipoOpts = Object.keys(COL_LABELS).map(function (col) {
+      return '<option value="' + col + '"' + (col === gerColAtual ? ' selected' : '') + '>' + COL_LABELS[col] + '</option>';
+    }).join('');
     var html = '<div style="border:1px solid var(--ink);padding:16px;margin-top:8px">' +
       '<div style="font-size:12px;font-weight:600;margin-bottom:12px">editar item</div>' +
+      '<div class="field"><label>tipo</label><select id="ger-f-tipo">' + tipoOpts + '</select></div>' +
       '<div class="field"><label>tema</label><select id="ger-f-tema_slug"></select></div>';
     campos.forEach(function (c) {
       var v = it[c] != null ? String(it[c]) : '';
@@ -802,21 +808,42 @@
     document.getElementById('ger-salvar').addEventListener('click', function () {
       var token = getToken();
       if (!token) return;
+      var novoTipo = document.getElementById('ger-f-tipo').value;
       var patch = { tema_slug: document.getElementById('ger-f-tema_slug').value };
       campos.forEach(function (c) { var el = document.getElementById('ger-f-' + c); if (el) patch[c] = el.value.trim(); });
       var btn = this; btn.disabled = true; btn.textContent = 'salvando…';
-      fetch(DIRECTUS + '/items/' + gerColAtual + '/' + it.id, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
-        body: JSON.stringify(patch),
-      })
-        .then(function (r) {
-          if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
-          if (!r.ok) return r.json().then(function (d) { throw new Error((d.errors && d.errors[0] && d.errors[0].message) || 'erro ao salvar'); });
-          box.innerHTML = '';
-          carregarGerLista();
+
+      if (novoTipo !== gerColAtual) {
+        /* mover para outro tipo: cria na nova coleção com campos base, deleta da antiga */
+        var novoItem = { tema_slug: patch.tema_slug, titulo: patch.titulo || '', href: patch.href || '' };
+        fetch(DIRECTUS + '/items/' + novoTipo, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+          body: JSON.stringify(novoItem),
         })
-        .catch(function (e) { showMsg('ger-edit-msg', e.message, 'error'); btn.disabled = false; btn.textContent = 'salvar'; });
+          .then(function (r) {
+            if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
+            if (!r.ok) return r.json().then(function (d) { throw new Error((d.errors && d.errors[0] && d.errors[0].message) || 'erro ao criar'); });
+            return fetch(DIRECTUS + '/items/' + gerColAtual + '/' + it.id, {
+              method: 'DELETE', headers: { Authorization: 'Bearer ' + token },
+            });
+          })
+          .then(function () { box.innerHTML = ''; selecionarGerTipo(novoTipo); })
+          .catch(function (e) { showMsg('ger-edit-msg', e.message, 'error'); btn.disabled = false; btn.textContent = 'salvar'; });
+      } else {
+        fetch(DIRECTUS + '/items/' + gerColAtual + '/' + it.id, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+          body: JSON.stringify(patch),
+        })
+          .then(function (r) {
+            if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
+            if (!r.ok) return r.json().then(function (d) { throw new Error((d.errors && d.errors[0] && d.errors[0].message) || 'erro ao salvar'); });
+            box.innerHTML = '';
+            carregarGerLista();
+          })
+          .catch(function (e) { showMsg('ger-edit-msg', e.message, 'error'); btn.disabled = false; btn.textContent = 'salvar'; });
+      }
     });
   }
 
