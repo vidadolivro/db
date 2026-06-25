@@ -129,6 +129,10 @@
         livro
         <small>busca por ISBN ou título</small>
       </button>
+      <button class="choice-btn" id="btn-choice-dir">
+        diretório
+        <small>editor, lista de mais vendidos</small>
+      </button>
     </div>
     <button class="btn btn-ghost" id="btn-choice-ger" style="margin-top:20px">gerenciar o que já foi adicionado →</button>
   </div>
@@ -204,6 +208,26 @@
     <div id="ger-edit"></div>
   </div>
 
+  <!-- FORMULÁRIO DIRETÓRIO -->
+  <div id="view-diretorio" style="display:none">
+    <div class="user-bar">
+      <span>olá, <strong id="user-nome-dir"></strong></span>
+      <button class="btn btn-ghost" id="btn-logout-dir">sair</button>
+    </div>
+    <h1 class="page-title">diretório</h1>
+    <p class="page-desc">adicionar editor ou lista de mais vendidos</p>
+    <div id="dir-msg"></div>
+    <div class="field">
+      <label>tipo</label>
+      <div class="tipo-grid" id="dir-tipo-grid">
+        <button class="tipo-btn active" data-col="db_editores">editor</button>
+        <button class="tipo-btn" data-col="db_listas_mais_vendidos">lista de mais vendidos</button>
+      </div>
+    </div>
+    <div id="dir-campos"></div>
+    <button class="btn" id="btn-dir-submit">adicionar</button>
+  </div>
+
   <!-- CONFIRMAÇÃO -->
   <div id="view-ok" style="display:none">
     <h1 class="page-title">adicionado</h1>
@@ -226,10 +250,10 @@
   var NAME_KEY   = 'vdl_nome';
   var activeTipo = null;
 
-  var VIEWS = ['view-login','view-choice','view-link','view-livro','view-ok','view-gerenciar'];
+  var VIEWS = ['view-login','view-choice','view-link','view-livro','view-ok','view-gerenciar','view-diretorio'];
   function show(id) {
     VIEWS.forEach(function (v) { document.getElementById(v).style.display = v === id ? '' : 'none'; });
-    if (id === 'view-link' || id === 'view-livro' || id === 'view-choice' || id === 'view-gerenciar') {
+    if (id === 'view-link' || id === 'view-livro' || id === 'view-choice' || id === 'view-gerenciar' || id === 'view-diretorio') {
       document.getElementById('btn-back').textContent = '← voltar';
     } else {
       document.getElementById('btn-back').textContent = '← início';
@@ -249,7 +273,7 @@
   /* ── BACK ── */
   document.getElementById('btn-back').addEventListener('click', function () {
     var cur = VIEWS.find(function (v) { return document.getElementById(v).style.display !== 'none'; });
-    if (cur === 'view-link' || cur === 'view-livro' || cur === 'view-gerenciar') { resetLink(); show('view-choice'); }
+    if (cur === 'view-link' || cur === 'view-livro' || cur === 'view-gerenciar' || cur === 'view-diretorio') { resetLink(); show('view-choice'); }
     else if (cur === 'view-choice') { show(getToken() ? 'view-choice' : 'view-login'); window.location.href = 'index.html'; }
     else { window.location.href = 'index.html'; }
   });
@@ -290,7 +314,7 @@
   });
 
   /* ── LOGOUT (todos os views) ── */
-  ['btn-logout','btn-logout-link','btn-logout-livro','btn-logout-ger'].forEach(function (id) {
+  ['btn-logout','btn-logout-link','btn-logout-livro','btn-logout-ger','btn-logout-dir'].forEach(function (id) {
     document.getElementById(id).addEventListener('click', function () {
       clearSession(); show('view-login');
       document.getElementById('l-email').value = '';
@@ -301,7 +325,7 @@
   /* ── NOMES / TEMAS ── */
   function initNomes() {
     var nome = getNome() || '';
-    ['user-nome','user-nome-link','user-nome-livro','user-nome-ger'].forEach(function (id) {
+    ['user-nome','user-nome-link','user-nome-livro','user-nome-ger','user-nome-dir'].forEach(function (id) {
       document.getElementById(id).textContent = nome;
     });
   }
@@ -326,6 +350,75 @@
   });
   document.getElementById('btn-choice-livro').addEventListener('click', function () {
     show('view-livro');
+  });
+  document.getElementById('btn-choice-dir').addEventListener('click', function () {
+    dirCol = 'db_editores';
+    document.querySelectorAll('#dir-tipo-grid .tipo-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.col === dirCol);
+    });
+    document.getElementById('dir-msg').innerHTML = '';
+    renderDirCampos();
+    show('view-diretorio');
+  });
+
+  /* ── FORMULÁRIO DIRETÓRIO ── */
+  var dirCol = 'db_editores';
+  var DIR_CAMPOS = {
+    db_editores: [
+      { id: 'nome',      label: 'nome',      ph: 'nome do editor' },
+      { id: 'onde_atua', label: 'onde atua', ph: 'editora, selo, freelance…' },
+      { id: 'rede',      label: 'rede',      ph: 'URL — LinkedIn, Instagram, site…' },
+    ],
+    db_listas_mais_vendidos: [
+      { id: 'nome',          label: 'nome',          ph: 'ex: The New York Times Best Sellers' },
+      { id: 'href',          label: 'url',           ph: 'https://…' },
+      { id: 'pais',          label: 'país',          ph: 'ex: EUA, Brasil…' },
+      { id: 'periodicidade', label: 'periodicidade', ph: 'semanal, mensal, anual…' },
+    ],
+  };
+
+  function renderDirCampos() {
+    var campos = DIR_CAMPOS[dirCol] || [];
+    document.getElementById('dir-campos').innerHTML = campos.map(function (c) {
+      return '<div class="field"><label>' + esc(c.label) + '</label>' +
+        '<input type="text" id="dir-f-' + esc(c.id) + '" placeholder="' + esc(c.ph) + '"></div>';
+    }).join('');
+  }
+
+  document.getElementById('dir-tipo-grid').addEventListener('click', function (e) {
+    var btn = e.target.closest('.tipo-btn');
+    if (!btn) return;
+    dirCol = btn.dataset.col;
+    document.querySelectorAll('#dir-tipo-grid .tipo-btn').forEach(function (b) {
+      b.classList.toggle('active', b === btn);
+    });
+    renderDirCampos();
+  });
+
+  document.getElementById('btn-dir-submit').addEventListener('click', function () {
+    var token = getToken();
+    if (!token) { show('view-login'); return; }
+    var campos = DIR_CAMPOS[dirCol] || [];
+    var payload = {};
+    campos.forEach(function (c) {
+      var el = document.getElementById('dir-f-' + c.id);
+      if (el) payload[c.id] = el.value.trim();
+    });
+    if (!payload.nome) { showMsg('dir-msg', 'preencha o nome.', 'error'); return; }
+    if (dirCol === 'db_listas_mais_vendidos' && !payload.href) { showMsg('dir-msg', 'preencha a url da lista.', 'error'); return; }
+    var btn = this; btn.disabled = true; btn.textContent = 'salvando…';
+    fetch(DIRECTUS + '/items/' + dirCol, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+      body: JSON.stringify(payload),
+    })
+      .then(function (r) {
+        if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
+        if (!r.ok) return r.json().then(function (d) { throw new Error((d.errors && d.errors[0] && d.errors[0].message) || 'erro ao salvar'); });
+        show('view-ok');
+      })
+      .catch(function (e) { showMsg('dir-msg', e.message, 'error'); })
+      .finally(function () { btn.disabled = false; btn.textContent = 'adicionar'; });
   });
 
   /* ── DETECÇÃO DE TIPO ── */
