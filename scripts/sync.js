@@ -26,7 +26,7 @@ const TEMAS = fakeTemas.TEMAS || {};
 const SLUG_TO_MACRO = {};
 Object.entries(TEMAS).forEach(([slug, t]) => { if (t.macrotema) SLUG_TO_MACRO[slug] = t.macrotema; });
 
-if (!CATS.length) { console.log('categorias.js vazio — nada a fazer.'); process.exit(0); }
+if (!CATS.length) console.log('categorias.js vazio — livros vêm de db_livros, diretórios de db_*.');
 
 const locais  = CATS.filter(c => c.titulo);
 const remotos = CATS.filter(c => !c.titulo);
