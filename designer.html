@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">designer — vida do livro db</title>
+  <style>
+    @font-face { font-family: 'Editorial New'; src: url('fonts/PPEditorialNew-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Neue Haas Grotesk'; src: url('fonts/Haas Grot Text R 55 Roman.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Neue Haas Grotesk'; src: url('fonts/Haas Grot Text R 65 Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Neue Haas Grotesk'; src: url('fonts/Haas Grot Text R 75 Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fafaf8; --ink: #111; --mid: #444; --light: #888; --border: #ddd;
+      --sans: "Neue Haas Grotesk", -apple-system, system-ui, sans-serif;
+      --serif: "Editorial New", Georgia, serif;
+    }
+    body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.55; }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 40px 100px; }
+
+    .topnav { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; }
+    .back { font-size: 13px; color: var(--ink); text-decoration: none; letter-spacing: 0.04em; }
+    .back:hover { text-decoration: underline; }
+    .breadcrumb { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light); }
+
+    /* HEADER */
+    .d-name { font-family: var(--serif); font-size: 44px; font-weight: 400; line-height: 1.02; margin-bottom: 10px; }
+    .d-city { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 16px; }
+    .d-contacts { display: flex; flex-wrap: wrap; gap: 8px 18px; padding-bottom: 28px; border-bottom: 1px solid var(--ink); margin-bottom: 32px; }
+    .d-contact { font-size: 12px; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+    .d-contact:hover { color: var(--mid); }
+    .d-contact .arr { color: var(--light); font-size: 11px; }
+
+    /* BIO */
+    .d-bio { font-size: 16px; line-height: 1.7; color: var(--ink); margin-bottom: 40px; max-width: 64ch; }
+
+    /* QUOTE */
+    .d-quote { font-family: var(--serif); font-size: 26px; line-height: 1.35; color: var(--ink); margin: 0 0 48px; padding-left: 22px; border-left: 2px solid var(--ink); }
+
+    /* Q&A */
+    .d-section-label { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--light); margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .qa { margin-bottom: 28px; }
+    .qa-q { font-weight: 500; font-size: 15px; color: var(--ink); margin-bottom: 7px; }
+    .qa-a { font-size: 14px; line-height: 1.65; color: var(--mid); max-width: 66ch; }
+
+    /* COVERS */
+    .covers-sec { margin-top: 52px; }
+    .covers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 22px; }
+    .cover { text-decoration: none; color: inherit; }
+    .cover-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; background: #ece8df; display: block; box-shadow: 0 1px 6px rgba(0,0,0,0.10); }
+    .cover-fallback { width: 100%; aspect-ratio: 2/3; background: #ece8df; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; font-size: 12px; color: var(--mid); }
+    .cover-title { font-size: 12px; font-weight: 500; margin-top: 9px; line-height: 1.3; }
+    .cover-author { font-size: 11px; color: var(--light); margin-top: 2px; }
+
+    .loading, .notfound { padding: 60px 0; font-size: 14px; color: var(--light); }
+
+    footer { max-width: 760px; margin: 0 auto; padding: 14px 40px; font-size: 12px; color: var(--light); letter-spacing: 0.08em; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
+
+    @media (max-width: 640px) {
+      main { padding: 20px 16px 60px; } footer { padding: 14px 16px; }
+      .d-name { font-size: 34px; } .d-quote { font-size: 21px; }
+      .covers-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="topnav">
+    <a class="back" href="diretorio?tipo=designers">← designers</a>
+    <span class="breadcrumb">designer</span>
+  </div>
+  <div id="content"><p class="loading">carregando…</p></div>
+</main>
+<footer>
+  <span>vida do livro db</span>
+  <span>2025</span>
+</footer>
+
+<script>
+(function () {
+  var DIRECTUS = 'https://directus-production-afdd.up.railway.app';
+  var slug = new URLSearchParams(location.search).get('slug') || '';
+  var elContent = document.getElementById('content');
+
+  function esc(s) { return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  if (!slug) { elContent.innerHTML = '<p class="notfound">designer não especificado.</p>'; return; }
+
+  fetch(DIRECTUS + '/items/db_designers?filter[slug][_eq]=' + encodeURIComponent(slug) + '&limit=1')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var dz = (d.data || [])[0];
+      if (!dz) { elContent.innerHTML = '<p class="notfound">designer não encontrado.</p>'; return; }
+      document.getElementById('page-title').textContent = dz.nome + ' — vida do livro db';
+      render(dz);
+      resolverCapas(dz.capas || []);
+    })
+    .catch(function () { elContent.innerHTML = '<p class="notfound">erro ao carregar.</p>'; });
+
+  function contactsHtml(dz) {
+    var out = [];
+    if (dz.instagram) {
+      var ig = dz.instagram.replace(/^@/, '');
+      out.push('<a class="d-contact" target="_blank" rel="noopener" href="https://instagram.com/' + esc(ig) + '">@' + esc(ig) + ' <span class="arr">↗</span></a>');
+    }
+    if (dz.site) {
+      var url = /^https?:\/\//.test(dz.site) ? dz.site : 'https://' + dz.site;
+      out.push('<a class="d-contact" target="_blank" rel="noopener" href="' + esc(url) + '">' + esc(dz.site.replace(/^https?:\/\//,'')) + ' <span class="arr">↗</span></a>');
+    }
+    if (dz.email) out.push('<a class="d-contact" href="mailto:' + esc(dz.email) + '">' + esc(dz.email) + '</a>');
+    return out.join('');
+  }
+
+  function render(dz) {
+    var perguntas = Array.isArray(dz.perguntas) ? dz.perguntas : [];
+    var qaHtml = perguntas.map(function (p) {
+      return '<div class="qa"><div class="qa-q">' + esc(p.pergunta) + '</div><div class="qa-a">' + esc(p.resposta) + '</div></div>';
+    }).join('');
+
+    var html =
+      '<h1 class="d-name">' + esc(dz.nome) + '</h1>' +
+      (dz.cidade ? '<div class="d-city">' + esc(dz.cidade) + '</div>' : '') +
+      '<div class="d-contacts">' + contactsHtml(dz) + '</div>' +
+      (dz.bio ? '<p class="d-bio">' + esc(dz.bio) + '</p>' : '') +
+      (dz.citacao ? '<blockquote class="d-quote">“' + esc(dz.citacao) + '”</blockquote>' : '') +
+      (qaHtml ? '<div class="d-section-label">entrevista</div>' + qaHtml : '') +
+      (Array.isArray(dz.capas) && dz.capas.length
+        ? '<div class="covers-sec"><div class="d-section-label">capas que escolheu</div><div class="covers-grid" id="covers-grid"></div></div>'
+        : '');
+    elContent.innerHTML = html;
+  }
+
+  /* casa cada capa pelo título na coleção biblioteca para puxar a imagem (MetaBooks) */
+  function resolverCapas(capas) {
+    var grid = document.getElementById('covers-grid');
+    if (!grid) return;
+    grid.innerHTML = capas.map(function (c, i) {
+      return '<div class="cover" id="cv-' + i + '">' +
+        '<div class="cover-fallback">' + esc(c.titulo) + '</div>' +
+        '<div class="cover-title">' + esc(c.titulo) + '</div>' +
+        '<div class="cover-author">' + esc(c.autor || '') + (c.ano ? ' · ' + esc(String(c.ano)) : '') + '</div>' +
+        '</div>';
+    }).join('');
+    capas.forEach(function (c, i) {
+      /* tenta o título cheio; se não achar, tenta sem subtítulo (antes de ":") */
+      var buscas = [c.titulo];
+      if (c.titulo.indexOf(':') !== -1) buscas.push(c.titulo.split(':')[0].trim());
+      buscarCapa(buscas, 0, i, c);
+    });
+
+    function buscarCapa(buscas, idx, i, c) {
+      if (idx >= buscas.length) return;
+      fetch(DIRECTUS + '/items/biblioteca?filter[titulo][_icontains]=' + encodeURIComponent(buscas[idx]) + '&fields=titulo,capa_url&limit=1')
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          var b = (d.data || [])[0];
+          if (b && b.capa_url) {
+            var box = document.getElementById('cv-' + i);
+            if (!box) return;
+            var fb = box.querySelector('.cover-fallback');
+            var img = new Image();
+            img.className = 'cover-img';
+            img.alt = c.titulo;
+            img.onload = function () { if (fb) fb.replaceWith(img); };
+            img.src = b.capa_url;
+          } else {
+            buscarCapa(buscas, idx + 1, i, c);
+          }
+        })
+        .catch(function () {});
+    }
+  }
+})();
+</script>
+</body>
+</html>
