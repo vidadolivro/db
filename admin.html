@@ -565,7 +565,10 @@
     document.getElementById('tipo-field').style.display = 'none';
     document.getElementById('campos-extras').innerHTML = '';
     document.getElementById('tema-field').style.display = 'none';
-    document.getElementById('btn-submit').style.display = 'none';
+    var bs = document.getElementById('btn-submit');
+    bs.style.display = 'none';
+    bs.disabled = false;
+    bs.textContent = 'adicionar';
     document.getElementById('link-msg').innerHTML = '';
     document.querySelectorAll('.tipo-btn').forEach(function (b) { b.classList.remove('active'); });
   }
@@ -605,7 +608,7 @@
       if (!r.ok) return r.json().then(function (d) { throw new Error((d.errors && d.errors[0] && d.errors[0].message) || 'erro ao salvar'); });
       return r.json();
     })
-    .then(function () { show('view-ok'); })
+    .then(function () { btn.disabled = false; btn.textContent = 'adicionar'; show('view-ok'); })
     .catch(function (e) {
       showMsg('link-msg', e.message, 'error');
       btn.disabled = false; btn.textContent = 'adicionar';
@@ -697,7 +700,7 @@
           if (!r.ok) return r.json().then(function(d){ throw new Error((d.errors&&d.errors[0]&&d.errors[0].message)||'erro'); });
         });
       }))
-      .then(function () { show('view-ok'); })
+      .then(function () { btn.disabled = false; btn.textContent = 'adicionar'; show('view-ok'); })
       .catch(function (e) {
         showMsg('livro-form-msg', e.message, 'error');
         btn.disabled = false; btn.textContent = 'adicionar';
