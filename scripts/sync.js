@@ -26,6 +26,12 @@ const TEMAS = fakeTemas.TEMAS || {};
 const SLUG_TO_MACRO = {};
 Object.entries(TEMAS).forEach(([slug, t]) => { if (t.macrotema) SLUG_TO_MACRO[slug] = t.macrotema; });
 
+/* ── carregar config dos diretórios ── */
+const dirCfgSrc = fs.readFileSync(path.join(ROOT, 'dados/dir-config.js'), 'utf8');
+const fakeDirCfg = {};
+new Function('window', dirCfgSrc)(fakeDirCfg); // eslint-disable-line no-new-func
+const DIR_CONFIG = fakeDirCfg.DIR_CONFIG || {};
+
 if (!CATS.length) console.log('categorias.js vazio — livros vêm de db_livros, diretórios de db_*.');
 
 const locais  = CATS.filter(c => c.titulo);
@@ -457,52 +463,49 @@ async function syncDbDiretorios() {
 
   const DB_DIRS = {};
 
-  /* ── db_editores ── */
-  try {
-    const r = await fetch(DIRECTUS_BASE + '/items/db_editores?limit=1000&sort=nome', { headers: authHeader });
-    const d = await r.json();
-    if (r.ok && d.data?.length) {
-      DB_DIRS['editores'] = {
-        titulo: 'editores',
-        desc: 'editores literários — onde atuam e como encontrá-los',
-        filtroLabel: 'filtro',
-        filtros: ['todos'],
-        data: d.data.map(e => ({
-          c1: e.nome || '',
-          c2: e.onde_atua || '',
-          c3: '',
-          c4: '',
-          href: e.rede || '#',
-          tags: [],
-        })),
-      };
-      console.log(`  ✓ db_editores: ${d.data.length} entrada(s)`);
-    }
-  } catch (e) { console.warn('  ✗ db_editores:', e.message); }
+  for (const [key, cfg] of Object.entries(DIR_CONFIG)) {
+    try {
+      const r = await fetch(DIRECTUS_BASE + '/items/' + cfg.collection + '?limit=1000&sort=id', { headers: authHeader });
+      const d = await r.json();
+      if (!r.ok) { console.warn(`  ✗ ${cfg.collection}: ${JSON.stringify(d.errors?.[0]?.message || d.errors?.[0])}`); continue; }
+      const items = d.data || [];
+      if (!items.length) continue;
 
-  /* ── db_listas_mais_vendidos ── */
-  try {
-    const r = await fetch(DIRECTUS_BASE + '/items/db_listas_mais_vendidos?limit=1000&sort=nome', { headers: authHeader });
-    const d = await r.json();
-    if (r.ok && d.data?.length) {
-      const paises = [...new Set(d.data.map(e => e.pais).filter(Boolean))].sort();
-      DB_DIRS['listas-mais-vendidos'] = {
-        titulo: 'listas de mais vendidos',
-        desc: 'rankings de livros mais vendidos ao redor do mundo',
-        filtroLabel: 'país',
-        filtros: ['todos', ...paises],
-        data: d.data.map(e => ({
-          c1: e.nome || '',
-          c2: e.pais || '',
-          c3: e.periodicidade || '',
-          c4: '',
-          href: e.href || '#',
-          tags: e.pais ? [e.pais] : [],
-        })),
+      /* mapeia cada item para colunas de exibição c1..c4 conforme a config */
+      const data = items.map(it => {
+        const row = { c1: '', c2: '', c3: '', c4: '', tags: [], href: '' };
+        cfg.campos.forEach(campo => {
+          const col = campo.col || campo.key;           // c1..c4 de destino
+          row[col] = it[campo.key] != null ? String(it[campo.key]) : '';
+        });
+        row.href = (cfg.hrefKey && it[cfg.hrefKey]) ? it[cfg.hrefKey] : '';
+        if (cfg.tags) row.tags = Array.isArray(it.tags) ? it.tags : [];
+        else if (cfg.filtrosFrom) { const v = row[cfg.filtrosFrom]; if (v) row.tags = [v]; }
+        return row;
+      });
+
+      /* filtros: estáticos da config, ou derivados de uma coluna (ex: país) */
+      let filtros = cfg.filtros || ['todos'];
+      if (cfg.filtrosFrom) {
+        const vals = [...new Set(data.map(r => r[cfg.filtrosFrom]).filter(Boolean))].sort();
+        filtros = ['todos', ...vals];
+      }
+
+      /* ordena por c1 (nome) para exibição estável */
+      data.sort((a, b) => (a.c1 || '').localeCompare(b.c1 || '', 'pt'));
+
+      DB_DIRS[key] = {
+        titulo: cfg.titulo,
+        num: cfg.num,
+        desc: cfg.desc,
+        filtroLabel: cfg.filtroLabel,
+        filtros,
+        cols: cfg.campos.map(c => c.label),
+        data,
       };
-      console.log(`  ✓ db_listas_mais_vendidos: ${d.data.length} entrada(s)`);
-    }
-  } catch (e) { console.warn('  ✗ db_listas_mais_vendidos:', e.message); }
+      console.log(`  ✓ ${cfg.collection}: ${items.length} entrada(s)`);
+    } catch (e) { console.warn(`  ✗ ${cfg.collection}:`, e.message); }
+  }
 
   const out = [
     '/* vida do livro db — gerado por scripts/sync.js */',

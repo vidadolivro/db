@@ -201,8 +201,7 @@
       <button class="tipo-btn ger-tipo-btn" data-col="db_links">links</button>
       <button class="tipo-btn ger-tipo-btn" data-col="db_artigos">artigos</button>
       <button class="tipo-btn ger-tipo-btn" data-col="db_livros">livros</button>
-      <button class="tipo-btn ger-tipo-btn" data-col="db_editores">editores</button>
-      <button class="tipo-btn ger-tipo-btn" data-col="db_listas_mais_vendidos">listas mais vendidos</button>
+      <!-- diretórios injetados por JS a partir de dir-config.js -->
     </div>
     <div id="ger-lista" style="margin-top:16px"></div>
     <div id="ger-edit"></div>
@@ -215,14 +214,11 @@
       <button class="btn btn-ghost" id="btn-logout-dir">sair</button>
     </div>
     <h1 class="page-title">diretório</h1>
-    <p class="page-desc">adicionar editor ou lista de mais vendidos</p>
+    <p class="page-desc">adicionar entrada a um diretório</p>
     <div id="dir-msg"></div>
     <div class="field">
       <label>tipo</label>
-      <div class="tipo-grid" id="dir-tipo-grid">
-        <button class="tipo-btn active" data-col="db_editores">editor</button>
-        <button class="tipo-btn" data-col="db_listas_mais_vendidos">lista de mais vendidos</button>
-      </div>
+      <div class="tipo-grid" id="dir-tipo-grid"></div>
     </div>
     <div id="dir-campos"></div>
     <button class="btn" id="btn-dir-submit">adicionar</button>
@@ -242,6 +238,7 @@
 </footer>
 
 <script src="dados/temas.js"></script>
+<script src="dados/dir-config.js"></script>
 <script>
 (function () {
   var DIRECTUS   = 'https://directus-production-afdd.up.railway.app';
@@ -352,43 +349,49 @@
     show('view-livro');
   });
   document.getElementById('btn-choice-dir').addEventListener('click', function () {
-    dirCol = 'db_editores';
-    document.querySelectorAll('#dir-tipo-grid .tipo-btn').forEach(function (b) {
-      b.classList.toggle('active', b.dataset.col === dirCol);
-    });
+    dirKey = DIR_KEYS[0];
+    renderDirTipos();
     document.getElementById('dir-msg').innerHTML = '';
     renderDirCampos();
     show('view-diretorio');
   });
 
-  /* ── FORMULÁRIO DIRETÓRIO ── */
-  var dirCol = 'db_editores';
-  var DIR_CAMPOS = {
-    db_editores: [
-      { id: 'nome',      label: 'nome',      ph: 'nome do editor' },
-      { id: 'onde_atua', label: 'onde atua', ph: 'editora, selo, freelance…' },
-      { id: 'rede',      label: 'rede',      ph: 'URL — LinkedIn, Instagram, site…' },
-    ],
-    db_listas_mais_vendidos: [
-      { id: 'nome',          label: 'nome',          ph: 'ex: The New York Times Best Sellers' },
-      { id: 'href',          label: 'url',           ph: 'https://…' },
-      { id: 'pais',          label: 'país',          ph: 'ex: EUA, Brasil…' },
-      { id: 'periodicidade', label: 'periodicidade', ph: 'semanal, mensal, anual…' },
-    ],
-  };
+  /* ── FORMULÁRIO DIRETÓRIO (dirigido por dados/dir-config.js) ── */
+  var DIR_CONFIG = window.DIR_CONFIG || {};
+  var DIR_KEYS = Object.keys(DIR_CONFIG);
+  var dirKey = DIR_KEYS[0];
+
+  function renderDirTipos() {
+    document.getElementById('dir-tipo-grid').innerHTML = DIR_KEYS.map(function (k) {
+      return '<button class="tipo-btn' + (k === dirKey ? ' active' : '') + '" data-key="' + esc(k) + '">' + esc(DIR_CONFIG[k].titulo) + '</button>';
+    }).join('');
+  }
 
   function renderDirCampos() {
-    var campos = DIR_CAMPOS[dirCol] || [];
-    document.getElementById('dir-campos').innerHTML = campos.map(function (c) {
+    var cfg = DIR_CONFIG[dirKey];
+    if (!cfg) return;
+    var html = cfg.campos.map(function (c) {
       return '<div class="field"><label>' + esc(c.label) + '</label>' +
-        '<input type="text" id="dir-f-' + esc(c.id) + '" placeholder="' + esc(c.ph) + '"></div>';
+        '<input type="text" id="dir-f-' + esc(c.key) + '" placeholder=""></div>';
     }).join('');
+    if (cfg.hrefKey) {
+      html += '<div class="field"><label>' + esc(cfg.hrefLabel || 'link') + ' <span class="opt">(opcional)</span></label>' +
+        '<input type="text" id="dir-f-href" placeholder="https://…"></div>';
+    }
+    if (cfg.tags) {
+      var opts = (cfg.filtros || []).filter(function (f) { return f !== 'todos'; });
+      html += '<div class="field"><label>' + esc(cfg.filtroLabel || 'tags') + ' <span class="opt">(marque os que se aplicam)</span></label>' +
+        '<div class="tipo-grid">' + opts.map(function (t) {
+          return '<label class="tipo-btn" style="cursor:pointer"><input type="checkbox" class="dir-tag" value="' + esc(t) + '" style="margin-right:5px">' + esc(t) + '</label>';
+        }).join('') + '</div></div>';
+    }
+    document.getElementById('dir-campos').innerHTML = html;
   }
 
   document.getElementById('dir-tipo-grid').addEventListener('click', function (e) {
     var btn = e.target.closest('.tipo-btn');
-    if (!btn) return;
-    dirCol = btn.dataset.col;
+    if (!btn || !btn.dataset.key) return;
+    dirKey = btn.dataset.key;
     document.querySelectorAll('#dir-tipo-grid .tipo-btn').forEach(function (b) {
       b.classList.toggle('active', b === btn);
     });
@@ -398,16 +401,21 @@
   document.getElementById('btn-dir-submit').addEventListener('click', function () {
     var token = getToken();
     if (!token) { show('view-login'); return; }
-    var campos = DIR_CAMPOS[dirCol] || [];
+    var cfg = DIR_CONFIG[dirKey];
+    if (!cfg) return;
     var payload = {};
-    campos.forEach(function (c) {
-      var el = document.getElementById('dir-f-' + c.id);
-      if (el) payload[c.id] = el.value.trim();
+    cfg.campos.forEach(function (c) {
+      var el = document.getElementById('dir-f-' + c.key);
+      if (el) payload[c.key] = el.value.trim();
     });
-    if (!payload.nome) { showMsg('dir-msg', 'preencha o nome.', 'error'); return; }
-    if (dirCol === 'db_listas_mais_vendidos' && !payload.href) { showMsg('dir-msg', 'preencha a url da lista.', 'error'); return; }
+    if (cfg.hrefKey) { var h = document.getElementById('dir-f-href'); payload[cfg.hrefKey] = h ? h.value.trim() : ''; }
+    if (cfg.tags) {
+      payload.tags = [].slice.call(document.querySelectorAll('.dir-tag:checked')).map(function (c) { return c.value; });
+    }
+    var primeiro = cfg.campos[0].key;
+    if (!payload[primeiro]) { showMsg('dir-msg', 'preencha o campo "' + cfg.campos[0].label + '".', 'error'); return; }
     var btn = this; btn.disabled = true; btn.textContent = 'salvando…';
-    fetch(DIRECTUS + '/items/' + dirCol, {
+    fetch(DIRECTUS + '/items/' + cfg.collection, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
       body: JSON.stringify(payload),
@@ -793,6 +801,19 @@
   /* ── GERENCIAR (listar / editar / excluir) ── */
   var gerColAtual = null;
 
+  /* injeta os botões de diretório (config) nas abas do gerenciar, uma vez */
+  (function injetarGerDiretorios() {
+    var grid = document.getElementById('ger-tipos');
+    var cfg = window.DIR_CONFIG || {};
+    Object.keys(cfg).forEach(function (k) {
+      var b = document.createElement('button');
+      b.className = 'tipo-btn ger-tipo-btn';
+      b.dataset.col = cfg[k].collection;
+      b.textContent = cfg[k].titulo;
+      grid.appendChild(b);
+    });
+  })();
+
   document.getElementById('btn-choice-ger').addEventListener('click', function () {
     show('view-gerenciar');
     document.getElementById('ger-edit').innerHTML = '';
@@ -829,8 +850,8 @@
         lista.innerHTML = items.map(function (it) {
           return '<div style="border:1px solid var(--border);padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start">' +
             '<div style="min-width:0">' +
-              '<div style="font-weight:600;font-size:13px">' + esc(it.titulo || it.nome || it.show || '(sem título)') + '</div>' +
-              '<div style="font-size:11px;color:var(--mid)">' + esc(it.tema_slug || it.pais || it.onde_atua || '') + '</div>' +
+              '<div style="font-weight:600;font-size:13px">' + esc(it.titulo || it.nome || it.show || it.c1 || '(sem título)') + '</div>' +
+              '<div style="font-size:11px;color:var(--mid)">' + esc(it.tema_slug || it.pais || it.onde_atua || it.c2 || '') + '</div>' +
             '</div>' +
             '<div style="display:flex;gap:6px;flex-shrink:0">' +
               '<button class="btn btn-ghost ger-editar" data-id="' + it.id + '" style="width:auto;padding:4px 10px">editar</button>' +
@@ -863,25 +884,76 @@
       .catch(function (e) { window.alert(e.message); });
   }
 
-  var COL_LABELS = { db_videos: 'vídeo', db_podcasts: 'podcast', db_artigos: 'artigo acadêmico', db_textos: 'texto', db_links: 'link / site', db_livros: 'livro', db_editores: 'editor', db_listas_mais_vendidos: 'lista de mais vendidos' };
+  var COL_LABELS = { db_videos: 'vídeo', db_podcasts: 'podcast', db_artigos: 'artigo acadêmico', db_textos: 'texto', db_links: 'link / site', db_livros: 'livro' };
 
-  /* coleções de diretório não usam tema nem troca de tipo */
-  var COLS_DIRETORIO = { db_editores: 1, db_listas_mais_vendidos: 1 };
+  /* coleções de diretório (config-driven) — não usam tema nem troca de tipo */
+  var DIR_CFG_BY_COL = {};
+  Object.keys(window.DIR_CONFIG || {}).forEach(function (k) { var c = window.DIR_CONFIG[k]; DIR_CFG_BY_COL[c.collection] = c; });
+
+  /* ── editar item de DIRETÓRIO (campos dirigidos pela config) ── */
+  function editarGerDir(it, cfg) {
+    var box = document.getElementById('ger-edit');
+    var html = '<div style="border:1px solid var(--ink);padding:16px;margin-top:8px">' +
+      '<div style="font-size:12px;font-weight:600;margin-bottom:12px">editar ' + esc(cfg.titulo) + '</div>';
+    cfg.campos.forEach(function (c) {
+      var v = it[c.key] != null ? String(it[c.key]) : '';
+      html += '<div class="field"><label>' + esc(c.label) + '</label><input type="text" id="gd-f-' + esc(c.key) + '" value="' + esc(v) + '"></div>';
+    });
+    if (cfg.hrefKey) {
+      var hv = it[cfg.hrefKey] != null ? String(it[cfg.hrefKey]) : '';
+      html += '<div class="field"><label>' + esc(cfg.hrefLabel || 'link') + ' <span class="opt">(opcional)</span></label><input type="text" id="gd-f-href" value="' + esc(hv) + '"></div>';
+    }
+    if (cfg.tags) {
+      var atuais = Array.isArray(it.tags) ? it.tags : [];
+      var opts = (cfg.filtros || []).filter(function (f) { return f !== 'todos'; });
+      html += '<div class="field"><label>' + esc(cfg.filtroLabel || 'tags') + '</label><div class="tipo-grid">' +
+        opts.map(function (t) {
+          return '<label class="tipo-btn" style="cursor:pointer"><input type="checkbox" class="gd-tag" value="' + esc(t) + '"' + (atuais.indexOf(t) !== -1 ? ' checked' : '') + ' style="margin-right:5px">' + esc(t) + '</label>';
+        }).join('') + '</div></div>';
+    }
+    html += '<div id="ger-edit-msg"></div><div style="display:flex;gap:8px">' +
+      '<button class="btn" id="ger-salvar">salvar</button>' +
+      '<button class="btn btn-ghost" id="ger-cancelar">cancelar</button></div></div>';
+    box.innerHTML = html;
+    box.scrollIntoView({ block: 'nearest' });
+
+    document.getElementById('ger-cancelar').addEventListener('click', function () { box.innerHTML = ''; });
+    document.getElementById('ger-salvar').addEventListener('click', function () {
+      var token = getToken();
+      if (!token) return;
+      var patch = {};
+      cfg.campos.forEach(function (c) { var el = document.getElementById('gd-f-' + c.key); if (el) patch[c.key] = el.value.trim(); });
+      if (cfg.hrefKey) { var h = document.getElementById('gd-f-href'); patch[cfg.hrefKey] = h ? h.value.trim() : ''; }
+      if (cfg.tags) { patch.tags = [].slice.call(document.querySelectorAll('.gd-tag:checked')).map(function (c) { return c.value; }); }
+      var btn = this; btn.disabled = true; btn.textContent = 'salvando…';
+      fetch(DIRECTUS + '/items/' + gerColAtual + '/' + it.id, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+        body: JSON.stringify(patch),
+      })
+        .then(function (r) {
+          if (r.status === 401) { clearSession(); show('view-login'); throw new Error('sessão expirada'); }
+          if (!r.ok) return r.json().then(function (d) { throw new Error((d.errors && d.errors[0] && d.errors[0].message) || 'erro ao salvar'); });
+          box.innerHTML = ''; carregarGerLista();
+        })
+        .catch(function (e) { showMsg('ger-edit-msg', e.message, 'error'); btn.disabled = false; btn.textContent = 'salvar'; });
+    });
+  }
 
   function editarGer(it) {
+    var cfgDir = DIR_CFG_BY_COL[gerColAtual];
+    if (cfgDir) { editarGerDir(it, cfgDir); return; }
+
     var box = document.getElementById('ger-edit');
-    var ehDiretorio = !!COLS_DIRETORIO[gerColAtual];
     var pular = { id: 1, tema_slug: 1, date_created: 1, date_updated: 1, user_created: 1, user_updated: 1, sort: 1 };
     var campos = Object.keys(it).filter(function (k) { return !pular[k]; });
     var html = '<div style="border:1px solid var(--ink);padding:16px;margin-top:8px">' +
       '<div style="font-size:12px;font-weight:600;margin-bottom:12px">editar item</div>';
-    if (!ehDiretorio) {
-      var tipoOpts = Object.keys(COL_LABELS).filter(function (col) { return !COLS_DIRETORIO[col]; }).map(function (col) {
-        return '<option value="' + col + '"' + (col === gerColAtual ? ' selected' : '') + '>' + COL_LABELS[col] + '</option>';
-      }).join('');
-      html += '<div class="field"><label>tipo</label><select id="ger-f-tipo">' + tipoOpts + '</select></div>' +
-        '<div class="field"><label>tema</label><select id="ger-f-tema_slug"></select></div>';
-    }
+    var tipoOpts = Object.keys(COL_LABELS).map(function (col) {
+      return '<option value="' + col + '"' + (col === gerColAtual ? ' selected' : '') + '>' + COL_LABELS[col] + '</option>';
+    }).join('');
+    html += '<div class="field"><label>tipo</label><select id="ger-f-tipo">' + tipoOpts + '</select></div>' +
+      '<div class="field"><label>tema</label><select id="ger-f-tema_slug"></select></div>';
     campos.forEach(function (c) {
       var v = it[c] != null ? String(it[c]) : '';
       if (c === 'trecho') html += '<div class="field"><label>' + esc(c) + '</label><textarea id="ger-f-' + esc(c) + '">' + esc(v) + '</textarea></div>';
@@ -892,19 +964,17 @@
       '<button class="btn btn-ghost" id="ger-cancelar">cancelar</button></div></div>';
     box.innerHTML = html;
 
-    if (!ehDiretorio) {
-      var sel = document.getElementById('ger-f-tema_slug');
-      sel.innerHTML = '<option value="">(sem tema)</option>';
-      var TEMAS = window.TEMAS || {};
-      Object.keys(TEMAS).map(function (k) { return { k: k, t: TEMAS[k].titulo, n: parseInt(TEMAS[k].num) || 0 }; })
-        .sort(function (a, b) { return a.n - b.n; })
-        .forEach(function (item) {
-          var o = document.createElement('option');
-          o.value = item.k; o.textContent = item.t;
-          if (item.k === it.tema_slug) o.selected = true;
-          sel.appendChild(o);
-        });
-    }
+    var sel = document.getElementById('ger-f-tema_slug');
+    sel.innerHTML = '<option value="">(sem tema)</option>';
+    var TEMAS = window.TEMAS || {};
+    Object.keys(TEMAS).map(function (k) { return { k: k, t: TEMAS[k].titulo, n: parseInt(TEMAS[k].num) || 0 }; })
+      .sort(function (a, b) { return a.n - b.n; })
+      .forEach(function (item) {
+        var o = document.createElement('option');
+        o.value = item.k; o.textContent = item.t;
+        if (item.k === it.tema_slug) o.selected = true;
+        sel.appendChild(o);
+      });
     box.scrollIntoView({ block: 'nearest' });
 
     document.getElementById('ger-cancelar').addEventListener('click', function () { box.innerHTML = ''; });
