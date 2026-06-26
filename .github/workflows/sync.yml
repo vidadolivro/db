@@ -2,7 +2,7 @@ name: sync
 
 on:
   schedule:
-    - cron: '0 * * * *'      # 1× por hora — fallback caso o Flow do Directus falhe
+    - cron: '*/5 * * * *'    # a cada 5 min — publicação automática (o Flow do Directus está com token revogado)
   push:
     branches: [main]
     paths-ignore:
