@@ -212,37 +212,6 @@ window.DB_DIRS = {
     ],
     "data": [
       {
-        "c1": "Ana Cecília Impellizieri",
-        "c2": "Literária Agência",
-        "c3": "Não-ficção, jornalismo literário, memória",
-        "c4": "nacional",
-        "tags": [
-          "nacional"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Claudia Barbosa",
-        "c2": "Ilíada",
-        "c3": "Autores nacionais, direitos internacionais",
-        "c4": "nacional · direitos",
-        "tags": [
-          "nacional",
-          "direitos"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Fernanda Barbosa",
-        "c2": "Pontes Agência",
-        "c3": "Ficção e não-ficção, mercado brasileiro",
-        "c4": "nacional",
-        "tags": [
-          "nacional"
-        ],
-        "href": ""
-      },
-      {
         "c1": "Lucia Riff",
         "c2": "Agência Riff",
         "c3": "Chico Buarque, Milton Hatoum, João Gilberto Noll",
@@ -262,16 +231,6 @@ window.DB_DIRS = {
         "tags": [
           "internacional",
           "direitos"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Natalia Timerman",
-        "c2": "Timerman Literary",
-        "c3": "Ficção literária contemporânea, autores estreantes",
-        "c4": "nacional",
-        "tags": [
-          "nacional"
         ],
         "href": ""
       }
@@ -299,110 +258,10 @@ window.DB_DIRS = {
     ],
     "data": [
       {
-        "c1": "Alexandre Boide",
-        "c2": "espanhol",
-        "c3": "Roberto Bolaño, César Aira, Juan Rulfo",
-        "c4": "São Paulo",
-        "tags": [
-          "espanhol"
-        ],
-        "href": ""
-      },
-      {
         "c1": "Caetano Galindo",
         "c2": "inglês",
         "c3": "Ulysses (Joyce), Graça Infinita (Wallace)",
         "c4": "Curitiba",
-        "tags": [
-          "inglês"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Claudio Blanc",
-        "c2": "francês",
-        "c3": "Proust, Camus, literatura francesa contemporânea",
-        "c4": "São Paulo",
-        "tags": [
-          "francês"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Donaldson Garschagen",
-        "c2": "alemão",
-        "c3": "Hegel, Nietzsche, Heidegger, Kafka",
-        "c4": "São Paulo",
-        "tags": [
-          "alemão"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Heloisa Jahn",
-        "c2": "inglês",
-        "c3": "Ian McEwan, Kazuo Ishiguro, Philip Roth",
-        "c4": "São Paulo",
-        "tags": [
-          "inglês"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "José Rubens Siqueira",
-        "c2": "inglês",
-        "c3": "J. D. Salinger, literatura americana",
-        "c4": "São Paulo",
-        "tags": [
-          "inglês"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Luca Argel",
-        "c2": "italiano",
-        "c3": "Calvino, Leopardi, poesia italiana",
-        "c4": "São Paulo",
-        "tags": [
-          "italiano"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Marcos Bagno",
-        "c2": "italiano",
-        "c3": "Umberto Eco, Primo Levi, literatura italiana",
-        "c4": "Brasília",
-        "tags": [
-          "italiano"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Maria Ekman",
-        "c2": "outras",
-        "c3": "Sueco e outras línguas escandinavas",
-        "c4": "São Paulo",
-        "tags": [
-          "outras"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Paulo Geiger",
-        "c2": "francês",
-        "c3": "Montaigne, La Fontaine, clássicos franceses",
-        "c4": "Rio de Janeiro",
-        "tags": [
-          "francês"
-        ],
-        "href": ""
-      },
-      {
-        "c1": "Ryta Vinagre",
-        "c2": "inglês",
-        "c3": "Literatura inglesa e norte-americana contemporânea",
-        "c4": "São Paulo",
         "tags": [
           "inglês"
         ],
