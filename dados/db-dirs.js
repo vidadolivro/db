@@ -2,12 +2,1029 @@
 /* não editar manualmente — rode: npm run sync */
 
 window.DB_DIRS = {
+  "editoras": {
+    "titulo": "editoras",
+    "num": "01",
+    "desc": "editoras brasileiras por segmento editorial",
+    "filtroLabel": "segmento",
+    "filtros": [
+      "todos",
+      "literatura",
+      "não-ficção",
+      "infantil",
+      "universitária",
+      "independente"
+    ],
+    "cols": [
+      "editora",
+      "segmento",
+      "catálogo / destaque",
+      "cidade"
+    ],
+    "data": [
+      {
+        "c1": "Aleph",
+        "c2": "independente",
+        "c3": "Ficção especulativa, fantasia, sci-fi",
+        "c4": "São Paulo",
+        "tags": [
+          "literatura",
+          "independente"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Autêntica",
+        "c2": "independente",
+        "c3": "Educação, ciências sociais, ficção literária",
+        "c4": "Belo Horizonte",
+        "tags": [
+          "não-ficção",
+          "universitária",
+          "independente"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Companhia das Letras",
+        "c2": "literatura",
+        "c3": "Ficção nacional e internacional de referência",
+        "c4": "São Paulo",
+        "tags": [
+          "literatura"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Companhia das Letrinhas",
+        "c2": "infantil",
+        "c3": "Literatura infantojuvenil nacional e traduzida",
+        "c4": "São Paulo",
+        "tags": [
+          "infantil"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Darkside Books",
+        "c2": "independente",
+        "c3": "Terror, ficção científica, fantasia — curadoria de nicho",
+        "c4": "Rio de Janeiro",
+        "tags": [
+          "literatura",
+          "independente"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Editora 34",
+        "c2": "independente",
+        "c3": "Literatura estrangeira, filosofia, psicanálise",
+        "c4": "São Paulo",
+        "tags": [
+          "literatura",
+          "independente"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Editora Unesp",
+        "c2": "universitária",
+        "c3": "Ciências humanas, tradução, história do livro",
+        "c4": "São Paulo",
+        "tags": [
+          "universitária"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Edusp",
+        "c2": "universitária",
+        "c3": "Produção científica da Universidade de São Paulo",
+        "c4": "São Paulo",
+        "tags": [
+          "universitária"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Fósforo",
+        "c2": "independente",
+        "c3": "Ficção literária, não-ficção, design premiado",
+        "c4": "São Paulo",
+        "tags": [
+          "literatura",
+          "independente"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "HarperCollins Brasil",
+        "c2": "literatura",
+        "c3": "Ficção e não-ficção de grande mercado",
+        "c4": "São Paulo",
+        "tags": [
+          "literatura",
+          "não-ficção"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Intrínseca",
+        "c2": "literatura",
+        "c3": "Ficção comercial, best-sellers e YA",
+        "c4": "Rio de Janeiro",
+        "tags": [
+          "literatura"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Melhoramentos",
+        "c2": "infantil",
+        "c3": "Dicionários, educacional, infantil",
+        "c4": "São Paulo",
+        "tags": [
+          "infantil",
+          "universitária"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Record",
+        "c2": "não-ficção",
+        "c3": "Jornalismo literário, política, história",
+        "c4": "Rio de Janeiro",
+        "tags": [
+          "não-ficção"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Rocco",
+        "c2": "literatura",
+        "c3": "Harry Potter, Roberto Bolaño, Milan Kundera no BR",
+        "c4": "Rio de Janeiro",
+        "tags": [
+          "literatura"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Sextante",
+        "c2": "não-ficção",
+        "c3": "Autoajuda, bem-estar, comportamento",
+        "c4": "Rio de Janeiro",
+        "tags": [
+          "não-ficção"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Todavia",
+        "c2": "independente",
+        "c3": "Literatura com identidade visual forte e catálogo coerente",
+        "c4": "São Paulo",
+        "tags": [
+          "literatura",
+          "independente"
+        ],
+        "href": ""
+      }
+    ]
+  },
+  "agentes": {
+    "titulo": "agentes literários",
+    "num": "02",
+    "desc": "agentes e agências literárias atuantes no Brasil",
+    "filtroLabel": "atuação",
+    "filtros": [
+      "todos",
+      "nacional",
+      "internacional",
+      "direitos"
+    ],
+    "cols": [
+      "nome",
+      "agência",
+      "perfil",
+      "foco"
+    ],
+    "data": [
+      {
+        "c1": "Ana Cecília Impellizieri",
+        "c2": "Literária Agência",
+        "c3": "Não-ficção, jornalismo literário, memória",
+        "c4": "nacional",
+        "tags": [
+          "nacional"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Claudia Barbosa",
+        "c2": "Ilíada",
+        "c3": "Autores nacionais, direitos internacionais",
+        "c4": "nacional · direitos",
+        "tags": [
+          "nacional",
+          "direitos"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Fernanda Barbosa",
+        "c2": "Pontes Agência",
+        "c3": "Ficção e não-ficção, mercado brasileiro",
+        "c4": "nacional",
+        "tags": [
+          "nacional"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Lucia Riff",
+        "c2": "Agência Riff",
+        "c3": "Chico Buarque, Milton Hatoum, João Gilberto Noll",
+        "c4": "nacional · internacional",
+        "tags": [
+          "nacional",
+          "internacional",
+          "direitos"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Luciana Villas-Boas",
+        "c2": "Villas-Boas & Moss",
+        "c3": "Representação de autores brasileiros no exterior",
+        "c4": "internacional",
+        "tags": [
+          "internacional",
+          "direitos"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Natalia Timerman",
+        "c2": "Timerman Literary",
+        "c3": "Ficção literária contemporânea, autores estreantes",
+        "c4": "nacional",
+        "tags": [
+          "nacional"
+        ],
+        "href": ""
+      }
+    ]
+  },
+  "tradutores": {
+    "titulo": "tradutores",
+    "num": "03",
+    "desc": "tradutores literários ativos no mercado brasileiro",
+    "filtroLabel": "idioma",
+    "filtros": [
+      "todos",
+      "inglês",
+      "espanhol",
+      "francês",
+      "alemão",
+      "italiano",
+      "outras"
+    ],
+    "cols": [
+      "nome",
+      "idioma",
+      "especialidade",
+      "atuação"
+    ],
+    "data": [
+      {
+        "c1": "Alexandre Boide",
+        "c2": "espanhol",
+        "c3": "Roberto Bolaño, César Aira, Juan Rulfo",
+        "c4": "São Paulo",
+        "tags": [
+          "espanhol"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Caetano Galindo",
+        "c2": "inglês",
+        "c3": "Ulysses (Joyce), Graça Infinita (Wallace)",
+        "c4": "Curitiba",
+        "tags": [
+          "inglês"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Claudio Blanc",
+        "c2": "francês",
+        "c3": "Proust, Camus, literatura francesa contemporânea",
+        "c4": "São Paulo",
+        "tags": [
+          "francês"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Donaldson Garschagen",
+        "c2": "alemão",
+        "c3": "Hegel, Nietzsche, Heidegger, Kafka",
+        "c4": "São Paulo",
+        "tags": [
+          "alemão"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Heloisa Jahn",
+        "c2": "inglês",
+        "c3": "Ian McEwan, Kazuo Ishiguro, Philip Roth",
+        "c4": "São Paulo",
+        "tags": [
+          "inglês"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "José Rubens Siqueira",
+        "c2": "inglês",
+        "c3": "J. D. Salinger, literatura americana",
+        "c4": "São Paulo",
+        "tags": [
+          "inglês"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Luca Argel",
+        "c2": "italiano",
+        "c3": "Calvino, Leopardi, poesia italiana",
+        "c4": "São Paulo",
+        "tags": [
+          "italiano"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Marcos Bagno",
+        "c2": "italiano",
+        "c3": "Umberto Eco, Primo Levi, literatura italiana",
+        "c4": "Brasília",
+        "tags": [
+          "italiano"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Maria Ekman",
+        "c2": "outras",
+        "c3": "Sueco e outras línguas escandinavas",
+        "c4": "São Paulo",
+        "tags": [
+          "outras"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Paulo Geiger",
+        "c2": "francês",
+        "c3": "Montaigne, La Fontaine, clássicos franceses",
+        "c4": "Rio de Janeiro",
+        "tags": [
+          "francês"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Ryta Vinagre",
+        "c2": "inglês",
+        "c3": "Literatura inglesa e norte-americana contemporânea",
+        "c4": "São Paulo",
+        "tags": [
+          "inglês"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Sergio Molina",
+        "c2": "espanhol",
+        "c3": "Borges, Cortázar, Cervantes",
+        "c4": "São Paulo",
+        "tags": [
+          "espanhol"
+        ],
+        "href": ""
+      }
+    ]
+  },
+  "designers": {
+    "titulo": "designers",
+    "num": "04",
+    "desc": "designers especializados em livros e editorial",
+    "filtroLabel": "especialidade",
+    "filtros": [
+      "todos",
+      "capas",
+      "tipografia",
+      "diagramação",
+      "identidade"
+    ],
+    "cols": [
+      "nome",
+      "especialidade",
+      "clientes / projetos",
+      "base"
+    ],
+    "data": [
+      {
+        "c1": "Alceu Nunes",
+        "c2": "capas · identidade",
+        "c3": "Companhia das Letras, Todavia, Autêntica",
+        "c4": "São Paulo",
+        "tags": [
+          "capas",
+          "identidade"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Ana Luiza Koehler",
+        "c2": "capas · identidade",
+        "c3": "Editoras independentes, ficção literária",
+        "c4": "Porto Alegre",
+        "tags": [
+          "capas",
+          "identidade"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Elisa von Randow",
+        "c2": "capas · diagramação",
+        "c3": "Fósforo, Todavia, Companhia das Letras",
+        "c4": "São Paulo",
+        "tags": [
+          "capas",
+          "diagramação"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Gustavo Piqueira",
+        "c2": "tipografia · identidade",
+        "c3": "Casa Rex — projetos editoriais e de identidade",
+        "c4": "São Paulo",
+        "tags": [
+          "tipografia",
+          "identidade"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Leandro Rodrigues",
+        "c2": "diagramação · tipografia",
+        "c3": "Livros técnicos, científicos e literários",
+        "c4": "São Paulo",
+        "tags": [
+          "diagramação",
+          "tipografia"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Raul Loureiro",
+        "c2": "capas · tipografia",
+        "c3": "Darkside, Aleph, ficção especulativa",
+        "c4": "Rio de Janeiro",
+        "tags": [
+          "capas",
+          "tipografia"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Victor Burton",
+        "c2": "tipografia · diagramação",
+        "c3": "Edições comentadas, clássicos, livros de arte",
+        "c4": "Rio de Janeiro",
+        "tags": [
+          "tipografia",
+          "diagramação"
+        ],
+        "href": ""
+      }
+    ]
+  },
+  "producao": {
+    "titulo": "produção gráfica",
+    "num": "05",
+    "desc": "gráficas e fornecedores de produção editorial",
+    "filtroLabel": "serviço",
+    "filtros": [
+      "todos",
+      "offset",
+      "digital",
+      "encadernação",
+      "acabamento"
+    ],
+    "cols": [
+      "empresa",
+      "serviço",
+      "especialidade",
+      "localização"
+    ],
+    "data": [
+      {
+        "c1": "Cartograf",
+        "c2": "encadernação · acabamento",
+        "c3": "Encadernação artesanal, edições especiais",
+        "c4": "São Paulo, SP",
+        "tags": [
+          "encadernação",
+          "acabamento"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Gráfica Bartira",
+        "c2": "offset",
+        "c3": "Impressão de grandes tiragens para editoras SP",
+        "c4": "Santo André, SP",
+        "tags": [
+          "offset"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Laser Plus",
+        "c2": "digital · acabamento",
+        "c3": "Impressão digital, prova e produção rápida",
+        "c4": "São Paulo, SP",
+        "tags": [
+          "digital",
+          "acabamento"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Leograf",
+        "c2": "offset · encadernação",
+        "c3": "Encadernação artesanal e produção editorial",
+        "c4": "São Paulo, SP",
+        "tags": [
+          "offset",
+          "encadernação"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Posigraf",
+        "c2": "offset · digital",
+        "c3": "Maior gráfica editorial do Sul do país",
+        "c4": "Curitiba, PR",
+        "tags": [
+          "offset",
+          "digital"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Prol Editora Gráfica",
+        "c2": "offset · digital",
+        "c3": "Livros didáticos, técnicos e comerciais",
+        "c4": "Cotia, SP",
+        "tags": [
+          "offset",
+          "digital"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "RR Donnelley Brasil",
+        "c2": "offset",
+        "c3": "Produção editorial em grande escala",
+        "c4": "Tambaú, SP",
+        "tags": [
+          "offset"
+        ],
+        "href": ""
+      }
+    ]
+  },
+  "veiculos": {
+    "titulo": "veículos",
+    "num": "06",
+    "desc": "publicações e canais de cobertura do mercado editorial",
+    "filtroLabel": "formato",
+    "filtros": [
+      "todos",
+      "impresso",
+      "digital",
+      "audiovisual",
+      "newsletter"
+    ],
+    "cols": [
+      "veículo",
+      "formato",
+      "cobertura",
+      "periodicidade"
+    ],
+    "data": [
+      {
+        "c1": "Cult",
+        "c2": "impresso · digital",
+        "c3": "Filosofia, literatura e teoria",
+        "c4": "mensal",
+        "tags": [
+          "impresso",
+          "digital"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Estadão / Cultura",
+        "c2": "impresso · digital",
+        "c3": "Cobertura cultural e resenhas de livros",
+        "c4": "semanal",
+        "tags": [
+          "impresso",
+          "digital"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Folha / Ilustrada",
+        "c2": "impresso · digital",
+        "c3": "Caderno de cultura, resenhas literárias",
+        "c4": "diário",
+        "tags": [
+          "impresso",
+          "digital"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Piauí",
+        "c2": "impresso · digital",
+        "c3": "Jornalismo literário de longo prazo",
+        "c4": "mensal",
+        "tags": [
+          "impresso",
+          "digital"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Publishnews",
+        "c2": "digital · newsletter",
+        "c3": "Notícias do mercado editorial brasileiro",
+        "c4": "diário",
+        "tags": [
+          "digital",
+          "newsletter"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Quatro Cinco Um",
+        "c2": "impresso · digital",
+        "c3": "Crítica literária e mercado editorial",
+        "c4": "mensal",
+        "tags": [
+          "impresso",
+          "digital"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Rascunho",
+        "c2": "impresso · digital",
+        "c3": "Jornalismo literário, ensaio e crítica",
+        "c4": "mensal",
+        "tags": [
+          "impresso",
+          "digital"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Suplemento Pernambuco",
+        "c2": "digital",
+        "c3": "Literatura, crítica e cultura pernambucana",
+        "c4": "mensal",
+        "tags": [
+          "digital"
+        ],
+        "href": ""
+      }
+    ]
+  },
+  "jornalistas": {
+    "titulo": "jornalistas",
+    "num": "07",
+    "desc": "jornalistas e críticos especializados em literatura e livros",
+    "filtroLabel": "veículo",
+    "filtros": [
+      "todos",
+      "jornal",
+      "revista",
+      "online"
+    ],
+    "cols": [
+      "nome",
+      "veículo",
+      "cobertura",
+      "base"
+    ],
+    "data": [
+      {
+        "c1": "Bernardo Carvalho",
+        "c2": "Folha de S. Paulo",
+        "c3": "Crítica literária e cronista",
+        "c4": "São Paulo",
+        "tags": [
+          "jornal"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Cassiano Elek Machado",
+        "c2": "Folha de S. Paulo",
+        "c3": "Jornalismo cultural e crítica literária",
+        "c4": "São Paulo",
+        "tags": [
+          "jornal"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Diego Viana",
+        "c2": "Valor Econômico",
+        "c3": "Mercado editorial, economia da cultura",
+        "c4": "São Paulo",
+        "tags": [
+          "jornal"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Gustavo Pacheco",
+        "c2": "Publishnews",
+        "c3": "Mercado editorial, dados, entrevistas",
+        "c4": "São Paulo",
+        "tags": [
+          "online"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Juliana Cunha",
+        "c2": "Folha de S. Paulo",
+        "c3": "Cobertura de literatura e mercado editorial",
+        "c4": "São Paulo",
+        "tags": [
+          "jornal"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Luís Henrique Pellanda",
+        "c2": "Rascunho",
+        "c3": "Editor e crítico literário",
+        "c4": "Curitiba",
+        "tags": [
+          "revista"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Vanessa Barbara",
+        "c2": "Folha de S. Paulo",
+        "c3": "Crítica literária, coluna semanal",
+        "c4": "São Paulo",
+        "tags": [
+          "jornal"
+        ],
+        "href": ""
+      }
+    ]
+  },
+  "influencers": {
+    "titulo": "influencers e creators",
+    "num": "08",
+    "desc": "criadores de conteúdo sobre livros e leitura",
+    "filtroLabel": "plataforma",
+    "filtros": [
+      "todos",
+      "instagram",
+      "youtube",
+      "tiktok",
+      "podcast"
+    ],
+    "cols": [
+      "creator",
+      "plataforma",
+      "perfil",
+      "seguidores aprox."
+    ],
+    "data": [
+      {
+        "c1": "Bora Ler",
+        "c2": "instagram · tiktok",
+        "c3": "Recomendações e booktok BR",
+        "c4": "+ 150k",
+        "tags": [
+          "instagram",
+          "tiktok"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Eduardo Zugaib",
+        "c2": "instagram · podcast",
+        "c3": "Leitura e produtividade, não-ficção",
+        "c4": "+ 100k",
+        "tags": [
+          "instagram",
+          "podcast"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Leitora Compulsiva",
+        "c2": "instagram · youtube",
+        "c3": "Reviews detalhados e listas temáticas",
+        "c4": "+ 180k",
+        "tags": [
+          "instagram",
+          "youtube"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Ler Antes de Morrer",
+        "c2": "youtube · instagram",
+        "c3": "Listas, clássicos e experiência de leitura",
+        "c4": "+ 120k",
+        "tags": [
+          "youtube",
+          "instagram"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Livros e Afins",
+        "c2": "instagram",
+        "c3": "Curadoria e estética literária",
+        "c4": "+ 80k",
+        "tags": [
+          "instagram"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Mafê (Máfia dos Livros)",
+        "c2": "instagram · tiktok",
+        "c3": "Resenhas rápidas, literatura popular",
+        "c4": "+ 200k",
+        "tags": [
+          "instagram",
+          "tiktok"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Tatiana Feltrin",
+        "c2": "youtube · instagram",
+        "c3": "Resenhas, clássicos e literatura internacional",
+        "c4": "+ 400k",
+        "tags": [
+          "youtube",
+          "instagram"
+        ],
+        "href": ""
+      }
+    ]
+  },
+  "escolas": {
+    "titulo": "escolas e cursos",
+    "num": "09",
+    "desc": "formação em escrita criativa, edição e mercado editorial",
+    "filtroLabel": "área",
+    "filtros": [
+      "todos",
+      "escrita",
+      "edição",
+      "tradução",
+      "design"
+    ],
+    "cols": [
+      "instituição",
+      "área",
+      "formato",
+      "cidade"
+    ],
+    "data": [
+      {
+        "c1": "ABRATES — Formação de Tradutores",
+        "c2": "tradução",
+        "c3": "Cursos, congresso anual e certificação",
+        "c4": "nacional (online)",
+        "tags": [
+          "tradução"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "CBL — Formação Editorial",
+        "c2": "edição",
+        "c3": "Cursos de gestão, marketing e produção editorial",
+        "c4": "São Paulo",
+        "tags": [
+          "edição"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Escola São Paulo de Escrita Criativa",
+        "c2": "escrita",
+        "c3": "Cursos presenciais e online de escrita criativa",
+        "c4": "São Paulo",
+        "tags": [
+          "escrita"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Frankfurt Academy",
+        "c2": "edição",
+        "c3": "Cursos internacionais para editores — online",
+        "c4": "online",
+        "tags": [
+          "edição"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "Obraría",
+        "c2": "escrita",
+        "c3": "Oficinas de escrita criativa em português",
+        "c4": "São Paulo · online",
+        "tags": [
+          "escrita"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "PUC-Rio — Letras",
+        "c2": "tradução · escrita",
+        "c3": "Bacharelado em Letras, ênfase em tradução",
+        "c4": "Rio de Janeiro",
+        "tags": [
+          "tradução",
+          "escrita"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "SENAC SP — Editoração",
+        "c2": "edição",
+        "c3": "Técnico em Editoração, Produção Editorial",
+        "c4": "São Paulo",
+        "tags": [
+          "edição",
+          "design"
+        ],
+        "href": ""
+      },
+      {
+        "c1": "USP — FFLCH Literatura",
+        "c2": "edição · escrita",
+        "c3": "Graduação e pós em Teoria Literária e Tradução",
+        "c4": "São Paulo",
+        "tags": [
+          "edição",
+          "escrita",
+          "tradução"
+        ],
+        "href": ""
+      }
+    ]
+  },
   "editores": {
     "titulo": "editores",
+    "num": "10",
     "desc": "editores literários — onde atuam e como encontrá-los",
     "filtroLabel": "filtro",
     "filtros": [
       "todos"
+    ],
+    "cols": [
+      "nome",
+      "onde atua"
     ],
     "data": [
       {
@@ -15,101 +1032,102 @@ window.DB_DIRS = {
         "c2": "Rocco",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Ana Lima Cecilio",
         "c2": "Record",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Cassiano Elek Machado",
         "c2": "Record",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Daniel Lameira",
         "c2": "Seiva, RJ",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Diana Passy",
         "c2": "SP",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Flávio Moura",
         "c2": "Todavia, SP",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Florencia Ferrari",
         "c2": "Ubu, SP",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Gustavo Faraon",
         "c2": "Dublinense, SP",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Marcelo Ferroni",
         "c2": "Companhia das Letras, RJ",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Martha Ribas",
         "c2": "Mapa Lab",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Ricardo Teperman",
         "c2": "Companhia das Letras, SP",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       },
       {
         "c1": "Rita Mattar",
         "c2": "Fósforo, SP",
         "c3": "",
         "c4": "",
-        "href": "#",
-        "tags": []
+        "tags": [],
+        "href": ""
       }
     ]
   },
   "listas-mais-vendidos": {
     "titulo": "listas de mais vendidos",
+    "num": "11",
     "desc": "rankings de livros mais vendidos ao redor do mundo",
     "filtroLabel": "país",
     "filtros": [
@@ -122,126 +1140,131 @@ window.DB_DIRS = {
       "Itália",
       "Reino Unido"
     ],
+    "cols": [
+      "nome",
+      "país",
+      "periodicidade"
+    ],
     "data": [
       {
         "c1": "Amazon Charts",
         "c2": "EUA",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.amazon.com/charts",
         "tags": [
           "EUA"
-        ]
+        ],
+        "href": "https://www.amazon.com/charts"
       },
       {
         "c1": "Corriere della Sera — Classifica Libri",
         "c2": "Itália",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.corriere.it/cultura/classifica-libri/",
         "tags": [
           "Itália"
-        ]
+        ],
+        "href": "https://www.corriere.it/cultura/classifica-libri/"
       },
       {
         "c1": "Der Spiegel Bestseller",
         "c2": "Alemanha",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.spiegel.de/kultur/bestseller/",
         "tags": [
           "Alemanha"
-        ]
+        ],
+        "href": "https://www.spiegel.de/kultur/bestseller/"
       },
       {
         "c1": "El Cultural — Los Más Vendidos",
         "c2": "Espanha",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.elespanol.com/el-cultural/letras/",
         "tags": [
           "Espanha"
-        ]
+        ],
+        "href": "https://www.elespanol.com/el-cultural/letras/"
       },
       {
         "c1": "Livres Hebdo — Meilleures Ventes",
         "c2": "França",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.livreshebdo.fr/meilleures-ventes",
         "tags": [
           "França"
-        ]
+        ],
+        "href": "https://www.livreshebdo.fr/meilleures-ventes"
       },
       {
         "c1": "Publishers Weekly Bestsellers",
         "c2": "EUA",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.publishersweekly.com/pw/nielsen/top25.html",
         "tags": [
           "EUA"
-        ]
+        ],
+        "href": "https://www.publishersweekly.com/pw/nielsen/top25.html"
       },
       {
         "c1": "PublishNews — Os Mais Vendidos",
         "c2": "Brasil",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.publishnews.com.br/ranking",
         "tags": [
           "Brasil"
-        ]
+        ],
+        "href": "https://www.publishnews.com.br/ranking"
       },
       {
         "c1": "The Bookseller — Official Charts",
         "c2": "Reino Unido",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.thebookseller.com/bestsellers",
         "tags": [
           "Reino Unido"
-        ]
+        ],
+        "href": "https://www.thebookseller.com/bestsellers"
       },
       {
         "c1": "The New York Times Best Sellers",
         "c2": "EUA",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.nytimes.com/books/best-sellers/",
         "tags": [
           "EUA"
-        ]
+        ],
+        "href": "https://www.nytimes.com/books/best-sellers/"
       },
       {
         "c1": "The Sunday Times Bestsellers",
         "c2": "Reino Unido",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.thetimes.co.uk/article/the-sunday-times-bestsellers-list",
         "tags": [
           "Reino Unido"
-        ]
+        ],
+        "href": "https://www.thetimes.co.uk/article/the-sunday-times-bestsellers-list"
       },
       {
         "c1": "USA Today Best-Selling Booklist",
         "c2": "EUA",
         "c3": "semanal",
         "c4": "",
-        "href": "https://www.usatoday.com/life/books/best-selling/",
         "tags": [
           "EUA"
-        ]
+        ],
+        "href": "https://www.usatoday.com/life/books/best-selling/"
       },
       {
         "c1": "Veja — Livros Mais Vendidos",
         "c2": "Brasil",
         "c3": "semanal",
         "c4": "",
-        "href": "https://veja.abril.com.br/coluna/page-not-found/livros-mais-vendidos/",
         "tags": [
           "Brasil"
-        ]
+        ],
+        "href": "https://veja.abril.com.br/coluna/page-not-found/livros-mais-vendidos/"
       }
     ]
   }
