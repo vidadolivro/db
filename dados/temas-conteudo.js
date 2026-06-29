@@ -42,5 +42,18 @@ window.TEMAS_CONTEUDO = {
         "fonte": ""
       }
     ]
+  },
+  "futuro-tecnologia": {
+    "textos": [
+      {
+        "titulo": "o que as figurinhas nos dizem sobre o futuro dos livros",
+        "autor": null,
+        "href": "https://br.bookwire.net/o-que-as-figurinhas-nos-contam-sobre-o-futuro-dos-livros/",
+        "date_created": "2026-06-29T21:56:57.879Z",
+        "tag": "análise",
+        "trecho": "O sucesso recorrente das figurinhas demonstra que o valor de um objeto está na informação que ele carrega e na experiência que proporciona.",
+        "fonte": "Blog da Bookwire"
+      }
+    ]
   }
 };
