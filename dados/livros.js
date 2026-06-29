@@ -227,5 +227,19 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-06-25T18:28:35.983Z"
+  },
+  {
+    "isbn": "9788520005750",
+    "titulo": "usos da faca",
+    "autor": "David Mamet",
+    "editora": "Civilização Brasileira",
+    "ano": "",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788520005750-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-06-29T12:32:12.114Z"
   }
 ];
