@@ -1,5 +1,7 @@
 .claude/
 node_modules/
+.directus-token
+.env
 claudedlameira-site/
 dados/flip-2024.tsv
 folder-flip-a1.html
