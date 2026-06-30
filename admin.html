@@ -530,6 +530,7 @@
     ],
     texto: [
       { id: 'f-titulo', label: 'título', ph: 'título do texto' },
+      { id: 'f-autor',  label: 'autor', ph: 'ex: Caetano Galindo', opt: true },
       { id: 'f-tag',    label: 'tipo', type: 'select', options: ['análise', 'reportagem', 'ensaio', 'entrevista', 'resenha'] },
       { id: 'f-trecho', label: 'trecho', type: 'textarea', ph: 'trecho inicial ou representativo', opt: true },
       { id: 'f-fonte',  label: 'publicação · data', ph: 'ex: Piauí · nov 2023', opt: true },
@@ -590,7 +591,7 @@
       video:   { tema_slug: tema, titulo: val('f-titulo'), canal: val('f-canal'), href: href, meta: val('f-meta') },
       podcast: { tema_slug: tema, subtipo: val('f-subtipo'), show: val('f-show'), titulo: val('f-titulo'), href: href, meta: val('f-meta') },
       artigo:  { tema_slug: tema, titulo: val('f-titulo'), autores: val('f-autores'), publicacao: val('f-publicacao'), ano: val('f-ano'), href: href },
-      texto:   { tema_slug: tema, titulo: val('f-titulo'), tag: val('f-tag'), href: href, trecho: val('f-trecho'), fonte: val('f-fonte') },
+      texto:   { tema_slug: tema, titulo: val('f-titulo'), autor: val('f-autor'), tag: val('f-tag'), href: href, trecho: val('f-trecho'), fonte: val('f-fonte') },
       link:    { tema_slug: tema, titulo: val('f-titulo'), href: href, domain: domain, tipo: val('f-link_tipo') },
     };
     var payload = payloads[activeTipo];
@@ -632,6 +633,11 @@
              '<div class="field"><label>isbn <span class="opt">(opcional)</span></label><input type="text" id="lm-isbn"></div>' +
              '<div class="field"><label>link <span class="opt">(opcional)</span></label><input type="text" id="lm-href" placeholder="https://…"></div>';
     }
+    /* capa: pré-preenche com a da biblioteca; vazia exige URL manual */
+    var capaInicial = livro.capa_url || '';
+    html += '<div class="field"><label>capa <span class="opt">(URL da imagem' + (capaInicial ? ' — já encontrada, pode trocar' : ' — opcional') + ')</span></label>' +
+      '<input type="text" id="lm-capa" placeholder="https://…/capa.jpg" value="' + esc(capaInicial) + '">' +
+      '<div id="lm-capa-preview" style="margin-top:8px"></div></div>';
     html += '<div class="field"><label>categoria</label>' +
       '<select id="lm-macro">' +
       '<option value="">selecione…</option>' +
@@ -666,6 +672,18 @@
         checksEl.appendChild(label);
       });
 
+    /* preview ao vivo da capa */
+    var capaInput = document.getElementById('lm-capa');
+    var capaPreview = document.getElementById('lm-capa-preview');
+    function atualizaPreview() {
+      var u = capaInput.value.trim();
+      if (!u) { capaPreview.innerHTML = ''; return; }
+      capaPreview.innerHTML = '<img src="' + esc(u) + '" alt="prévia" style="height:90px;width:auto;border:1px solid var(--border)" ' +
+        'onerror="this.parentNode.innerHTML=\'<span style=&quot;font-size:10px;color:#b00&quot;>imagem não carregou</span>\'">';
+    }
+    capaInput.addEventListener('input', atualizaPreview);
+    atualizaPreview();
+
     document.getElementById('btn-cancelar-livro').addEventListener('click', function () {
       livroSelecionado = null;
       document.getElementById('livro-resultado').innerHTML = '';
@@ -682,6 +700,7 @@
         autor:     livro.autor   || vl('lm-autor'),
         editora:   livro.editora || vl('lm-editora'),
         href:      livro.href    || vl('lm-href'),
+        capa:      vl('lm-capa'),
         macrotema: vl('lm-macro'),
       };
       if (!base.titulo) { showMsg('livro-form-msg', 'título é obrigatório.', 'error'); return; }
@@ -745,7 +764,7 @@
       ? 'filter[isbn][_eq]=' + encodeURIComponent(q)
       : 'filter[_or][0][titulo][_icontains]=' + encodeURIComponent(q) +
         '&filter[_or][1][autor][_icontains]=' + encodeURIComponent(q);
-    fetch(DIRECTUS + '/items/biblioteca?' + filter + '&fields=isbn,titulo,autor,editora&limit=10')
+    fetch(DIRECTUS + '/items/biblioteca?' + filter + '&fields=isbn,titulo,autor,editora,capa_url&limit=10')
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var livros = d.data || [];

@@ -111,6 +111,7 @@ async function run() {
       const l = livros[isbnIndex[item.isbn]];
       if (temaSlug && !l.temas.includes(temaSlug)) l.temas.push(temaSlug);
       if (macro && !l.macrotema) l.macrotema = macro;
+      if (item.capa && !l.capa) l.capa = item.capa;   // capa manual preenche se faltava
     } else {
       /* livro novo */
       const key = item.isbn || item.titulo;
@@ -122,7 +123,7 @@ async function run() {
           autor:     item._autor         || normAutor(item.autor) || '',
           editora:   item._editora       || item.editora          || '',
           ano:       item._ano           || '',
-          capa:      item._capa          || '',
+          capa:      item.capa           || item._capa || '',   // capa manual tem prioridade
           macrotema: macro,
           temas:     temaSlug ? [temaSlug] : [],
           href:      item.href           || '#',
