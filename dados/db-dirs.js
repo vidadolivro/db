@@ -875,7 +875,7 @@ window.DB_DIRS = {
   },
   "editores": {
     "titulo": "editores",
-    "num": "10",
+    "num": "11",
     "desc": "editores literários — onde atuam e como encontrá-los",
     "filtroLabel": "filtro",
     "filtros": [
@@ -986,7 +986,7 @@ window.DB_DIRS = {
   },
   "listas-mais-vendidos": {
     "titulo": "listas de mais vendidos",
-    "num": "11",
+    "num": "12",
     "desc": "rankings de livros mais vendidos ao redor do mundo",
     "filtroLabel": "país",
     "filtros": [
