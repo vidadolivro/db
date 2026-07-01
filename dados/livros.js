@@ -213,5 +213,104 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-07-01T11:21:48.605Z"
+  },
+  {
+    "isbn": "9788581052779",
+    "titulo": "Sobre a escrita",
+    "autor": "Stephen King",
+    "editora": "Suma de Letras",
+    "ano": 2015,
+    "capa": "https://covers.openlibrary.org/b/isbn/9788581052779-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:31:15.204Z"
+  },
+  {
+    "isbn": "9788578270087",
+    "titulo": "Oficina de escritores",
+    "autor": "Koch, Stephen",
+    "editora": "WMF Martins Fontes",
+    "ano": "",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788578270087/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:32:40.036Z"
+  },
+  {
+    "isbn": "9788578270308",
+    "titulo": "Escrevendo com a alma",
+    "autor": "Goldberg, Natalie",
+    "editora": "WMF Martins Fontes (POD)",
+    "ano": 2008,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788578270308/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:35:52.185Z"
+  },
+  {
+    "isbn": "9788537800614",
+    "titulo": "Para ler como um escritor",
+    "autor": "Prose, Francine",
+    "editora": "Zahar",
+    "ano": 2008,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788537800614/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:38:36.874Z"
+  },
+  {
+    "isbn": "9788535932072",
+    "titulo": "Escrever ficção",
+    "autor": "Brasil, Luiz Antonio de Assis",
+    "editora": "Companhia das Letras",
+    "ano": 2019,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535932072/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:39:04.989Z"
+  },
+  {
+    "isbn": "9788542225969",
+    "titulo": "Escrever sem medo",
+    "autor": "Viscardi, Jana",
+    "editora": "Planeta",
+    "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788542225969/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:41:15.036Z"
+  },
+  {
+    "isbn": "9788589239882",
+    "titulo": "Como escrever diálogos: A arte de desenvolver o diálogo no romance e no conto",
+    "autor": "Kohan, Silvia Adela",
+    "editora": "Gutenberg",
+    "ano": 2011,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788589239882/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "preparacao-revisao",
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:41:43.476Z"
   }
 ];

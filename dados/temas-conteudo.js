@@ -30,6 +30,28 @@ window.TEMAS_CONTEUDO = {
       }
     ]
   },
+  "futuro-tecnologia": {
+    "videos": [
+      {
+        "titulo": "Literatura e IA: 'O fazer humano vai ganhar mais força' | BdF Entrevista Daniel Lameira",
+        "canal": "Brasil de Fato",
+        "href": "https://www.youtube.com/watch?v=cWLEFq8401c",
+        "date_created": "2026-07-01T23:22:09.599Z",
+        "meta": "46min"
+      }
+    ],
+    "textos": [
+      {
+        "titulo": "o que as figurinhas nos dizem sobre o futuro dos livros",
+        "autor": null,
+        "href": "https://br.bookwire.net/o-que-as-figurinhas-nos-contam-sobre-o-futuro-dos-livros/",
+        "date_created": "2026-06-29T21:56:57.879Z",
+        "tag": "análise",
+        "trecho": "O sucesso recorrente das figurinhas demonstra que o valor de um objeto está na informação que ele carrega e na experiência que proporciona.",
+        "fonte": "Blog da Bookwire"
+      }
+    ]
+  },
   "traducao": {
     "textos": [
       {
@@ -40,19 +62,6 @@ window.TEMAS_CONTEUDO = {
         "tag": "",
         "trecho": "40 anos de respeito à inteligência do leitor. Conheça o nosso catálogo e autores.",
         "fonte": ""
-      }
-    ]
-  },
-  "futuro-tecnologia": {
-    "textos": [
-      {
-        "titulo": "o que as figurinhas nos dizem sobre o futuro dos livros",
-        "autor": null,
-        "href": "https://br.bookwire.net/o-que-as-figurinhas-nos-contam-sobre-o-futuro-dos-livros/",
-        "date_created": "2026-06-29T21:56:57.879Z",
-        "tag": "análise",
-        "trecho": "O sucesso recorrente das figurinhas demonstra que o valor de um objeto está na informação que ele carrega e na experiência que proporciona.",
-        "fonte": "Blog da Bookwire"
       }
     ]
   }
