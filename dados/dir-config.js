@@ -124,8 +124,21 @@ window.DIR_CONFIG = {
     ],
     hrefKey: 'href', tags: true,
   },
+  pesquisas: {
+    collection: 'db_dir_pesquisas', titulo: 'pesquisas e estudos', num: '10',
+    desc: 'pesquisas, estudos e dados sobre o mercado editorial',
+    filtroLabel: 'tipo',
+    filtros: ['todos', 'mercado', 'acadêmico', 'relatório', 'dados'],
+    campos: [
+      { key: 'c1', label: 'título' },
+      { key: 'c2', label: 'autor / instituição' },
+      { key: 'c3', label: 'foco' },
+      { key: 'c4', label: 'ano' },
+    ],
+    hrefKey: 'href', tags: true,
+  },
   editores: {
-    collection: 'db_editores', titulo: 'editores', num: '10',
+    collection: 'db_editores', titulo: 'editores', num: '11',
     desc: 'editores literários — onde atuam e como encontrá-los',
     filtroLabel: 'filtro', filtros: ['todos'],
     campos: [
@@ -135,7 +148,7 @@ window.DIR_CONFIG = {
     hrefKey: 'rede', hrefLabel: 'rede', tags: false,
   },
   'listas-mais-vendidos': {
-    collection: 'db_listas_mais_vendidos', titulo: 'listas de mais vendidos', num: '11',
+    collection: 'db_listas_mais_vendidos', titulo: 'listas de mais vendidos', num: '12',
     desc: 'rankings de livros mais vendidos ao redor do mundo',
     filtroLabel: 'país', filtros: ['todos'], filtrosFrom: 'c2',
     campos: [

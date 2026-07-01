@@ -387,18 +387,21 @@
   ];
 
   const di  = d => `<svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${d}</svg>`;
-  const DIR_ICONS = [
-    di(r(1,4,14,12) + bg(2,5,12,10) + r(3,7,4,4) + r(9,7,4,4) + r(6,11,4,5) + r(4,0,2,5) + r(6,1,6,3)),
-    di(r(4,0,8,4) + bg(6,0,4,4) + r(0,3,16,13) + bg(1,4,14,10) + r(0,7,16,2) + r(6,6,4,3) + bg(7,6,2,3)),
-    di(r(0,0,12,9) + bg(1,1,10,7) + r(1,9,4,2) + r(1,11,2,2) + pol("10,7 14,4 14,14 10,11")),
-    di(r(12,0,4,4) + r(10,4,4,4) + r(8,6,4,4) + r(6,8,4,4) + r(4,10,4,4) + r(2,12,4,4) + bg(3,13,2,2) + r(0,13,4,3)),
-    di(r(2,0,12,4) + r(0,4,16,6) + bg(1,5,14,4) + r(2,10,12,6) + bg(3,11,10,4) + r(4,12,8,1) + r(4,14,6,1)),
-    di(r(0,0,16,16) + bg(1,1,14,14) + r(2,2,12,4) + r(2,8,12,1) + r(2,10,12,1) + r(2,12,8,1) + r(12,0,4,7) + bg(13,1,2,5)),
-    di(pol("10,0 14,4 4,14 0,10") + bg(12,0,3,2) + bg(0,12,2,3) + r(0,13,2,3) + r(1,12,3,1)),
-    di(r(0,2,16,12) + bg(1,3,14,10) + r(4,5,2,6) + r(6,6,2,4) + r(8,7,2,2) + r(10,0,6,3)),
-    di(r(0,6,16,4) + pol("3,6 8,0 13,6") + r(12,8,2,7) + r(10,14,4,1) + r(3,10,10,6)),
-    di(r(0,2,4,12) + bg(1,3,2,10) + r(6,0,4,14) + bg(7,1,2,12) + r(12,2,4,12) + bg(13,3,2,10) + r(0,14,16,2)),
-  ];
+  const DIR_ICONS = {
+    editoras:    di(r(1,4,14,12) + bg(2,5,12,10) + r(3,7,4,4) + r(9,7,4,4) + r(6,11,4,5) + r(4,0,2,5) + r(6,1,6,3)),
+    agentes:     di(r(4,0,8,4) + bg(6,0,4,4) + r(0,3,16,13) + bg(1,4,14,10) + r(0,7,16,2) + r(6,6,4,3) + bg(7,6,2,3)),
+    tradutores:  di(r(0,0,12,9) + bg(1,1,10,7) + r(1,9,4,2) + r(1,11,2,2) + pol("10,7 14,4 14,14 10,11")),
+    designers:   di(r(12,0,4,4) + r(10,4,4,4) + r(8,6,4,4) + r(6,8,4,4) + r(4,10,4,4) + r(2,12,4,4) + bg(3,13,2,2) + r(0,13,4,3)),
+    producao:    di(r(2,0,12,4) + r(0,4,16,6) + bg(1,5,14,4) + r(2,10,12,6) + bg(3,11,10,4) + r(4,12,8,1) + r(4,14,6,1)),
+    veiculos:    di(r(0,0,16,16) + bg(1,1,14,14) + r(2,2,12,4) + r(2,8,12,1) + r(2,10,12,1) + r(2,12,8,1) + r(12,0,4,7) + bg(13,1,2,5)),
+    jornalistas: di(pol("10,0 14,4 4,14 0,10") + bg(12,0,3,2) + bg(0,12,2,3) + r(0,13,2,3) + r(1,12,3,1)),
+    influencers: di(r(0,2,16,12) + bg(1,3,14,10) + r(4,5,2,6) + r(6,6,2,4) + r(8,7,2,2) + r(10,0,6,3)),
+    escolas:     di(r(0,6,16,4) + pol("3,6 8,0 13,6") + r(12,8,2,7) + r(10,14,4,1) + r(3,10,10,6)),
+    biblioteca:  di(r(0,2,4,12) + bg(1,3,2,10) + r(6,0,4,14) + bg(7,1,2,12) + r(12,2,4,12) + bg(13,3,2,10) + r(0,14,16,2)),
+    editores:    di(r(5,0,6,2) + r(6,2,4,10) + pol("6,12 10,12 8,16")),
+    'listas-mais-vendidos': di(r(1,11,3,5) + r(6,7,3,9) + r(11,3,3,13)),
+    pesquisas:   di(r(1,1,10,10) + bg(3,3,6,6) + pol("8,10 10,8 15,13 13,15")),
+  };
 
   const TOPICS = [
     {n:"criação literária",     href:"tema?slug=criacao-literaria"},
@@ -426,18 +429,19 @@
   ];
 
   const DIR = [
-    {n:"editoras",               href:"diretorio?tipo=editoras"},
-    {n:"agentes literários",     href:"diretorio?tipo=agentes"},
-    {n:"tradutores",             href:"diretorio?tipo=tradutores"},
-    {n:"designers",              href:"diretorio?tipo=designers"},
-    {n:"produção gráfica",       href:"diretorio?tipo=producao"},
-    {n:"veículos",               href:"diretorio?tipo=veiculos"},
-    {n:"jornalistas",            href:"diretorio?tipo=jornalistas"},
-    {n:"influencers e creators", href:"diretorio?tipo=influencers"},
-    {n:"escolas e cursos",       href:"diretorio?tipo=escolas"},
-    {n:"biblioteca",             href:"livros.html"},
-    {n:"editores",                href:"diretorio?tipo=editores"},
-    {n:"listas de mais vendidos", href:"diretorio?tipo=listas-mais-vendidos"},
+    {key:"editoras",             n:"editoras",               href:"diretorio?tipo=editoras"},
+    {key:"agentes",              n:"agentes literários",     href:"diretorio?tipo=agentes"},
+    {key:"tradutores",           n:"tradutores",             href:"diretorio?tipo=tradutores"},
+    {key:"designers",            n:"designers",              href:"diretorio?tipo=designers"},
+    {key:"producao",             n:"produção gráfica",       href:"diretorio?tipo=producao"},
+    {key:"veiculos",             n:"veículos",               href:"diretorio?tipo=veiculos"},
+    {key:"jornalistas",          n:"jornalistas",            href:"diretorio?tipo=jornalistas"},
+    {key:"influencers",          n:"influencers e creators", href:"diretorio?tipo=influencers"},
+    {key:"escolas",              n:"escolas e cursos",       href:"diretorio?tipo=escolas"},
+    {key:"editores",             n:"editores",               href:"diretorio?tipo=editores"},
+    {key:"listas-mais-vendidos", n:"listas de mais vendidos", href:"diretorio?tipo=listas-mais-vendidos"},
+    {key:"pesquisas",            n:"pesquisas e estudos",    href:"diretorio?tipo=pesquisas"},
+    {key:"biblioteca",           n:"biblioteca",             href:"livros.html", desc:"referências bibliográficas por tema"},
   ];
 
   /* Recentes — 1 de cada tipo */
@@ -584,7 +588,7 @@
     a.href = d.href;
     a.className = "dir-card" + (d.desc ? " dir-card--wide" : "");
     a.innerHTML = `
-      <span class="dir-icon">${DIR_ICONS[i]||""}</span>
+      <span class="dir-icon">${DIR_ICONS[d.key]||""}</span>
       <span class="dir-card-name">${d.n}</span>
       ${d.desc ? `<span class="dir-card-desc">${d.desc}</span>` : ""}
       <span class="dir-card-arrow">→</span>`;
