@@ -470,7 +470,7 @@ async function syncDbDiretorios() {
       const d = await r.json();
       if (!r.ok) { console.warn(`  ✗ ${cfg.collection}: ${JSON.stringify(d.errors?.[0]?.message || d.errors?.[0])}`); continue; }
       const items = d.data || [];
-      if (!items.length) continue;
+      /* mesmo vazio, gera a entrada (página mostra "0 entradas" em vez de "não encontrado") */
 
       /* mapeia cada item para colunas de exibição c1..c4 conforme a config */
       const data = items.map(it => {
