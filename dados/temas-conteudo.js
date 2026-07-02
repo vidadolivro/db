@@ -63,6 +63,16 @@ window.TEMAS_CONTEUDO = {
         "trecho": "40 anos de respeito à inteligência do leitor. Conheça o nosso catálogo e autores.",
         "fonte": ""
       }
+    ],
+    "artigos": [
+      {
+        "titulo": "Introdução aos Estudos da Tradução: Teorias, história, reflexão e prática",
+        "autores": "ZIPSER, Meta Elisabeth; POLCHLOPEK, Silvana Ayub.",
+        "publicacao": "",
+        "ano": "2011",
+        "href": "https://repositorio.ufsc.br/bitstream/handle/123456789/115484/intro_a_traducao_avea_final_18.08.2011.pdf;jsessionid=9C41B44BF8519B398862F1A30074053C?sequence=1",
+        "date_created": "2026-07-02T00:01:34.304Z"
+      }
     ]
   }
 };

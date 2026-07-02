@@ -691,6 +691,16 @@ window.DB_DIRS = {
     ],
     "data": [
       {
+        "c1": "Bookster (Pedro Pacífico)",
+        "c2": "Instagram",
+        "c3": "@bookster",
+        "c4": "996mil",
+        "tags": [
+          "instagram"
+        ],
+        "href": "https://www.instagram.com/bookster/"
+      },
+      {
         "c1": "Bora Ler",
         "c2": "instagram · tiktok",
         "c3": "Recomendações e booktok BR",

@@ -312,5 +312,91 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-07-01T23:41:43.476Z"
+  },
+  {
+    "isbn": "9786559285075",
+    "titulo": "Teoria do conto",
+    "autor": "Gotlib, Nadia Battella",
+    "editora": "Autêntica",
+    "ano": 2025,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786559285075/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:48:14.819Z"
+  },
+  {
+    "isbn": "9788539305711",
+    "titulo": "A mão do autor e a mente do editor",
+    "autor": "Chartier, Roger",
+    "editora": "Editora Unesp",
+    "ano": 2014,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788539305711/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "autor-editora",
+      "coordenacao-editorial",
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:48:57.582Z"
+  },
+  {
+    "isbn": "9788546907090",
+    "titulo": "Pensar com as mãos",
+    "autor": "Garcia, Marília",
+    "editora": "WMF Martins Fontes",
+    "ano": 2025,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788546907090/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:49:49.345Z"
+  },
+  {
+    "isbn": "9788535936285",
+    "titulo": "Seis passeios pelos bosques da ficção (Nova edição)",
+    "autor": "Eco, Umberto",
+    "editora": "Companhia das Letras",
+    "ano": 2024,
+    "capa": "https://covers.openlibrary.org/b/isbn/9788535936285-L.jpg",
+    "macrotema": null,
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:50:07.688Z"
+  },
+  {
+    "isbn": "9788503011129",
+    "titulo": "Escola de tradutores",
+    "autor": "Ronai, Paulo",
+    "editora": "José Olympio",
+    "ano": 2012,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788503011129/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "traducao"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:56:13.392Z"
+  },
+  {
+    "isbn": "9788520011430",
+    "titulo": "A tradução literária",
+    "autor": "Britto, Paulo Fernando Henriques",
+    "editora": "Civilização Brasileira",
+    "ano": 2012,
+    "capa": "https://covers.openlibrary.org/b/isbn/9788520011430-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "traducao"
+    ],
+    "href": "#",
+    "_date": "2026-07-01T23:57:59.044Z"
   }
 ];
