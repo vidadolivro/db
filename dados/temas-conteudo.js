@@ -17,6 +17,41 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=M73cyc9lhhI",
         "date_created": "2026-06-26T12:02:26.063Z",
         "meta": "28min"
+      },
+      {
+        "titulo": "Margaret Atwood Interview: On Facing the Blank Page",
+        "canal": "Louisiana Channel",
+        "href": "https://www.youtube.com/watch?v=cc5lNYmcdss",
+        "date_created": "2026-07-06T02:27:31.798Z",
+        "meta": "1min"
+      },
+      {
+        "titulo": "Curiosity and the Creative Process | George Saunders | Syracuse University",
+        "canal": "Syracuse University",
+        "href": "https://www.youtube.com/watch?v=kB71MGAsDLA",
+        "date_created": "2026-07-06T02:32:47.153Z",
+        "meta": "2min"
+      },
+      {
+        "titulo": "Toni Morrison responde de forma brilhante a uma pergunta \"ilegítima\" (19 de janeiro de 1998)",
+        "canal": "Charlie Rose",
+        "href": "https://www.youtube.com/watch?v=-Kgq3F8wbYA",
+        "date_created": "2026-07-06T02:34:55.987Z",
+        "meta": "7min"
+      },
+      {
+        "titulo": "Massao Ohno - Poesia Presente",
+        "canal": "Tamanduá TV",
+        "href": "https://tamandua.tv.br/filme/?name=massao_ohno_poesia_presente46694",
+        "date_created": "2026-07-06T02:55:23.147Z",
+        "meta": "90 min; 2015"
+      },
+      {
+        "titulo": "Robert Darnton e o futuro dos livros",
+        "canal": "Saraiva",
+        "href": "https://www.youtube.com/watch?v=2ofoocg64PI",
+        "date_created": "2026-07-06T02:55:49.413Z",
+        "meta": "5min"
       }
     ],
     "podcasts": [
@@ -27,6 +62,35 @@ window.TEMAS_CONTEUDO = {
         "show": "451 MHz",
         "meta": "",
         "subtipo": "episódio"
+      }
+    ],
+    "links": [
+      {
+        "titulo": "Arquivo \"A Arte da Ficção\" - A Paris Review",
+        "href": "https://www.theparisreview.org/interviews",
+        "date_created": "2026-07-06T03:01:55.456Z",
+        "domain": "theparisreview.org",
+        "tipo": "blog"
+      }
+    ],
+    "textos": [
+      {
+        "titulo": "“O que eu ouvia é que isso não era uma profissão”",
+        "autor": "Débora Nascimento; Socorro Acioli",
+        "href": "https://revistacontinente.com.br/secoes/entrevista/o-que-eu-ouvia-e-que-isso-nao-era-uma-profissao-parte-1",
+        "date_created": "2026-07-06T02:54:27.931Z",
+        "tag": "entrevista",
+        "trecho": "Ao lançar Oração para desaparecer, Socorro Acioli fala sobre os desafios para se tornar escritora e questões contemporâneas da literatura",
+        "fonte": "Continente, 2024"
+      },
+      {
+        "titulo": "A Paris Review — Arquivo \"A Arte da Ficção",
+        "autor": "The Paris Review",
+        "href": "https://www.theparisreview.org/interviews",
+        "date_created": "2026-07-06T03:00:42.879Z",
+        "tag": "entrevista",
+        "trecho": "Quase 250 entrevistas da série \"A Arte da Ficção\" com escritores como Hemingway, Vonnegut, Didion, Morrison e Vargas Llosa.",
+        "fonte": ""
       }
     ]
   },
@@ -49,6 +113,17 @@ window.TEMAS_CONTEUDO = {
         "tag": "análise",
         "trecho": "O sucesso recorrente das figurinhas demonstra que o valor de um objeto está na informação que ele carrega e na experiência que proporciona.",
         "fonte": "Blog da Bookwire"
+      }
+    ]
+  },
+  "autor-editora": {
+    "videos": [
+      {
+        "titulo": "Ursula Le Guin",
+        "canal": "National Book",
+        "href": "https://www.youtube.com/watch?v=Et9Nf-rsALk",
+        "date_created": "2026-07-06T02:31:42.073Z",
+        "meta": "6min"
       }
     ]
   },

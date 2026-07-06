@@ -398,5 +398,212 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-07-01T23:57:59.044Z"
+  },
+  {
+    "isbn": "9788556523044",
+    "titulo": "Cartas a um jovem escritor",
+    "autor": "Llosa, Mario Vargas",
+    "editora": "Alfaguara",
+    "ano": 2026,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788556523044/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "preparacao-revisao",
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:08:41.238Z"
+  },
+  {
+    "isbn": "9788527301640",
+    "titulo": "A personagem de ficção",
+    "autor": "Candido, Antonio; Rosenfeld, Anatol; Prado, Décio de Almeida; Gomes, Paulo Emílio Salles",
+    "editora": "Perspectiva",
+    "ano": 2021,
+    "capa": "https://covers.openlibrary.org/b/isbn/9788527301640-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:09:45.719Z"
+  },
+  {
+    "isbn": "9788525420381",
+    "titulo": "A Arte Da Ficção - Coleção L&PM Pocket",
+    "autor": "David Lodge",
+    "editora": "L&PM",
+    "ano": "",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788525420381-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:10:45.597Z"
+  },
+  {
+    "isbn": "978-8525437563",
+    "titulo": "A Arte do Romance",
+    "autor": "Virginia Woolf",
+    "editora": "L&PM",
+    "ano": "",
+    "capa": "",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "https://www.amazon.com.br/Arte-do-Romance-1283/dp/8525437565/ref=",
+    "_date": "2026-07-06T02:12:42.607Z"
+  },
+  {
+    "isbn": "9786599635052",
+    "titulo": "Retórica da Ficção",
+    "autor": "Booth, Wayne C.",
+    "editora": "Eleia",
+    "ano": 2022,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786599635052/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:13:35.362Z"
+  },
+  {
+    "isbn": "9788535927986",
+    "titulo": "A arte do romance",
+    "autor": "Kundera, Milan",
+    "editora": "Companhia das Letras",
+    "ano": 2016,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535927986/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:14:04.371Z"
+  },
+  {
+    "isbn": "9788573266054",
+    "titulo": "Poética",
+    "autor": "Aristóteles",
+    "editora": "Editora 34",
+    "ano": "",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788573266054/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:15:46.704Z"
+  },
+  {
+    "isbn": "9788511156287",
+    "titulo": "Obras escolhidas I - magia e técnica, arte e política",
+    "autor": "Benjamin, Walter",
+    "editora": "Brasiliense",
+    "ano": "",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788511156287/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:16:38.958Z"
+  },
+  {
+    "isbn": "978-8531611810",
+    "titulo": "A criação literária: poesia e prosa",
+    "autor": "Massaud Moisés",
+    "editora": "Cultrix",
+    "ano": "",
+    "capa": "",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "https://www.amazon.com.br/cria%C3%A7%C3%A3o-liter%C3%A1ria-poesia-prosa/dp/8531611814",
+    "_date": "2026-07-06T02:19:46.695Z"
+  },
+  {
+    "isbn": "9788552000006",
+    "titulo": "A personagem",
+    "autor": "Beth Brait",
+    "editora": "Editora Contexto",
+    "ano": "",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788552000006/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:21:12.119Z"
+  },
+  {
+    "isbn": "9788527303866",
+    "titulo": "As estruturas narrativas",
+    "autor": "Todorov, Tzvetan",
+    "editora": "Perspectiva",
+    "ano": 2020,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788527303866/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:22:52.753Z"
+  },
+  {
+    "isbn": "9788594931870",
+    "titulo": "O que é um livro?",
+    "autor": "Hansen, João Adolfo",
+    "editora": "Edições Sesc",
+    "ano": 2019,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788594931870/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "historia",
+    "temas": [
+      "criacao-literaria",
+      "autor-editora",
+      "coordenacao-editorial",
+      "direitos-editoriais",
+      "agentes-literarios"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:23:26.566Z"
+  },
+  {
+    "isbn": "9788594931863",
+    "titulo": "Da argila à nuvem",
+    "autor": "Sordet, Yann",
+    "editora": "Edições Sesc",
+    "ano": 2019,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788594931863/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": null,
+    "temas": [
+      "criacao-literaria",
+      "distribuicao",
+      "comunicacao-midia",
+      "coordenacao-editorial",
+      "autor-editora"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:24:45.835Z"
+  },
+  {
+    "isbn": "9788594931887",
+    "titulo": "A sabedoria do bibliotecário",
+    "autor": "Melot, Michel",
+    "editora": "Edições Sesc",
+    "ano": 2019,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788594931887/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "direitos-editoriais",
+      "distribuicao",
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T02:25:20.552Z"
   }
 ];
