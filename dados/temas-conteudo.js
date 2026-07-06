@@ -82,15 +82,6 @@ window.TEMAS_CONTEUDO = {
         "tag": "entrevista",
         "trecho": "Ao lançar Oração para desaparecer, Socorro Acioli fala sobre os desafios para se tornar escritora e questões contemporâneas da literatura",
         "fonte": "Continente, 2024"
-      },
-      {
-        "titulo": "A Paris Review — Arquivo \"A Arte da Ficção",
-        "autor": "The Paris Review",
-        "href": "https://www.theparisreview.org/interviews",
-        "date_created": "2026-07-06T03:00:42.879Z",
-        "tag": "entrevista",
-        "trecho": "Quase 250 entrevistas da série \"A Arte da Ficção\" com escritores como Hemingway, Vonnegut, Didion, Morrison e Vargas Llosa.",
-        "fonte": ""
       }
     ]
   },

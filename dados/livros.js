@@ -633,5 +633,131 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-07-06T22:48:17.873Z"
+  },
+  {
+    "isbn": "9788535944716",
+    "titulo": "Aos pés da letra",
+    "autor": "Duvivier, Gregorio",
+    "editora": "Companhia das Letras",
+    "ano": 2026,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535944716/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T22:57:09.366Z"
+  },
+  {
+    "isbn": "9786555252514",
+    "titulo": "Espécies de espaços",
+    "autor": "Perec, Georges",
+    "editora": "Editora 34",
+    "ano": 2025,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786555252514/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T22:59:13.752Z"
+  },
+  {
+    "isbn": "9786556927459",
+    "titulo": "A louca da casa",
+    "autor": "Montero, Rosa",
+    "editora": "Todavia",
+    "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786556927459/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T23:00:37.037Z"
+  },
+  {
+    "isbn": "9786589733188",
+    "titulo": "Lições de Literatura",
+    "autor": "Nabokov, Vladimir",
+    "editora": "Fósforo Editora",
+    "ano": 2021,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786589733188/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T23:06:16.939Z"
+  },
+  {
+    "isbn": "9786589733515",
+    "titulo": "Como escrever bem",
+    "autor": "Zinsser, William",
+    "editora": "Fósforo Editora",
+    "ano": 2021,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786589733515/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T23:07:27.130Z"
+  },
+  {
+    "isbn": "9788535932485",
+    "titulo": "Esse ofício do verso (Nova edição)",
+    "autor": "Borges, Jorge Luis",
+    "editora": "Companhia das Letras",
+    "ano": 2019,
+    "capa": "https://covers.openlibrary.org/b/isbn/9788535932485-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T23:09:45.350Z"
+  },
+  {
+    "isbn": "9788535929416",
+    "titulo": "Os testamentos traídos - Ensaios",
+    "autor": "Kundera, Milan",
+    "editora": "Companhia das Letras",
+    "ano": 2017,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535929416/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T23:11:05.058Z"
+  },
+  {
+    "isbn": "9788535934700",
+    "titulo": "Por que ler os clássicos (Edição especial)",
+    "autor": "Calvino, Italo",
+    "editora": "Companhia das Letras",
+    "ano": 2023,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535934700/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T23:13:43.960Z"
+  },
+  {
+    "isbn": "9786586490510",
+    "titulo": "Um teto todo seu",
+    "autor": "Woolf, Virginia",
+    "editora": "Editora Antofágica",
+    "ano": "",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786586490510/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T23:15:08.612Z"
   }
 ];
