@@ -605,5 +605,33 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-07-06T02:25:20.552Z"
+  },
+  {
+    "isbn": "9786589889168",
+    "titulo": "Escrever",
+    "autor": "Duras, Marguerite",
+    "editora": "Relicário",
+    "ano": 2021,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786589889168/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T22:45:22.757Z"
+  },
+  {
+    "isbn": "9786589733195",
+    "titulo": "A escrita como faca e outros textos + Caderno Edição Especial",
+    "autor": "Ernaux, Annie",
+    "editora": "Fósforo Editora",
+    "ano": 2023,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786589733195/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": null,
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-06T22:48:17.873Z"
   }
 ];
