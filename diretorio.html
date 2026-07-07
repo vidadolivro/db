@@ -180,9 +180,26 @@
       gap: 7px;
       overflow: hidden;
     }
-    /* editoras: selo em cima, grupo inteiro embaixo */
-    .entry--imprint .e-name { flex-direction: column; align-items: flex-start; gap: 1px; }
-    .entry--imprint .e-sub { flex-shrink: 1; max-width: 100%; }
+    /* ── EDITORAS: colunas próprias + ícones ── */
+    .ed-row {
+      display: grid;
+      grid-template-columns: 155px 150px 105px 1fr 125px 56px;
+      align-items: center;
+      gap: 0 12px;
+      padding: 8px 6px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink);
+    }
+    .ed-row:hover { background: #f2f0ea; }
+    .e-selo { font-weight: bold; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .e-grupo { font-size: 12px; color: var(--mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .e-acts { display: flex; gap: 10px; justify-content: flex-end; align-items: center; }
+    .e-ic { color: var(--light); display: inline-flex; align-items: center; }
+    .e-ic:hover { color: var(--ink); }
+    @media (max-width: 660px) {
+      .ed-row { grid-template-columns: 1fr auto; }
+      .ed-row .e-grupo, .ed-row .e-cat, .ed-row .e-desc, .ed-row .e-loc { display: none; }
+    }
     .e-main {
       font-weight: bold;
       font-size: 13px;
@@ -200,14 +217,6 @@
       flex-shrink: 2;
     }
     .entry:hover .e-sub { color: #aaa; }
-    .e-insta {
-      display: block;
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--light);
-      margin-top: 2px;
-    }
-    .entry:hover .e-insta { color: #888; }
 
     /* category col */
     .e-cat {
@@ -327,7 +336,7 @@
   }
 
   /* Sort: by c1 */
-  function sortKey(e) { return e.selo || e.c1 || ''; }
+  function sortKey(e) { return limpaNome(e.selo || e.c1 || ''); }
   var sorted = (d.data || []).slice().sort(function(a, b) {
     return sortKey(a).localeCompare(sortKey(b), 'pt');
   });
@@ -338,29 +347,48 @@
     return (str || '').trim().split(/\s+/)[0].toUpperCase();
   }
 
-  function renderRow(e) {
-    var main, sub;
-    if (e.selo) {
-      /* editoras: nome = selo, sub = grupo (editora) */
-      main = e.selo;
-      sub  = (e.c1 && e.c1 !== e.selo) ? e.c1 : '';
-    } else {
-      /* demais diretórios: 1ª palavra em destaque + resto */
-      var parts = (e.c1 || '').trim().split(/\s+/);
-      if (parts.length >= 2) { main = parts[0]; sub = parts.slice(1).join(' '); }
-      else { main = e.c1 || ''; sub = ''; }
-    }
-    var subHtml   = sub ? '<span class="e-sub">' + esc(sub) + '</span>' : '';
-    var instaHtml = e.instagram ? '<span class="e-insta">' + esc(e.instagram) + '</span>' : '';
-    var col4Html  = '<div class="e-loc">' + esc(e.c4 || '') + instaHtml + '</div>';
-    var newTab    = e.href ? ' target="_blank" rel="noopener"' : '';
+  var IG_SVG = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>';
+  var SITE_SVG = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.4 4 5.6 4 9s-1.4 6.6-4 9c-2.6-2.4-4-5.6-4-9s1.4-6.6 4-9z"/></svg>';
 
-    var cls = 'entry' + (e.selo ? ' entry--imprint' : '');
-    return '<a href="' + esc(e.href || '#') + '" class="' + cls + '"' + newTab + '>' +
+  /* tira a palavra "editora" do nome (ex: "Editora Tabla" -> "Tabla") */
+  function limpaNome(s) {
+    return (s || '').replace(/\beditoras?\b/gi, '').replace(/\s{2,}/g, ' ').trim();
+  }
+
+  function renderEditoraRow(e) {
+    var selo  = limpaNome(e.selo || e.c1);
+    var grupo = (e.c1 && e.c1 !== e.selo) ? limpaNome(e.c1) : '';
+    var ig    = (e.instagram || '').replace(/^@/, '').trim();
+    var igLink = ig
+      ? '<a class="e-ic" href="https://instagram.com/' + esc(ig) + '" target="_blank" rel="noopener" title="' + esc(e.instagram) + '">' + IG_SVG + '</a>'
+      : '';
+    var siteLink = e.href
+      ? '<a class="e-ic" href="' + esc(e.href) + '" target="_blank" rel="noopener" title="site">' + SITE_SVG + '</a>'
+      : '';
+    return '<div class="ed-row">' +
+      '<div class="e-selo">' + esc(selo) + '</div>' +
+      '<div class="e-grupo">' + esc(grupo) + '</div>' +
+      '<div class="e-cat">' + esc(e.c2 || '') + '</div>' +
+      '<div class="e-desc">' + esc(e.c3 || '') + '</div>' +
+      '<div class="e-loc">' + esc(e.c4 || '') + '</div>' +
+      '<div class="e-acts">' + igLink + siteLink + '</div>' +
+    '</div>';
+  }
+
+  function renderRow(e) {
+    if (e.selo) return renderEditoraRow(e);
+    /* demais diretórios: 1ª palavra em destaque + resto */
+    var parts = (e.c1 || '').trim().split(/\s+/);
+    var main, sub;
+    if (parts.length >= 2) { main = parts[0]; sub = parts.slice(1).join(' '); }
+    else { main = e.c1 || ''; sub = ''; }
+    var subHtml = sub ? '<span class="e-sub">' + esc(sub) + '</span>' : '';
+    var newTab  = e.href ? ' target="_blank" rel="noopener"' : '';
+    return '<a href="' + esc(e.href || '#') + '" class="entry"' + newTab + '>' +
       '<div class="e-name"><span class="e-main">' + esc(main) + '</span>' + subHtml + '</div>' +
       '<div class="e-cat">' + esc(e.c2 || '') + '</div>' +
       '<div class="e-desc">' + esc(e.c3 || '') + '</div>' +
-      col4Html +
+      '<div class="e-loc">' + esc(e.c4 || '') + '</div>' +
       '<div class="e-arrow">→</div>' +
     '</a>';
   }
