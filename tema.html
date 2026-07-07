@@ -154,6 +154,27 @@
       font-size: 13px;
       color: var(--mid);
     }
+    .col-body { position: relative; }
+    .col-body.capped { overflow: hidden; }
+    .col-body.capped::after {
+      content: '';
+      position: absolute; left: 0; right: 0; bottom: 0; height: 54px;
+      background: linear-gradient(transparent, var(--bg));
+      pointer-events: none;
+    }
+    .ver-tudo-wrap { text-align: center; margin-top: 24px; }
+    .ver-tudo {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: none;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      padding: 7px 22px;
+      cursor: pointer;
+    }
+    .ver-tudo:hover { background: var(--ink); color: var(--bg); }
 
     /* ── VÍDEOS ── */
     .v-item {
@@ -504,7 +525,7 @@
   }).join('');
   var colVideos = '<div class="col">' +
     '<div class="col-head"><span>vídeos</span><span class="col-count">' + videos.length + '</span></div>' +
-    videosHtml + '</div>';
+    '<div class="col-body">' + videosHtml + '</div></div>';
 
   /* Textos column */
   var textos = tc.textos || [];
@@ -519,7 +540,7 @@
   }).join('');
   var colTextos = '<div class="col">' +
     '<div class="col-head"><span>textos</span><span class="col-count">' + textos.length + '</span></div>' +
-    textosHtml + '</div>';
+    '<div class="col-body">' + textosHtml + '</div></div>';
 
   /* Links column */
   var links = tc.links || [];
@@ -533,7 +554,7 @@
   }).join('');
   var colLinks = '<div class="col">' +
     '<div class="col-head"><span>links</span><span class="col-count">' + links.length + '</span></div>' +
-    linksHtml + '</div>';
+    '<div class="col-body">' + linksHtml + '</div></div>';
 
   /* Podcasts column */
   var pods = tc.podcasts || [];
@@ -546,7 +567,7 @@
   }).join('');
   var colPods = '<div class="col">' +
     '<div class="col-head"><span>podcasts</span><span class="col-count">' + pods.length + '</span></div>' +
-    podsHtml + '</div>';
+    '<div class="col-body">' + podsHtml + '</div></div>';
 
   /* Artigos column */
   var artigos = tc.artigos || [];
@@ -561,7 +582,7 @@
   }).join('');
   var colArtigos = artigos.length ? '<div class="col">' +
     '<div class="col-head"><span>artigos</span><span class="col-count">' + artigos.length + '</span></div>' +
-    artigosHtml + '</div>' : '';
+    '<div class="col-body">' + artigosHtml + '</div></div>' : '';
 
   /* Leituras */
   var livros = (window.LIVROS || []).filter(function(l) {
@@ -591,6 +612,36 @@
     introHtml +
     '<div class="columns">' + colVideos + colTextos + colLinks + colPods + colArtigos + '</div>' +
     leiturasHtml;
+
+  /* limita cada coluna à altura de ~6 vídeos, com "ver tudo" pra expandir */
+  capColunas();
+  function capColunas() {
+    var vItems = document.querySelectorAll('.col-body .v-item');
+    var capH = 0;
+    if (vItems.length) {
+      var n = Math.min(6, vItems.length);
+      capH = vItems[n - 1].getBoundingClientRect().bottom - vItems[0].getBoundingClientRect().top;
+    }
+    if (!capH) capH = 760;
+    var bodies = [].slice.call(document.querySelectorAll('.col-body'));
+    var cortou = false;
+    bodies.forEach(function (b) {
+      if (b.scrollHeight > capH + 40) { b.style.maxHeight = capH + 'px'; b.classList.add('capped'); cortou = true; }
+    });
+    if (!cortou) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'ver-tudo-wrap';
+    var btn = document.createElement('button');
+    btn.className = 'ver-tudo';
+    btn.textContent = 'ver tudo';
+    btn.addEventListener('click', function () {
+      bodies.forEach(function (b) { b.style.maxHeight = 'none'; b.classList.remove('capped'); });
+      wrap.remove();
+    });
+    wrap.appendChild(btn);
+    var cols = document.querySelector('.columns');
+    cols.parentNode.insertBefore(wrap, cols.nextSibling);
+  }
 })();
 </script>
 
