@@ -1000,5 +1000,34 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-07-07T20:03:08.773Z"
+  },
+  {
+    "isbn": "9786556896434",
+    "titulo": "Sobre escrever",
+    "autor": "S. Lewis, C.",
+    "editora": "Thomas Nelson Brasil",
+    "ano": 2023,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786556896434/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria",
+      "preparacao-revisao"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T20:20:08.157Z"
+  },
+  {
+    "isbn": "9786560050617",
+    "titulo": "Sobre a escrita - Nova edição comentada com tradução inédita e posfácio de Nara Vidal e Luiz Antonio de Assis Brasil",
+    "autor": "Bukowski, Charles",
+    "editora": "HarperCollins",
+    "ano": 2023,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786560050617/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T20:20:41.104Z"
   }
 ];

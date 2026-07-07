@@ -45,6 +45,20 @@ window.TEMAS_CONTEUDO = {
         "href": "https://youtube.com/playlist?list=PLiIQoqgFEbVVuiqMMksMacXBNXw_3dzf1&si=l3QzPnHl1MUvDQAZ",
         "date_created": "2026-07-07T16:17:07.456Z",
         "meta": ""
+      },
+      {
+        "titulo": "Panorama com Clarice Lispector",
+        "canal": "TV Cultura",
+        "href": "https://www.youtube.com/watch?v=ohHP1l2EVnU",
+        "date_created": "2026-07-07T20:21:54.440Z",
+        "meta": "28min"
+      },
+      {
+        "titulo": "ESCRITA CRIATIVA: o primeiro passo para escrever como um escritor",
+        "canal": "Clube de Literatura Clássica",
+        "href": "https://www.youtube.com/watch?v=RFPCjuHsrkI&pp=ygUhZXNjcml0b3IgKyBjcmlhw6fDo28gKyBsaXRlcsOhcmlh",
+        "date_created": "2026-07-07T20:27:07.747Z",
+        "meta": "13min"
       }
     ],
     "podcasts": [
@@ -135,6 +149,30 @@ window.TEMAS_CONTEUDO = {
         "show": "Prelo Escrita Criativa, por Tiago Novaes",
         "meta": "2026",
         "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "",
+        "href": "https://open.spotify.com/show/2kGw280Oq6kM8fDnNLgpDF",
+        "date_created": "2026-07-07T20:11:58.206Z",
+        "show": "Podcast Literário Rabiscos por Tadeu Rodrigues",
+        "meta": "2026",
+        "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "",
+        "href": "https://open.spotify.com/show/5nwQdnZfVb2EsiSvLTfTJs?si=2b46cf38657049ec",
+        "date_created": "2026-07-07T20:13:11.146Z",
+        "show": "Escritores-Leitores | Itaú Cultural",
+        "meta": "2020",
+        "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "",
+        "href": "https://open.spotify.com/show/0DINVlWT9c7GDGx1bWqyNg",
+        "date_created": "2026-07-07T20:14:35.893Z",
+        "show": "Litterae - O seu podcast de Literatura",
+        "meta": "2026",
+        "subtipo": "podcast inteiro"
       }
     ],
     "links": [
@@ -186,6 +224,13 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T19:49:21.791Z",
         "domain": "eaulas.usp.br",
         "tipo": "outro"
+      },
+      {
+        "titulo": "Escrita Criativa, com Tiago Novaes",
+        "href": "https://www.youtube.com/@escritacriativa",
+        "date_created": "2026-07-07T20:29:03.235Z",
+        "domain": "youtube.com",
+        "tipo": "blog"
       }
     ],
     "textos": [
@@ -383,6 +428,13 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=fbGiPxeoczg",
         "date_created": "2026-07-07T16:18:43.593Z",
         "meta": "17min"
+      },
+      {
+        "titulo": "O que significa ser escritor?",
+        "canal": "Rodrigo Gurgel",
+        "href": "https://www.youtube.com/watch?v=nO3f9eat3V4",
+        "date_created": "2026-07-07T20:27:41.592Z",
+        "meta": "19min"
       }
     ]
   },
