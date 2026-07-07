@@ -456,6 +456,22 @@ window.TEMAS_CONTEUDO = {
         "ano": "2001",
         "href": "https://www.scielo.br/j/prc/a/Wh3v8SmLpWjLqZnVmR5QGhx/?lang=pt",
         "date_created": "2026-07-07T21:39:50.275Z"
+      },
+      {
+        "titulo": "O ato de narrar e as teorias do ponto de vista",
+        "autores": "Bittencourt, Gilda Neves da Silva",
+        "publicacao": "Editora UFRGS",
+        "ano": "",
+        "href": "https://lume.ufrgs.br/bitstream/handle/10183/181944/000315145.pdf?sequence=1&isAllowed=y",
+        "date_created": "2026-07-07T21:40:55.004Z"
+      },
+      {
+        "titulo": "NARRATOLOGIA",
+        "autores": "Meister, Jan Christoph",
+        "publicacao": "Lume UFRGS",
+        "ano": "2022",
+        "href": "https://www.ufrgs.br/geni/wp-content/uploads/2023/02/Narratologia.pdf",
+        "date_created": "2026-07-07T21:42:09.966Z"
       }
     ]
   },
