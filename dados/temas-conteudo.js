@@ -119,6 +119,22 @@ window.TEMAS_CONTEUDO = {
         "show": "",
         "meta": "",
         "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "",
+        "href": "https://open.spotify.com/show/5moOAqyKNsZBbDjX6VTo5n?si=cc6984a2e2624476",
+        "date_created": "2026-07-07T20:08:34.533Z",
+        "show": "\"Os 12 Trabalhos do Escritor\" por AJ Oliveira",
+        "meta": "2025",
+        "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "",
+        "href": "https://open.spotify.com/show/0av5CYCnkcjeOTRsaCtIsu",
+        "date_created": "2026-07-07T20:10:25.091Z",
+        "show": "Prelo Escrita Criativa, por Tiago Novaes",
+        "meta": "2026",
+        "subtipo": "podcast inteiro"
       }
     ],
     "links": [
