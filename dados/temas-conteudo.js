@@ -62,6 +62,70 @@ window.TEMAS_CONTEUDO = {
         "show": "451 MHz",
         "meta": "",
         "subtipo": "episódio"
+      },
+      {
+        "titulo": "Milton Hatoum: O processo criativo",
+        "href": "https://www.bing.com/search?q=%22https%3A%2F%2Fopen.spotify.com%2Fshow%2F1N5k0QkYwY6ZkYkQhXfVjz%22&utm_source=copilot.com",
+        "date_created": "2026-07-07T05:46:43.210Z",
+        "show": "Rabiscos Podcast",
+        "meta": "58 min - 2022",
+        "subtipo": "episódio"
+      },
+      {
+        "titulo": "Como começar a escrever um romance",
+        "href": "https://open.spotify.com/show/0ZkzV7rKXf9KXzXfQkFjz",
+        "date_created": "2026-07-07T05:48:12.581Z",
+        "show": "Curta Ficção",
+        "meta": "62 min - 2021",
+        "subtipo": "episódio"
+      },
+      {
+        "titulo": "Rotina e disciplina na escrita",
+        "href": "https://open.spotify.com/show/4ZkzV7rKXf9KXzXfQkFjz",
+        "date_created": "2026-07-07T05:49:15.782Z",
+        "show": "Gente que Escreve",
+        "meta": "47 min - 2020",
+        "subtipo": "episódio"
+      },
+      {
+        "titulo": "Bastidores da criação literária",
+        "href": "https://open.spotify.com/show/3N5k0QkYwY6ZkYkQhXfVjz",
+        "date_created": "2026-07-07T05:49:57.808Z",
+        "show": "Perdidos na Estante",
+        "meta": "55 min → 2023",
+        "subtipo": "episódio"
+      },
+      {
+        "titulo": "",
+        "href": "https://open.spotify.com/show/4kUjcgl9Tsye2a7A2G4POy?si=0dac88d1d85e471a",
+        "date_created": "2026-07-07T05:54:05.624Z",
+        "show": "Rádio Companhia | Companhia das Letras",
+        "meta": "",
+        "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "#194 Querido diário - Júlia de Carvalho Hansen e Adriana Lisboa",
+        "href": "https://open.spotify.com/episode/6nVHM9XgUa6FRbni9v5vtn?si=6hf_r5wjT0i3zJs_5HCVww",
+        "date_created": "2026-07-07T05:56:22.296Z",
+        "show": "451 Mhz | Quatro Cinco Um",
+        "meta": "",
+        "subtipo": "episódio"
+      },
+      {
+        "titulo": "#34 Criar sem medo, com Jana Viscardi e Liana Ferraz",
+        "href": "https://open.spotify.com/episode/20dKAkOJrhakHDqrOCy0JZ?si=a-D8IE86QlWoM94zuOJKlA",
+        "date_created": "2026-07-07T06:06:11.267Z",
+        "show": "Elas na escrita",
+        "meta": "1h - 2025",
+        "subtipo": "episódio"
+      },
+      {
+        "titulo": "A treta que é voltar a escrever - Eis a Questão 52",
+        "href": "https://open.spotify.com/episode/5goi5iE6xGUixlqBDG2Lnh?si=T73aRZb-ShCOoanWisF15g",
+        "date_created": "2026-07-07T06:25:21.317Z",
+        "show": "Os 12 trabalhos do escritor | Escrita criativa",
+        "meta": "2025",
+        "subtipo": "episódio"
       }
     ],
     "links": [
@@ -70,6 +134,13 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.theparisreview.org/interviews",
         "date_created": "2026-07-06T03:01:55.456Z",
         "domain": "theparisreview.org",
+        "tipo": "blog"
+      },
+      {
+        "titulo": "Blog da Companhia",
+        "href": "https://www.blogdacompanhia.com.br/secoes/visualizar/Entrevista",
+        "date_created": "2026-07-07T07:13:46.693Z",
+        "domain": "blogdacompanhia.com.br",
         "tipo": "blog"
       }
     ],
@@ -235,6 +306,67 @@ window.TEMAS_CONTEUDO = {
         "tag": "entrevista",
         "trecho": "Márquez fala sobre realismo mágico e memória.",
         "fonte": "The Paris Review – 1981"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 81",
+        "autor": "Milan Kundera",
+        "href": "https://www.theparisreview.org/interviews/2977/the-art-of-fiction-no-81-milan-kundera?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:16:23.106Z",
+        "tag": "entrevista",
+        "trecho": "Kundera discute filosofia e romance moderno.",
+        "fonte": "The Paris Review – 1983"
+      },
+      {
+        "titulo": "A Arte da Poesia nº 19",
+        "autor": "James Wright",
+        "href": "https://www.theparisreview.org/interviews/3839/the-art-of-poetry-no-19-james-wright?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:17:10.573Z",
+        "tag": "entrevista",
+        "trecho": "Wright fala sobre lirismo e paisagem americana.",
+        "fonte": "The Paris Review – 1972"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 24",
+        "autor": "Aldous Huxley",
+        "href": "https://www.theparisreview.org/interviews/4698/the-art-of-fiction-no-24-aldous-huxley?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:17:51.534Z",
+        "tag": "entrevista",
+        "trecho": "Huxley fala sobre ciência, sociedade e literatura.",
+        "fonte": "The Paris Review – 1960"
+      }
+    ],
+    "artigos": [
+      {
+        "titulo": "O processo de criação na produção literária: um depoimento",
+        "autores": "Carvalho, Ana Cristina.",
+        "publicacao": "",
+        "ano": "2012",
+        "href": "https://doi.org/10.1590/S1414-98931994000100002",
+        "date_created": "2026-07-07T07:06:22.681Z"
+      },
+      {
+        "titulo": "O Processo de escrita literária e a coemergência da obra de arte e do autor.",
+        "autores": "KASTRUP, Virgínia; GURGEL, Veronica.",
+        "publicacao": "",
+        "ano": "2019",
+        "href": "https://pepsic.bvsalud.org/scielo.php?script=sci_abstract&pid=S1677-11682019000300005",
+        "date_created": "2026-07-07T07:07:38.678Z"
+      },
+      {
+        "titulo": "Do que estamos falando quando falamos de Escrita Criativa",
+        "autores": "AMABILE, Luís Roberto",
+        "publicacao": "",
+        "ano": "2020",
+        "href": "https://revistas.usp.br/criacaoecritica/pt_BR/article/view/172813/167047",
+        "date_created": "2026-07-07T07:09:12.939Z"
+      },
+      {
+        "titulo": "A criação literária e seus antecedentes",
+        "autores": "MENDES, Sandro Martins Costa.",
+        "publicacao": "",
+        "ano": "2017",
+        "href": "https://revistaseletronicas.pucrs.br/scriptorium/article/view/25121",
+        "date_created": "2026-07-07T07:09:58.453Z"
       }
     ]
   },
@@ -268,6 +400,53 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=Et9Nf-rsALk",
         "date_created": "2026-07-06T02:31:42.073Z",
         "meta": "6min"
+      }
+    ]
+  },
+  "agentes-literarios": {
+    "podcasts": [
+      {
+        "titulo": "Agenciamento literário nos dias atuais, com Tassi Reis - S10E06",
+        "href": "https://open.spotify.com/episode/4kGWoEmxtIazDrOGQ7IjUN?si=NRG7fDEDR-agib4O06y2Jw",
+        "date_created": "2026-07-07T06:22:30.306Z",
+        "show": "Os 12 trabalhos do escritor | Escrita criativa",
+        "meta": "2025",
+        "subtipo": "episódio"
+      }
+    ]
+  },
+  "autopublicacao": {
+    "podcasts": [
+      {
+        "titulo": "Pistolando em voz alta sobre Local de escrita e Crise no Mercado - S10E05",
+        "href": "https://open.spotify.com/episode/1sXvt1JKrO2yIZkl9wDyd1?si=530c0bcbe2ca4751",
+        "date_created": "2026-07-07T06:23:54.511Z",
+        "show": "Os 12 trabalhos do escritor | Escrita criativa",
+        "meta": "2025",
+        "subtipo": "episódio"
+      }
+    ]
+  },
+  "marketing-editorial": {
+    "podcasts": [
+      {
+        "titulo": "TikTok, Youtube e outras formas de divulgar, com Alec Costa - S08e06",
+        "href": "https://open.spotify.com/episode/20O2NuEi3fb9W9wbKz7xte?si=3cdef699cac54594",
+        "date_created": "2026-07-07T06:26:32.815Z",
+        "show": "",
+        "meta": "2023",
+        "subtipo": "episódio"
+      }
+    ]
+  },
+  "ter-uma-editora": {
+    "links": [
+      {
+        "titulo": "Associação Brasileira das Editoras Universitárias",
+        "href": "https://www.abeu.org.br/",
+        "date_created": "2026-07-07T07:22:27.927Z",
+        "domain": "abeu.org.br",
+        "tipo": "outro"
       }
     ]
   },
