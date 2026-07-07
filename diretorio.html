@@ -157,7 +157,7 @@
     /* ENTRY ROW */
     .entry {
       display: grid;
-      grid-template-columns: 210px 110px 1fr 100px 18px;
+      grid-template-columns: 240px 120px 1fr 135px 18px;
       align-items: center;
       gap: 0 12px;
       padding: 8px 6px;
@@ -198,11 +198,11 @@
     }
     .entry:hover .e-sub { color: #aaa; }
     .e-insta {
+      display: block;
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       color: var(--light);
-      margin-left: 7px;
-      flex-shrink: 0;
+      margin-top: 2px;
     }
     .entry:hover .e-insta { color: #888; }
 
@@ -324,8 +324,9 @@
   }
 
   /* Sort: by c1 */
+  function sortKey(e) { return e.selo || e.c1 || ''; }
   var sorted = (d.data || []).slice().sort(function(a, b) {
-    return (a.c1 || '').localeCompare(b.c1 || '', 'pt');
+    return sortKey(a).localeCompare(sortKey(b), 'pt');
   });
 
   var activeFilter = 'todos';
@@ -337,9 +338,9 @@
   function renderRow(e) {
     var main, sub;
     if (e.selo) {
-      /* editoras: nome = editora (matriz), sub = selo */
-      main = e.c1 || '';
-      sub = e.selo;
+      /* editoras: nome = selo, sub = grupo (editora) */
+      main = e.selo;
+      sub  = (e.c1 && e.c1 !== e.selo) ? e.c1 : '';
     } else {
       /* demais diretórios: 1ª palavra em destaque + resto */
       var parts = (e.c1 || '').trim().split(/\s+/);
@@ -348,7 +349,7 @@
     }
     var subHtml   = sub ? '<span class="e-sub">' + esc(sub) + '</span>' : '';
     var instaHtml = e.instagram ? '<span class="e-insta">' + esc(e.instagram) + '</span>' : '';
-    var col4Html  = '<div class="e-loc">' + esc(e.c4 || '') + '</div>';
+    var col4Html  = '<div class="e-loc">' + esc(e.c4 || '') + instaHtml + '</div>';
     var newTab    = e.href ? ' target="_blank" rel="noopener"' : '';
 
     return '<a href="' + esc(e.href || '#') + '" class="entry"' + newTab + '>' +
@@ -379,10 +380,10 @@
       return;
     }
 
-    /* Group by first letter of c1 */
+    /* Group by first letter (selo, ou c1) */
     var groups = {};
     filtered.forEach(function(e) {
-      var letter = (e.c1 || 'X')[0].toUpperCase();
+      var letter = (sortKey(e) || 'X')[0].toUpperCase();
       if (!groups[letter]) groups[letter] = [];
       groups[letter].push(e);
     });
