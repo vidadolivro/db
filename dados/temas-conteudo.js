@@ -722,6 +722,13 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T20:42:58.929Z",
         "domain": "canalcurta.tv.br",
         "tipo": "outro"
+      },
+      {
+        "titulo": "Como funciona o mercado editorial no Brasil - Bibliotecários sem fronteiras",
+        "href": "https://bsf.org.br/2016/10/27/como-funciona-o-mercado-editorial-no-brasil/",
+        "date_created": "2026-07-07T21:12:25.168Z",
+        "domain": "bsf.org.br",
+        "tipo": "blog"
       }
     ]
   },

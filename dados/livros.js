@@ -416,7 +416,7 @@ window.LIVROS = [
   {
     "isbn": "9788552000006",
     "titulo": "A personagem",
-    "autor": "Beth Brait",
+    "autor": "Brait, Beth",
     "editora": "Editora Contexto",
     "ano": "",
     "capa": "https://api.metabooks.com/api/v1/cover/9788552000006/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
