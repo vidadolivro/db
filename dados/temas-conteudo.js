@@ -82,6 +82,159 @@ window.TEMAS_CONTEUDO = {
         "tag": "entrevista",
         "trecho": "Ao lançar Oração para desaparecer, Socorro Acioli fala sobre os desafios para se tornar escritora e questões contemporâneas da literatura",
         "fonte": "Continente, 2024"
+      },
+      {
+        "titulo": "A Arte da Poesia nº 115",
+        "autor": "Louise Glück",
+        "href": "https://www.theparisreview.org/interviews/8035/the-art-of-poetry-no-115-louise-gluck",
+        "date_created": "2026-07-07T04:58:34.042Z",
+        "tag": "entrevista",
+        "trecho": "Louise Glück reflete sobre clareza e intensidade na poesia.",
+        "fonte": "The Paris Review – 2023"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 258",
+        "autor": "Olga Tokarczuk",
+        "href": "https://www.theparisreview.org/interviews/7968/the-art-of-fiction-no-258-olga-tokarczuk?utm_source=copilot.com",
+        "date_created": "2026-07-07T04:59:47.295Z",
+        "tag": "entrevista",
+        "trecho": "Tokarczuk fala sobre narrativas fragmentadas e filosofia em sua escrita.",
+        "fonte": "The Paris Review – 2023"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 213",
+        "autor": "Dennis Cooper",
+        "href": "https://www.theparisreview.org/interviews/6098/the-art-of-fiction-no-213-dennis-cooper?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:00:34.384Z",
+        "tag": "entrevista",
+        "trecho": "Cooper discute transgressão e experimentação literária.",
+        "fonte": "The Paris Review – 2011"
+      },
+      {
+        "titulo": "A Arte da Poesia nº 98",
+        "autor": "Henri Cole",
+        "href": "https://www.theparisreview.org/interviews/6312/the-art-of-poetry-no-98-henri-cole?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:01:22.630Z",
+        "tag": "entrevista",
+        "trecho": "Henri Cole explora intimidade e forma na poesia contemporânea.",
+        "fonte": "The Paris Review – 2014"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 228",
+        "autor": "Elena Ferrante",
+        "href": "https://www.theparisreview.org/interviews/6370/the-art-of-fiction-no-228-elena-ferrante?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:02:21.593Z",
+        "tag": "entrevista",
+        "trecho": "Ferrante aborda anonimato e a força das vozes femininas.",
+        "fonte": "The Paris Review – 2015"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 221",
+        "autor": "Ursula K. Le Guin",
+        "href": "https://www.theparisreview.org/interviews/6253/the-art-of-fiction-no-221-ursula-k-le-guin?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:03:14.922Z",
+        "tag": "entrevista",
+        "trecho": "Le Guin fala sobre mundos imaginários e ética na ficção.",
+        "fonte": "The Paris Review – 2013"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 197",
+        "autor": "Umberto Eco",
+        "href": "https://www.theparisreview.org/interviews/5856/the-art-of-fiction-no-197-umberto-eco?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:04:06.050Z",
+        "tag": "entrevista",
+        "trecho": "Eco discute intertextualidade e o prazer da leitura.",
+        "fonte": "The Paris Review – 2008"
+      },
+      {
+        "titulo": "A Arte da Não-Ficção nº 1",
+        "autor": "Joan Didion",
+        "href": "https://www.theparisreview.org/interviews/5601/the-art-of-nonfiction-no-1-joan-didion?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:04:51.978Z",
+        "tag": "entrevista",
+        "trecho": "Didion reflete sobre memória e estilo no ensaio.",
+        "fonte": "The Paris Review – 2006"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 189",
+        "autor": "Stephen King",
+        "href": "https://www.theparisreview.org/interviews/5653/the-art-of-fiction-no-189-stephen-king?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:05:41.680Z",
+        "tag": "entrevista",
+        "trecho": "King fala sobre disciplina e imaginação no horror.",
+        "fonte": "The Paris Review – 2006"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 182",
+        "autor": "Haruki Murakami",
+        "href": "https://www.theparisreview.org/interviews/2/the-art-of-fiction-no-182-haruki-murakami?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:06:21.297Z",
+        "tag": "análise",
+        "trecho": "Murakami explora surrealismo e solidão em sua obra.",
+        "fonte": "The Paris Review – 2004"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 121",
+        "autor": "Margaret Atwood",
+        "href": "https://www.theparisreview.org/interviews/2262/the-art-of-fiction-no-121-margaret-atwood?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:07:25.838Z",
+        "tag": "entrevista",
+        "trecho": "Atwood discute poder, gênero e distopia.",
+        "fonte": "The Paris Review – 1990"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 119",
+        "autor": "Maya Angelou",
+        "href": "https://www.theparisreview.org/interviews/2279/the-art-of-fiction-no-119-maya-angelou?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:08:33.103Z",
+        "tag": "entrevista",
+        "trecho": "Angelou fala sobre voz, identidade e resistência.",
+        "fonte": "The Paris Review – 1990"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 130",
+        "autor": "Italo Calvino",
+        "href": "https://www.theparisreview.org/interviews/2027/the-art-of-fiction-no-130-italo-calvino?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:09:21.489Z",
+        "tag": "análise",
+        "trecho": "Calvino reflete sobre leveza e imaginação literária.",
+        "fonte": "The Paris Review – 1992"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 140",
+        "autor": "Primo Levi",
+        "href": "https://www.theparisreview.org/interviews/1670/the-art-of-fiction-no-140-primo-levi?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:10:10.300Z",
+        "tag": "entrevista",
+        "trecho": "Levi aborda memória e testemunho do Holocausto.",
+        "fonte": "The Paris Review – 1985"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 120",
+        "autor": "Mario Vargas Llosa",
+        "href": "https://www.theparisreview.org/interviews/2280/the-art-of-fiction-no-120-mario-vargas-llosa?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:11:01.877Z",
+        "tag": "entrevista",
+        "trecho": "Llosa fala sobre política e paixão na narrativa.",
+        "fonte": "The Paris Review – 1990"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 155",
+        "autor": "José Saramago",
+        "href": "https://www.theparisreview.org/interviews/1032/the-art-of-fiction-no-155-jose-saramago?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:14:11.461Z",
+        "tag": "entrevista",
+        "trecho": "Saramago discute ironia e experimentação narrativa.",
+        "fonte": "The Paris Review – 1998"
+      },
+      {
+        "titulo": "A Arte da Ficção nº 69",
+        "autor": "Gabriel García Márquez",
+        "href": "https://www.theparisreview.org/interviews/3196/the-art-of-fiction-no-69-gabriel-garcia-marquez?utm_source=copilot.com",
+        "date_created": "2026-07-07T05:15:15.233Z",
+        "tag": "entrevista",
+        "trecho": "Márquez fala sobre realismo mágico e memória.",
+        "fonte": "The Paris Review – 1981"
       }
     ]
   },
