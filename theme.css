@@ -1,0 +1,50 @@
+/* vida do livro db — modo noturno (compartilhado por todas as páginas) */
+
+:root[data-theme="dark"] {
+  --bg: #15140e;
+  --ink: #ece7da;
+  --mid: #a7a395;
+  --light: #7c796e;
+  --border: #322f27;
+}
+
+/* fundos "placeholder" de capa/thumb que eram claros no tema claro */
+:root[data-theme="dark"] .recente-capa,
+:root[data-theme="dark"] .recente-capa--video,
+:root[data-theme="dark"] .recente-capa--livro,
+:root[data-theme="dark"] .recente-capa--texto,
+:root[data-theme="dark"] .recente-capa--podcast,
+:root[data-theme="dark"] .recente-capa--link,
+:root[data-theme="dark"] .v-thumb,
+:root[data-theme="dark"] .livro-capa {
+  background-color: #211f18;
+}
+
+/* hover claro das linhas de editora → escuro */
+:root[data-theme="dark"] .ed-row:hover { background: #211f18; }
+
+/* estados vazios / cores fixas claras → tom do tema */
+:root[data-theme="dark"] .l-type { color: var(--light); }
+
+/* ── botão de alternar (injetado por theme.js) ── */
+.theme-toggle {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 500;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  transition: border-color 0.12s, transform 0.12s;
+}
+.theme-toggle:hover { border-color: var(--ink); transform: translateY(-1px); }
