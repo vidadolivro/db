@@ -5,7 +5,7 @@ window.LIVROS = [
   {
     "isbn": "9788535941678",
     "titulo": "Escrever é humano",
-    "autor": "Rodrigues, Sérgio",
+    "autor": "Sérgio Rodrigues",
     "editora": "Companhia das Letras",
     "ano": 2025,
     "capa": "https://api.metabooks.com/api/v1/cover/9788535941678/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
@@ -20,7 +20,7 @@ window.LIVROS = [
   {
     "isbn": "9788560499007",
     "titulo": "Story",
-    "autor": "Mckee, Robert",
+    "autor": "Robert Mckee",
     "editora": "Arte & Letra",
     "ano": 2017,
     "capa": "https://covers.openlibrary.org/b/isbn/9788560499007-L.jpg",
@@ -30,119 +30,6 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-06-24T00:48:01.505Z"
-  },
-  {
-    "isbn": "9788535938340",
-    "titulo": "Boemia literária e revolução (Nova edição)",
-    "autor": "Robert Darnton",
-    "editora": "Companhia das Letras",
-    "ano": 2025,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788535938340/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
-    "macrotema": "historia",
-    "temas": [
-      "mercado-editorial",
-      "edicao"
-    ],
-    "href": "#",
-    "_date": "2026-06-25T18:28:32.499Z"
-  },
-  {
-    "isbn": "9786559213924",
-    "titulo": "Como organizar uma biblioteca",
-    "autor": "Roberto Calasso",
-    "editora": "Companhia das Letras",
-    "ano": 2023,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786559213924/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
-    "macrotema": "historia",
-    "temas": [
-      "mercado-editorial"
-    ],
-    "href": "#",
-    "_date": "2026-06-25T18:28:33.008Z"
-  },
-  {
-    "isbn": "9786598244309",
-    "titulo": "Arte e medo",
-    "autor": "David Bayles & Ted Orland",
-    "editora": "Seiva",
-    "ano": 2024,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786598244309/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
-    "macrotema": "experiencias",
-    "temas": [
-      "criacao-literaria"
-    ],
-    "href": "#",
-    "_date": "2026-06-25T18:28:33.244Z"
-  },
-  {
-    "isbn": "9786598244378",
-    "titulo": "Como ser artista",
-    "autor": "Jerry Saltz",
-    "editora": "Seiva",
-    "ano": 2024,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786598244378/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
-    "macrotema": "experiencias",
-    "temas": [
-      "criacao-literaria"
-    ],
-    "href": "#",
-    "_date": "2026-06-25T18:28:33.515Z"
-  },
-  {
-    "isbn": "9786583239112",
-    "titulo": "O mundo precisa da sua arte",
-    "autor": "Amie McNee",
-    "editora": "Seiva",
-    "ano": 2026,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786583239112/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
-    "macrotema": "experiencias",
-    "temas": [
-      "criacao-literaria"
-    ],
-    "href": "#",
-    "_date": "2026-06-25T18:28:33.749Z"
-  },
-  {
-    "isbn": "9786598244316",
-    "titulo": "Anatomia da história",
-    "autor": "John Truby",
-    "editora": "Seiva",
-    "ano": 2024,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786598244316/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
-    "macrotema": "escrita",
-    "temas": [
-      "criacao-literaria"
-    ],
-    "href": "#",
-    "_date": "2026-06-25T18:28:34.011Z"
-  },
-  {
-    "isbn": "9786598244361",
-    "titulo": "Como criar histórias",
-    "autor": "Ursula K. Le Guin",
-    "editora": "Seiva",
-    "ano": 2024,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786598244361/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
-    "macrotema": "escrita",
-    "temas": [
-      "criacao-literaria"
-    ],
-    "href": "#",
-    "_date": "2026-06-25T18:28:34.247Z"
-  },
-  {
-    "isbn": "9786583239013",
-    "titulo": "A Jornada do Escritor",
-    "autor": "Christopher Vogler",
-    "editora": "Seiva",
-    "ano": 2024,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786583239013/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
-    "macrotema": "escrita",
-    "temas": [
-      "criacao-literaria"
-    ],
-    "href": "#",
-    "_date": "2026-06-25T18:28:34.505Z"
   },
   {
     "isbn": "9786555645415",
@@ -747,20 +634,6 @@ window.LIVROS = [
     "_date": "2026-07-06T23:13:43.960Z"
   },
   {
-    "isbn": "9786586490510",
-    "titulo": "Um teto todo seu",
-    "autor": "Woolf, Virginia",
-    "editora": "Editora Antofágica",
-    "ano": "",
-    "capa": "https://api.metabooks.com/api/v1/cover/9786586490510/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
-    "macrotema": "experiencias",
-    "temas": [
-      "criacao-literaria"
-    ],
-    "href": "#",
-    "_date": "2026-07-06T23:15:08.612Z"
-  },
-  {
     "isbn": "9788573261820",
     "titulo": "A teoria do romance",
     "autor": "Lukács, Georg",
@@ -830,5 +703,302 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-07-07T18:09:39.435Z"
+  },
+  {
+    "isbn": "9788539307623",
+    "titulo": "Os gêneros do discurso",
+    "autor": "Todorov, Tzvetan",
+    "editora": "Editora Unesp",
+    "ano": 2018,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788539307623/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:11:09.750Z"
+  },
+  {
+    "isbn": "9788573266368",
+    "titulo": "Os gêneros do discurso",
+    "autor": "Bakhtin, Mikhail",
+    "editora": "Editora 34",
+    "ano": "",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788573266368/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:12:10.847Z"
+  },
+  {
+    "isbn": "9788535936575",
+    "titulo": "Sobre literatura e história",
+    "autor": "Pinto, Júlio Pimentel",
+    "editora": "Companhia das Letras",
+    "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535936575/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "historia",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:13:15.103Z"
+  },
+  {
+    "isbn": "9786559215904",
+    "titulo": "Escrita em movimento",
+    "autor": "Jaffe, Noemi",
+    "editora": "Companhia das Letras",
+    "ano": 2023,
+    "capa": "https://covers.openlibrary.org/b/isbn/9786559215904-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:15:07.987Z"
+  },
+  {
+    "isbn": "9786587408125",
+    "titulo": "Como Se Tornar Um Escritor. Um Guia Prático",
+    "autor": "Bennett, Arnold",
+    "editora": "Auster",
+    "ano": 2021,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786587408125/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:15:50.287Z"
+  },
+  {
+    "isbn": "9788582351963",
+    "titulo": "Como encontrar seu estilo de escrever",
+    "autor": "Castro, Francisco",
+    "editora": "Gutenberg",
+    "ano": 2015,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788582351963/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:17:35.962Z"
+  },
+  {
+    "isbn": "9786555417173",
+    "titulo": "A prática da escrita",
+    "autor": "Ana Rüsche",
+    "editora": "Contexto",
+    "ano": 2026,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786555417173/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:18:16.485Z"
+  },
+  {
+    "isbn": "9788537813942",
+    "titulo": "Truques da escrita",
+    "autor": "Howard S. Becker",
+    "editora": "Zahar",
+    "ano": 2015,
+    "capa": "https://covers.openlibrary.org/b/isbn/9788537813942-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria",
+      "preparacao-revisao"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:18:49.951Z"
+  },
+  {
+    "isbn": "9786586768190",
+    "titulo": "Só vírgula",
+    "autor": "Maria Tereza de Queiroz Piacentini",
+    "editora": "EdUFSCar",
+    "ano": "",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786586768190/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "preparacao-revisao"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:19:48.198Z"
+  },
+  {
+    "isbn": "9788576006114",
+    "titulo": "Só crase",
+    "autor": "Maria Tereza de Queiroz Piacentini",
+    "editora": "EdUFSCar",
+    "ano": 2023,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788576006114/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "preparacao-revisao"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:20:18.289Z"
+  },
+  {
+    "isbn": "9786598281502",
+    "titulo": "Tudo converge para o texto",
+    "autor": "William Campos da Cruz",
+    "editora": "Eleia",
+    "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598281502/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria",
+      "preparacao-revisao"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:21:37.315Z"
+  },
+  {
+    "isbn": "9788542238020",
+    "titulo": "Como nos comunicamos importa",
+    "autor": "Viscardi, Jana",
+    "editora": "Planeta",
+    "ano": 2025,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788542238020/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria",
+      "preparacao-revisao"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:21:57.847Z"
+  },
+  {
+    "isbn": "9788535940749",
+    "titulo": "O primeiro leitor",
+    "autor": "Schwarcz, Luiz",
+    "editora": "Companhia das Letras",
+    "ano": 2025,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535940749/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "autor-editora",
+      "coordenacao-editorial",
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T19:04:49.463Z"
+  },
+  {
+    "isbn": "9788535938340",
+    "titulo": "Boemia literária e revolução (Nova edição)",
+    "autor": "Darnton, Robert",
+    "editora": "Companhia das Letras",
+    "ano": 2025,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535938340/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "historia",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T19:09:27.002Z"
+  },
+  {
+    "isbn": "9786559213924",
+    "titulo": "Como organizar uma biblioteca",
+    "autor": "Calasso, Roberto",
+    "editora": "Companhia das Letras",
+    "ano": 2023,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786559213924/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "diversos",
+    "temas": [],
+    "href": "#",
+    "_date": "2026-07-07T19:36:48.448Z"
+  },
+  {
+    "isbn": "9786583239112",
+    "titulo": "O mundo precisa da sua arte",
+    "autor": "McNee, Amie",
+    "editora": "Seiva",
+    "ano": 2026,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786583239112/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [],
+    "href": "#",
+    "_date": "2026-07-07T19:37:54.321Z"
+  },
+  {
+    "isbn": "9786598244378",
+    "titulo": "Como ser artista",
+    "autor": "Saltz, Jerry",
+    "editora": "Seiva",
+    "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244378/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria",
+      "design-grafico",
+      "quadrinhos"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T19:41:16.949Z"
+  },
+  {
+    "isbn": "9786598244354",
+    "titulo": "9786598244354",
+    "autor": "John Truby",
+    "editora": "Seiva",
+    "ano": "",
+    "capa": "",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "https://www.amazon.com.br/Anatomia-hist%C3%B3ria-passos-dominar-hist%C3%B3rias-ebook/dp/B0D2Z3SLWF/ref=",
+    "_date": "2026-07-07T19:42:19.921Z"
+  },
+  {
+    "isbn": "9786598244309",
+    "titulo": "Arte e medo",
+    "autor": "Bayles, David; Orland, Ted",
+    "editora": "Seiva",
+    "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244309/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T19:43:01.846Z"
+  },
+  {
+    "isbn": "9786598244361",
+    "titulo": "Como criar histórias",
+    "autor": "Le Guin, Ursula K.",
+    "editora": "Seiva",
+    "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244361/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T19:44:48.855Z"
+  },
+  {
+    "isbn": "9786555252286",
+    "titulo": "Um quarto só para mim",
+    "autor": "Woolf, Virginia",
+    "editora": "Editora 34",
+    "ano": 2025,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786555252286/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "experiencias",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T20:03:08.773Z"
   }
 ];

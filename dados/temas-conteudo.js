@@ -113,34 +113,10 @@ window.TEMAS_CONTEUDO = {
         "subtipo": "episódio"
       },
       {
-        "titulo": "",
-        "href": "https://open.spotify.com/show/0av5CYCnkcjeOTRsaCtIsu?si=3be46ef722734729",
-        "date_created": "2026-07-07T14:03:32.104Z",
-        "show": "Prelo Escrita Criativa, com Tiago Novaes",
-        "meta": "",
-        "subtipo": "podcast inteiro"
-      },
-      {
-        "titulo": "",
-        "href": "https://open.spotify.com/show/5moOAqyKNsZBbDjX6VTo5n?si=0c3f0736da5a43f5",
-        "date_created": "2026-07-07T14:06:44.703Z",
-        "show": "Os 12 Trabalhos do Escritor, por AJ Oliveira",
-        "meta": "",
-        "subtipo": "podcast inteiro"
-      },
-      {
-        "titulo": "Sobre Escrita Criativa. com Sheelagh Caygill (On Creative Writing)",
+        "titulo": "\"Sobre Escrita Criativa\" com Sheelagh Caygill (On Creative Writing)",
         "href": "https://open.spotify.com/show/6Q5ao5OkryhClFrTHylbBZ",
         "date_created": "2026-07-07T15:11:44.062Z",
         "show": "",
-        "meta": "",
-        "subtipo": "podcast inteiro"
-      },
-      {
-        "titulo": "",
-        "href": "https://open.spotify.com/show/2kGw280Oq6kM8fDnNLgpDF?si=f55b485efa224d7c",
-        "date_created": "2026-07-07T15:22:03.523Z",
-        "show": "Podcast Literário Rabiscos por Tadeu Rodrigues",
         "meta": "",
         "subtipo": "podcast inteiro"
       }
@@ -187,6 +163,13 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T15:23:43.605Z",
         "domain": "escritacriativa.com.br",
         "tipo": "blog"
+      },
+      {
+        "titulo": "Portal de vídeoaulas - Introdução aos Estudos Literários II - Universidade de São Paulo (USP)",
+        "href": "https://eaulas.usp.br/portal/course.action;jsessionid=3622E8A20A97E698D170E8D3BF6733A6?idOrderView=1&course=30562",
+        "date_created": "2026-07-07T19:49:21.791Z",
+        "domain": "eaulas.usp.br",
+        "tipo": "outro"
       }
     ],
     "textos": [
@@ -406,6 +389,17 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=80UXbuMMaJI",
         "date_created": "2026-07-07T16:13:59.189Z",
         "meta": "2min"
+      }
+    ],
+    "textos": [
+      {
+        "titulo": "Diferentes funções, mesma profissão: os tipos de revisor de texto",
+        "autor": "Carol Machado",
+        "href": "https://revisaoparaque.com/blog/diferentes-funcoes-mesma-profissao-os-tipos-de-revisor-de-texto/",
+        "date_created": "2026-07-07T19:51:43.570Z",
+        "tag": "análise",
+        "trecho": "Qual é a diferença entre o copidesque e o preparador de originais? E o revisor de texto faz o quê? Para que serve um leitor crítico? Tire essas dúvidas neste post e conheça um pouco mais sobre quem faz o que no mundo da revisão.",
+        "fonte": "Revisão Para Quê? - 2019"
       }
     ]
   },
