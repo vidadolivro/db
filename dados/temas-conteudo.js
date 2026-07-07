@@ -194,6 +194,22 @@ window.TEMAS_CONTEUDO = {
         "show": "Litterae - O seu podcast de Literatura",
         "meta": "2026",
         "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "#187 Jogo de escritor — Carlos Marcelo",
+        "href": "https://open.spotify.com/episode/1VpaQTZZQEuuBGUbMLGIGn?si=d-Fh9YIaRROyngRDGXlDJA",
+        "date_created": "2026-07-07T21:19:50.817Z",
+        "show": "451 MHz - o podcast dos livros",
+        "meta": "56min",
+        "subtipo": "episódio"
+      },
+      {
+        "titulo": "",
+        "href": "https://open.spotify.com/show/2A8y9KlSy9v3iQHc59dqw8?si=dfcf306516b54f1d",
+        "date_created": "2026-07-07T21:20:24.559Z",
+        "show": "451 MHz - O podcast dos livros",
+        "meta": "",
+        "subtipo": "podcast inteiro"
       }
     ],
     "links": [
@@ -416,6 +432,14 @@ window.TEMAS_CONTEUDO = {
         "ano": "2024",
         "href": "https://revistaft.com.br/o-narrar-em-foco-uma-analise-do-narrador-na-obra-seis-vezes-lucas-de-lygia-bounga-nunes/",
         "date_created": "2026-07-07T17:46:10.773Z"
+      },
+      {
+        "titulo": "ESCRITA CRIATIVA E AUTORAL ENTRE UNIVERSITÁRIOS/AS: RELAÇÕES ESTÉTICAS E BIVOCALIDADE",
+        "autores": "ZONTA, Graziele Aline",
+        "publicacao": "Scielo",
+        "ano": "2021",
+        "href": "https://www.scielo.br/j/pee/a/DfRZcGPn9F5RQYDqTcVn7BP/?lang=pt",
+        "date_created": "2026-07-07T21:24:50.468Z"
       }
     ]
   },
@@ -669,6 +693,14 @@ window.TEMAS_CONTEUDO = {
         "ano": "2011",
         "href": "https://repositorio.ufsc.br/bitstream/handle/123456789/115484/intro_a_traducao_avea_final_18.08.2011.pdf;jsessionid=9C41B44BF8519B398862F1A30074053C?sequence=1",
         "date_created": "2026-07-02T00:01:34.304Z"
+      },
+      {
+        "titulo": "Tradução & direitos autorais",
+        "autores": "ESTEVES, Lenita Maria Rimoli",
+        "publicacao": "Editora Unesp",
+        "ano": "",
+        "href": "https://books.scielo.org/id/6vkk8/pdf/amorim-9788568334614-04.pdf",
+        "date_created": "2026-07-07T21:26:00.708Z"
       }
     ]
   },
@@ -746,6 +778,14 @@ window.TEMAS_CONTEUDO = {
         "ano": "2025",
         "href": "https://repositorio.unesp.br/entities/publication/245097be-9e18-4807-baf9-ce1db9212cb7",
         "date_created": "2026-07-07T21:18:22.171Z"
+      },
+      {
+        "titulo": "A editora universitária, os livros do século XXI e seus leitores",
+        "autores": "Neto, José Castilho Marques",
+        "publicacao": "Scielo",
+        "ano": "2000",
+        "href": "https://www.scielo.br/j/icse/a/QTFVfRtwdNBKMG4XzdVnKSj/?lang=pt",
+        "date_created": "2026-07-07T21:21:52.700Z"
       }
     ]
   },
@@ -771,6 +811,30 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T15:34:39.401Z",
         "domain": "clubedeautores.com.br",
         "tipo": "ferramenta"
+      }
+    ]
+  },
+  "ebooks": {
+    "artigos": [
+      {
+        "titulo": "IMPACTO DOS E-BOOKS NA CADEIA EDITORIAL BRASILEIRA: UMA ANÁLISE EXPLORATÓRIA",
+        "autores": "Ferreira, Fernando Martins Coelho",
+        "publicacao": "Scielo",
+        "ano": "2018",
+        "href": "https://www.scielo.br/j/rae/a/GMc4f9KQ7VYwDbHqJ7sp88v/?lang=pt",
+        "date_created": "2026-07-07T21:23:07.787Z"
+      }
+    ]
+  },
+  "comunicacao-midia": {
+    "artigos": [
+      {
+        "titulo": "Plataformas de livros acadêmicos em acesso aberto e sua representação no Twitter: métricas de divulgação, descoberta e avaliação",
+        "autores": "ODDONE, Nanci Elizabeth",
+        "publicacao": "Scielo",
+        "ano": "2019",
+        "href": "https://www.scielo.br/j/tinf/a/CLgcrqtKYN4Jd46wBP6w75D/?lang=pt",
+        "date_created": "2026-07-07T21:24:12.179Z"
       }
     ]
   }
