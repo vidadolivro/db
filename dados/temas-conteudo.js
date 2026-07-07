@@ -59,6 +59,34 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=RFPCjuHsrkI&pp=ygUhZXNjcml0b3IgKyBjcmlhw6fDo28gKyBsaXRlcsOhcmlh",
         "date_created": "2026-07-07T20:27:07.747Z",
         "meta": "13min"
+      },
+      {
+        "titulo": "Arco Narrativo | Escrita Criativa | Formação de Escritores",
+        "canal": "Formação de Escritores",
+        "href": "https://www.youtube.com/watch?v=xls0bqF47yA&pp=ygUhZXNjcml0b3IgKyBjcmlhw6fDo28gKyBsaXRlcsOhcmlh",
+        "date_created": "2026-07-07T20:30:40.588Z",
+        "meta": "11min"
+      },
+      {
+        "titulo": "Introdução à Escrita de Fantasia e Ficção Científica, por Brandon Sanderson",
+        "canal": "Como Escrever Fantasia",
+        "href": "https://youtu.be/TBi3Bs5gUKA?si=o3xn8Jd3eCSC5z3L",
+        "date_created": "2026-07-07T20:31:43.949Z",
+        "meta": "10min"
+      },
+      {
+        "titulo": "Curta! Forma é conteúdo, com Roger Mello, João Anzanello Carrascoza e Eduardo Spohr",
+        "canal": "",
+        "href": "https://canalcurta.tv.br/filme/?name=forma_e_conteudo",
+        "date_created": "2026-07-07T20:47:08.394Z",
+        "meta": "26min - 2017"
+      },
+      {
+        "titulo": "Gêneros ou nichos, com editores e escritores",
+        "canal": "Canal Curta!",
+        "href": "https://canalcurta.tv.br/filme/?name=generos_ou_nichos",
+        "date_created": "2026-07-07T20:50:34.320Z",
+        "meta": "26min - 2017"
       }
     ],
     "podcasts": [
@@ -231,6 +259,27 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T20:29:03.235Z",
         "domain": "youtube.com",
         "tipo": "blog"
+      },
+      {
+        "titulo": "A Vida Privada dos Livros - história de livros com Ana Daniela Soares e Alberto Manguel -  1ª temporada",
+        "href": "https://www.rtp.pt/play/p9466/a-vida-privada-dos-livros",
+        "date_created": "2026-07-07T20:37:03.597Z",
+        "domain": "rtp.pt",
+        "tipo": "blog"
+      },
+      {
+        "titulo": "Série Esse Negócio de Livro - Curta!",
+        "href": "https://canalcurta.tv.br/series/esse-neg%C3%B3cio-de-livro",
+        "date_created": "2026-07-07T20:41:42.844Z",
+        "domain": "canalcurta.tv.br",
+        "tipo": "outro"
+      },
+      {
+        "titulo": "Curta! Escrita por encomenda, com Alexandre Dórea, Isa Pessoa, Luiz Alves, Marta Garcia e Miriam Ibanez",
+        "href": "https://canalcurta.tv.br/filme/?name=escrita_por_encomenda",
+        "date_created": "2026-07-07T20:46:05.760Z",
+        "domain": "canalcurta.tv.br",
+        "tipo": "outro"
       }
     ],
     "textos": [
@@ -435,6 +484,29 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=nO3f9eat3V4",
         "date_created": "2026-07-07T20:27:41.592Z",
         "meta": "19min"
+      },
+      {
+        "titulo": "Importância do título, com Marçal Aquino, Noemi Jaffe, Fernanda Young",
+        "canal": "Canal Curta!",
+        "href": "https://canalcurta.tv.br/filme/?name=importancia_do_titulo",
+        "date_created": "2026-07-07T20:49:37.365Z",
+        "meta": "26min - 2017"
+      },
+      {
+        "titulo": "Ascensão de novos talentos, com Marcelino Freire, Noemi Jaffe e João Paulo Cuenca",
+        "canal": "Canal Curta!",
+        "href": "https://canalcurta.tv.br/filme/?name=ascensao_de_novos_talentos",
+        "date_created": "2026-07-07T20:52:08.520Z",
+        "meta": "26min - 2017"
+      }
+    ],
+    "links": [
+      {
+        "titulo": "Curta! Ofício de editor, com Alberto Mussa, Beatriz Bracher e Fernanda Young",
+        "href": "https://canalcurta.tv.br/filme/?name=oficio_de_editor",
+        "date_created": "2026-07-07T20:45:22.374Z",
+        "domain": "canalcurta.tv.br",
+        "tipo": "outro"
       }
     ]
   },
@@ -446,6 +518,13 @@ window.TEMAS_CONTEUDO = {
         "href": "https://tamandua.tv.br/filme/?name=massao_ohno_poesia_presente46694",
         "date_created": "2026-07-06T02:55:23.147Z",
         "meta": "90 min; 2015"
+      },
+      {
+        "titulo": "Mercado das adaptações",
+        "canal": "Canal Curta!",
+        "href": "https://canalcurta.tv.br/filme/?name=mercado_das_adaptacoes",
+        "date_created": "2026-07-07T20:53:05.543Z",
+        "meta": "26min - 2017"
       }
     ]
   },
@@ -527,6 +606,83 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T17:09:16.879Z",
         "domain": "snel.org.br",
         "tipo": "outro"
+      },
+      {
+        "titulo": "Curta! Passo a passo da produção editorial",
+        "href": "https://canalcurta.tv.br/filme/?name=passo_a_passo_da_producao_editorial",
+        "date_created": "2026-07-07T20:44:14.799Z",
+        "domain": "canalcurta.tv.br",
+        "tipo": "outro"
+      }
+    ]
+  },
+  "direitos-editoriais": {
+    "videos": [
+      {
+        "titulo": "Valor do livro, com Marina Colasanti, Fernanda Young e Raphael Montes",
+        "canal": "Canal Curta!",
+        "href": "https://canalcurta.tv.br/filme/?name=valor_do_livro",
+        "date_created": "2026-07-07T20:48:28.578Z",
+        "meta": "26min - 2017"
+      }
+    ],
+    "links": [
+      {
+        "titulo": "Entenda como garantir o Registro de Direito Autoral do seu livro - Câmara Brasileira do Livro (CBL)",
+        "href": "https://www.cblservicos.org.br/registro/",
+        "date_created": "2026-07-07T17:02:13.257Z",
+        "domain": "cblservicos.org.br",
+        "tipo": "ferramenta"
+      }
+    ]
+  },
+  "traducao": {
+    "videos": [
+      {
+        "titulo": "Literatura tipo exportação",
+        "canal": "Canal Curta!",
+        "href": "https://canalcurta.tv.br/filme/?name=literatura_tipo_exportacao",
+        "date_created": "2026-07-07T20:55:30.501Z",
+        "meta": "26min - 2017"
+      }
+    ],
+    "textos": [
+      {
+        "titulo": "Em tradução (o tradutor está nu) - Caetano Galindo",
+        "autor": null,
+        "href": "https://www.companhiadasletras.com.br/BlogPost/3395/em-traducao-o-tradutor-esta-nu?srsltid=AfmBOooMuGHskkyjlCqOUe_zHa6DNOMj3U0ELEoh_JsTOaHsjf16xQLh",
+        "date_created": "2026-06-25T16:01:12.431Z",
+        "tag": "",
+        "trecho": "40 anos de respeito à inteligência do leitor. Conheça o nosso catálogo e autores.",
+        "fonte": ""
+      },
+      {
+        "titulo": "Transcrição do 451 MHz  — sobre tradução literária e interpretação",
+        "autor": "Paulo Werneck",
+        "href": "https://quatrocincoum.com.br/podcasts/podcast/transcricao-paulo-henriques-britto-e-anna-vianna-no-451-mhz/",
+        "date_created": "2026-07-07T16:32:12.870Z",
+        "tag": "entrevista",
+        "trecho": "Leia a transcrição do episódio #141 do 451 MHz, com Paulo Henriques Britto e Anna Vianna",
+        "fonte": "Quatro Cinco Um - 2025"
+      },
+      {
+        "titulo": "A voz do tradutor na literatura: uma conversa",
+        "autor": "",
+        "href": "https://www.pnl2027.gov.pt/np4/entreler2_entrevista.html",
+        "date_created": "2026-07-07T16:33:25.661Z",
+        "tag": "entrevista",
+        "trecho": "Entrevista de Francisco José Viegas a Tânia Ganho e Miguel Serras Pereira",
+        "fonte": "Plano Nacional de Leitura (PNL)"
+      }
+    ],
+    "artigos": [
+      {
+        "titulo": "Introdução aos Estudos da Tradução: Teorias, história, reflexão e prática",
+        "autores": "ZIPSER, Meta Elisabeth; POLCHLOPEK, Silvana Ayub.",
+        "publicacao": "",
+        "ano": "2011",
+        "href": "https://repositorio.ufsc.br/bitstream/handle/123456789/115484/intro_a_traducao_avea_final_18.08.2011.pdf;jsessionid=9C41B44BF8519B398862F1A30074053C?sequence=1",
+        "date_created": "2026-07-02T00:01:34.304Z"
       }
     ]
   },
@@ -573,6 +729,13 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T07:22:27.927Z",
         "domain": "abeu.org.br",
         "tipo": "outro"
+      },
+      {
+        "titulo": "Curta! O mercado do livro, com Lya Luft e Eduardo Spohr",
+        "href": "https://canalcurta.tv.br/filme/?name=o_mercado_do_livro",
+        "date_created": "2026-07-07T20:42:58.929Z",
+        "domain": "canalcurta.tv.br",
+        "tipo": "outro"
       }
     ]
   },
@@ -598,58 +761,6 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T15:34:39.401Z",
         "domain": "clubedeautores.com.br",
         "tipo": "ferramenta"
-      }
-    ]
-  },
-  "direitos-editoriais": {
-    "links": [
-      {
-        "titulo": "Entenda como garantir o Registro de Direito Autoral do seu livro - Câmara Brasileira do Livro (CBL)",
-        "href": "https://www.cblservicos.org.br/registro/",
-        "date_created": "2026-07-07T17:02:13.257Z",
-        "domain": "cblservicos.org.br",
-        "tipo": "ferramenta"
-      }
-    ]
-  },
-  "traducao": {
-    "textos": [
-      {
-        "titulo": "Em tradução (o tradutor está nu) - Caetano Galindo",
-        "autor": null,
-        "href": "https://www.companhiadasletras.com.br/BlogPost/3395/em-traducao-o-tradutor-esta-nu?srsltid=AfmBOooMuGHskkyjlCqOUe_zHa6DNOMj3U0ELEoh_JsTOaHsjf16xQLh",
-        "date_created": "2026-06-25T16:01:12.431Z",
-        "tag": "",
-        "trecho": "40 anos de respeito à inteligência do leitor. Conheça o nosso catálogo e autores.",
-        "fonte": ""
-      },
-      {
-        "titulo": "Transcrição do 451 MHz  — sobre tradução literária e interpretação",
-        "autor": "Paulo Werneck",
-        "href": "https://quatrocincoum.com.br/podcasts/podcast/transcricao-paulo-henriques-britto-e-anna-vianna-no-451-mhz/",
-        "date_created": "2026-07-07T16:32:12.870Z",
-        "tag": "entrevista",
-        "trecho": "Leia a transcrição do episódio #141 do 451 MHz, com Paulo Henriques Britto e Anna Vianna",
-        "fonte": "Quatro Cinco Um - 2025"
-      },
-      {
-        "titulo": "A voz do tradutor na literatura: uma conversa",
-        "autor": "",
-        "href": "https://www.pnl2027.gov.pt/np4/entreler2_entrevista.html",
-        "date_created": "2026-07-07T16:33:25.661Z",
-        "tag": "entrevista",
-        "trecho": "Entrevista de Francisco José Viegas a Tânia Ganho e Miguel Serras Pereira",
-        "fonte": "Plano Nacional de Leitura (PNL)"
-      }
-    ],
-    "artigos": [
-      {
-        "titulo": "Introdução aos Estudos da Tradução: Teorias, história, reflexão e prática",
-        "autores": "ZIPSER, Meta Elisabeth; POLCHLOPEK, Silvana Ayub.",
-        "publicacao": "",
-        "ano": "2011",
-        "href": "https://repositorio.ufsc.br/bitstream/handle/123456789/115484/intro_a_traducao_avea_final_18.08.2011.pdf;jsessionid=9C41B44BF8519B398862F1A30074053C?sequence=1",
-        "date_created": "2026-07-02T00:01:34.304Z"
       }
     ]
   }
