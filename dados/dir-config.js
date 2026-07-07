@@ -9,14 +9,16 @@
 window.DIR_CONFIG = {
   editoras: {
     collection: 'db_dir_editoras', titulo: 'editoras', num: '01',
-    desc: 'editoras brasileiras por segmento editorial',
-    filtroLabel: 'segmento',
-    filtros: ['todos', 'literatura', 'não-ficção', 'infantil', 'universitária', 'independente'],
+    desc: 'editoras e selos brasileiros por categoria',
+    filtroLabel: 'categoria',
+    filtros: ['todos', 'ficção', 'não ficção', 'infantil/juvenil', 'hq/gráficos', 'independente'],
     campos: [
       { key: 'c1', label: 'editora' },
-      { key: 'c2', label: 'segmento' },
-      { key: 'c3', label: 'catálogo / destaque' },
+      { key: 'selo', label: 'selo', col: 'selo' },
+      { key: 'c2', label: 'categoria' },
+      { key: 'c3', label: 'descrição' },
       { key: 'c4', label: 'cidade' },
+      { key: 'instagram', label: 'instagram', col: 'instagram' },
     ],
     hrefKey: 'href', tags: true,
   },

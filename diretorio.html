@@ -197,6 +197,14 @@
       flex-shrink: 2;
     }
     .entry:hover .e-sub { color: #aaa; }
+    .e-insta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--light);
+      margin-left: 7px;
+      flex-shrink: 0;
+    }
+    .entry:hover .e-insta { color: #888; }
 
     /* category col */
     .e-cat {
@@ -327,22 +335,24 @@
   }
 
   function renderRow(e) {
-    /* Split c1 into first word (bold) + remainder (lighter) if it's multi-word */
-    var parts = (e.c1 || '').trim().split(/\s+/);
     var main, sub;
-    if (parts.length >= 2) {
-      main = parts[0];
-      sub = parts.slice(1).join(' ');
-    } else {
+    if (e.selo) {
+      /* editoras: nome = editora (matriz), sub = selo */
       main = e.c1 || '';
-      sub = '';
+      sub = e.selo;
+    } else {
+      /* demais diretórios: 1ª palavra em destaque + resto */
+      var parts = (e.c1 || '').trim().split(/\s+/);
+      if (parts.length >= 2) { main = parts[0]; sub = parts.slice(1).join(' '); }
+      else { main = e.c1 || ''; sub = ''; }
     }
-    var subHtml = sub ? '<span class="e-sub">' + esc(sub) + '</span>' : '';
-    /* Col 4: show c4 as text or as tags if short */
-    var col4Html = '<div class="e-loc">' + esc(e.c4 || '') + '</div>';
+    var subHtml   = sub ? '<span class="e-sub">' + esc(sub) + '</span>' : '';
+    var instaHtml = e.instagram ? '<span class="e-insta">' + esc(e.instagram) + '</span>' : '';
+    var col4Html  = '<div class="e-loc">' + esc(e.c4 || '') + '</div>';
+    var newTab    = e.href ? ' target="_blank" rel="noopener"' : '';
 
-    return '<a href="' + esc(e.href || '#') + '" class="entry">' +
-      '<div class="e-name"><span class="e-main">' + esc(main) + '</span>' + subHtml + '</div>' +
+    return '<a href="' + esc(e.href || '#') + '" class="entry"' + newTab + '>' +
+      '<div class="e-name"><span class="e-main">' + esc(main) + '</span>' + subHtml + instaHtml + '</div>' +
       '<div class="e-cat">' + esc(e.c2 || '') + '</div>' +
       '<div class="e-desc">' + esc(e.c3 || '') + '</div>' +
       col4Html +
