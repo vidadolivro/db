@@ -19,11 +19,11 @@ window.TEMAS_CONTEUDO = {
         "meta": "28min"
       },
       {
-        "titulo": "Margaret Atwood Interview: On Facing the Blank Page",
+        "titulo": "Margaret Atwood sobre Ficção Especulativa",
         "canal": "Louisiana Channel",
-        "href": "https://www.youtube.com/watch?v=cc5lNYmcdss",
+        "href": "https://channel.louisiana.dk/video/margaret-atwood-planet-speculative-fiction",
         "date_created": "2026-07-06T02:27:31.798Z",
-        "meta": "1min"
+        "meta": "55min"
       },
       {
         "titulo": "Curiosity and the Creative Process | George Saunders | Syracuse University",
@@ -38,20 +38,6 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=-Kgq3F8wbYA",
         "date_created": "2026-07-06T02:34:55.987Z",
         "meta": "7min"
-      },
-      {
-        "titulo": "Massao Ohno - Poesia Presente",
-        "canal": "Tamanduá TV",
-        "href": "https://tamandua.tv.br/filme/?name=massao_ohno_poesia_presente46694",
-        "date_created": "2026-07-06T02:55:23.147Z",
-        "meta": "90 min; 2015"
-      },
-      {
-        "titulo": "Robert Darnton e o futuro dos livros",
-        "canal": "Saraiva",
-        "href": "https://www.youtube.com/watch?v=2ofoocg64PI",
-        "date_created": "2026-07-06T02:55:49.413Z",
-        "meta": "5min"
       }
     ],
     "podcasts": [
@@ -80,14 +66,6 @@ window.TEMAS_CONTEUDO = {
         "subtipo": "episódio"
       },
       {
-        "titulo": "Rotina e disciplina na escrita",
-        "href": "https://open.spotify.com/show/4ZkzV7rKXf9KXzXfQkFjz",
-        "date_created": "2026-07-07T05:49:15.782Z",
-        "show": "Gente que Escreve",
-        "meta": "47 min - 2020",
-        "subtipo": "episódio"
-      },
-      {
         "titulo": "Bastidores da criação literária",
         "href": "https://open.spotify.com/show/3N5k0QkYwY6ZkYkQhXfVjz",
         "date_created": "2026-07-07T05:49:57.808Z",
@@ -96,10 +74,10 @@ window.TEMAS_CONTEUDO = {
         "subtipo": "episódio"
       },
       {
-        "titulo": "",
-        "href": "https://open.spotify.com/show/4kUjcgl9Tsye2a7A2G4POy?si=0dac88d1d85e471a",
+        "titulo": "Rádio Companhia | Companhia das Letras",
+        "href": "https://open.spotify.com/show/4kUjcgl9Tsye2a7A2G4POy",
         "date_created": "2026-07-07T05:54:05.624Z",
-        "show": "Rádio Companhia | Companhia das Letras",
+        "show": "O podcast que respeita a sua inteligência – e alimenta o seu amor pelos livros.",
         "meta": "",
         "subtipo": "podcast inteiro"
       },
@@ -126,21 +104,81 @@ window.TEMAS_CONTEUDO = {
         "show": "Os 12 trabalhos do escritor | Escrita criativa",
         "meta": "2025",
         "subtipo": "episódio"
+      },
+      {
+        "titulo": "",
+        "href": "https://escritacriativa.net.br/podcast/",
+        "date_created": "2026-07-07T14:03:32.104Z",
+        "show": "Prelo Escrita Criativa, com Tiago Novaes",
+        "meta": "",
+        "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "",
+        "href": "https://open.spotify.com/show/5moOAqyKNsZBbDjX6VTo5n?si=37705ebd6a714d5c",
+        "date_created": "2026-07-07T14:06:44.703Z",
+        "show": "Os 12 Trabalhos do Escritor",
+        "meta": "",
+        "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "Sobre Escrita Criativa. com Sheelagh Caygill (On Creative Writing)",
+        "href": "https://open.spotify.com/show/6Q5ao5OkryhClFrTHylbBZ",
+        "date_created": "2026-07-07T15:11:44.062Z",
+        "show": "",
+        "meta": "",
+        "subtipo": "podcast inteiro"
+      },
+      {
+        "titulo": "",
+        "href": "https://open.spotify.com/show/2kGw280Oq6kM8fDnNLgpDF?si=cc9061b6d80e46fc",
+        "date_created": "2026-07-07T15:22:03.523Z",
+        "show": "Podcast Literário Rabiscos por Tadeu Rodrigues",
+        "meta": "",
+        "subtipo": "podcast inteiro"
       }
     ],
     "links": [
       {
-        "titulo": "Arquivo \"A Arte da Ficção\" - A Paris Review",
+        "titulo": "\"A Arte da Ficção\" - Coleção de Entrevistas com escritores - The Paris Review",
         "href": "https://www.theparisreview.org/interviews",
         "date_created": "2026-07-06T03:01:55.456Z",
         "domain": "theparisreview.org",
-        "tipo": "blog"
+        "tipo": "db_links"
       },
       {
         "titulo": "Blog da Companhia",
         "href": "https://www.blogdacompanhia.com.br/secoes/visualizar/Entrevista",
         "date_created": "2026-07-07T07:13:46.693Z",
         "domain": "blogdacompanhia.com.br",
+        "tipo": "blog"
+      },
+      {
+        "titulo": "Entrevistas - Quatro Cinco Um, a revista dos livros",
+        "href": "https://quatrocincoum.com.br/",
+        "date_created": "2026-07-07T15:14:17.959Z",
+        "domain": "quatrocincoum.com.br",
+        "tipo": "blog"
+      },
+      {
+        "titulo": "Como escrevo - por Alberto Lung",
+        "href": "https://www.comoescrevo.com/",
+        "date_created": "2026-07-07T15:14:49.948Z",
+        "domain": "comoescrevo.com",
+        "tipo": "blog"
+      },
+      {
+        "titulo": "Entrevistas Rascunho - o jornal de literatura do Brasil",
+        "href": "https://rascunho.com.br/",
+        "date_created": "2026-07-07T15:15:41.220Z",
+        "domain": "rascunho.com.br",
+        "tipo": "blog"
+      },
+      {
+        "titulo": "Escrita Criativa, por Marcelo Spalding",
+        "href": "https://www.escritacriativa.com.br/dicasdeescrita?",
+        "date_created": "2026-07-07T15:23:43.605Z",
+        "domain": "escritacriativa.com.br",
         "tipo": "blog"
       }
     ],
@@ -155,190 +193,19 @@ window.TEMAS_CONTEUDO = {
         "fonte": "Continente, 2024"
       },
       {
-        "titulo": "A Arte da Poesia nº 115",
-        "autor": "Louise Glück",
-        "href": "https://www.theparisreview.org/interviews/8035/the-art-of-poetry-no-115-louise-gluck",
-        "date_created": "2026-07-07T04:58:34.042Z",
-        "tag": "entrevista",
-        "trecho": "Louise Glück reflete sobre clareza e intensidade na poesia.",
-        "fonte": "The Paris Review – 2023"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 258",
-        "autor": "Olga Tokarczuk",
-        "href": "https://www.theparisreview.org/interviews/7968/the-art-of-fiction-no-258-olga-tokarczuk?utm_source=copilot.com",
-        "date_created": "2026-07-07T04:59:47.295Z",
-        "tag": "entrevista",
-        "trecho": "Tokarczuk fala sobre narrativas fragmentadas e filosofia em sua escrita.",
-        "fonte": "The Paris Review – 2023"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 213",
-        "autor": "Dennis Cooper",
-        "href": "https://www.theparisreview.org/interviews/6098/the-art-of-fiction-no-213-dennis-cooper?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:00:34.384Z",
-        "tag": "entrevista",
-        "trecho": "Cooper discute transgressão e experimentação literária.",
-        "fonte": "The Paris Review – 2011"
-      },
-      {
-        "titulo": "A Arte da Poesia nº 98",
-        "autor": "Henri Cole",
-        "href": "https://www.theparisreview.org/interviews/6312/the-art-of-poetry-no-98-henri-cole?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:01:22.630Z",
-        "tag": "entrevista",
-        "trecho": "Henri Cole explora intimidade e forma na poesia contemporânea.",
-        "fonte": "The Paris Review – 2014"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 228",
-        "autor": "Elena Ferrante",
-        "href": "https://www.theparisreview.org/interviews/6370/the-art-of-fiction-no-228-elena-ferrante?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:02:21.593Z",
-        "tag": "entrevista",
-        "trecho": "Ferrante aborda anonimato e a força das vozes femininas.",
-        "fonte": "The Paris Review – 2015"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 221",
-        "autor": "Ursula K. Le Guin",
-        "href": "https://www.theparisreview.org/interviews/6253/the-art-of-fiction-no-221-ursula-k-le-guin?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:03:14.922Z",
-        "tag": "entrevista",
-        "trecho": "Le Guin fala sobre mundos imaginários e ética na ficção.",
-        "fonte": "The Paris Review – 2013"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 197",
-        "autor": "Umberto Eco",
-        "href": "https://www.theparisreview.org/interviews/5856/the-art-of-fiction-no-197-umberto-eco?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:04:06.050Z",
-        "tag": "entrevista",
-        "trecho": "Eco discute intertextualidade e o prazer da leitura.",
-        "fonte": "The Paris Review – 2008"
-      },
-      {
-        "titulo": "A Arte da Não-Ficção nº 1",
-        "autor": "Joan Didion",
-        "href": "https://www.theparisreview.org/interviews/5601/the-art-of-nonfiction-no-1-joan-didion?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:04:51.978Z",
-        "tag": "entrevista",
-        "trecho": "Didion reflete sobre memória e estilo no ensaio.",
-        "fonte": "The Paris Review – 2006"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 189",
-        "autor": "Stephen King",
-        "href": "https://www.theparisreview.org/interviews/5653/the-art-of-fiction-no-189-stephen-king?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:05:41.680Z",
-        "tag": "entrevista",
-        "trecho": "King fala sobre disciplina e imaginação no horror.",
-        "fonte": "The Paris Review – 2006"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 182",
-        "autor": "Haruki Murakami",
-        "href": "https://www.theparisreview.org/interviews/2/the-art-of-fiction-no-182-haruki-murakami?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:06:21.297Z",
-        "tag": "análise",
-        "trecho": "Murakami explora surrealismo e solidão em sua obra.",
-        "fonte": "The Paris Review – 2004"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 121",
-        "autor": "Margaret Atwood",
-        "href": "https://www.theparisreview.org/interviews/2262/the-art-of-fiction-no-121-margaret-atwood?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:07:25.838Z",
-        "tag": "entrevista",
-        "trecho": "Atwood discute poder, gênero e distopia.",
-        "fonte": "The Paris Review – 1990"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 119",
-        "autor": "Maya Angelou",
-        "href": "https://www.theparisreview.org/interviews/2279/the-art-of-fiction-no-119-maya-angelou?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:08:33.103Z",
-        "tag": "entrevista",
-        "trecho": "Angelou fala sobre voz, identidade e resistência.",
-        "fonte": "The Paris Review – 1990"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 130",
-        "autor": "Italo Calvino",
-        "href": "https://www.theparisreview.org/interviews/2027/the-art-of-fiction-no-130-italo-calvino?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:09:21.489Z",
-        "tag": "análise",
-        "trecho": "Calvino reflete sobre leveza e imaginação literária.",
-        "fonte": "The Paris Review – 1992"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 140",
-        "autor": "Primo Levi",
-        "href": "https://www.theparisreview.org/interviews/1670/the-art-of-fiction-no-140-primo-levi?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:10:10.300Z",
-        "tag": "entrevista",
-        "trecho": "Levi aborda memória e testemunho do Holocausto.",
-        "fonte": "The Paris Review – 1985"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 120",
-        "autor": "Mario Vargas Llosa",
-        "href": "https://www.theparisreview.org/interviews/2280/the-art-of-fiction-no-120-mario-vargas-llosa?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:11:01.877Z",
-        "tag": "entrevista",
-        "trecho": "Llosa fala sobre política e paixão na narrativa.",
-        "fonte": "The Paris Review – 1990"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 155",
-        "autor": "José Saramago",
-        "href": "https://www.theparisreview.org/interviews/1032/the-art-of-fiction-no-155-jose-saramago?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:14:11.461Z",
-        "tag": "entrevista",
-        "trecho": "Saramago discute ironia e experimentação narrativa.",
-        "fonte": "The Paris Review – 1998"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 69",
-        "autor": "Gabriel García Márquez",
-        "href": "https://www.theparisreview.org/interviews/3196/the-art-of-fiction-no-69-gabriel-garcia-marquez?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:15:15.233Z",
-        "tag": "entrevista",
-        "trecho": "Márquez fala sobre realismo mágico e memória.",
-        "fonte": "The Paris Review – 1981"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 81",
-        "autor": "Milan Kundera",
-        "href": "https://www.theparisreview.org/interviews/2977/the-art-of-fiction-no-81-milan-kundera?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:16:23.106Z",
-        "tag": "entrevista",
-        "trecho": "Kundera discute filosofia e romance moderno.",
-        "fonte": "The Paris Review – 1983"
-      },
-      {
-        "titulo": "A Arte da Poesia nº 19",
-        "autor": "James Wright",
-        "href": "https://www.theparisreview.org/interviews/3839/the-art-of-poetry-no-19-james-wright?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:17:10.573Z",
-        "tag": "entrevista",
-        "trecho": "Wright fala sobre lirismo e paisagem americana.",
-        "fonte": "The Paris Review – 1972"
-      },
-      {
-        "titulo": "A Arte da Ficção nº 24",
-        "autor": "Aldous Huxley",
-        "href": "https://www.theparisreview.org/interviews/4698/the-art-of-fiction-no-24-aldous-huxley?utm_source=copilot.com",
-        "date_created": "2026-07-07T05:17:51.534Z",
-        "tag": "entrevista",
-        "trecho": "Huxley fala sobre ciência, sociedade e literatura.",
-        "fonte": "The Paris Review – 1960"
+        "titulo": "PUTARIA COM FINAL FELIZ",
+        "autor": "Bruna Maia",
+        "href": "https://piaui.uol.com.br/revista/174/putaria-com-final-feliz/",
+        "date_created": "2026-07-07T15:58:23.687Z",
+        "tag": "ensaio",
+        "trecho": "A literatura erótica feita por mulheres se expande no Brasil",
+        "fonte": "2021"
       }
     ],
     "artigos": [
       {
         "titulo": "O processo de criação na produção literária: um depoimento",
-        "autores": "Carvalho, Ana Cristina.",
+        "autores": "CARVALHO, Ana Cristina.",
         "publicacao": "",
         "ano": "2012",
         "href": "https://doi.org/10.1590/S1414-98931994000100002",
@@ -378,6 +245,13 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=cWLEFq8401c",
         "date_created": "2026-07-01T23:22:09.599Z",
         "meta": "46min"
+      },
+      {
+        "titulo": "Robert Darnton e o futuro dos livros",
+        "canal": "Saraiva",
+        "href": "https://www.youtube.com/watch?v=2ofoocg64PI",
+        "date_created": "2026-07-06T02:55:49.413Z",
+        "meta": "5min"
       }
     ],
     "textos": [
@@ -403,24 +277,23 @@ window.TEMAS_CONTEUDO = {
       }
     ]
   },
+  "producao-grafica": {
+    "videos": [
+      {
+        "titulo": "Massao Ohno - Poesia Presente",
+        "canal": "Tamanduá TV",
+        "href": "https://tamandua.tv.br/filme/?name=massao_ohno_poesia_presente46694",
+        "date_created": "2026-07-06T02:55:23.147Z",
+        "meta": "90 min; 2015"
+      }
+    ]
+  },
   "agentes-literarios": {
     "podcasts": [
       {
         "titulo": "Agenciamento literário nos dias atuais, com Tassi Reis - S10E06",
         "href": "https://open.spotify.com/episode/4kGWoEmxtIazDrOGQ7IjUN?si=NRG7fDEDR-agib4O06y2Jw",
         "date_created": "2026-07-07T06:22:30.306Z",
-        "show": "Os 12 trabalhos do escritor | Escrita criativa",
-        "meta": "2025",
-        "subtipo": "episódio"
-      }
-    ]
-  },
-  "autopublicacao": {
-    "podcasts": [
-      {
-        "titulo": "Pistolando em voz alta sobre Local de escrita e Crise no Mercado - S10E05",
-        "href": "https://open.spotify.com/episode/1sXvt1JKrO2yIZkl9wDyd1?si=530c0bcbe2ca4751",
-        "date_created": "2026-07-07T06:23:54.511Z",
         "show": "Os 12 trabalhos do escritor | Escrita criativa",
         "meta": "2025",
         "subtipo": "episódio"
@@ -447,6 +320,31 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T07:22:27.927Z",
         "domain": "abeu.org.br",
         "tipo": "outro"
+      }
+    ]
+  },
+  "autopublicacao": {
+    "links": [
+      {
+        "titulo": "UmLivro | Plataforma de impressão sob demanda",
+        "href": "https://umlivro.com.br/",
+        "date_created": "2026-07-07T15:31:46.620Z",
+        "domain": "umlivro.com.br",
+        "tipo": "db_links"
+      },
+      {
+        "titulo": "UICLAP - Plataforma de publicação sob demanda",
+        "href": "https://uiclap.com/",
+        "date_created": "2026-07-07T15:33:20.763Z",
+        "domain": "uiclap.com",
+        "tipo": "ferramenta"
+      },
+      {
+        "titulo": "Clube de Autores | Plataforma de impressão sob demanda",
+        "href": "https://clubedeautores.com.br/",
+        "date_created": "2026-07-07T15:34:39.401Z",
+        "domain": "clubedeautores.com.br",
+        "tipo": "ferramenta"
       }
     ]
   },
