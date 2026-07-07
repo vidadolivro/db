@@ -44,7 +44,7 @@
       line-height: 1.5;
     }
     main {
-      max-width: 920px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 32px 40px 80px;
     }
@@ -157,7 +157,7 @@
     /* ENTRY ROW */
     .entry {
       display: grid;
-      grid-template-columns: 240px 120px 1fr 135px 18px;
+      grid-template-columns: 265px 115px 1fr 145px 18px;
       align-items: center;
       gap: 0 12px;
       padding: 8px 6px;
@@ -180,6 +180,9 @@
       gap: 7px;
       overflow: hidden;
     }
+    /* editoras: selo em cima, grupo inteiro embaixo */
+    .entry--imprint .e-name { flex-direction: column; align-items: flex-start; gap: 1px; }
+    .entry--imprint .e-sub { flex-shrink: 1; max-width: 100%; }
     .e-main {
       font-weight: bold;
       font-size: 13px;
@@ -270,7 +273,7 @@
 
     /* FOOTER */
     footer {
-      max-width: 920px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 14px 40px;
       font-size: 12px;
@@ -352,8 +355,9 @@
     var col4Html  = '<div class="e-loc">' + esc(e.c4 || '') + instaHtml + '</div>';
     var newTab    = e.href ? ' target="_blank" rel="noopener"' : '';
 
-    return '<a href="' + esc(e.href || '#') + '" class="entry"' + newTab + '>' +
-      '<div class="e-name"><span class="e-main">' + esc(main) + '</span>' + subHtml + instaHtml + '</div>' +
+    var cls = 'entry' + (e.selo ? ' entry--imprint' : '');
+    return '<a href="' + esc(e.href || '#') + '" class="' + cls + '"' + newTab + '>' +
+      '<div class="e-name"><span class="e-main">' + esc(main) + '</span>' + subHtml + '</div>' +
       '<div class="e-cat">' + esc(e.c2 || '') + '</div>' +
       '<div class="e-desc">' + esc(e.c3 || '') + '</div>' +
       col4Html +
