@@ -729,6 +729,23 @@ window.TEMAS_CONTEUDO = {
         "date_created": "2026-07-07T21:12:25.168Z",
         "domain": "bsf.org.br",
         "tipo": "blog"
+      },
+      {
+        "titulo": "Pesquisas SNEL — Sindicato Nacional dos Editores de Livros",
+        "href": "https://snel.org.br/pesquisas/",
+        "date_created": "2026-07-07T21:14:11.063Z",
+        "domain": "snel.org.br",
+        "tipo": "outro"
+      }
+    ],
+    "artigos": [
+      {
+        "titulo": "Inteligência competitiva e mercado editorial brasileiro: potencialização da cultura do livro no país",
+        "autores": "PEDERSOLI, Ana Clara Leite; VALENTIM, Marta Lígia Pomim",
+        "publicacao": "Repositório UNESP",
+        "ano": "2025",
+        "href": "https://repositorio.unesp.br/entities/publication/245097be-9e18-4807-baf9-ce1db9212cb7",
+        "date_created": "2026-07-07T21:18:22.171Z"
       }
     ]
   },
