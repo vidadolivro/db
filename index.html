@@ -549,7 +549,7 @@
               '<span class="recente-ep">' + pd.titulo + '</span>') +
           '</div>' +
           '<span class="recente-tipo">podcast</span>' +
-          '<span class="recente-titulo">' + pd.titulo + '</span>' +
+          '<span class="recente-titulo">' + (pd.titulo || pd.show || '') + '</span>' +
           '<span class="recente-tema">' + temaNome + '</span>' +
           '</a>';
       }

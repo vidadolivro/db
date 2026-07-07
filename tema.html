@@ -559,9 +559,17 @@
   /* Podcasts column */
   var pods = tc.podcasts || [];
   var podsHtml = pods.map(function(p) {
+    if (p.titulo) {
+      /* episódio: nome do podcast em cima, título do episódio linkado */
+      return '<div class="p-item">' +
+        '<div class="p-show">' + esc(p.show) + '</div>' +
+        '<div class="p-title"><a href="' + esc(p.href) + '" target="_blank" rel="noopener">' + esc(p.titulo) + '</a></div>' +
+        '<div class="p-meta">' + esc(p.meta) + '</div>' +
+        '</div>';
+    }
+    /* podcast inteiro: o próprio nome do podcast é o link */
     return '<div class="p-item">' +
-      '<div class="p-show">' + esc(p.show) + '</div>' +
-      '<div class="p-title"><a href="' + esc(p.href) + '" target="_blank" rel="noopener">' + esc(p.titulo) + '</a></div>' +
+      '<div class="p-title"><a href="' + esc(p.href) + '" target="_blank" rel="noopener">' + esc(p.show) + '</a></div>' +
       '<div class="p-meta">' + esc(p.meta) + '</div>' +
       '</div>';
   }).join('');
