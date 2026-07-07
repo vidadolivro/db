@@ -5,7 +5,7 @@ window.LIVROS = [
   {
     "isbn": "9788535941678",
     "titulo": "Escrever é humano",
-    "autor": "Sérgio Rodrigues",
+    "autor": "Rodrigues, Sérgio",
     "editora": "Companhia das Letras",
     "ano": 2025,
     "capa": "https://api.metabooks.com/api/v1/cover/9788535941678/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
@@ -20,7 +20,7 @@ window.LIVROS = [
   {
     "isbn": "9788560499007",
     "titulo": "Story",
-    "autor": "Robert Mckee",
+    "autor": "Mckee, Robert",
     "editora": "Arte & Letra",
     "ano": 2017,
     "capa": "https://covers.openlibrary.org/b/isbn/9788560499007-L.jpg",
@@ -920,7 +920,7 @@ window.LIVROS = [
   {
     "isbn": "9786583239112",
     "titulo": "O mundo precisa da sua arte",
-    "autor": "McNee, Amie",
+    "autor": "Amie McNee",
     "editora": "Seiva",
     "ano": 2026,
     "capa": "https://api.metabooks.com/api/v1/cover/9786583239112/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
@@ -947,7 +947,7 @@ window.LIVROS = [
   },
   {
     "isbn": "9786598244354",
-    "titulo": "9786598244354",
+    "titulo": "Anatomia da história",
     "autor": "John Truby",
     "editora": "Seiva",
     "ano": "",
@@ -976,7 +976,7 @@ window.LIVROS = [
   {
     "isbn": "9786598244361",
     "titulo": "Como criar histórias",
-    "autor": "Le Guin, Ursula K.",
+    "autor": "Ursula K. Le Guin",
     "editora": "Seiva",
     "ano": 2024,
     "capa": "https://api.metabooks.com/api/v1/cover/9786598244361/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
@@ -1019,7 +1019,7 @@ window.LIVROS = [
   {
     "isbn": "9786560050617",
     "titulo": "Sobre a escrita - Nova edição comentada com tradução inédita e posfácio de Nara Vidal e Luiz Antonio de Assis Brasil",
-    "autor": "Bukowski, Charles",
+    "autor": "Bukowski, C.",
     "editora": "HarperCollins",
     "ano": 2023,
     "capa": "https://api.metabooks.com/api/v1/cover/9786560050617/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",

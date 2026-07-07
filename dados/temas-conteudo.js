@@ -54,13 +54,6 @@ window.TEMAS_CONTEUDO = {
         "meta": "28min"
       },
       {
-        "titulo": "ESCRITA CRIATIVA: o primeiro passo para escrever como um escritor",
-        "canal": "Clube de Literatura Clássica",
-        "href": "https://www.youtube.com/watch?v=RFPCjuHsrkI&pp=ygUhZXNjcml0b3IgKyBjcmlhw6fDo28gKyBsaXRlcsOhcmlh",
-        "date_created": "2026-07-07T20:27:07.747Z",
-        "meta": "13min"
-      },
-      {
         "titulo": "Arco Narrativo | Escrita Criativa | Formação de Escritores",
         "canal": "Formação de Escritores",
         "href": "https://www.youtube.com/watch?v=xls0bqF47yA&pp=ygUhZXNjcml0b3IgKyBjcmlhw6fDo28gKyBsaXRlcsOhcmlh",
@@ -477,13 +470,6 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=fbGiPxeoczg",
         "date_created": "2026-07-07T16:18:43.593Z",
         "meta": "17min"
-      },
-      {
-        "titulo": "O que significa ser escritor?",
-        "canal": "Rodrigo Gurgel",
-        "href": "https://www.youtube.com/watch?v=nO3f9eat3V4",
-        "date_created": "2026-07-07T20:27:41.592Z",
-        "meta": "19min"
       },
       {
         "titulo": "Importância do título, com Marçal Aquino, Noemi Jaffe, Fernanda Young",
