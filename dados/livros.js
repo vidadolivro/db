@@ -759,5 +759,76 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-07-06T23:15:08.612Z"
+  },
+  {
+    "isbn": "9788573261820",
+    "titulo": "A teoria do romance",
+    "autor": "Lukács, Georg",
+    "editora": "Editora 34",
+    "ano": "",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788573261820-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:04:35.717Z"
+  },
+  {
+    "isbn": "9788503011068",
+    "titulo": "A tradução vivida",
+    "autor": "Ronai, Paulo",
+    "editora": "José Olympio",
+    "ano": 2012,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788503011068/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "traducao",
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:06:38.914Z"
+  },
+  {
+    "isbn": "9788573023473",
+    "titulo": "Como e por que ler",
+    "autor": "Bloom, Harold",
+    "editora": "Objetiva",
+    "ano": 2001,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788573023473/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "historia",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:07:58.967Z"
+  },
+  {
+    "isbn": "9788535900194",
+    "titulo": "O ser e o tempo da poesia",
+    "autor": "Bosi, Alfredo",
+    "editora": "Companhia das Letras",
+    "ano": 2000,
+    "capa": "https://covers.openlibrary.org/b/isbn/9788535900194-L.jpg",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:08:33.955Z"
+  },
+  {
+    "isbn": "9788539304967",
+    "titulo": "Teoria da literatura",
+    "autor": "Todorov, Tzvetan",
+    "editora": "Editora Unesp",
+    "ano": 2014,
+    "capa": "https://api.metabooks.com/api/v1/cover/9788539304967/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T18:09:39.435Z"
   }
 ];

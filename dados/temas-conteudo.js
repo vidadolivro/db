@@ -38,6 +38,13 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=-Kgq3F8wbYA",
         "date_created": "2026-07-06T02:34:55.987Z",
         "meta": "7min"
+      },
+      {
+        "titulo": "Super Libris: ENTREVISTAS",
+        "canal": "SescTV",
+        "href": "https://youtube.com/playlist?list=PLiIQoqgFEbVVuiqMMksMacXBNXw_3dzf1&si=l3QzPnHl1MUvDQAZ",
+        "date_created": "2026-07-07T16:17:07.456Z",
+        "meta": ""
       }
     ],
     "podcasts": [
@@ -107,7 +114,7 @@ window.TEMAS_CONTEUDO = {
       },
       {
         "titulo": "",
-        "href": "https://escritacriativa.net.br/podcast/",
+        "href": "https://open.spotify.com/show/0av5CYCnkcjeOTRsaCtIsu?si=3be46ef722734729",
         "date_created": "2026-07-07T14:03:32.104Z",
         "show": "Prelo Escrita Criativa, com Tiago Novaes",
         "meta": "",
@@ -115,9 +122,9 @@ window.TEMAS_CONTEUDO = {
       },
       {
         "titulo": "",
-        "href": "https://open.spotify.com/show/5moOAqyKNsZBbDjX6VTo5n?si=37705ebd6a714d5c",
+        "href": "https://open.spotify.com/show/5moOAqyKNsZBbDjX6VTo5n?si=0c3f0736da5a43f5",
         "date_created": "2026-07-07T14:06:44.703Z",
-        "show": "Os 12 Trabalhos do Escritor",
+        "show": "Os 12 Trabalhos do Escritor, por AJ Oliveira",
         "meta": "",
         "subtipo": "podcast inteiro"
       },
@@ -131,7 +138,7 @@ window.TEMAS_CONTEUDO = {
       },
       {
         "titulo": "",
-        "href": "https://open.spotify.com/show/2kGw280Oq6kM8fDnNLgpDF?si=cc9061b6d80e46fc",
+        "href": "https://open.spotify.com/show/2kGw280Oq6kM8fDnNLgpDF?si=f55b485efa224d7c",
         "date_created": "2026-07-07T15:22:03.523Z",
         "show": "Podcast Literário Rabiscos por Tadeu Rodrigues",
         "meta": "",
@@ -200,6 +207,87 @@ window.TEMAS_CONTEUDO = {
         "tag": "ensaio",
         "trecho": "A literatura erótica feita por mulheres se expande no Brasil",
         "fonte": "2021"
+      },
+      {
+        "titulo": "Interpretando exílios - Milton Hatoum",
+        "autor": "Helena Aragão",
+        "href": "https://quatrocincoum.com.br/entrevistas/literatura-brasileira/interpretando-exilios",
+        "date_created": "2026-07-07T16:30:54.308Z",
+        "tag": "entrevista",
+        "trecho": "Com o deslocamento como tema recorrente, Milton Hatoum acompanha adaptações, revisa ensaios e finaliza trilogia de romances de formação",
+        "fonte": "Quatro Cinco Um - 2023"
+      },
+      {
+        "titulo": "Deixou um texto parado por muito tempo? Três modos de retomar",
+        "autor": "Tiago Novaes",
+        "href": "https://escritacriativa.net.br/deixou-um-texto-parado/",
+        "date_created": "2026-07-07T16:40:51.091Z",
+        "tag": "análise",
+        "trecho": "",
+        "fonte": "Escrita Criativa"
+      },
+      {
+        "titulo": "Sobre a Arte da Escrita | Diálogos: como eles podem enriquecer seu texto",
+        "autor": "Renan Math",
+        "href": "https://pontodeacumulacao.wordpress.com/2017/05/07/dicas-de-escrita-dialogos-como-eles-podem-enriquecer-seu-texto/",
+        "date_created": "2026-07-07T16:44:54.123Z",
+        "tag": "análise",
+        "trecho": "\"Meu objetivo é tentar te convencer de como diálogos pode ser um recurso literário muito útil e, se usados de maneira inteligente, como tornam o texto mais rico.\"",
+        "fonte": "Ponto de Acumulação - 2017"
+      },
+      {
+        "titulo": "Cristovão Tezza: “A crônica é um processo quase industrial”",
+        "autor": "Jonatan Santos",
+        "href": "https://escotilha.com.br/literatura/entrevista-cristovao-tezza/",
+        "date_created": "2026-07-07T16:49:45.526Z",
+        "tag": "entrevista",
+        "trecho": "Cristovão Tezza fala sobre ciclo de crônicas.",
+        "fonte": "Escoltilha - 2016"
+      },
+      {
+        "titulo": "Paiol literário com Carol Bensimon",
+        "autor": "",
+        "href": "https://rascunho.com.br/paiol-literario/carol-bensimon/",
+        "date_created": "2026-07-07T16:51:11.238Z",
+        "tag": "entrevista",
+        "trecho": "\"Para mim, a leitora e a escritora se confundem. Acho que sempre li pretendendo também fazer literatura\"",
+        "fonte": "Quatro Cinco Um - 2023"
+      },
+      {
+        "titulo": "Paiol Literário com Raimundo Carrero",
+        "autor": "",
+        "href": "https://rascunho.com.br/paiol-literario/raimundo-carrero/",
+        "date_created": "2026-07-07T16:52:07.432Z",
+        "tag": "entrevista",
+        "trecho": "“Ler um livro é como namorar. Você tem que sentir o prazer, a festa, a alegria de descobrir as artimanhas do autor.”",
+        "fonte": "Quatro Cinco Um - 2009"
+      },
+      {
+        "titulo": "“Bloqueio de leitor”: o mal que assombra aqueles que se dedicam à literatura",
+        "autor": "Ary Quintella",
+        "href": "https://www.gazetadopovo.com.br/cultura/bloqueio-de-leitor-o-mal-que-assombra-aqueles-que-se-dedicam-a-literatura/",
+        "date_created": "2026-07-07T16:53:39.948Z",
+        "tag": "análise",
+        "trecho": "Não é só o escritor que sofre bloqueio. Segundo Quintella, “o bloqueio de leitor é algo insuportável. Falta algo na vida, e não sei como preencher o vazio”.",
+        "fonte": "Gazeta do Povo"
+      },
+      {
+        "titulo": "\"A história que só você pode contar\" com Socorro Acioli e Stênio Gardel",
+        "autor": "",
+        "href": "https://quatrocincoum.com.br/podcasts/repertorio-451-mhz/a-historia-que-so-voce-pode-contar/",
+        "date_created": "2026-07-07T17:51:44.664Z",
+        "tag": "entrevista",
+        "trecho": "Dois nomes de destaque da literatura brasileira, Socorro Acioli e Stênio Gardel falam da oficina de escrita que deu início a uma grande amizade literária e um romance premiado",
+        "fonte": "Quatro Cinco Um - 2024"
+      },
+      {
+        "titulo": "Transcrição: Carlos Marcelo no podcast 451 MHz",
+        "autor": "",
+        "href": "https://quatrocincoum.com.br/podcasts/podcast/transcricao-carlos-marcelo-no-podcast-451-mhz/",
+        "date_created": "2026-07-07T17:53:55.925Z",
+        "tag": "reportagem",
+        "trecho": "Leia a transcrição do episódio #187 do 451 MHz, um bate-papo com Carlos Marcelo sobre ficção e realidade",
+        "fonte": "Quatro Cinco Um - 2026"
       }
     ],
     "artigos": [
@@ -234,6 +322,14 @@ window.TEMAS_CONTEUDO = {
         "ano": "2017",
         "href": "https://revistaseletronicas.pucrs.br/scriptorium/article/view/25121",
         "date_created": "2026-07-07T07:09:58.453Z"
+      },
+      {
+        "titulo": "O NARRAR EM FOCO: UMA ANÁLISE DO NARRADOR NA OBRA SEIS VEZES LUCAS, DE LYGIA BOUNGA NUNES",
+        "autores": "SOUZA, Gabriele de Oliveira Souza; ALVES, José Helder Pinheiro.",
+        "publicacao": "Revista FT",
+        "ano": "2024",
+        "href": "https://revistaft.com.br/o-narrar-em-foco-uma-analise-do-narrador-na-obra-seis-vezes-lucas-de-lygia-bounga-nunes/",
+        "date_created": "2026-07-07T17:46:10.773Z"
       }
     ]
   },
@@ -274,6 +370,20 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=Et9Nf-rsALk",
         "date_created": "2026-07-06T02:31:42.073Z",
         "meta": "6min"
+      },
+      {
+        "titulo": "Como é o trabalho de editar o texto de um livro? (Do autor ao leitor #3)",
+        "canal": "Editora Seguinte",
+        "href": "https://www.youtube.com/watch?v=K0Lyp65qgP4",
+        "date_created": "2026-07-07T16:14:28.132Z",
+        "meta": "11min"
+      },
+      {
+        "titulo": "Como abrir uma editora de livros? Abrimos uma e veja o que aconteceu",
+        "canal": "Antofágica",
+        "href": "https://www.youtube.com/watch?v=fbGiPxeoczg",
+        "date_created": "2026-07-07T16:18:43.593Z",
+        "meta": "17min"
       }
     ]
   },
@@ -285,6 +395,76 @@ window.TEMAS_CONTEUDO = {
         "href": "https://tamandua.tv.br/filme/?name=massao_ohno_poesia_presente46694",
         "date_created": "2026-07-06T02:55:23.147Z",
         "meta": "90 min; 2015"
+      }
+    ]
+  },
+  "preparacao-revisao": {
+    "videos": [
+      {
+        "titulo": "Conheça a profissão de Preparador de texto | Super Libris",
+        "canal": "SescTV",
+        "href": "https://www.youtube.com/watch?v=80UXbuMMaJI",
+        "date_created": "2026-07-07T16:13:59.189Z",
+        "meta": "2min"
+      }
+    ]
+  },
+  "design-grafico": {
+    "videos": [
+      {
+        "titulo": "Como são feitas as capas dos livros? O processo de criação de uma capa (com Giovanna Cianelli)",
+        "canal": "Antofágica",
+        "href": "https://www.youtube.com/watch?v=OdER0WIwWd4&list=PLZ-E5X2LdfMQe3XtocMI1wysoDEqYZru8&index=5",
+        "date_created": "2026-07-07T16:22:15.504Z",
+        "meta": "15min"
+      }
+    ]
+  },
+  "coordenacao-editorial": {
+    "videos": [
+      {
+        "titulo": "Os desafios e funções de um EDITOR DE LIVROS com Roberto Jannarelli, editor da Antofágica",
+        "canal": "Antofágica",
+        "href": "https://www.youtube.com/watch?v=rBko7h47ZS0&list=PLZ-E5X2LdfMQe3XtocMI1wysoDEqYZru8&index=14",
+        "date_created": "2026-07-07T16:24:11.126Z",
+        "meta": "19min"
+      }
+    ],
+    "links": [
+      {
+        "titulo": "Solicite o ISBN do seu livro - Câmara Brasileira do Livro (CBL)",
+        "href": "https://www.cblservicos.org.br/isbn/",
+        "date_created": "2026-07-07T16:59:34.715Z",
+        "domain": "cblservicos.org.br",
+        "tipo": "db_links"
+      },
+      {
+        "titulo": "Solicite o Código de Barras do seu livro - Câmara Brasileira do Livro (CBL)",
+        "href": "https://www.cblservicos.org.br/codigo-de-barras/",
+        "date_created": "2026-07-07T17:00:02.924Z",
+        "domain": "cblservicos.org.br",
+        "tipo": "db_links"
+      },
+      {
+        "titulo": "Solicite a ficha catalográfica do seu livro - Câmara Brasileira do Livro (CBL)",
+        "href": "https://www.cblservicos.org.br/catalogacao/",
+        "date_created": "2026-07-07T17:00:35.579Z",
+        "domain": "cblservicos.org.br",
+        "tipo": "outro"
+      },
+      {
+        "titulo": "Novidade: entenda para que serve o ISNI - Câmara Brasileira do Livro (CBL)",
+        "href": "https://www.cblservicos.org.br/isni/",
+        "date_created": "2026-07-07T17:03:13.952Z",
+        "domain": "cblservicos.org.br",
+        "tipo": "outro"
+      },
+      {
+        "titulo": "SNEL — Sindicato Nacional dos Editores de Livros",
+        "href": "https://snel.org.br/",
+        "date_created": "2026-07-07T17:09:16.879Z",
+        "domain": "snel.org.br",
+        "tipo": "outro"
       }
     ]
   },
@@ -309,6 +489,17 @@ window.TEMAS_CONTEUDO = {
         "show": "",
         "meta": "2023",
         "subtipo": "episódio"
+      }
+    ],
+    "textos": [
+      {
+        "titulo": "O LIVRO QUE VOOU NAS REDES",
+        "autor": "João Batista Jr.",
+        "href": "O que acontece quando o algoritmo impulsiona o sucesso de uma obra, o excelente Torto Arado",
+        "date_created": "2026-07-07T16:10:28.130Z",
+        "tag": "análise",
+        "trecho": "O que acontece quando o algoritmo impulsiona o sucesso de uma obra, o excelente Torto Arado",
+        "fonte": "Piauí - 2021"
       }
     ]
   },
@@ -348,6 +539,17 @@ window.TEMAS_CONTEUDO = {
       }
     ]
   },
+  "direitos-editoriais": {
+    "links": [
+      {
+        "titulo": "Entenda como garantir o Registro de Direito Autoral do seu livro - Câmara Brasileira do Livro (CBL)",
+        "href": "https://www.cblservicos.org.br/registro/",
+        "date_created": "2026-07-07T17:02:13.257Z",
+        "domain": "cblservicos.org.br",
+        "tipo": "ferramenta"
+      }
+    ]
+  },
   "traducao": {
     "textos": [
       {
@@ -358,6 +560,24 @@ window.TEMAS_CONTEUDO = {
         "tag": "",
         "trecho": "40 anos de respeito à inteligência do leitor. Conheça o nosso catálogo e autores.",
         "fonte": ""
+      },
+      {
+        "titulo": "Transcrição do 451 MHz  — sobre tradução literária e interpretação",
+        "autor": "Paulo Werneck",
+        "href": "https://quatrocincoum.com.br/podcasts/podcast/transcricao-paulo-henriques-britto-e-anna-vianna-no-451-mhz/",
+        "date_created": "2026-07-07T16:32:12.870Z",
+        "tag": "entrevista",
+        "trecho": "Leia a transcrição do episódio #141 do 451 MHz, com Paulo Henriques Britto e Anna Vianna",
+        "fonte": "Quatro Cinco Um - 2025"
+      },
+      {
+        "titulo": "A voz do tradutor na literatura: uma conversa",
+        "autor": "",
+        "href": "https://www.pnl2027.gov.pt/np4/entreler2_entrevista.html",
+        "date_created": "2026-07-07T16:33:25.661Z",
+        "tag": "entrevista",
+        "trecho": "Entrevista de Francisco José Viegas a Tânia Ganho e Miguel Serras Pereira",
+        "fonte": "Plano Nacional de Leitura (PNL)"
       }
     ],
     "artigos": [
