@@ -440,6 +440,22 @@ window.TEMAS_CONTEUDO = {
         "ano": "2021",
         "href": "https://www.scielo.br/j/pee/a/DfRZcGPn9F5RQYDqTcVn7BP/?lang=pt",
         "date_created": "2026-07-07T21:24:50.468Z"
+      },
+      {
+        "titulo": "Narrativa",
+        "autores": "Kearney, Richard",
+        "publicacao": "Scielo",
+        "ano": "2012",
+        "href": "https://www.scielo.br/j/edreal/a/NHRYZHnHWHrR9vDbHxfshTN/?lang=pt",
+        "date_created": "2026-07-07T21:39:05.066Z"
+      },
+      {
+        "titulo": "Do Conceito de Estrutura Narrativa à sua Crítica",
+        "autores": "Vieira, André Guirland",
+        "publicacao": "Scielo",
+        "ano": "2001",
+        "href": "https://www.scielo.br/j/prc/a/Wh3v8SmLpWjLqZnVmR5QGhx/?lang=pt",
+        "date_created": "2026-07-07T21:39:50.275Z"
       }
     ]
   },

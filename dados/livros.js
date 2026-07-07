@@ -791,7 +791,7 @@ window.LIVROS = [
   {
     "isbn": "9786555417173",
     "titulo": "A prática da escrita",
-    "autor": "Ana Rüsche",
+    "autor": "Rüsche, Ana",
     "editora": "Contexto",
     "ano": 2026,
     "capa": "https://api.metabooks.com/api/v1/cover/9786555417173/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
@@ -1029,5 +1029,34 @@ window.LIVROS = [
     ],
     "href": "#",
     "_date": "2026-07-07T20:20:41.104Z"
+  },
+  {
+    "isbn": "9786598244316",
+    "titulo": "Anatomia da história",
+    "autor": "Truby, John",
+    "editora": "Seiva",
+    "ano": 2024,
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244316/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "macrotema": "escrita",
+    "temas": [
+      "criacao-literaria"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T21:34:47.129Z"
+  },
+  {
+    "isbn": "9788573211047",
+    "titulo": "Bastidores da criação literária",
+    "autor": "Willemart, Philippe",
+    "editora": "Iluminuras",
+    "ano": 1999,
+    "capa": "https://covers.openlibrary.org/b/isbn/9788573211047-L.jpg",
+    "macrotema": null,
+    "temas": [
+      "criacao-literaria",
+      "preparacao-revisao"
+    ],
+    "href": "#",
+    "_date": "2026-07-07T21:35:14.168Z"
   }
 ];
