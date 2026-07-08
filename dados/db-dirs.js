@@ -1129,6 +1129,20 @@ window.DB_DIRS = {
         "instagram": "@editora_vista_chinesa"
       },
       {
+        "c1": "Editora Zouk",
+        "c2": "",
+        "c3": "Literatura contemporânea brasileira",
+        "c4": "Porto Alegre, RS",
+        "tags": [
+          "ficção",
+          "não ficção",
+          "independente"
+        ],
+        "href": "https://www.editorazouk.com.br/index.html",
+        "selo": "Editora Zouk",
+        "instagram": "https://www.instagram.com/editorazouk/"
+      },
+      {
         "c1": "EditoraPiu",
         "c2": "infantil/juvenil",
         "c3": "Literatura infantojuvenil",
