@@ -19,18 +19,20 @@ async function api(token, path) {
 }
 
 async function run() {
-  const email = process.env.DIRECTUS_EMAIL, pass = process.env.DIRECTUS_PASS;
-  if (!email || !pass) { console.error('Uso: DIRECTUS_EMAIL=xxx DIRECTUS_PASS=xxx node scripts/diag-flow.js'); process.exit(1); }
-
-  /* login */
-  const lr = await fetch(DIRECTUS + '/auth/login', {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password: pass }),
-  });
-  const auth = await lr.json();
-  if (!auth.data?.access_token) { console.error('Login falhou:', auth); process.exit(1); }
-  const token = auth.data.access_token;
-  console.log('✓ logado no Directus\n');
+  /* token estático (.directus-token) ou login por email/senha */
+  let token = (process.env.DIRECTUS_TOKEN || '').trim();
+  if (!token) {
+    try { token = require('fs').readFileSync(require('path').join(__dirname, '..', '.directus-token'), 'utf8').trim(); } catch (e) {}
+  }
+  if (!token && process.env.DIRECTUS_EMAIL && process.env.DIRECTUS_PASS) {
+    const lr = await fetch(DIRECTUS + '/auth/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: process.env.DIRECTUS_EMAIL, password: process.env.DIRECTUS_PASS }),
+    });
+    token = (await lr.json()).data?.access_token;
+  }
+  if (!token) { console.error('Sem token: crie .directus-token ou defina DIRECTUS_EMAIL/PASS.'); process.exit(1); }
+  console.log('✓ autenticado no Directus\n');
 
   /* flow */
   const flows = await api(token, `/flows?filter[name][_eq]=${encodeURIComponent(FLOW_NAME)}&fields=id,name,status,trigger,options,operation`);

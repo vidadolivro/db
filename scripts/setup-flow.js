@@ -34,27 +34,37 @@ async function api(token, method, path, body) {
 }
 
 async function run() {
-  const email   = process.env.DIRECTUS_EMAIL;
-  const pass    = process.env.DIRECTUS_PASS;
   const ghToken = (process.env.GITHUB_SYNC_TOKEN || '').trim();
-
-  if (!email || !pass) {
-    console.error('Uso: DIRECTUS_EMAIL=xxx DIRECTUS_PASS=xxx [GITHUB_SYNC_TOKEN=github_pat_xxx] node scripts/setup-flow.js');
+  if (!ghToken) {
+    console.error('Falta o token do GitHub. Uso: GITHUB_SYNC_TOKEN=github_pat_xxx node scripts/setup-flow.js');
     process.exit(1);
   }
-  if (!ghToken) console.warn('⚠ GITHUB_SYNC_TOKEN não fornecido — token existente será mantido (só atualiza scope e cron)');
 
-  /* ── login ── */
-  console.log('Fazendo login no Directus…');
-  const lr = await fetch(DIRECTUS + '/auth/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password: pass }),
+  /* ── auth Directus: token estático (.directus-token) ou email/senha ── */
+  let token = (process.env.DIRECTUS_TOKEN || '').trim();
+  if (!token) {
+    try { token = require('fs').readFileSync(require('path').join(__dirname, '..', '.directus-token'), 'utf8').trim(); } catch (e) {}
+  }
+  if (!token && process.env.DIRECTUS_EMAIL && process.env.DIRECTUS_PASS) {
+    const lr = await fetch(DIRECTUS + '/auth/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: process.env.DIRECTUS_EMAIL, password: process.env.DIRECTUS_PASS }),
+    });
+    token = (await lr.json()).data?.access_token;
+  }
+  if (!token) { console.error('Sem token do Directus: crie .directus-token ou defina DIRECTUS_EMAIL/PASS.'); process.exit(1); }
+  console.log('✓ autenticado no Directus\n');
+
+  /* valida o token do GitHub ANTES de guardar (evita gravar um token quebrado de novo) */
+  const ghCheck = await fetch(`https://api.github.com/repos/${REPO}`, {
+    headers: { Authorization: 'Bearer ' + ghToken, Accept: 'application/vnd.github+json', 'User-Agent': 'vdl-setup' },
   });
-  const auth = await lr.json();
-  if (!auth.data?.access_token) { console.error('Login falhou:', auth); process.exit(1); }
-  const token = auth.data.access_token;
-  console.log('✓ logado\n');
+  if (ghCheck.status === 401) {
+    console.error('✗ Token do GitHub INVÁLIDO (401 Bad credentials). Confira se copiou inteiro e sem espaços. Nada foi alterado no Directus.');
+    process.exit(1);
+  }
+  if (ghCheck.status === 403) console.warn('⚠ Token retornou 403 (talvez aprovação pendente na org). Vou guardar mesmo assim — confira as permissões.');
+  else if (ghCheck.ok) console.log('✓ token do GitHub validado\n');
 
   /* ── opções da operação que chama o GitHub ── */
   const requestOptions = {
