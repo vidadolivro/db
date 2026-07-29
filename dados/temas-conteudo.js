@@ -325,7 +325,7 @@ window.TEMAS_CONTEUDO = {
         "href": "https://escritacriativa.net.br/deixou-um-texto-parado/",
         "date_created": "2026-07-07T16:40:51.091Z",
         "tag": "análise",
-        "trecho": "",
+        "trecho": "O ideal, como sabemos, é não se deter.Mas a vida é escassa deste fruto quimérico, e no mais das vezes, temos de nos contentar com versões menos suculentas que o ideal.",
         "fonte": "Escrita Criativa"
       },
       {
