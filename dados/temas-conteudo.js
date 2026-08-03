@@ -325,7 +325,7 @@ window.TEMAS_CONTEUDO = {
         "href": "https://escritacriativa.net.br/deixou-um-texto-parado/",
         "date_created": "2026-07-07T16:40:51.091Z",
         "tag": "análise",
-        "trecho": "O ideal, como sabemos, é não se deter.Mas a vida é escassa deste fruto quimérico, e no mais das vezes, temos de nos contentar com versões menos suculentas que o ideal.",
+        "trecho": "",
         "fonte": "Escrita Criativa"
       },
       {
@@ -695,7 +695,7 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.companhiadasletras.com.br/BlogPost/3395/em-traducao-o-tradutor-esta-nu?srsltid=AfmBOooMuGHskkyjlCqOUe_zHa6DNOMj3U0ELEoh_JsTOaHsjf16xQLh",
         "date_created": "2026-06-25T16:01:12.431Z",
         "tag": "",
-        "trecho": "40 anos de respeito à inteligência do leitor. Conheça o nosso catálogo e autores.",
+        "trecho": "",
         "fonte": ""
       },
       {
