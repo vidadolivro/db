@@ -149,4 +149,46 @@ window.TEMAS = {
   diretorios: [],
 },
 
+'crowdfunding': {
+  num: '23', titulo: 'crowdfunding',
+  intro: 'Financiar um livro antes de ele existir. Campanhas, metas, recompensas e a relação direta com quem vai ler — um caminho que tirou da gaveta projetos que nenhuma editora bancaria.',
+  diretorios: [],
+},
+
+'editais-governo': {
+  num: '24', titulo: 'editais e governo',
+  intro: 'Editais, leis de incentivo e políticas públicas do livro. Como o dinheiro público chega à edição brasileira — do PNLD às leis de fomento — e o que é preciso saber para disputá-lo.',
+  diretorios: [],
+},
+
+'criacao-artistica': {
+  num: '25', titulo: 'criação artística',
+  intro: 'O processo criativo antes do texto: hábito, bloqueio, disciplina e a relação de quem cria com o próprio trabalho. Menos técnica narrativa, mais a vida que sustenta a escrita.',
+  diretorios: [],
+},
+
+'arte-sociedade': {
+  num: '26', titulo: 'arte e sociedade',
+  intro: 'Quem escreve, quem publica e quem é lido. Raça, gênero, classe e território no mercado editorial brasileiro — e o que muda quando o catálogo deixa de refletir um só ponto de vista.',
+  diretorios: [],
+},
+
+'sobre-a-leitura': {
+  num: '27', titulo: 'sobre a leitura',
+  intro: 'A leitura como prática, hábito e objeto de estudo. Quem lê no Brasil, o que forma um leitor e o que se perde quando a atenção virou a mercadoria mais disputada.',
+  diretorios: [],
+},
+
+'ser-editor': {
+  num: '28', titulo: 'ser editor',
+  intro: 'O ofício de editar visto por dentro. Escolhas de catálogo, relação com autores, risco financeiro e a pergunta que não sai de moda: o que faz, afinal, um editor?',
+  diretorios: [],
+},
+
+'livro-cinema': {
+  num: '29', titulo: 'livro e cinema',
+  intro: 'Adaptação, direitos audiovisuais e o trânsito entre a página e a tela. Como um livro vira filme ou série — e o que essa negociação significa para quem escreve e para quem publica.',
+  diretorios: [],
+},
+
 };

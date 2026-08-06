@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "sync": "node scripts/sync.js"
+    "sync": "node scripts/sync.js && node scripts/sync-planilha.mjs"
   },
   "engines": {
     "node": ">=18"

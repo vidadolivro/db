@@ -394,6 +394,10 @@
     ic(r(4,0,8,1) + r(2,1,12,5) + r(1,3,14,4) + r(2,6,12,3) + r(4,9,8,2) + r(4,11,8,2) + r(5,13,6,1) + bg(4,1,8,7)),
   ];
 
+  /* Temas 23–29 ainda não têm ícone próprio: reaproveitam o do tema mais próximo
+     em assunto, para não abrir buraco na grade. Trocar quando forem desenhados. */
+  [16, 2, 0, 12, 15, 4, 21].forEach(i => ICONS.push(ICONS[i]));
+
   const di  = d => `<svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${d}</svg>`;
   const DIR_ICONS = {
     editoras:    di(r(1,4,14,12) + bg(2,5,12,10) + r(3,7,4,4) + r(9,7,4,4) + r(6,11,4,5) + r(4,0,2,5) + r(6,1,6,3)),
@@ -434,6 +438,13 @@
     {n:"livros infantis",       href:"tema?slug=literatura-infantil"},
     {n:"quadrinhos",            href:"tema?slug=quadrinhos"},
     {n:"futuro e tecnologia",   href:"tema?slug=futuro-tecnologia"},
+    {n:"crowdfunding",          href:"tema?slug=crowdfunding"},
+    {n:"editais e governo",     href:"tema?slug=editais-governo"},
+    {n:"criação artística",     href:"tema?slug=criacao-artistica"},
+    {n:"arte e sociedade",      href:"tema?slug=arte-sociedade"},
+    {n:"sobre a leitura",       href:"tema?slug=sobre-a-leitura"},
+    {n:"ser editor",            href:"tema?slug=ser-editor"},
+    {n:"livro e cinema",        href:"tema?slug=livro-cinema"},
   ];
 
   const DIR = [

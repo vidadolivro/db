@@ -154,7 +154,12 @@ async function run() {
 
   await syncDbDiretorios();
   await syncTemasMedia();
-  await syncTemasConteudo();
+
+  /* O conteúdo dos temas (vídeos, textos, links, podcasts, artigos) não vem
+     mais das coleções db_* do Directus: a curadoria passou a ser feita na
+     planilha "database vdl". Quem gera dados/temas-conteudo.js agora é
+     scripts/sync-planilha.mjs, encadeado no `npm run sync`.
+     syncTemasConteudo() segue definida abaixo caso seja preciso voltar atrás. */
 }
 
 async function fetchDbLivros() {
