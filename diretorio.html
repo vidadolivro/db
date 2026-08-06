@@ -167,11 +167,11 @@
       transition: background 0.06s;
     }
     .entry:hover { background: var(--ink); color: var(--bg); }
-    .entry:hover .e-cat   { color: #aaa; }
-    .entry:hover .e-desc  { color: #888; }
-    .entry:hover .e-loc   { color: #888; }
+    .entry:hover .e-cat   { color: var(--bg); opacity: .62; }
+    .entry:hover .e-desc  { color: var(--bg); opacity: .5; }
+    .entry:hover .e-loc   { color: var(--bg); opacity: .5; }
     .entry:hover .e-arrow { opacity: 1; color: var(--bg); }
-    .entry:hover .e-tag   { border-color: #555; color: #ccc; }
+    .entry:hover .e-tag   { border-color: var(--bg); color: var(--bg); opacity: .75; }
 
     /* name col */
     .e-name {
@@ -216,7 +216,7 @@
       text-overflow: ellipsis;
       flex-shrink: 2;
     }
-    .entry:hover .e-sub { color: #aaa; }
+    .entry:hover .e-sub { color: var(--bg); opacity: .62; }
 
     /* category col */
     .e-cat {

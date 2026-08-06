@@ -16,7 +16,9 @@
 :root[data-theme="dark"] .recente-capa--podcast,
 :root[data-theme="dark"] .recente-capa--link,
 :root[data-theme="dark"] .v-thumb,
-:root[data-theme="dark"] .livro-capa {
+:root[data-theme="dark"] .livro-capa,
+:root[data-theme="dark"] .tile-cover,
+:root[data-theme="dark"] .cover-fallback {
   background-color: #211f18;
 }
 
