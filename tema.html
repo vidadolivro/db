@@ -88,9 +88,37 @@
       padding-top: calc(43px + 36px);
     }
 
+    /* ── TÍTULO DE DISPLAY ──
+       O nome do tema em escala grande: é o que dá voz à página.
+       Antes ele só existia a 13px na barra do topo. */
+    .tema-hero {
+      padding: 30px 0 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .tema-eyebrow {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    .tema-nome {
+      font-family: var(--serif);
+      font-size: clamp(38px, 8vw, 76px);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      margin-top: 10px;
+      text-wrap: balance;
+    }
+
     /* ── INTRO ── */
     .intro-block {
-      padding: 28px 0 22px;
+      padding: 22px 0 22px;
       border-bottom: 1px solid var(--ink);
       display: flex;
       justify-content: space-between;
@@ -174,7 +202,7 @@
       padding: 7px 22px;
       cursor: pointer;
     }
-    .ver-tudo:hover { background: var(--ink); color: var(--bg); }
+    .ver-tudo:hover { background: var(--fluo); color: var(--fluo-ink); border-color: var(--fluo); }
 
     /* ── VÍDEOS ── */
     .v-item {
@@ -337,9 +365,9 @@
       text-decoration: none;
       color: var(--ink);
     }
-    .livro-row:hover { background: var(--ink); color: var(--bg); }
-    .livro-row:hover .livro-autor { color: var(--bg); opacity: .62; }
-    .livro-row:hover .livro-arrow { opacity: 1; color: var(--bg); }
+    .livro-row:hover { background: var(--fluo); color: var(--fluo-ink); }
+    .livro-row:hover .livro-autor { color: var(--fluo-ink); opacity: .62; }
+    .livro-row:hover .livro-arrow { opacity: 1; color: var(--fluo-ink); }
     .livro-titulo {
       font-size: 13px;
       font-weight: bold;
@@ -494,6 +522,21 @@
     return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+  /* Título de display + contagem do acervo do tema */
+  var nItens = ['videos', 'textos', 'links', 'podcasts', 'artigos']
+    .reduce(function (s, k) { return s + (tc[k] || []).length; }, 0)
+    + (window.LIVROS || []).filter(function (l) {
+        return (l.temas || []).indexOf(slug) !== -1;
+      }).length;
+
+  var heroHtml = '<div class="tema-hero">' +
+    '<div>' +
+      '<span class="tema-eyebrow">tema ' + esc(t.num) + '</span>' +
+      '<h1 class="tema-nome">' + esc(t.titulo) + '</h1>' +
+    '</div>' +
+    (nItens ? '<span class="tag tag--fluo">' + nItens + (nItens === 1 ? ' item' : ' itens') + '</span>' : '') +
+    '</div>';
+
   /* Intro */
   var dirsHtml = '';
   if (t.diretorios && t.diretorios.length) {
@@ -619,6 +662,7 @@
 
   /* Render */
   document.getElementById('main-content').innerHTML =
+    heroHtml +
     introHtml +
     '<div class="columns">' + colVideos + colTextos + colLinks + colPods + colArtigos + '</div>' +
     leiturasHtml;

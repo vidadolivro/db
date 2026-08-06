@@ -1,4 +1,29 @@
-/* vida do livro db — modo noturno (compartilhado por todas as páginas) */
+/* vida do livro db — tema compartilhado por todas as páginas */
+
+/* ── acento flúor ──
+   Único ponto de cor do site. Aparece em rótulos e no hover — nunca como
+   texto sobre fundo claro, sempre como fundo com tinta preta por cima.
+   É o mesmo valor nos dois temas: amarelo funciona sobre creme e sobre carvão. */
+:root {
+  --fluo: #ede800;
+  --fluo-ink: #111;
+}
+
+/* ── rótulo em mono maiúsculo ──
+   A textura de dado do site: contagens, tipos, categorias. */
+.tag {
+  font-family: var(--mono, "Courier New", Courier, monospace);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mid);
+  white-space: nowrap;
+}
+.tag--fluo {
+  background: var(--fluo);
+  color: var(--fluo-ink);
+  padding: 3px 6px 2px;
+}
 
 :root[data-theme="dark"] {
   --bg: #15140e;
@@ -6,6 +31,7 @@
   --mid: #a7a395;
   --light: #7c796e;
   --border: #322f27;
+  --fluo: #f5f031;
 }
 
 /* fundos "placeholder" de capa/thumb que eram claros no tema claro */
