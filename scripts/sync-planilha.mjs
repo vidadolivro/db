@@ -8,8 +8,12 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\//, '')), '..');
+/* fileURLToPath e não new URL().pathname: no Linux o pathname começa com "/",
+   e removê-lo (necessário no Windows) transformaria o caminho em relativo —
+   a raiz sairia errada justamente no runner da CI. */
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const PLANILHA = '1k-Ae6UFoCjhlYpq-i0jjy4soE-PkGddo5OC-1VNDAoI';
 const ABA = 'inputs';
