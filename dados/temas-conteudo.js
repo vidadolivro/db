@@ -679,7 +679,7 @@ window.TEMAS_CONTEUDO = {
     ],
     "textos": [
       {
-        "titulo": "A LITERATURA INFANTIL DE MONTEIRO LOBATO E A FORMAÇÃO DO LEITOR",
+        "titulo": "A literatura infantil de Monteiro Lobato e a formação do leitor",
         "href": "https://www.puc-rio.br/ensinopesq/ccpg/pibic/relatorio_resumo2013/relatorios_pdf/ctch/LET/LET-Francisco%20Thiago%20Cam%C3%AAlo%20da%20Silva.pdf",
         "tag": "",
         "autor": "",
@@ -1364,7 +1364,7 @@ window.TEMAS_CONTEUDO = {
         "fonte": "PublishNews"
       },
       {
-        "titulo": "ESCUTAR E SENTIR: SUPERSÔNICA E O FASCINANTE MUNDO DOS AUDIOLIVROS",
+        "titulo": "Escutar e sentir: Supersônica e o fascinante mundo dos audiolivros",
         "href": "https://amarello.com.br/2024/03/cultura/literatura/escutar-e-sentir/",
         "tag": "",
         "autor": "",
@@ -1496,7 +1496,7 @@ window.TEMAS_CONTEUDO = {
         "ano": ""
       },
       {
-        "titulo": "ESTRATÉGIAS DE MARKETING DIGITAL PARA DIVULGAÇÃO DE OBRAS DE AUTORES NACIONAIS INDEPENDENTES | SOFIA PEREIRA GOME",
+        "titulo": "Estratégias de marketing digital para divulgação de obras de autores nacionais independentes | Sofia Pereira Gome",
         "href": "https://ric.cps.sp.gov.br/bitstream/123456789/35337/1/Tecnologiaemgest%C3%A3oempresarial_1_2025_Sofia%20Pereira%20Gomes_%20Estrat%C3%A9gias%20de%20marketing%20digital%20para%20divulga%C3%A7%C3%A3o%20de%20obras%20de%20autores%20nacionais%20independentes.pdf",
         "autores": "",
         "publicacao": "gov.br",
@@ -2252,7 +2252,7 @@ window.TEMAS_CONTEUDO = {
         "ano": "2016"
       },
       {
-        "titulo": "ESTRATÉGIA PUBLICITÁRIA PARA A VENDA DE LIVROS CLÁSSICOS NO BRASIL | LAURA PEREIRA DE ALMEIDA",
+        "titulo": "Estratégia publicitária para a venda de livros clássicos no Brasil | Laura Pereira de Almeida",
         "href": "https://repositorio.pucrs.br/dspace/bitstream/10923/26095/1/000508114-Texto%2Bcompleto-0.pdf",
         "autores": "",
         "publicacao": "repositorio.pucrs.br",
@@ -3321,7 +3321,7 @@ window.TEMAS_CONTEUDO = {
         "ano": ""
       },
       {
-        "titulo": "FINANCIAMENTO DE PROJETOS DE CROWDFUNDING: UMA ANÁLISE DO ÊXITO DAS CAMPANHAS | GUILHERME LÚCIO DE SOUZA FIGUEIREDO",
+        "titulo": "Financiamento de projetos de crowdfunding: uma análise do êxito das campanhas | Guilherme Lúcio de Souza Figueiredo",
         "href": "https://www.monografias.ufop.br/bitstream/35400000/2162/1/MONOGRAFIA_FinanciamentoProjetosCrowdfunding.pdf",
         "autores": "",
         "publicacao": "monografias.ufop.br",
@@ -4437,14 +4437,14 @@ window.TEMAS_CONTEUDO = {
         "ano": ""
       },
       {
-        "titulo": "TIPOGRAFIA E SUA FUNCIONALIDADE EM CAPAS DE LIVROS | FABIO ALVES MELO",
+        "titulo": "Tipografia e sua funcionalidade em capas de livros | Fabio Alves Melo",
         "href": "https://www.belasartes.br/wp-content/uploads/2023/05/tipografia-e-sua-funcionalidade-em-capas-de-livros.pdf",
         "autores": "",
         "publicacao": "belasartes.br",
         "ano": ""
       },
       {
-        "titulo": "WHY IS BOOK COVER DESIGN AS IMPORTANT AND RELEVANT AS EVER TODAY?",
+        "titulo": "Why Is Book Cover Design as Important and Relevant as Ever Today?",
         "href": "https://www.researchgate.net/publication/342246718_WHY_IS_BOOK_COVER_DESIGN_AS_IMPORTANT_AND_RELEVANT_AS_EVER_TODAY",
         "autores": "",
         "publicacao": "ResearchGate",
@@ -4593,7 +4593,7 @@ window.TEMAS_CONTEUDO = {
         "fonte": "playbook.com"
       },
       {
-        "titulo": "CÍRCULO DO LIVRO: 10 OBRAS ANTOLÓGICAS QUE MARCARAM ÉPOCA",
+        "titulo": "Círculo do Livro: 10 obras antológicas que marcaram época",
         "href": "https://www.livroseopiniao.com.br/2025/03/circulo-do-livro-10-obras-antologicas.html",
         "tag": "",
         "autor": "",
@@ -5523,7 +5523,7 @@ window.TEMAS_CONTEUDO = {
         "ano": ""
       },
       {
-        "titulo": "AUTOMATIZAÇÃO NA COTAÇÃO DE LIVROS UTILIZANDO WEB SERVICE | FELIPE MACHADO ROVARIS",
+        "titulo": "Automatização na cotação de livros utilizando web service | Felipe Machado Rovaris",
         "href": "https://repositorio.ufsc.br/bitstream/handle/123456789/184378/TCC%20FELIPE%20pronto.pdf?sequence=-1&isAllowed=y",
         "autores": "",
         "publicacao": "repositorio.ufsc.br",
@@ -5544,7 +5544,7 @@ window.TEMAS_CONTEUDO = {
         "ano": ""
       },
       {
-        "titulo": "MODELOS DE NEGÓCIOS DE LIVROS ELETRÔNICOS PARA BIBLIOTECAS",
+        "titulo": "Modelos de negócios de livros eletrônicos para bibliotecas",
         "href": "https://www.researchgate.net/profile/Murilo-Cunha/publication/292168706_Ebook_business_models_for_libraries/links/5811e70208aec49d9024abfe/Ebook-business-models-for-libraries.pdf",
         "autores": "",
         "publicacao": "ResearchGate",
@@ -6147,7 +6147,7 @@ window.TEMAS_CONTEUDO = {
         "ano": "2022"
       },
       {
-        "titulo": "O PROGRAMA NACIONAL DE INCENTIVOÀ LEITURA (PROLER): CONCEPÇÕES E PERSPECTIVAS | FLAVIANE CINTRA",
+        "titulo": "O Programa Nacional de Incentivo à Leitura (PROLER): concepções e perspectivas | Flaviane Cintra",
         "href": "https://alb.org.br/arquivo-morto/edicoes_anteriores/anais17/txtcompletos/sem18/COLE_4101.pdf",
         "autores": "",
         "publicacao": "alb.org.br",
@@ -6360,7 +6360,7 @@ window.TEMAS_CONTEUDO = {
         "fonte": "emilia.org.br"
       },
       {
-        "titulo": "O QUE É O PROGRAMA NACIONAL DO LIVRO E DO MATERIAL DIDÁTICO (PNLD)?",
+        "titulo": "O que é o Programa Nacional do Livro e do Material Didático (PNLD)?",
         "href": "https://www.companhiadasletras.com.br/PNLD/?srsltid=AfmBOooo_3eW33-UlIGiymH5gNnzLeEadcwcAYea6sOMeRJP38EbsHRN",
         "tag": "",
         "autor": "",
@@ -6818,7 +6818,7 @@ window.TEMAS_CONTEUDO = {
       {
         "titulo": "Conversas com editores (O bom revisor de textos, Plínio Martins Filho)",
         "href": "https://labed-letras-ufmg.com.br/publicacoes/conversas-com-editores/",
-        "autores": "Plínio Martins Filho)",
+        "autores": "Plínio Martins Filho",
         "publicacao": "labed-letras-ufmg.com.br",
         "ano": "2020"
       },
@@ -7900,7 +7900,7 @@ window.TEMAS_CONTEUDO = {
         "domain": "premiojabuti.com.br"
       },
       {
-        "titulo": "PRÊMIO MAPINGUARI DE QUADRINHOS",
+        "titulo": "Prêmio Mapinguari de Quadrinhos",
         "href": "https://www.premiomapinguari.com.br.mapinguanerd.com.br/",
         "tipo": "",
         "domain": "premiomapinguari.com.br.mapinguanerd.com.br"
@@ -8004,7 +8004,7 @@ window.TEMAS_CONTEUDO = {
         "fonte": "revistatrip.uol.com.br"
       },
       {
-        "titulo": "ANGELO AGOSTINI (1843-1910)",
+        "titulo": "Angelo Agostini (1843-1910)",
         "href": "https://bndigital.bn.gov.br/dossies/rede-da-memoria-virtual-brasileira/imprensa/angelo-agostini-1843-1910/",
         "tag": "",
         "autor": "",
