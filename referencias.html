@@ -109,14 +109,6 @@
       line-height: 1;
       text-transform: lowercase;
     }
-    .hero-sub {
-      margin-top: 12px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--light);
-    }
 
     /* ── FILTROS ── */
     .filtros { padding-bottom: 22px; }
@@ -142,9 +134,10 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 9px 0;
-      padding: 6px 0;
+      gap: 8px;
+      padding: 5px 0;
     }
+    .nuvem--tipos { margin-bottom: 6px; }
     .chip {
       font-family: var(--sans);
       font-size: 11.5px;
@@ -206,6 +199,7 @@
       padding: 0 0 1px;
     }
     .limpar[hidden] { display: none; }
+    .resultado[hidden] { display: none; }
 
     /* ── GRADE ──
        Colunas montadas na mão (e não CSS columns) porque a lista cresce por
@@ -349,20 +343,19 @@
   <nav class="top">
     <a href="referencias.html" aria-current="page">referências</a>
     <a href="index.html">temas</a>
-    <a href="livros.html">biblioteca</a>
-    <a href="diretorio?tipo=editoras">diretório</a>
+    <a href="livros.html">bibliografia</a>
+    <a href="diretorio?tipo=editoras">diretórios</a>
   </nav>
 
   <header class="hero">
     <h1 class="wordmark">vida do livro</h1>
-    <p class="hero-sub" id="hero-sub">referências para o mercado editorial</p>
   </header>
 
   <section class="filtros">
     <div class="busca-linha">
       <input class="busca" id="busca" type="search" placeholder="buscar por título, pessoa ou fonte" autocomplete="off">
     </div>
-    <div class="nuvem" id="nuvem-tipos"></div>
+    <div class="nuvem nuvem--tipos" id="nuvem-tipos"></div>
     <div class="nuvem" id="nuvem-temas"></div>
   </section>
 
@@ -593,27 +586,25 @@
     } else {
       desenharLote();
     }
+    /* a barra só fala quando há filtro: sem filtro, anunciar "1.330
+       referências" é enfeite — a parede já mostra o tamanho do acervo */
+    var filtrando = !!(sel.tipos.length || sel.temas.length || sel.q);
     var partes = [];
-    partes.push(num(lista.length) + (lista.length === 1 ? ' referência' : ' referências'));
-    if (sel.tipos.length) partes.push(sel.tipos.map(function (t) { return (TIPO_POR_ID[t] || {}).rotulo || t; }).join(' + '));
-    if (sel.temas.length) partes.push(sel.temas.map(nomeTema).join(' + '));
-    if (sel.q) partes.push('“' + sel.q + '”');
+    if (filtrando) {
+      partes.push(num(lista.length) + (lista.length === 1 ? ' referência' : ' referências'));
+      if (sel.tipos.length) partes.push(sel.tipos.map(function (t) { return (TIPO_POR_ID[t] || {}).rotulo || t; }).join(' + '));
+      if (sel.temas.length) partes.push(sel.temas.map(nomeTema).join(' + '));
+      if (sel.q) partes.push('“' + sel.q + '”');
+    }
     document.getElementById('resumo').textContent = partes.join('  ·  ');
-    document.getElementById('limpar').hidden = !(sel.tipos.length || sel.temas.length || sel.q);
+    document.getElementById('limpar').hidden = !filtrando;
+    document.querySelector('.resultado').hidden = !filtrando;
     atualizarRodape();
     gravarURL();
     sincronizarChips();
   }
 
   /* ── chips ── */
-  /* embaralho determinístico: a nuvem é espalhada (linhas soltas, respiro
-     irregular) mas cai sempre no mesmo lugar — nada dança entre recargas */
-  function ruido(semente, faixa) {
-    var h = 0;
-    for (var i = 0; i < semente.length; i++) h = (h * 31 + semente.charCodeAt(i)) % 9973;
-    return h % faixa;
-  }
-
   function montarChip(rotulo, cor, n, grupo, id) {
     var b = document.createElement('button');
     b.type = 'button';
@@ -624,14 +615,12 @@
     b.setAttribute('aria-pressed', 'false');
     b.textContent = rotulo;
     b.title = n + (n === 1 ? ' referência' : ' referências');
-    b.style.transform = 'translateY(' + (ruido(id, 15) - 7) + 'px)';
-    b.style.marginLeft = (4 + ruido(id + '·', 26)) + 'px';
     b.addEventListener('click', function () {
       var arr = sel[grupo];
       var i = arr.indexOf(id);
       if (i === -1) arr.push(id); else arr.splice(i, 1);
       redesenhar();
-      window.scrollTo({ top: document.querySelector('.resultado').offsetTop - 80, behavior: 'smooth' });
+      window.scrollTo({ top: Math.max(0, document.querySelector('.reguas').offsetTop - 90), behavior: 'smooth' });
     });
     return b;
   }
@@ -715,8 +704,6 @@
   /* ── partida ── */
   lerURL();
   document.getElementById('busca').value = sel.q;
-  document.getElementById('hero-sub').textContent =
-    num(INPUTS.length) + ' referências · ' + Object.keys(porTema).length + ' temas';
   redesenhar();
 })();
 </script>
