@@ -7,27 +7,39 @@
   <style>
     @font-face {
       font-family: 'Neue Haas Grotesk';
-      src: url('fonts/Haas Grot Text R 55 Roman.ttf') format('truetype');
+      src: url('fonts/haas-grot-text-r-55-roman.woff2') format('woff2');
       font-weight: 400; font-style: normal; font-display: swap;
     }
     @font-face {
       font-family: 'Neue Haas Grotesk';
-      src: url('fonts/Haas Grot Text R 56 Italic.ttf') format('truetype');
+      src: url('fonts/haas-grot-text-r-56-italic.woff2') format('woff2');
       font-weight: 400; font-style: italic; font-display: swap;
     }
     @font-face {
       font-family: 'Neue Haas Grotesk';
-      src: url('fonts/Haas Grot Text R 65 Medium.ttf') format('truetype');
+      src: url('fonts/haas-grot-text-r-65-medium.woff2') format('woff2');
       font-weight: 500; font-style: normal; font-display: swap;
     }
     @font-face {
       font-family: 'Neue Haas Grotesk';
-      src: url('fonts/Haas Grot Text R 75 Bold.ttf') format('truetype');
+      src: url('fonts/haas-grot-text-r-75-bold.woff2') format('woff2');
       font-weight: 700; font-style: normal; font-display: swap;
     }
     @font-face {
       font-family: 'Neue Haas Grotesk';
-      src: url('fonts/Haas Grot Text R 76 Bold Italic.ttf') format('truetype');
+      src: url('fonts/haas-grot-text-r-76-bold-italic.woff2') format('woff2');
+      font-weight: 700; font-style: italic; font-display: swap;
+    }
+    /* o corte Display, de letra mais justa, só onde o tipo aparece grande:
+       o logotipo e o título do card */
+    @font-face {
+      font-family: 'Neue Haas Display';
+      src: url('fonts/haas-grot-disp-r-web-55-roman.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Display';
+      src: url('fonts/haas-grot-disp-r-web-76-bold-italic.woff2') format('woff2');
       font-weight: 700; font-style: italic; font-display: swap;
     }
 
@@ -41,6 +53,7 @@
       --border: #ddd;
       --mono: "Courier New", Courier, monospace;
       --sans: "Neue Haas Grotesk", Helvetica, -apple-system, system-ui, sans-serif;
+      --display: "Neue Haas Display", "Neue Haas Grotesk", Helvetica, sans-serif;
       --serif: "Editorial New", Georgia, serif;
 
       /* ── o card ──
@@ -89,6 +102,7 @@
     /* ── CABEÇALHO ── */
     .hero { text-align: center; padding: 34px 0 26px; }
     .wordmark {
+      font-family: var(--display);
       font-size: clamp(38px, 7vw, 62px);
       font-weight: 400;
       letter-spacing: -0.02em;
@@ -200,6 +214,11 @@
     .grade { display: flex; align-items: flex-start; gap: var(--gap); }
     .coluna { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--gap); }
 
+    /* ── CARD ──
+       O retrato (4:5) é piso, não medida: quem tem pouco texto é esticado até
+       a proporção, quem tem muito cresce livre. O piso vem do JS (min-height
+       em px, calculado da largura real da coluna) porque aspect-ratio em item
+       de flex vira medida fixa e o conteúdo vaza pra fora. */
     .card {
       background: var(--card);
       color: var(--card-ink);
@@ -212,6 +231,7 @@
     .card:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(0,0,0,0.22); }
     .card:focus-within { outline: 2px solid var(--ink); outline-offset: 2px; }
     .c-tit {
+      font-family: var(--display);
       font-size: 22px;
       font-weight: 700;
       font-style: italic;
@@ -220,6 +240,11 @@
       text-wrap: pretty;
     }
     .c-tit a:hover { text-decoration: underline; text-underline-offset: 2px; }
+    /* sem descrição o título é o conteúdo do card: cresce pra ocupar o retrato
+       em vez de deixar uma poça de amarelo vazio no meio da parede */
+    .card--curto .c-tit { font-size: 28px; line-height: 0.98; }
+    .card--curto .c-pessoa { font-size: 17px; margin-top: 6px; }
+    .card--curto .c-fonte { font-size: 13px; }
     .c-pessoa {
       font-size: 15px;
       font-weight: 700;
@@ -249,7 +274,8 @@
       flex-wrap: wrap;
       gap: 6px;
       justify-content: flex-end;
-      margin-top: 16px;
+      margin-top: auto;          /* colado no pé do card, como na referência */
+      padding-top: 16px;
     }
     .pill {
       font-size: 11px;
@@ -262,6 +288,9 @@
       border: 1px solid rgba(0,0,0,0.14);
     }
     .pill:hover { border-color: #111; }
+    /* o tipo é a outra taxonomia: mesma roda de cor, tom mais fundo e um
+       contorno preto — dá pra distinguir tema de tipo sem ler */
+    .pill[data-tipo], .chip[data-grupo="tipos"] { border-color: rgba(0,0,0,0.55); }
 
     /* ── RODAPÉ DA LISTA ── */
     .fim { text-align: center; padding: 34px 0 60px; }
@@ -363,24 +392,34 @@
   var TEMAS  = window.TEMAS  || {};
 
   /* ── cor ──
-     Cada tema tem uma cor fixa (tirada da posição dele na lista de temas) e
-     cada tipo tem a sua. A cor não carrega significado sozinha: serve pra que
-     o olho reconheça repetição na parede de cards. */
-  var PASTEIS = ['#ffa8e4', '#d3b6ff', '#9ad4ff', '#93ebc0', '#ffbc8c', '#e4f36a', '#ffb0b0'];
+     Uma roda só serve as duas taxonomias: os 29 temas ocupam a volta inteira
+     em passos iguais, e os 5 tipos pegam cinco pontos dessa mesma roda, meio
+     passo deslocados e um tom mais fundo. Assim tema e tipo são da mesma
+     família sem se confundirem — e a cor de cada um é sempre a mesma, na
+     nuvem lá em cima e na tag do card.
+
+     A claridade acompanha o matiz: amarelo puro a 76% cega e azul puro a 76%
+     escurece, então ela sobe e desce com o cosseno do matiz pra que todas as
+     cores pesem o mesmo ao lado do amarelo do card. */
+  function corDaRoda(h, fundo) {
+    var l = 74 + 8 * Math.cos((h - 250) * Math.PI / 180) - (fundo ? 9 : 0);
+    return 'hsl(' + Math.round(h) + ', ' + (fundo ? 78 : 72) + '%, ' + l.toFixed(1) + '%)';
+  }
 
   var TIPOS = [
-    { id: 'video',   rotulo: 'vídeo',         cor: '#9ad4ff' },
-    { id: 'podcast', rotulo: 'ep de podcast', cor: '#b3bdff' },
-    { id: 'texto',   rotulo: 'texto',         cor: '#ffffff' },
-    { id: 'artigo',  rotulo: 'artigo',        cor: '#c2e79c' },
-    { id: 'link',    rotulo: 'link',          cor: '#ffc48f' },
+    { id: 'video',   rotulo: 'vídeo' },
+    { id: 'podcast', rotulo: 'ep de podcast' },
+    { id: 'texto',   rotulo: 'texto' },
+    { id: 'artigo',  rotulo: 'artigo' },
+    { id: 'link',    rotulo: 'link' },
   ];
+  TIPOS.forEach(function (t, i) { t.cor = corDaRoda(i * 72 + 36, true); });
   var TIPO_POR_ID = {};
   TIPOS.forEach(function (t) { TIPO_POR_ID[t.id] = t; });
 
   var SLUGS = Object.keys(TEMAS);
   var COR_TEMA = {};
-  SLUGS.forEach(function (s, i) { COR_TEMA[s] = PASTEIS[i % PASTEIS.length]; });
+  SLUGS.forEach(function (s, i) { COR_TEMA[s] = corDaRoda(i * 360 / SLUGS.length, false); });
   function nomeTema(s) { return (TEMAS[s] && TEMAS[s].titulo) || s.replace(/-/g, ' '); }
 
   /* ── contagens ── */
@@ -460,7 +499,7 @@
 
   function montarCard(it) {
     var el = document.createElement('article');
-    el.className = 'card';
+    el.className = 'card' + (it.descricao ? '' : ' card--curto');
 
     var tipo = TIPO_POR_ID[it.tipo] || { rotulo: it.tipo, cor: '#fff' };
     var meta = [it.fonte, it.duracao, it.data].filter(Boolean).map(esc).join(' · ');
@@ -488,6 +527,9 @@
   var grade = document.getElementById('grade');
   var colunas = [], alturas = [], LOTE = 48, GAP = 16;
   var lista = [], desenhados = 0;
+  /* proporção mínima do card (altura ÷ largura). 1 = quadrado, 1.25 = 4:5.
+     Mexer aqui é o jeito de deixar a parede mais alta ou mais baixa. */
+  var RETRATO = 1.2, pisoCard = 0;
 
   function quantasColunas() {
     var w = grade.clientWidth || window.innerWidth;
@@ -504,6 +546,7 @@
       grade.appendChild(c);
       colunas.push(c); alturas.push(0);
     }
+    pisoCard = Math.round(colunas[0].clientWidth * RETRATO);
   }
 
   function menorColuna() {
@@ -516,6 +559,7 @@
     var fim = Math.min(desenhados + LOTE, lista.length);
     for (; desenhados < fim; desenhados++) {
       var el = montarCard(lista[desenhados]);
+      el.style.minHeight = pisoCard + 'px';
       var c = menorColuna();
       colunas[c].appendChild(el);
       alturas[c] += el.offsetHeight + GAP;   /* mede depois de inserir: é o que mantém as colunas parelhas */

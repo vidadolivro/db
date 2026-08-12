@@ -8,3 +8,10 @@ folder-flip-a1.html
 scripts/build-folder-a1.mjs
 scripts/static-server.mjs
 .gr_key
+
+# só os .woff2 vão pro ar; os originais (.ttf/.otf) ficam na máquina.
+# pra gerar um novo corte: pip install fonttools brotli, e converter pro
+# mesmo nome em minúsculas com hífen.
+fonts/*.ttf
+fonts/*.otf
+fonts/*.pdf
