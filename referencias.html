@@ -195,6 +195,19 @@
     }
     .limpar[hidden] { display: none; }
     .resultado[hidden] { display: none; }
+    .acoes { display: flex; align-items: baseline; gap: 20px; }
+    /* a página de cada tema tem um texto de introdução que não existe em outro
+       lugar. Sem o índice de temas, é por aqui que se chega nele. */
+    .sobre-tema {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+    }
+    .sobre-tema[hidden] { display: none; }
 
     /* ── GRADE ──
        Colunas montadas na mão (e não CSS columns) porque a lista cresce por
@@ -354,7 +367,6 @@
 <div class="wrap">
   <nav class="top">
     <a href="referencias.html" aria-current="page">referências</a>
-    <a href="index.html">temas</a>
     <a href="livros.html">bibliografia</a>
     <a href="diretorio?tipo=editoras">diretórios</a>
   </nav>
@@ -373,7 +385,10 @@
 
   <div class="resultado">
     <span id="resumo">—</span>
-    <button class="limpar" id="limpar" hidden>limpar filtros</button>
+    <span class="acoes">
+      <a class="sobre-tema" id="sobre-tema" hidden>sobre este tema →</a>
+      <button class="limpar" id="limpar" hidden>limpar filtros</button>
+    </span>
   </div>
 
   <div class="grade" id="grade"></div>
@@ -615,6 +630,11 @@
     document.getElementById('resumo').textContent = partes.join('  ·  ');
     document.getElementById('limpar').hidden = !filtrando;
     document.querySelector('.resultado').hidden = !filtrando;
+
+    /* só faz sentido com um tema só na mão — com dois, não há "este tema" */
+    var sobre = document.getElementById('sobre-tema');
+    sobre.hidden = sel.temas.length !== 1;
+    if (!sobre.hidden) sobre.href = 'tema.html?slug=' + encodeURIComponent(sel.temas[0]);
     atualizarRodape();
     gravarURL();
     sincronizarChips();
