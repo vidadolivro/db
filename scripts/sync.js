@@ -296,6 +296,13 @@ async function resolveCapas(livros) {
       if (r.ok && ct.startsWith('image/') && (cl === 0 || cl > 1000)) {
         l.capa = url;
         console.log(`  ✓ ${l.titulo} → Open Library`);
+      } else if (l.capa && l.capa.includes('metabooks.com')) {
+        /* fica no metabooks mesmo: então ao menos no tamanho grande. O "/m"
+           entrega 200px de largura, que num card de 260px sai borrado; o "/l"
+           chega a 600px quando a editora cadastrou imagem boa, e devolve a
+           mesma coisa quando não cadastrou. */
+        l.capa = l.capa.replace(/\/cover\/([0-9Xx]+)\/m\b/, '/cover/$1/l');
+        console.log(`  — sem capa no Open Library: ${l.titulo} (metabooks em tamanho grande)`);
       } else {
         console.log(`  — sem capa no Open Library: ${l.titulo} (mantém atual)`);
       }
