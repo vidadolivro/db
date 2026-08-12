@@ -445,6 +445,25 @@
   SLUGS.forEach(function (s, i) { COR_TEMA[s] = corDaRoda(i * 360 / SLUGS.length, false); });
   function nomeTema(s) { return (TEMAS[s] && TEMAS[s].titulo) || s.replace(/-/g, ' '); }
 
+  /* ── ordem ──
+     A planilha vem agrupada por tema e, dentro dele, por tipo — o que faz a
+     parede abrir com um bloco de artigos iguais. Embaralho pra misturar tipo,
+     tema e cor logo na primeira tela.
+
+     A semente é a data: o arranjo é o mesmo o dia inteiro (a ordem não muda
+     embaixo do dedo de quem está lendo, nem a cada filtro) e muda no dia
+     seguinte, então o acervo não fica com uma cara fixa pra sempre.
+     Pra congelar de vez, troque `semente` por um número qualquer. */
+  var d = new Date();
+  var semente = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  (function embaralhar(a, s) {
+    function proximo() { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(proximo() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+  })(INPUTS, semente);
+
   /* ── contagens ── */
   var porTema = {}, porTipo = {};
   INPUTS.forEach(function (it) {
