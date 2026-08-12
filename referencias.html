@@ -240,11 +240,15 @@
       text-wrap: pretty;
     }
     .c-tit a:hover { text-decoration: underline; text-underline-offset: 2px; }
-    /* sem descrição o título é o conteúdo do card: cresce pra ocupar o retrato
-       em vez de deixar uma poça de amarelo vazio no meio da parede */
-    .card--curto .c-tit { font-size: 28px; line-height: 0.98; }
-    .card--curto .c-pessoa { font-size: 17px; margin-top: 6px; }
-    .card--curto .c-fonte { font-size: 13px; }
+    /* sem descrição o título é o conteúdo do card, e o corpo dele varia com o
+       tamanho do texto: título curto cresce até encher o retrato, título longo
+       fica no corpo normal. É o que dá ritmo à parede — e o que evita a poça
+       de amarelo vazio. */
+    .card--curto .c-tit   { line-height: 0.96; }
+    .card--curto .c-tit--g { font-size: 38px; letter-spacing: -0.03em; }
+    .card--curto .c-tit--m { font-size: 30px; letter-spacing: -0.026em; }
+    .card--curto .c-pessoa { font-size: 17px; margin-top: 7px; }
+    .card--curto .c-fonte  { font-size: 13px; }
     .c-pessoa {
       font-size: 15px;
       font-weight: 700;
@@ -511,8 +515,11 @@
     '<span class="pill" data-tipo="' + esc(it.tipo) + '" style="--chip:' + tipo.cor + '" ' +
     'title="ver só ' + esc(tipo.rotulo) + '">' + esc(tipo.rotulo) + '</span>';
 
+    var titulo = partirTitulo(it);
+    var escala = titulo.length <= 42 ? ' c-tit--g' : titulo.length <= 78 ? ' c-tit--m' : '';
+
     el.innerHTML =
-      '<h2 class="c-tit"><a href="' + esc(it.href) + '" target="_blank" rel="noopener">' + esc(partirTitulo(it)) + '</a></h2>' +
+      '<h2 class="c-tit' + escala + '"><a href="' + esc(it.href) + '" target="_blank" rel="noopener">' + esc(titulo) + '</a></h2>' +
       (it.pessoas ? '<p class="c-pessoa">' + esc(it.pessoas) + '</p>' : '') +
       (meta ? '<p class="c-fonte">' + meta + '</p>' : '') +
       /* sem descrição o filete ficaria separando o nada — some junto */
