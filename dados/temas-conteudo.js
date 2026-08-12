@@ -47,13 +47,6 @@ window.TEMAS_CONTEUDO = {
         "ano": "2020"
       },
       {
-        "titulo": "O Papel do Agente Literário no Mercado Editorial\" | Ana Clara Leite Pedersoli (Repositório UNESP)",
-        "href": "https://repositorio.unesp.br/server/api/core/bitstreams/1a9bfa77-c139-40f6-bd8d-f732b1cf0bef/content",
-        "autores": "",
-        "publicacao": "repositorio.unesp.br",
-        "ano": ""
-      },
-      {
         "titulo": "“Só conseguiremos ter uma presença consistente no exterior no momento em que recuperarmos nossa própria relação com a literatura brasileira” | Luciana Villas-Boas & Lucia Riff",
         "href": "https://revistas.ufrj.br/index.php/flbc/article/view/17379/14275",
         "autores": "Lucia Riff",
@@ -3563,12 +3556,6 @@ window.TEMAS_CONTEUDO = {
         "meta": "2h29 · 2021"
       },
       {
-        "titulo": "Financiamento coletivo para publicações com Raíssa Pena, Marina Davila e Valquíria Vlad",
-        "href": "https://www.youtube.com/watch?v=P-4QwMX9nz0",
-        "canal": "Casa Educação",
-        "meta": "2h04 · 2020"
-      },
-      {
         "titulo": "O financiamento coletivo como opção",
         "href": "https://open.spotify.com/episode/0TY0Fy1WuZjyzH23OMYEaq?si=xrh57uBsRjmZ5WEXdrH5WA&utm_source=whatsapp&nd=1&dlsi=7a5f2877a271449d",
         "canal": "Spotify",
@@ -3897,12 +3884,6 @@ window.TEMAS_CONTEUDO = {
         "href": "https://www.youtube.com/watch?v=Lk0m2J1YlCo&pp=ygUZTklFTFNFTiBtZXJjYWRvIGVkaXRvcmlhbA%3D%3D",
         "canal": "SNEL - Sindicato Nacional dos Editores de Livros",
         "meta": "1h · 2023"
-      },
-      {
-        "titulo": "Apresentação das Pesquisas Produção e Vendas e Conteúdo Digital do Setor Editorial Brasileiro",
-        "href": "https://www.youtube.com/watch?v=f5xd9AJbgF0&pp=ygUZTklFTFNFTiBtZXJjYWRvIGVkaXRvcmlhbA%3D%3D",
-        "canal": "Câmara Brasileira do Livro CBL",
-        "meta": "1h19 · 2022"
       },
       {
         "titulo": "Como funciona o mercado do livro, com Daniel Lameira",
@@ -6799,13 +6780,6 @@ window.TEMAS_CONTEUDO = {
         "href": "https://educapes.capes.gov.br/handle/capes/939139?mode=full",
         "autores": "Webster, Auristela Marina Cardoso Genaro",
         "publicacao": "gov.br",
-        "ano": ""
-      },
-      {
-        "titulo": "Além da revisão: critérios para revisão textual, Aristides Coelho Neto",
-        "href": "https://doceru.com/doc/nxssn151",
-        "autores": "",
-        "publicacao": "doceru.com",
         "ano": ""
       },
       {
