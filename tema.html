@@ -481,6 +481,7 @@
   <div class="header-inner">
     <a class="h-back" href="index.html">← início</a>
     <div class="h-title" id="h-title"></div>
+    <a class="h-back" id="h-cards" href="referencias.html">ver em cards →</a>
     <div class="h-num" id="h-num"></div>
   </div>
 </header>
@@ -516,6 +517,7 @@
   document.getElementById('page-title').textContent = t.titulo + ' — vida do livro db';
   document.getElementById('h-title').textContent = t.titulo;
   document.getElementById('h-num').textContent = t.num + ' / ' + (total < 10 ? '0' + total : total);
+  document.getElementById('h-cards').href = 'referencias.html?tema=' + encodeURIComponent(slug);
 
   /* Helpers */
   function esc(s) {

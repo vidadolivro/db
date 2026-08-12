@@ -65,6 +65,17 @@
       padding: 52px 40px 80px;
     }
 
+    /* NAV */
+    .top-nav {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 26px;
+      font-size: 13px;
+    }
+    .top-nav a { color: var(--light); text-decoration: none; }
+    .top-nav a:first-child { background: var(--fluo); color: var(--fluo-ink); padding: 2px 8px 3px; margin: -2px -8px -3px; }
+    .top-nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
     /* HEADER */
     .header {
       display: flex;
@@ -317,6 +328,12 @@
 </head>
 <body>
 <main>
+
+  <nav class="top-nav">
+    <a href="referencias.html">referências em cards</a>
+    <a href="livros.html">biblioteca</a>
+    <a href="diretorio?tipo=editoras">diretório</a>
+  </nav>
 
   <div class="header">
     <div>

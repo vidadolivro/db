@@ -1,8 +1,15 @@
-/* Lê a planilha "database vdl" publicada em CSV e gera dados/temas-conteudo.js.
+/* Lê a planilha "database vdl" publicada em CSV e gera dois arquivos:
+ *
+ *   dados/temas-conteudo.js — agrupado por tema e por tipo, do jeito que o
+ *                             tema.html sempre consumiu (um item multi-tema
+ *                             aparece dentro de cada tema).
+ *   dados/inputs.js         — a mesma curadoria como lista plana: uma linha da
+ *                             planilha = um objeto, com a lista de temas junto.
+ *                             É o que a home de cards usa (cada input vira um
+ *                             card com tipo e temas visíveis).
  *
  * Substitui a leitura das coleções db_* do Directus: a curadoria passou a ser
- * feita na planilha. Um item pode servir a até três temas (tema 1/2/3) e
- * aparece em cada um deles.
+ * feita na planilha. Um item pode servir a até três temas (tema 1/2/3).
  *
  * uso: node scripts/sync-planilha.mjs
  */
@@ -49,6 +56,15 @@ function dominio(url) {
   try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
 }
 
+/* corta no fim da última palavra inteira antes do limite */
+function corta(s, max) {
+  s = lp(s);
+  if (s.length <= max) return s;
+  const fatia = s.slice(0, max);
+  const corte = fatia.lastIndexOf(' ');
+  return (corte > max * 0.6 ? fatia.slice(0, corte) : fatia).replace(/[,;:.\s]+$/, '') + '…';
+}
+
 /* junta duração e ano numa linha só de metadados */
 function meta(...partes) {
   return partes.map(lp).filter(Boolean).join(' · ');
@@ -93,6 +109,7 @@ const temasSrc = fs.readFileSync(path.join(ROOT, 'dados/temas.js'), 'utf8');
 const validos = new Set([...temasSrc.matchAll(/^'([a-z0-9-]+)':\s*\{/gm)].map(m => m[1]));
 
 const conteudo = {};
+const inputs = [];
 let usados = 0, semTema = 0, tipoInvalido = 0, semUrl = 0;
 const desconhecidos = new Map();
 
@@ -121,23 +138,54 @@ for (const l of linhas) {
     conteudo[t][balde] ??= [];
     conteudo[t][balde].push(item);
   }
+
+  /* a mesma linha, plana, pro card. Só os campos que o card mostra —
+     descrição cortada porque o card exibe no máximo ~5 linhas. */
+  inputs.push({
+    titulo: r.titulo,
+    href: r.url,
+    tipo,
+    temas,
+    fonte: r.fonte || dominio(r.url),
+    pessoas: r.pessoas,
+    descricao: corta(r.descricao, 300),
+    duracao: r['tempo de consumo'],
+    data: r.data,
+    adicionado: r['adicionado em'],
+  });
   usados++;
 }
 
-const saida = [
+const cabecalho = [
   '/* vida do livro db — gerado por scripts/sync-planilha.mjs */',
   '/* não editar manualmente — a fonte é a planilha "database vdl" */',
   '',
-  'window.TEMAS_CONTEUDO = ' + JSON.stringify(conteudo, null, 2) + ';',
-  '',
-].join('\n');
+];
 
-fs.writeFileSync(path.join(ROOT, 'dados/temas-conteudo.js'), saida, 'utf8');
+fs.writeFileSync(
+  path.join(ROOT, 'dados/temas-conteudo.js'),
+  [...cabecalho, 'window.TEMAS_CONTEUDO = ' + JSON.stringify(conteudo, null, 2) + ';', ''].join('\n'),
+  'utf8',
+);
+
+/* um objeto por linha: o arquivo é grande, e diff de uma linha por input
+   deixa claro o que a planilha mudou entre um sync e outro. */
+fs.writeFileSync(
+  path.join(ROOT, 'dados/inputs.js'),
+  [
+    ...cabecalho,
+    'window.INPUTS = [',
+    ...inputs.map(i => JSON.stringify(i) + ','),
+    '];',
+    '',
+  ].join('\n'),
+  'utf8',
+);
 
 const totalItens = Object.values(conteudo)
   .reduce((s, b) => s + Object.values(b).reduce((x, a) => x + a.length, 0), 0);
 
-console.log(`✓ dados/temas-conteudo.js gerado`);
+console.log(`✓ dados/temas-conteudo.js e dados/inputs.js gerados`);
 console.log(`  linhas aproveitadas: ${usados}`);
 console.log(`  entradas geradas:    ${totalItens} (itens multi-tema contam em cada tema)`);
 console.log(`  temas com conteúdo:  ${Object.keys(conteudo).length}`);

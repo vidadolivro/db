@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>referências — vida do livro</title>
+  <style>
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 55 Roman.ttf') format('truetype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 56 Italic.ttf') format('truetype');
+      font-weight: 400; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 65 Medium.ttf') format('truetype');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 75 Bold.ttf') format('truetype');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Neue Haas Grotesk';
+      src: url('fonts/Haas Grot Text R 76 Bold Italic.ttf') format('truetype');
+      font-weight: 700; font-style: italic; font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fafaf8;
+      --ink: #111;
+      --mid: #1a1a1a;
+      --light: #57544b;
+      --border: #ddd;
+      --mono: "Courier New", Courier, monospace;
+      --sans: "Neue Haas Grotesk", Helvetica, -apple-system, system-ui, sans-serif;
+      --serif: "Editorial New", Georgia, serif;
+
+      /* ── o card ──
+         Amarelo cheio com tinta preta: o mesmo acento flúor do resto do site,
+         aqui promovido a superfície. A tinta do card NÃO muda no modo noturno
+         (o cartão é o objeto; o que muda é a mesa em que ele está). */
+      --card: #f2ec00;
+      --card-ink: #111;
+      --card-rule: #111;
+      --card-sub: #3d3a00;
+      --gap: 18px;
+    }
+    :root[data-theme="dark"] {
+      /* amarelo puro sobre carvão queima a vista numa parede de 1.330 cards */
+      --card: #d2cc00;
+      --card-sub: #3a3600;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── NAV ── */
+    nav.top {
+      display: flex;
+      justify-content: center;
+      gap: 42px;
+      padding: 22px 0 0;
+      font-size: 14px;
+    }
+    nav.top a { color: var(--light); }
+    nav.top a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    nav.top a[aria-current="page"] { color: var(--ink); }
+
+    /* ── CABEÇALHO ── */
+    .hero { text-align: center; padding: 34px 0 26px; }
+    .wordmark {
+      font-size: clamp(38px, 7vw, 62px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-transform: lowercase;
+    }
+    .hero-sub {
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    /* ── FILTROS ── */
+    .filtros { padding-bottom: 22px; }
+    .busca-linha { display: flex; justify-content: center; margin-bottom: 20px; }
+    .busca {
+      font-family: var(--sans);
+      font-size: 14px;
+      width: 100%;
+      max-width: 420px;
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      outline: none;
+      text-align: center;
+    }
+    .busca:focus { border-color: var(--ink); }
+    .busca::placeholder { color: var(--light); }
+
+    .nuvem {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 7px 8px;
+      padding: 8px 0;
+    }
+    .nuvem + .nuvem { margin-top: 4px; }
+    .chip {
+      font-family: var(--sans);
+      font-size: 12px;
+      line-height: 1;
+      padding: 6px 11px 7px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: var(--chip, #eee);
+      color: #111;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .chip:hover { box-shadow: 0 0 0 1px var(--ink); }
+    .chip[aria-pressed="true"] {
+      border-color: #111;
+      box-shadow: 0 0 0 1.5px #111;
+      font-weight: 700;
+    }
+    :root[data-theme="dark"] .chip { filter: saturate(0.85) brightness(0.92); }
+    .chip-num { opacity: 0.5; margin-left: 5px; font-size: 10px; }
+
+    /* ── BARRA DE RESULTADO ── */
+    .resultado {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      margin-bottom: 26px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+    .limpar {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      border-bottom: 1px solid currentColor;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 0 0 1px;
+    }
+    .limpar[hidden] { display: none; }
+
+    /* ── GRADE ──
+       Colunas montadas na mão (e não CSS columns) porque a lista cresce por
+       lotes: assim cada card novo cai na coluna mais curta e nada acima dele
+       se remonta. */
+    .grade { display: flex; align-items: flex-start; gap: var(--gap); }
+    .coluna { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--gap); }
+
+    .card {
+      background: var(--card);
+      color: var(--card-ink);
+      padding: 20px 20px 16px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(0,0,0,0.22); }
+    .card:focus-within { outline: 2px solid var(--ink); outline-offset: 2px; }
+    .c-tit {
+      font-size: 21px;
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      text-wrap: pretty;
+    }
+    .c-tit a:hover { text-decoration: underline; text-underline-offset: 2px; }
+    .c-pessoa {
+      font-size: 14px;
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.2;
+      margin-top: 3px;
+    }
+    .c-fonte {
+      font-size: 12.5px;
+      margin-top: 5px;
+      color: var(--card-sub);
+      overflow-wrap: anywhere;
+    }
+    .c-rule { border: none; border-top: 2px solid var(--card-rule); margin: 12px 0 11px; }
+    .c-desc {
+      font-size: 13.5px;
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.32;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .c-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+    .pill {
+      font-size: 11px;
+      line-height: 1;
+      padding: 6px 10px 7px;
+      border-radius: 999px;
+      background: var(--chip, #fff);
+      color: #111;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.12);
+    }
+    .pill:hover { border-color: #111; }
+
+    /* ── RODAPÉ DA LISTA ── */
+    .fim { text-align: center; padding: 34px 0 60px; }
+    .mais {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .mais:hover { background: var(--card); color: var(--card-ink); border-color: var(--card); }
+    .mais[hidden] { display: none; }
+    .contagem {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-top: 14px;
+    }
+    .vazio { text-align: center; padding: 60px 0; color: var(--light); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 16px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--light);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      nav.top { gap: 20px; font-size: 13px; flex-wrap: wrap; }
+      .hero { padding: 24px 0 18px; }
+      .card { padding: 16px 16px 14px; }
+      .c-tit { font-size: 19px; }
+    }
+  </style>
+  <link rel="stylesheet" href="theme.css">
+  <script src="theme.js"></script>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="top">
+    <a href="referencias.html" aria-current="page">referências</a>
+    <a href="index.html">temas</a>
+    <a href="livros.html">biblioteca</a>
+    <a href="diretorio?tipo=editoras">diretório</a>
+  </nav>
+
+  <header class="hero">
+    <h1 class="wordmark">vida do livro</h1>
+    <p class="hero-sub" id="hero-sub">referências para o mercado editorial</p>
+  </header>
+
+  <section class="filtros">
+    <div class="busca-linha">
+      <input class="busca" id="busca" type="search" placeholder="buscar por título, pessoa ou fonte" autocomplete="off">
+    </div>
+    <div class="nuvem" id="nuvem-tipos"></div>
+    <div class="nuvem" id="nuvem-temas"></div>
+  </section>
+
+  <div class="resultado">
+    <span id="resumo">—</span>
+    <button class="limpar" id="limpar" hidden>limpar filtros</button>
+  </div>
+
+  <div class="grade" id="grade"></div>
+  <div id="sentinela" style="height:1px"></div>
+
+  <div class="fim">
+    <button class="mais" id="mais" hidden>carregar mais</button>
+    <p class="contagem" id="contagem"></p>
+  </div>
+
+  <footer>
+    <span>vida do livro</span>
+    <span>curadoria do curso</span>
+  </footer>
+</div>
+
+<script src="dados/temas.js"></script>
+<script src="dados/inputs.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var INPUTS = window.INPUTS || [];
+  var TEMAS  = window.TEMAS  || {};
+
+  /* ── cor ──
+     Cada tema tem uma cor fixa (tirada da posição dele na lista de temas) e
+     cada tipo tem a sua. A cor não carrega significado sozinha: serve pra que
+     o olho reconheça repetição na parede de cards. */
+  var PASTEIS = ['#ffb3ec', '#d9c2ff', '#a9d9ff', '#a8ecc9', '#ffc9a3', '#e6f07a', '#ffc2c2'];
+
+  var TIPOS = [
+    { id: 'video',   rotulo: 'vídeo',       cor: '#a9d9ff' },
+    { id: 'podcast', rotulo: 'ep de podcast', cor: '#bcc4ff' },
+    { id: 'texto',   rotulo: 'texto',       cor: '#fffdf0' },
+    { id: 'artigo',  rotulo: 'artigo',      cor: '#c9e8a8' },
+    { id: 'link',    rotulo: 'link',        cor: '#ffcb9e' },
+  ];
+  var TIPO_POR_ID = {};
+  TIPOS.forEach(function (t) { TIPO_POR_ID[t.id] = t; });
+
+  var SLUGS = Object.keys(TEMAS);
+  var COR_TEMA = {};
+  SLUGS.forEach(function (s, i) { COR_TEMA[s] = PASTEIS[i % PASTEIS.length]; });
+  function nomeTema(s) { return (TEMAS[s] && TEMAS[s].titulo) || s.replace(/-/g, ' '); }
+
+  /* ── contagens ── */
+  var porTema = {}, porTipo = {};
+  INPUTS.forEach(function (it) {
+    porTipo[it.tipo] = (porTipo[it.tipo] || 0) + 1;
+    (it.temas || []).forEach(function (s) { porTema[s] = (porTema[s] || 0) + 1; });
+  });
+
+  /* ── estado (espelhado na url pra poder mandar o link pronto pra turma) ── */
+  var sel = { tipos: [], temas: [], q: '' };
+
+  function lerURL() {
+    var p = new URLSearchParams(location.search);
+    sel.tipos = (p.get('tipo') || '').split(',').filter(Boolean);
+    sel.temas = (p.get('tema') || '').split(',').filter(Boolean);
+    sel.q = p.get('q') || '';
+  }
+  function gravarURL() {
+    var p = new URLSearchParams();
+    if (sel.tipos.length) p.set('tipo', sel.tipos.join(','));
+    if (sel.temas.length) p.set('tema', sel.temas.join(','));
+    if (sel.q) p.set('q', sel.q);
+    var qs = p.toString();
+    history.replaceState(null, '', qs ? '?' + qs : location.pathname);
+  }
+
+  /* ── busca ──
+     Índice pré-montado: 1.330 itens filtrados a cada tecla precisam de string
+     pronta, sem normalizar de novo a cada passada. */
+  var semAcento = function (s) {
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  };
+  INPUTS.forEach(function (it) {
+    it._busca = semAcento([it.titulo, it.pessoas, it.fonte, it.descricao,
+      (it.temas || []).map(nomeTema).join(' ')].join(' '));
+  });
+
+  function filtrar() {
+    var q = semAcento(sel.q).trim();
+    var termos = q ? q.split(/\s+/) : [];
+    return INPUTS.filter(function (it) {
+      if (sel.tipos.length && sel.tipos.indexOf(it.tipo) === -1) return false;
+      if (sel.temas.length && !(it.temas || []).some(function (s) { return sel.temas.indexOf(s) !== -1; })) return false;
+      for (var i = 0; i < termos.length; i++) if (it._busca.indexOf(termos[i]) === -1) return false;
+      return true;
+    });
+  }
+
+  /* ── card ── */
+  var num = function (n) { return n.toLocaleString('pt-BR'); };
+  var esc = function (s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  };
+
+  /* muitos títulos da planilha terminam em "| Fulano" ou "| Veículo" — o card
+     já mostra pessoa e fonte em campo próprio, então o rabicho sai do título.
+     Comparação por palavras porque a planilha inverte nomes: o título traz
+     "Elisa Ramone Pestana" e a coluna pessoas, "Pestana, Elisa Ramone". */
+  function palavras(s) {
+    return semAcento(s).split(/[^a-z0-9]+/).filter(function (p) { return p.length > 2; });
+  }
+  function ecoa(cauda, campo) {
+    var a = palavras(cauda), b = palavras(campo);
+    if (!a.length || !b.length) return false;
+    var achou = a.filter(function (p) { return b.indexOf(p) !== -1; }).length;
+    return achou / a.length >= 0.6;
+  }
+  function partirTitulo(it) {
+    var t = it.titulo || '';
+    var corte = t.lastIndexOf(' | ');
+    if (corte === -1) return t;
+    var cauda = t.slice(corte + 3);
+    return (ecoa(cauda, it.pessoas) || ecoa(cauda, it.fonte)) ? t.slice(0, corte) : t;
+  }
+
+  function montarCard(it) {
+    var el = document.createElement('article');
+    el.className = 'card';
+
+    var tipo = TIPO_POR_ID[it.tipo] || { rotulo: it.tipo, cor: '#fff' };
+    var meta = [it.fonte, it.duracao, it.data].filter(Boolean).map(esc).join(' · ');
+
+    var tags = (it.temas || []).map(function (s) {
+      return '<span class="pill" data-tema="' + esc(s) + '" style="--chip:' + COR_TEMA[s] + '" ' +
+             'title="ver só ' + esc(nomeTema(s)) + '">' + esc(nomeTema(s)) + '</span>';
+    }).join('') +
+    '<span class="pill" data-tipo="' + esc(it.tipo) + '" style="--chip:' + tipo.cor + '" ' +
+    'title="ver só ' + esc(tipo.rotulo) + '">' + esc(tipo.rotulo) + '</span>';
+
+    el.innerHTML =
+      '<h2 class="c-tit"><a href="' + esc(it.href) + '" target="_blank" rel="noopener">' + esc(partirTitulo(it)) + '</a></h2>' +
+      (it.pessoas ? '<p class="c-pessoa">' + esc(it.pessoas) + '</p>' : '') +
+      (meta ? '<p class="c-fonte">' + meta + '</p>' : '') +
+      '<hr class="c-rule">' +
+      (it.descricao ? '<p class="c-desc">' + esc(it.descricao) + '</p>' : '') +
+      '<div class="c-tags">' + tags + '</div>';
+
+    el._href = it.href;
+    return el;
+  }
+
+  /* ── grade em colunas ── */
+  var grade = document.getElementById('grade');
+  var colunas = [], alturas = [], LOTE = 48, GAP = 18;
+  var lista = [], desenhados = 0;
+
+  function quantasColunas() {
+    var w = grade.clientWidth || window.innerWidth;
+    return w >= 1180 ? 4 : w >= 880 ? 3 : w >= 560 ? 2 : 1;
+  }
+
+  function zerarColunas() {
+    grade.innerHTML = '';
+    colunas = []; alturas = [];
+    var n = quantasColunas();
+    for (var i = 0; i < n; i++) {
+      var c = document.createElement('div');
+      c.className = 'coluna';
+      grade.appendChild(c);
+      colunas.push(c); alturas.push(0);
+    }
+  }
+
+  function menorColuna() {
+    var min = 0;
+    for (var i = 1; i < alturas.length; i++) if (alturas[i] < alturas[min]) min = i;
+    return min;
+  }
+
+  function desenharLote() {
+    var fim = Math.min(desenhados + LOTE, lista.length);
+    for (; desenhados < fim; desenhados++) {
+      var el = montarCard(lista[desenhados]);
+      var c = menorColuna();
+      colunas[c].appendChild(el);
+      alturas[c] += el.offsetHeight + GAP;   /* mede depois de inserir: é o que mantém as colunas parelhas */
+    }
+    atualizarRodape();
+  }
+
+  /* o botão fica visível mesmo com o observador ligado: se o scroll infinito
+     falhar (ou o navegador não tiver IntersectionObserver), ninguém fica preso
+     na metade da lista no meio da aula */
+  function atualizarRodape() {
+    document.getElementById('mais').hidden = desenhados >= lista.length;
+    document.getElementById('contagem').textContent = lista.length
+      ? 'mostrando ' + num(desenhados) + ' de ' + num(lista.length)
+      : '';
+  }
+
+  function redesenhar() {
+    lista = filtrar();
+    desenhados = 0;
+    zerarColunas();
+    if (!lista.length) {
+      grade.innerHTML = '<p class="vazio">nenhuma referência com esses filtros.</p>';
+    } else {
+      desenharLote();
+    }
+    var partes = [];
+    partes.push(num(lista.length) + (lista.length === 1 ? ' referência' : ' referências'));
+    if (sel.tipos.length) partes.push(sel.tipos.map(function (t) { return (TIPO_POR_ID[t] || {}).rotulo || t; }).join(' + '));
+    if (sel.temas.length) partes.push(sel.temas.map(nomeTema).join(' + '));
+    if (sel.q) partes.push('“' + sel.q + '”');
+    document.getElementById('resumo').textContent = partes.join('  ·  ');
+    document.getElementById('limpar').hidden = !(sel.tipos.length || sel.temas.length || sel.q);
+    atualizarRodape();
+    gravarURL();
+    sincronizarChips();
+  }
+
+  /* ── chips ── */
+  function montarChip(rotulo, cor, n, grupo, id) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chip';
+    b.style.setProperty('--chip', cor);
+    b.dataset.grupo = grupo;
+    b.dataset.id = id;
+    b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = esc(rotulo) + (n ? '<span class="chip-num">' + n + '</span>' : '');
+    /* deslocamento vertical fixo por posição: a nuvem respira sem sair do lugar */
+    b.style.transform = 'translateY(' + (((id.length * 7) % 9) - 4) + 'px)';
+    b.addEventListener('click', function () {
+      var arr = sel[grupo];
+      var i = arr.indexOf(id);
+      if (i === -1) arr.push(id); else arr.splice(i, 1);
+      redesenhar();
+      window.scrollTo({ top: document.querySelector('.resultado').offsetTop - 80, behavior: 'smooth' });
+    });
+    return b;
+  }
+
+  var elTipos = document.getElementById('nuvem-tipos');
+  var elTemas = document.getElementById('nuvem-temas');
+  TIPOS.forEach(function (t) {
+    if (!porTipo[t.id]) return;
+    elTipos.appendChild(montarChip(t.rotulo, t.cor, porTipo[t.id], 'tipos', t.id));
+  });
+  SLUGS.forEach(function (s) {
+    if (!porTema[s]) return;
+    elTemas.appendChild(montarChip(nomeTema(s), COR_TEMA[s], porTema[s], 'temas', s));
+  });
+
+  function sincronizarChips() {
+    document.querySelectorAll('.chip').forEach(function (b) {
+      b.setAttribute('aria-pressed', sel[b.dataset.grupo].indexOf(b.dataset.id) !== -1 ? 'true' : 'false');
+    });
+  }
+
+  /* ── interação ── */
+  grade.addEventListener('click', function (e) {
+    var pill = e.target.closest('.pill');
+    if (pill) {
+      var grupo = pill.dataset.tema ? 'temas' : 'tipos';
+      var id = pill.dataset.tema || pill.dataset.tipo;
+      var arr = sel[grupo];
+      if (arr.indexOf(id) === -1) arr.push(id); else arr.splice(arr.indexOf(id), 1);
+      redesenhar();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (e.target.closest('a')) return;            /* o título já é link */
+    var card = e.target.closest('.card');
+    if (card && card._href) window.open(card._href, '_blank', 'noopener');
+  });
+
+  var t = null;
+  document.getElementById('busca').addEventListener('input', function (e) {
+    var v = e.target.value;
+    clearTimeout(t);
+    t = setTimeout(function () { sel.q = v; redesenhar(); }, 140);
+  });
+
+  document.getElementById('limpar').addEventListener('click', function () {
+    sel.tipos = []; sel.temas = []; sel.q = '';
+    document.getElementById('busca').value = '';
+    redesenhar();
+  });
+
+  document.getElementById('mais').addEventListener('click', desenharLote);
+
+  var observador = null;
+  if ('IntersectionObserver' in window) {
+    observador = new IntersectionObserver(function (ent) {
+      if (ent[0].isIntersecting && desenhados < lista.length) desenharLote();
+    }, { rootMargin: '900px' });
+    observador.observe(document.getElementById('sentinela'));
+  }
+
+  /* remonta só quando o número de colunas muda de fato — rolar no celular
+     mexe na altura da janela o tempo todo e não pode custar um redesenho */
+  var rt = null;
+  function aoRedimensionar() {
+    if (quantasColunas() === colunas.length) return;
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      var visiveis = desenhados;
+      zerarColunas();
+      desenhados = 0;
+      var lote = LOTE;
+      LOTE = Math.max(lote, visiveis);
+      desenharLote();
+      LOTE = lote;
+    }, 150);
+  }
+  if ('ResizeObserver' in window) new ResizeObserver(aoRedimensionar).observe(grade);
+  window.addEventListener('resize', aoRedimensionar);
+
+  /* ── partida ── */
+  lerURL();
+  document.getElementById('busca').value = sel.q;
+  document.getElementById('hero-sub').textContent =
+    num(INPUTS.length) + ' referências · ' + Object.keys(porTema).length + ' temas';
+  redesenhar();
+})();
+</script>
+</body>
+</html>
