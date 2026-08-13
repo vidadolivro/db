@@ -3111,11 +3111,11 @@ window.TEMAS_CONTEUDO = {
       },
       {
         "titulo": "The Ill-Defined Plot, John Jeremiah Sullivan | The New Yorker | A história do ensaio",
-        "href": "https://www.sempaywall.com/api/clean/www.newyorker.com/books/page-turner/ill-defined-plot",
+        "href": "https://www.newyorker.com/books/page-turner/ill-defined-plot",
         "tag": "",
         "autor": "",
         "trecho": "",
-        "fonte": "sempaywall.com"
+        "fonte": "newyorker.com"
       },
       {
         "titulo": "Toni Morrison, The Art of Fiction n. 134",
@@ -4085,7 +4085,7 @@ window.TEMAS_CONTEUDO = {
       },
       {
         "titulo": "Frankfurt Studio (Frankfurter Buchmesse) –– Hub de programação da feira dedicado a debates sobre o futuro do setor",
-        "href": "https://www.buchmesse.de/en/programme",
+        "href": "https://www.buchmesse.de/en/highlights",
         "tipo": "",
         "domain": "buchmesse.de"
       },
@@ -4928,7 +4928,7 @@ window.TEMAS_CONTEUDO = {
       },
       {
         "titulo": "WIPO / OMPI — Organização Mundial da Propriedade Intelectual",
-        "href": "https://www.wipo.int/pt/",
+        "href": "https://www.wipo.int/portal/en/index.html",
         "tipo": "",
         "domain": "wipo.int"
       },
@@ -7247,9 +7247,9 @@ window.TEMAS_CONTEUDO = {
       },
       {
         "titulo": "Coleção Livro de Artista (EBA/UFMG)",
-        "href": "https://eba.ufmg.br/colecaolivrodeartista/",
+        "href": "https://colecaolivrodeartista.eba.ufmg.br/",
         "tipo": "",
-        "domain": "eba.ufmg.br"
+        "domain": "colecaolivrodeartista.eba.ufmg.br"
       },
       {
         "titulo": "drupa | Feira mundial de produção gráfica",
@@ -8837,14 +8837,6 @@ window.TEMAS_CONTEUDO = {
       }
     ],
     "textos": [
-      {
-        "titulo": "As versões homéricas | Jorge Luis Borges",
-        "href": "https://doceru.com/doc/xvxn0e8",
-        "tag": "",
-        "autor": "Jorge Luis Borges",
-        "trecho": "",
-        "fonte": "doceru.com"
-      },
       {
         "titulo": "Boris Schneiderman: um caso de amor pela literatura",
         "href": "https://revistas.usp.br/ls/pt_BR/article/view/148527/142164",
