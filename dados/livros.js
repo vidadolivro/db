@@ -23,7 +23,7 @@ window.LIVROS = [
     "autor": "Mckee, Robert",
     "editora": "Arte & Letra",
     "ano": 2017,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788560499007-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788560499007/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -37,7 +37,7 @@ window.LIVROS = [
     "autor": "Anne Lamott",
     "editora": "Editora Sextante",
     "ano": 2023,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786555645415/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786555645415/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -51,7 +51,7 @@ window.LIVROS = [
     "autor": "Robert Bringhurst",
     "editora": "Ubu Editora",
     "ano": 2022,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788592886608-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788592886608/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "design",
     "temas": [
       "design-grafico"
@@ -65,7 +65,7 @@ window.LIVROS = [
     "autor": "Ellen Lupton",
     "editora": "Olhares",
     "ano": 2024,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786560920026/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786560920026/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "design",
     "temas": [
       "design-grafico"
@@ -79,7 +79,7 @@ window.LIVROS = [
     "autor": "David Mamet",
     "editora": "Civilização Brasileira",
     "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788520005750-L.jpg",
+    "capa": "",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -93,7 +93,7 @@ window.LIVROS = [
     "autor": "Venuti, Lawrence",
     "editora": "Editora Unesp",
     "ano": 2021,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786557110249/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786557110249/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": null,
     "temas": [
       "traducao"
@@ -107,7 +107,7 @@ window.LIVROS = [
     "autor": "Stephen King",
     "editora": "Suma de Letras",
     "ano": 2015,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788581052779-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788581052779/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -135,7 +135,7 @@ window.LIVROS = [
     "autor": "Goldberg, Natalie",
     "editora": "WMF Martins Fontes (POD)",
     "ano": 2008,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788578270308/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788578270308/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -149,7 +149,7 @@ window.LIVROS = [
     "autor": "Prose, Francine",
     "editora": "Zahar",
     "ano": 2008,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788537800614/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788537800614/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -163,7 +163,7 @@ window.LIVROS = [
     "autor": "Brasil, Luiz Antonio de Assis",
     "editora": "Companhia das Letras",
     "ano": 2019,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788535932072/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535932072/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -206,7 +206,7 @@ window.LIVROS = [
     "autor": "Gotlib, Nadia Battella",
     "editora": "Autêntica",
     "ano": 2025,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786559285075/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786559285075/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -250,7 +250,7 @@ window.LIVROS = [
     "autor": "Eco, Umberto",
     "editora": "Companhia das Letras",
     "ano": 2024,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788535936285-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535936285/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": null,
     "temas": [
       "criacao-literaria"
@@ -264,7 +264,7 @@ window.LIVROS = [
     "autor": "Ronai, Paulo",
     "editora": "José Olympio",
     "ano": 2012,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788503011129/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788503011129/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "traducao"
@@ -307,7 +307,7 @@ window.LIVROS = [
     "autor": "Candido, Antonio; Rosenfeld, Anatol; Prado, Décio de Almeida; Gomes, Paulo Emílio Salles",
     "editora": "Perspectiva",
     "ano": 2021,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788527301640-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788527301640/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -321,7 +321,7 @@ window.LIVROS = [
     "autor": "David Lodge",
     "editora": "L&PM",
     "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788525420381-L.jpg",
+    "capa": "",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -363,7 +363,7 @@ window.LIVROS = [
     "autor": "Kundera, Milan",
     "editora": "Companhia das Letras",
     "ano": 2016,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788535927986/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535927986/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -377,7 +377,7 @@ window.LIVROS = [
     "autor": "Aristóteles",
     "editora": "Editora 34",
     "ano": "",
-    "capa": "https://api.metabooks.com/api/v1/cover/9788573266054/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788573266054/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria"
@@ -391,7 +391,7 @@ window.LIVROS = [
     "autor": "Walter Benjamin",
     "editora": "Brasiliense",
     "ano": "",
-    "capa": "https://api.metabooks.com/api/v1/cover/9788511156287/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788511156287/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria"
@@ -513,7 +513,7 @@ window.LIVROS = [
     "autor": "Ernaux, Annie",
     "editora": "Fósforo Editora",
     "ano": 2023,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786589733195/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786589733195/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": null,
     "temas": [
       "criacao-literaria"
@@ -527,7 +527,7 @@ window.LIVROS = [
     "autor": "Duvivier, Gregorio",
     "editora": "Companhia das Letras",
     "ano": 2026,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788535944716-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535944716/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -569,7 +569,7 @@ window.LIVROS = [
     "autor": "Nabokov, Vladimir",
     "editora": "Fósforo Editora",
     "ano": 2021,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786589733188/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786589733188/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria"
@@ -583,7 +583,7 @@ window.LIVROS = [
     "autor": "Zinsser, William",
     "editora": "Fósforo Editora",
     "ano": 2021,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786589733515/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786589733515/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -597,7 +597,7 @@ window.LIVROS = [
     "autor": "Borges, Jorge Luis",
     "editora": "Companhia das Letras",
     "ano": 2019,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788535932485-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535932485/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -639,7 +639,7 @@ window.LIVROS = [
     "autor": "Lukács, Georg",
     "editora": "Editora 34",
     "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788573261820-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788573261820/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -653,7 +653,7 @@ window.LIVROS = [
     "autor": "Ronai, Paulo",
     "editora": "José Olympio",
     "ano": 2012,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788503011068/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788503011068/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "traducao",
@@ -668,7 +668,7 @@ window.LIVROS = [
     "autor": "Bloom, Harold",
     "editora": "Objetiva",
     "ano": 2001,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788573023473/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788573023473/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "historia",
     "temas": [
       "criacao-literaria"
@@ -682,7 +682,7 @@ window.LIVROS = [
     "autor": "Bosi, Alfredo",
     "editora": "Companhia das Letras",
     "ano": 2000,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788535900194-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535900194/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -696,7 +696,7 @@ window.LIVROS = [
     "autor": "Todorov, Tzvetan",
     "editora": "Editora Unesp",
     "ano": 2014,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788539304967/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788539304967/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -752,7 +752,7 @@ window.LIVROS = [
     "autor": "Jaffe, Noemi",
     "editora": "Companhia das Letras",
     "ano": 2023,
-    "capa": "https://covers.openlibrary.org/b/isbn/9786559215904-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786559215904/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -794,7 +794,7 @@ window.LIVROS = [
     "autor": "Rüsche, Ana",
     "editora": "Contexto",
     "ano": 2026,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786555417173/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786555417173/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -823,7 +823,7 @@ window.LIVROS = [
     "autor": "Maria Tereza de Queiroz Piacentini",
     "editora": "EdUFSCar",
     "ano": "",
-    "capa": "https://api.metabooks.com/api/v1/cover/9786586768190/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786586768190/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "preparacao-revisao"
@@ -837,7 +837,7 @@ window.LIVROS = [
     "autor": "Maria Tereza de Queiroz Piacentini",
     "editora": "EdUFSCar",
     "ano": 2023,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788576006114/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788576006114/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "preparacao-revisao"
@@ -851,7 +851,7 @@ window.LIVROS = [
     "autor": "William Campos da Cruz",
     "editora": "Eleia",
     "ano": 2024,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786598281502/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598281502/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria",
@@ -866,7 +866,7 @@ window.LIVROS = [
     "autor": "Viscardi, Jana",
     "editora": "Planeta",
     "ano": 2025,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788542238020/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788542238020/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria",
@@ -897,7 +897,7 @@ window.LIVROS = [
     "autor": "Darnton, Robert",
     "editora": "Companhia das Letras",
     "ano": 2025,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788535938340/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535938340/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "historia",
     "temas": [
       "criacao-literaria"
@@ -911,7 +911,7 @@ window.LIVROS = [
     "autor": "Calasso, Roberto",
     "editora": "Companhia das Letras",
     "ano": 2023,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786559213924/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786559213924/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "diversos",
     "temas": [],
     "href": "#",
@@ -935,7 +935,7 @@ window.LIVROS = [
     "autor": "Saltz, Jerry",
     "editora": "Seiva",
     "ano": 2024,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786598244378/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244378/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria",
@@ -965,7 +965,7 @@ window.LIVROS = [
     "autor": "Bayles, David; Orland, Ted",
     "editora": "Seiva",
     "ano": 2024,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786598244309/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786598244309/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria"
@@ -993,7 +993,7 @@ window.LIVROS = [
     "autor": "Woolf, Virginia",
     "editora": "Editora 34",
     "ano": 2025,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786555252286/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786555252286/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria"
@@ -1007,7 +1007,7 @@ window.LIVROS = [
     "autor": "S. Lewis, C.",
     "editora": "Thomas Nelson Brasil",
     "ano": 2023,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786556896434/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786556896434/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria",
@@ -1022,7 +1022,7 @@ window.LIVROS = [
     "autor": "Bukowski, C.",
     "editora": "HarperCollins",
     "ano": 2023,
-    "capa": "https://api.metabooks.com/api/v1/cover/9786560050617/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786560050617/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "experiencias",
     "temas": [
       "criacao-literaria"
