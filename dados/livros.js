@@ -321,7 +321,7 @@ window.LIVROS = [
     "autor": "David Lodge",
     "editora": "L&PM",
     "ano": "",
-    "capa": "",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788525420381-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
