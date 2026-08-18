@@ -107,7 +107,7 @@ window.LIVROS = [
     "autor": "Stephen King",
     "editora": "Suma de Letras",
     "ano": 2015,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788581052779/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788581052779-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -321,7 +321,7 @@ window.LIVROS = [
     "autor": "David Lodge",
     "editora": "L&PM",
     "ano": "",
-    "capa": "",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788525420381-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
