@@ -23,7 +23,7 @@ window.LIVROS = [
     "autor": "Mckee, Robert",
     "editora": "Arte & Letra",
     "ano": 2017,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788560499007-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788560499007/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -51,7 +51,7 @@ window.LIVROS = [
     "autor": "Robert Bringhurst",
     "editora": "Ubu Editora",
     "ano": 2022,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788592886608-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788592886608/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "design",
     "temas": [
       "design-grafico"
@@ -79,7 +79,7 @@ window.LIVROS = [
     "autor": "David Mamet",
     "editora": "Civilização Brasileira",
     "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788520005750-L.jpg",
+    "capa": "",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -107,7 +107,7 @@ window.LIVROS = [
     "autor": "Stephen King",
     "editora": "Suma de Letras",
     "ano": 2015,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788581052779-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788581052779/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
