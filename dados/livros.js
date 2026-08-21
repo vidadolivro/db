@@ -79,7 +79,7 @@ window.LIVROS = [
     "autor": "David Mamet",
     "editora": "Civilização Brasileira",
     "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788520005750-L.jpg",
+    "capa": "",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
