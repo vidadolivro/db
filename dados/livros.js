@@ -307,7 +307,7 @@ window.LIVROS = [
     "autor": "Candido, Antonio; Rosenfeld, Anatol; Prado, Décio de Almeida; Gomes, Paulo Emílio Salles",
     "editora": "Perspectiva",
     "ano": 2021,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788527301640/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788527301640-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -321,7 +321,7 @@ window.LIVROS = [
     "autor": "David Lodge",
     "editora": "L&PM",
     "ano": "",
-    "capa": "",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788525420381-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -597,7 +597,7 @@ window.LIVROS = [
     "autor": "Borges, Jorge Luis",
     "editora": "Companhia das Letras",
     "ano": 2019,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788535932485/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788535932485-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -639,7 +639,7 @@ window.LIVROS = [
     "autor": "Lukács, Georg",
     "editora": "Editora 34",
     "ano": "",
-    "capa": "https://api.metabooks.com/api/v1/cover/9788573261820/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788573261820-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -682,7 +682,7 @@ window.LIVROS = [
     "autor": "Bosi, Alfredo",
     "editora": "Companhia das Letras",
     "ano": 2000,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788535900194/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788535900194-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
