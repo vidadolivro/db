@@ -23,7 +23,7 @@ window.LIVROS = [
     "autor": "Mckee, Robert",
     "editora": "Arte & Letra",
     "ano": 2017,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788560499007-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788560499007/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -597,7 +597,7 @@ window.LIVROS = [
     "autor": "Borges, Jorge Luis",
     "editora": "Companhia das Letras",
     "ano": 2019,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788535932485-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788535932485/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -808,7 +808,7 @@ window.LIVROS = [
     "autor": "Howard S. Becker",
     "editora": "Zahar",
     "ano": 2015,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788537813942-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788537813942/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria",
