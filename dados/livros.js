@@ -107,7 +107,7 @@ window.LIVROS = [
     "autor": "Stephen King",
     "editora": "Suma de Letras",
     "ano": 2015,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788581052779-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788581052779/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -278,7 +278,7 @@ window.LIVROS = [
     "autor": "Britto, Paulo Fernando Henriques",
     "editora": "Civilização Brasileira",
     "ano": 2012,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788520011430-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788520011430/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "traducao"
@@ -307,7 +307,7 @@ window.LIVROS = [
     "autor": "Candido, Antonio; Rosenfeld, Anatol; Prado, Décio de Almeida; Gomes, Paulo Emílio Salles",
     "editora": "Perspectiva",
     "ano": 2021,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788527301640-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788527301640/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -639,7 +639,7 @@ window.LIVROS = [
     "autor": "Lukács, Georg",
     "editora": "Editora 34",
     "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788573261820-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788573261820/m?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
