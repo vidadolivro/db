@@ -23,7 +23,7 @@ window.LIVROS = [
     "autor": "Mckee, Robert",
     "editora": "Arte & Letra",
     "ano": 2017,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788560499007-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788560499007/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -51,7 +51,7 @@ window.LIVROS = [
     "autor": "Robert Bringhurst",
     "editora": "Ubu Editora",
     "ano": 2022,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788592886608-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788592886608/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "design",
     "temas": [
       "design-grafico"
@@ -79,7 +79,7 @@ window.LIVROS = [
     "autor": "David Mamet",
     "editora": "Civilização Brasileira",
     "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788520005750-L.jpg",
+    "capa": "",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -307,7 +307,7 @@ window.LIVROS = [
     "autor": "Candido, Antonio; Rosenfeld, Anatol; Prado, Décio de Almeida; Gomes, Paulo Emílio Salles",
     "editora": "Perspectiva",
     "ano": 2021,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788527301640-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788527301640/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -321,7 +321,7 @@ window.LIVROS = [
     "autor": "David Lodge",
     "editora": "L&PM",
     "ano": "",
-    "capa": "https://covers.openlibrary.org/b/isbn/9788525420381-L.jpg",
+    "capa": "",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -752,7 +752,7 @@ window.LIVROS = [
     "autor": "Jaffe, Noemi",
     "editora": "Companhia das Letras",
     "ano": 2023,
-    "capa": "https://covers.openlibrary.org/b/isbn/9786559215904-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9786559215904/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
