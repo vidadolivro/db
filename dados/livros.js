@@ -23,7 +23,7 @@ window.LIVROS = [
     "autor": "Mckee, Robert",
     "editora": "Arte & Letra",
     "ano": 2017,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788560499007/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788560499007-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -527,7 +527,7 @@ window.LIVROS = [
     "autor": "Duvivier, Gregorio",
     "editora": "Companhia das Letras",
     "ano": 2026,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788535944716/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788535944716-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
