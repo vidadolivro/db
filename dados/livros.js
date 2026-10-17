@@ -639,7 +639,7 @@ window.LIVROS = [
     "autor": "Lukács, Georg",
     "editora": "Editora 34",
     "ano": "",
-    "capa": "https://api.metabooks.com/api/v1/cover/9788573261820/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788573261820-L.jpg",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria"
@@ -808,7 +808,7 @@ window.LIVROS = [
     "autor": "Howard S. Becker",
     "editora": "Zahar",
     "ano": 2015,
-    "capa": "https://covers.openlibrary.org/b/isbn/9788537813942-L.jpg",
+    "capa": "https://api.metabooks.com/api/v1/cover/9788537813942/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
     "macrotema": "escrita",
     "temas": [
       "criacao-literaria",
@@ -1050,7 +1050,7 @@ window.LIVROS = [
     "autor": "Willemart, Philippe",
     "editora": "Iluminuras",
     "ano": 1999,
-    "capa": "https://api.metabooks.com/api/v1/cover/9788573211047/l?access_token=c0f55cf9-c553-47ec-ac2f-8c4f4f57325c",
+    "capa": "https://covers.openlibrary.org/b/isbn/9788573211047-L.jpg",
     "macrotema": null,
     "temas": [
       "criacao-literaria",
