@@ -3,7 +3,7 @@
    Uso: DIRECTUS_EMAIL=seu@email DIRECTUS_PASS=senha node scripts/setup-directus.js */
 
 'use strict';
-const DIRECTUS = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS = 'https://dados.seiva.com.br';
 
 async function api(token, method, path, body) {
   const r = await fetch(DIRECTUS + path, {

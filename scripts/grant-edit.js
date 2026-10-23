@@ -10,7 +10,7 @@
 
 'use strict';
 
-const DIRECTUS = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS = 'https://dados.seiva.com.br';
 const COLLECTIONS = ['db_videos', 'db_podcasts', 'db_links', 'db_textos', 'db_artigos', 'db_livros'];
 const ACTIONS = ['update', 'delete'];
 

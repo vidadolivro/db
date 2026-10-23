@@ -15,7 +15,7 @@
 const fs   = require('fs');
 const path = require('path');
 
-const DIRECTUS = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS = 'https://dados.seiva.com.br';
 const ROOT     = path.join(__dirname, '..');
 const DRY      = process.argv.includes('--dry-run');
 const LIMPAR   = process.argv.includes('--limpar');

@@ -15,7 +15,7 @@
 
 'use strict';
 
-const DIRECTUS = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS = 'https://dados.seiva.com.br';
 const REPO     = 'vidadolivro/db';
 const WORKFLOW = 'sync.yml';
 const FLOW_NAME  = 'sync github a cada adição';

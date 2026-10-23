@@ -19,7 +19,7 @@
 const fs   = require('fs');
 const path = require('path');
 
-const DIRECTUS = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS = 'https://dados.seiva.com.br';
 
 function pegarToken() {
   if (process.env.DIRECTUS_TOKEN) return process.env.DIRECTUS_TOKEN.trim();

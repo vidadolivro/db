@@ -8,7 +8,7 @@
 
 'use strict';
 
-const DIRECTUS = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS = 'https://dados.seiva.com.br';
 
 async function run() {
   const email = process.env.DIRECTUS_EMAIL, pass = process.env.DIRECTUS_PASS;

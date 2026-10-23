@@ -7,7 +7,7 @@
 const fs   = require('fs');
 const path = require('path');
 
-const DIRECTUS_BASE = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS_BASE = 'https://dados.seiva.com.br';
 const DIRECTUS      = DIRECTUS_BASE + '/items/biblioteca';
 const ROOT          = path.join(__dirname, '..');
 

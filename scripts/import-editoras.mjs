@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const DIRECTUS = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS = 'https://dados.seiva.com.br';
 const COL = 'db_dir_editoras';
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 

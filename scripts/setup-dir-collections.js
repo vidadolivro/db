@@ -13,7 +13,7 @@
 const fs   = require('fs');
 const path = require('path');
 
-const DIRECTUS      = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS      = 'https://dados.seiva.com.br';
 const PUBLIC_POLICY = 'abf8a154-5b1c-4a46-ac9c-7300570f4f17';
 const COLAB_POLICY  = '00754130-b5ec-4e8c-b1e2-c356af1dcdc2';
 

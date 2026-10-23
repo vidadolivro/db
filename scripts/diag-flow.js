@@ -8,7 +8,7 @@
 
 'use strict';
 
-const DIRECTUS  = 'https://directus-production-afdd.up.railway.app';
+const DIRECTUS  = 'https://dados.seiva.com.br';
 const FLOW_NAME = 'sync github a cada adição';
 
 async function api(token, path) {
